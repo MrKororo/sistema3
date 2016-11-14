@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descuento adicional:</strong>
+  <%= @descuento_adicional.descuento_adicional %>
+</p>
+
+<p>
+  <strong>Detalle:</strong>
+  <%= @descuento_adicional.detalle %>
+</p>
+
+<%= link_to 'Editar', edit_descuento_adicional_path(@descuento_adicional) %> |
+<%= link_to 'Volver', descuento_adicionals_path %>

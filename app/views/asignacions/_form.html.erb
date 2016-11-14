@@ -1,0 +1,39 @@
+<%= form_for(@asignacion) do |f| %>
+  <% if @asignacion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@asignacion.errors.count, "error") %> prohibited this asignacion from being saved:</h2>
+
+      <ul>
+      <% @asignacion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :"Categoria" %><br>
+    <%= collection_select(nil, :categorium_id, Categorium.order(:categoria), :id, :categoria, include_blank: :true) %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :"Subcategoria" %><br>
+    <%= grouped_collection_select(:asignacion, :subcategorium_id, Categorium.order(:categoria), :subcategorium, :categoria, :id, :subcategoria, include_blank: :true) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"Detalles" %><br>
+    <%= f.text_field :detalle_asignacion %>
+  </div>
+
+  <div class="field">
+    <%= f.label :asignacion %><br>
+    <%= f.number_field :asignacion %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit ( f.object.new_record? ? "Crear" : "Actualizar"), class: "btn" %>
+    <%= f.submit "Limpiar", :type => "reset" %>
+  </div>
+
+<% end %>

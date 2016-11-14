@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listando Tipos de contratos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tipo contrato</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tipocontratos.each do |tipocontrato| %>
+      <tr>
+        <td><%= tipocontrato.tipo_contrato %></td>
+        <td><%= link_to 'Ver', tipocontrato %></td>
+        <td><%= link_to 'Editar', edit_tipocontrato_path(tipocontrato) %></td>
+        <td><%= link_to 'Eliminar', tipocontrato, method: :delete, data: { confirm: '¿Esta seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Tipo de contrato', new_tipocontrato_path %>

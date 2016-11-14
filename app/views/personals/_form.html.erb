@@ -1,0 +1,84 @@
+<%= form_for(@personal) do |f| %>
+  <% if @personal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@personal.errors.count, "error") %> prohibited this personal from being saved:</h2>
+
+      <ul>
+      <% @personal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :"Nombre" %><br>
+    <%= f.text_field :nombre_personal %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"Apellido Paterno" %><br>
+    <%= f.text_field :apellidop_personal %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"Apellido Materno" %><br>
+    <%= f.text_field :apellidom_personal %>
+  </div>
+
+  <div class="field">
+    <%= f.label :rut_personal %><br>
+    <%= f.text_field :rut_personal %>
+  </div>
+
+  <div class="field">
+    <%= f.label :isapre_id %><br>
+    <%= collection_select(:personal, :isapre_id, Isapre.all, :id, :isapre, {:prompt => 'Seleccione isapre'}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :banco_id %><br>
+    <%= collection_select(:personal, :banco_id, Banco.all, :id, :banco, {:prompt => 'Seleccione banco'}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"Subcategoria a la que pertenece" %><br>
+    <%= collection_select(:personal, :subcategorium_id, Subcategorium.all, :id, :subcategoria, {:prompt => 'Seleccione isapre'}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tipocontrato_id %><br>
+    <%= collection_select(:personal, :tipocontrato_id, Tipocontrato.all, :id, :tipo_contrato, {:prompt => 'Seleccione tipo de contrato'}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"Centro de costos" %><br>
+    <%= collection_select(:personal, :centrocosto_id, Centrocosto.all, :id, :nombre, {:prompt => 'Seleccione centro de costo'}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :afp_id %><br>
+    <%= collection_select(:personal, :afp_id, Afp.all, :id, :afp, {:prompt => 'Seleccione afp'}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :personal_activo %><br>
+    <%= f.check_box :personal_activo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fecha_ingreso %><br>
+    <%= f.date_select :fecha_ingreso %>
+  </div>
+
+  <div class="field">
+    <%= f.label :numero_cuenta %><br>
+    <%= f.number_field :numero_cuenta %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit ( f.object.new_record? ? "Crear" : "Actualizar"), class: "btn" %>
+    <%= f.submit "Limpiar", :type => "reset" %>
+  </div>
+
+<% end %>

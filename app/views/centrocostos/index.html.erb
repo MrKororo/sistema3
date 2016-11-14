@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listando Centros de costos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Codigo</th>
+      <th>Detalle centro</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @centrocostos.each do |centrocosto| %>
+      <tr>
+        <td><%= centrocosto.nombre %></td>
+        <td><%= centrocosto.codigo %></td>
+        <td><%= centrocosto.detalle_centro %></td>
+        <td><%= link_to 'Ver', centrocosto %></td>
+        <td><%= link_to 'Editar', edit_centrocosto_path(centrocosto) %></td>
+        <td><%= link_to 'Eliminar', centrocosto, method: :delete, data: { confirm: '¿Esta seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Centro de costo', new_centrocosto_path %>

@@ -1,0 +1,27 @@
+<%= form_for(@banco) do |f| %>
+  <% if @banco.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@banco.errors.count, "error") %> prohibited this banco from being saved:</h2>
+
+      <ul>
+      <% @banco.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :banco %><br>
+    <%= f.text_field :banco %>
+  </div>
+  <div class="field">
+    <%= f.label :"Tipo de cuenta" %><br>
+    <%= f.text_field :tipo_cuenta %>
+  </div>
+  <div class="actions">
+    <%= f.submit ( f.object.new_record? ? "Crear" : "Actualizar"), class: "btn" %>
+    <%= f.submit "Limpiar", :type => "reset" %>
+  </div>
+
+<% end %>

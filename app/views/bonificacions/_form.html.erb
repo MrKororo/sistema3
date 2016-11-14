@@ -1,0 +1,38 @@
+<%= form_for(@bonificacion) do |f| %>
+  <% if @bonificacion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bonificacion.errors.count, "error") %> prohibited this bonificacion from being saved:</h2>
+
+      <ul>
+      <% @bonificacion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :"Categoria" %><br>
+    <%= collection_select(nil, :categorium_id, Categorium.order(:categoria), :id, :categoria, include_blank: :true) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"Subcategoria" %><br>
+    <%= grouped_collection_select(:bonificacion, :subcategorium_id, Categorium.order(:categoria), :subcategorium, :categoria, :id, :subcategoria, include_blank: :true) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"Detalle" %><br>
+    <%= f.text_field :detalle_bono %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bono %><br>
+    <%= f.number_field :bono %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit ( f.object.new_record? ? "Crear" : "Actualizar"), class: "btn" %>
+    <%= f.submit "Limpiar", :type => "reset" %>
+  </div>
+<% end %>

@@ -1,0 +1,2 @@
+json.extract! liquidacion, :id, :asignacion_id, :habere_id, :bonificacion_id, :descuento_adicional_id, :personal_id, :fecha_pago, :descuento_afp, :descuento_isapre, :sindicato, :impuesto, :cotizacion_voluntaria, :horas_trabajadas, :remuneracion, :horas_extra, :vacaciones, :total_haberes, :desc_legales, :desc_varios, :liquido_pagar, :created_at, :updated_at
+json.url liquidacion_url(liquidacion, format: :json)

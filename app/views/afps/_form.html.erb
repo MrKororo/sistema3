@@ -1,0 +1,23 @@
+<%= form_for(@afp) do |f| %>
+  <% if @afp.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@afp.errors.count, "error") %> prohibited this afp from being saved:</h2>
+
+      <ul>
+      <% @afp.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :afp %><br>
+    <%= f.text_field :afp %>
+  </div>
+  <div class="actions">
+    <%= f.submit ( f.object.new_record? ? "Crear" : "Actualizar"), class: "btn" %>
+    <%= f.submit "Limpiar", :type => "reset" %>
+  </div>
+
+<% end %>

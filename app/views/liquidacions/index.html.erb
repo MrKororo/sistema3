@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listando Liquidaciones</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Trabajador</th>
+      <th>Asignacion</th>
+      <th>Sueldo base</th>
+      <th>Bonificacion</th>
+      <th>Fecha pago</th>
+      <th>Horas trabajadas</th>
+      <th>Liquido pagar</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @liquidacions.each do |liquidacion| %>
+      <tr>
+        <td><%= liquidacion.personal.nombre_apellido %></td>
+        <td><%= liquidacion.asignacion.asignacion %></td>
+        <td><%= liquidacion.habere.valor_hora %></td>
+        <td><%= liquidacion.bonificacion.bono %></td>
+        <td><%= liquidacion.fecha_pago.strftime("%d/%m/%Y")  %></td>
+        <td><%= liquidacion.horas_trabajadas %></td>
+        <td><%= liquidacion.liquido_pagar %></td>
+        <td><%= link_to 'Show', liquidacion %></td>
+        <td><%= link_to 'Edit', edit_liquidacion_path(liquidacion) %></td>
+        <td><%= link_to 'Destroy', liquidacion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nueva Liquidacion', new_liquidacion_path %>

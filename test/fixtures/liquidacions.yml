@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  asignacion_id: 
+  habere_id: 
+  bonificacion_id: 
+  descuento_adicional_id: 
+  personal_id: 
+  fecha_pago: 2016-11-06
+  descuento_afp: 1
+  descuento_isapre: 1
+  sindicato: 1
+  impuesto: 1
+  cotizacion_voluntaria: 1
+  horas_trabajadas: 1.5
+  remuneracion: 1
+  horas_extra: 1.5
+  vacaciones: 1.5
+  total_haberes: 1
+  desc_legales: 1
+  desc_varios: 1
+  liquido_pagar: 1
+
+two:
+  asignacion_id: 
+  habere_id: 
+  bonificacion_id: 
+  descuento_adicional_id: 
+  personal_id: 
+  fecha_pago: 2016-11-06
+  descuento_afp: 1
+  descuento_isapre: 1
+  sindicato: 1
+  impuesto: 1
+  cotizacion_voluntaria: 1
+  horas_trabajadas: 1.5
+  remuneracion: 1
+  horas_extra: 1.5
+  vacaciones: 1.5
+  total_haberes: 1
+  desc_legales: 1
+  desc_varios: 1
+  liquido_pagar: 1

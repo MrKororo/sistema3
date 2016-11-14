@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  banco: MyString
+  tipo_cuenta: MyString
+
+two:
+  banco: MyString
+  tipo_cuenta: MyString

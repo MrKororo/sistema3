@@ -1,0 +1,1 @@
+json.partial! "haberes/habere", habere: @habere

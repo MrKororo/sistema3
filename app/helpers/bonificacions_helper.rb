@@ -1,0 +1,2 @@
+module BonificacionsHelper
+end

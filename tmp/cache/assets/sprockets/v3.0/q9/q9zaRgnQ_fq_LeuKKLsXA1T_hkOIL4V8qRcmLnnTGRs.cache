@@ -1,0 +1,19 @@
+I"I(function() {
+  jQuery(function() {
+    var haberes;
+    haberes = $('#liquidacion_habere_id').html();
+    return $('#liquidacion_personal_id').change(function() {
+      var asignacion, options2;
+      asignacion = $('#liquidacion_personal_id :selected').text();
+      options2 = $(haberes).filter("optgroup[label='" + asignacion + "']").html();
+      if (options2) {
+        $('#liquidacion_habere_id').parent().show();
+        return $('#liquidacion_habere_id').html(options2);
+      } else {
+        return $('#liquidacion_habere_id').empty();
+      }
+    });
+  });
+
+}).call(this);
+:ET

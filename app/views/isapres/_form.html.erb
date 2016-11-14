@@ -1,0 +1,22 @@
+<%= form_for(@isapre) do |f| %>
+  <% if @isapre.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@isapre.errors.count, "error") %> prohibited this isapre from being saved:</h2>
+
+      <ul>
+      <% @isapre.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :isapre %><br>
+    <%= f.text_field :isapre %>
+  </div>
+  <div class="actions">
+    <%= f.submit ( f.object.new_record? ? "Crear" : "Actualizar"), class: "btn" %>
+    <%= f.submit "Limpiar", :type => "reset" %>
+  </div>
+<% end %>

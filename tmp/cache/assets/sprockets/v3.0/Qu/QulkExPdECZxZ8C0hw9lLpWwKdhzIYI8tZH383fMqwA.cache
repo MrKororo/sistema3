@@ -1,0 +1,19 @@
+I"Q(function() {
+  jQuery(function() {
+    var personals;
+    personals = $('#liquidacion_personal_id').html();
+    return $('#_subcategorium_id').change(function() {
+      var options2, subcategoria;
+      subcategoria = $('#_subcategorium_id :selected').text();
+      options2 = $(personals).filter("optgroup[label='" + subcategoria + "']").html();
+      if (options2) {
+        $('#liquidacion_personal_id').parent().show();
+        return $('#liquidacion_personal_id').html(options2);
+      } else {
+        return $('#liquidacion_personal_id').empty();
+      }
+    });
+  });
+
+}).call(this);
+:ET

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sueldo_base: 1
+  horas_pactadas: 1.5
+  valor_hora: 1.5
+  subcategorium_id: 
+
+two:
+  sueldo_base: 1
+  horas_pactadas: 1.5
+  valor_hora: 1.5
+  subcategorium_id: 

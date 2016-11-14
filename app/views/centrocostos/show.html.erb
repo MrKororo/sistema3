@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @centrocosto.nombre %>
+</p>
+
+<p>
+  <strong>Codigo:</strong>
+  <%= @centrocosto.codigo %>
+</p>
+
+<p>
+  <strong>Detalle centro:</strong>
+  <%= @centrocosto.detalle_centro %>
+</p>
+
+<%= link_to 'Editar', edit_centrocosto_path(@centrocosto) %> |
+<%= link_to 'Volver', centrocostos_path %>

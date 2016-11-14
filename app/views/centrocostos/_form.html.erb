@@ -1,0 +1,31 @@
+<%= form_for(@centrocosto) do |f| %>
+  <% if @centrocosto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@centrocosto.errors.count, "error") %> prohibited this centrocosto from being saved:</h2>
+
+      <ul>
+      <% @centrocosto.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :codigo %><br>
+    <%= f.text_field :codigo %>
+  </div>
+  <div class="field">
+    <%= f.label :"Detalle" %><br>
+    <%= f.text_field :detalle_centro %>
+  </div>
+  <div class="actions">
+    <%= f.submit ( f.object.new_record? ? "Crear" : "Actualizar"), class: "btn" %>
+    <%= f.submit "Limpiar", :type => "reset" %>
+  </div>
+
+<% end %>

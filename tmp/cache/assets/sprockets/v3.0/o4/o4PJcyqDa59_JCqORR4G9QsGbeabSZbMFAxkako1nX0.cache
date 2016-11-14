@@ -1,0 +1,31 @@
+I"H(function() {
+  jQuery(function() {
+    var haberes, personals;
+    personals = $('#liquidacion_personal_id').html();
+    haberes = $('liquidacion_habere_id').html();
+    $('#_subcategorium_id').change(function() {
+      var options, subcategoria;
+      subcategoria = $('#_subcategorium_id :selected').text();
+      options = $(personals).filter("optgroup[label='" + subcategoria + "']").html();
+      if (options) {
+        $('#liquidacion_personal_id').parent().show();
+        return $('#liquidacion_personal_id').html(options);
+      } else {
+        return $('#liquidacion_personal_id').empty();
+      }
+    });
+    return $('#liquidacion_personal_id').change(function() {
+      var asignacion, options;
+      asignacion = $('#liquidacion_personal_id :selected').text();
+      options = $(haberes).filter("optgroup[label='" + asignacion + "']").html();
+      if (options) {
+        $('#liquidacion_habere_id').parent().show();
+        return $('#liquidacion_habere_id').html(options);
+      } else {
+        return $('#liquidacion_habere_id').empty();
+      }
+    });
+  });
+
+}).call(this);
+:ET

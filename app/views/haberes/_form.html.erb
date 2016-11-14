@@ -1,0 +1,42 @@
+<%= form_for(@habere) do |f| %>
+  <% if @habere.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@habere.errors.count, "error") %> prohibited this habere from being saved:</h2>
+
+      <ul>
+      <% @habere.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :"Categoria" %><br>
+    <%= collection_select(nil, :categorium_id, Categorium.order(:categoria), :id, :categoria, include_blank: :true) %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :"Subcategoria" %><br>
+    <%= grouped_collection_select(:habere, :subcategorium_id, Categorium.order(:categoria), :subcategorium, :categoria, :id, :subcategoria, include_blank: :true) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sueldo_base %><br>
+    <%= f.number_field :sueldo_base %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"Horas mensuales"%><br>
+    <%= f.text_field :horas_pactadas %>
+  </div>
+
+  <div class="field">
+    <%= f.label :valor_hora %><br>
+    <%= f.text_field :valor_hora, :readonly => true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit ( f.object.new_record? ? "Crear" : "Actualizar"), class: "btn" %>
+    <%= f.submit "Limpiar", :type => "reset" %>
+  </div>
+<% end %>

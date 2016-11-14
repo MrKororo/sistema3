@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  asignacion: 1
+  detalle_asignacion: MyString
+  subcategorium_id: 
+
+two:
+  asignacion: 1
+  detalle_asignacion: MyString
+  subcategorium_id: 

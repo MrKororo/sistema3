@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Categoria:</strong>
+  <%= @bonificacion.subcategorium.categorium.categoria %>
+</p>
+
+<p>
+  <strong>Subcategoria:</strong>
+  <%= @bonificacion.subcategorium.subcategoria %>
+</p>
+
+<p>
+  <strong>Detalle bono:</strong>
+  <%= @bonificacion.detalle_bono %>
+</p>
+
+<p>
+  <strong>Bono:</strong>
+  $ <%= @bonificacion.bono %>
+</p>
+
+
+<%= link_to 'Editar', edit_bonificacion_path(@bonificacion) %> |
+<%= link_to 'Volver', bonificacions_path %>

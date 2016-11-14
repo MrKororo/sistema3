@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listando trabajadores</h1>
+<%= form_tag search_personals_path, :method => :get do %>
+<p>
+  <%= text_field_tag :query, params[:query] %> <%= submit_tag "Buscar trabajador" %>
+</p>
+<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre personal</th>
+      <th>Isapre</th>
+      <th>Subcategoria</th>
+      <th>Contrato</th>
+      <th>Afp</th>
+      <th>Personal activo</th>
+      <th>Fecha ingreso</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @personals.each do |personal| %>
+      <tr>
+        <td><%= personal.nombre_apellido %></td>
+        <td><%= personal.isapre.isapre %></td>
+        <td><%= personal.subcategorium.subcategoria %></td>
+        <td><%= personal.tipocontrato.tipo_contrato %></td>
+        <td><%= personal.afp.afp %></td>
+        <td><%= trueToAct(personal.personal_activo) %></td>
+        <td><%= personal.fecha_ingreso.strftime("%d/%m/%Y") %></td>
+        <td><%= link_to 'Show', personal %></td>
+        <td><%= link_to 'Edit', edit_personal_path(personal) %></td>
+        <td><%= link_to 'Destroy', personal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= will_paginate @personals, previous_label: h("<"), next_label: h(">")%>
+<%= link_to 'Nuevo Trabajador', new_personal_path %>
