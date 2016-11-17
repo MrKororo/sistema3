@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161107025230) do
+ActiveRecord::Schema.define(version: 20161116174524) do
 
   create_table "afps", force: :cascade do |t|
     t.string   "afp",        limit: 255
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 20161107025230) do
     t.integer  "descuento_adicional_id", limit: 4
     t.integer  "personal_id",            limit: 4
     t.date     "fecha_pago"
+    t.integer  "porcentaje_afp",         limit: 4
     t.integer  "descuento_afp",          limit: 4
     t.integer  "descuento_isapre",       limit: 4
     t.integer  "sindicato",              limit: 4
@@ -110,8 +111,10 @@ ActiveRecord::Schema.define(version: 20161107025230) do
     t.integer  "cotizacion_voluntaria",  limit: 4
     t.float    "horas_trabajadas",       limit: 24
     t.integer  "remuneracion",           limit: 4
-    t.float    "horas_extra",            limit: 24
+    t.integer  "cantidad_horas_extra",   limit: 4
+    t.integer  "horas_extra",            limit: 4
     t.float    "vacaciones",             limit: 24
+    t.integer  "total_imponible",        limit: 4
     t.integer  "total_haberes",          limit: 4
     t.integer  "desc_legales",           limit: 4
     t.integer  "desc_varios",            limit: 4

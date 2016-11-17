@@ -6,7 +6,8 @@ one:
   bonificacion_id: 
   descuento_adicional_id: 
   personal_id: 
-  fecha_pago: 2016-11-06
+  fecha_pago: 2016-11-16
+  porcentaje_afp: 1
   descuento_afp: 1
   descuento_isapre: 1
   sindicato: 1
@@ -14,8 +15,10 @@ one:
   cotizacion_voluntaria: 1
   horas_trabajadas: 1.5
   remuneracion: 1
-  horas_extra: 1.5
+  cantidad_horas_extra: 1
+  horas_extra: 1
   vacaciones: 1.5
+  total_imponible: 1
   total_haberes: 1
   desc_legales: 1
   desc_varios: 1
@@ -27,7 +30,8 @@ two:
   bonificacion_id: 
   descuento_adicional_id: 
   personal_id: 
-  fecha_pago: 2016-11-06
+  fecha_pago: 2016-11-16
+  porcentaje_afp: 1
   descuento_afp: 1
   descuento_isapre: 1
   sindicato: 1
@@ -35,8 +39,10 @@ two:
   cotizacion_voluntaria: 1
   horas_trabajadas: 1.5
   remuneracion: 1
-  horas_extra: 1.5
+  cantidad_horas_extra: 1
+  horas_extra: 1
   vacaciones: 1.5
+  total_imponible: 1
   total_haberes: 1
   desc_legales: 1
   desc_varios: 1

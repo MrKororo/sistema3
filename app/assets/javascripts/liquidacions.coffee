@@ -58,69 +58,96 @@ jQuery ->
 
 #total de haberes en base a los valores de remuneracion, asignacion y bonificacion
 	$('#liquidacion_horas_trabajadas').keyup ->
+		total_extra = parseInt($('#liquidacion_horas_extra').val())
 		sueldo = parseInt($('#liquidacion_remuneracion').val())
 		asignacion = parseInt($('#liquidacion_asignacion_id option:selected').text())
 		bono = parseInt($('#liquidacion_bonificacion_id option:selected').text())
 		if isNaN(asignacion) and isNaN(bono)
 			$('#liquidacion_total_haberes').val(sueldo)
 		else if isNaN(asignacion)
-			total = sueldo+bono
+			total = sueldo+bono+total_extra
 			$('#liquidacion_total_haberes').val(total)
 		else
-			total = sueldo+asignacion+bono
+			total = sueldo+asignacion+bono+total_extra
 			$('#liquidacion_total_haberes').val(total)
 #fin del bloque
 
 #total de haberes en base a los valores de remuneracion, asignacion y bonificacion
 	$('#liquidacion_bonificacion_id').change ->
+		total_extra = parseInt($('#liquidacion_horas_extra').val())
 		sueldo = parseInt($('#liquidacion_remuneracion').val())
 		asignacion = parseInt($('#liquidacion_asignacion_id option:selected').text())
 		bono = parseInt($('#liquidacion_bonificacion_id option:selected').text())
 		if isNaN(bono) && isNaN(asignacion)
 			$('#liquidacion_total_haberes').val(sueldo)
 		else if isNaN(bono)
-			total = sueldo+asignacion
+			total = sueldo+asignacion+total_extra
 			$('#liquidacion_total_haberes').val(total)
 		else if isNaN(asignacion)
-			total = sueldo+bono
+			total = sueldo+bono+total_extra
 			$('#liquidacion_total_haberes').val(total)
 		else
-			total = sueldo+asignacion+bono
+			total = sueldo+asignacion+bono+total_extra
 			$('#liquidacion_total_haberes').val(total)
 #fin del bloque
 
 #total de haberes en base a los valores de remuneracion, asignacion y bonificacion
 	$('#liquidacion_asignacion_id').change ->
+		total_extra = parseInt($('#liquidacion_horas_extra').val())
 		sueldo = parseInt($('#liquidacion_remuneracion').val())
 		asignacion = parseInt($('#liquidacion_asignacion_id option:selected').text())
 		bono = parseInt($('#liquidacion_bonificacion_id option:selected').text())
 		if isNaN(bono) && isNaN(asignacion)
 			$('#liquidacion_total_haberes').val(sueldo)
 		else if isNaN(asignacion)
-			total = sueldo+bono
+			total = sueldo+bono+total_extra
 			$('#liquidacion_total_haberes').val(total)
 		else if isNaN(bono)
-			total = sueldo+asignacion
+			total = sueldo+asignacion+total_extra
 			$('#liquidacion_total_haberes').val(total)
 		else
-			total = sueldo+asignacion+bono
+			total = sueldo+asignacion+bono+total_extra
 			$('#liquidacion_total_haberes').val(total)
 #fin del bloque
 
+#total imponible
+	$('#liquidacion_bonificacion_id').change ->
+		sueldo = parseInt($('#liquidacion_remuneracion').val())
+		horas = parseInt($('#liquidacion_horas_extra').val())
+		bono = parseInt($('#liquidacion_bonificacion_id option:selected').text())
+		if isNaN(bono)
+			total = Math.round(sueldo+horas)
+			$('#liquidacion_total_imponible').val(total)
+		else
+			total = Math.round(sueldo+horas+bono)
+			$('#liquidacion_total_imponible').val(total)
+
+	$('#liquidacion_cantidad_horas_extra').keyup ->
+		sueldo = parseInt($('#liquidacion_remuneracion').val())
+		horas = parseInt($('#liquidacion_horas_extra').val())
+		bono = parseInt($('#liquidacion_bonificacion_id option:selected').text())
+		if isNaN(bono)
+			total = Math.round(sueldo+horas)
+			$('#liquidacion_total_imponible').val(total)
+		else
+			total = Math.round(sueldo+horas+bono)
+			$('#liquidacion_total_imponible').val(total)
+#fin del bloque
+
 #porcentajes AFP e Isapre
-	$('#porcentaje_afp').keyup ->
-		totalSueldo = $('#liquidacion_total_haberes').val()
-		porcentaje = $('#porcentaje_afp').val()/100
+	$('#liquidacion_porcentaje_afp').keyup ->
+		totalSueldo = $('#liquidacion_total_imponible').val()
+		porcentaje = $('#liquidacion_porcentaje_afp').val()/100
 		descuento = Math.round(totalSueldo*porcentaje)
 		$('#liquidacion_descuento_afp').val(descuento)
 
 	$('#porcentaje_isapre').keyup ->
-		totalSueldo = $('#liquidacion_total_haberes').val()
+		totalSueldo = $('#liquidacion_total_imponible').val()
 		porcentaje = $('#porcentaje_isapre').val()/100
 		descuento = Math.round(totalSueldo*porcentaje)
 		$('#liquidacion_descuento_isapre').val(descuento)
 
-	$('#porcentaje_afp').keyup ->
+	$('#liquidacion_porcentaje_afp').keyup ->
 		afp = parseInt($('#liquidacion_descuento_afp').val())
 		isapre = parseInt($('#liquidacion_descuento_isapre').val())
 		total = Math.round(afp+isapre)
@@ -184,21 +211,38 @@ jQuery ->
 #fin del bloque
 
 #bloque para cantidad de horas extra y valor final
-	$('#cantidad_horas').keyup ->
-		cantidad_hora= $('#cantidad_horas').val()
+	$('#liquidacion_cantidad_horas_extra').keyup ->
+		cantidad_hora= $('#liquidacion_cantidad_horas_extra').val()
 		sueldo = parseInt($('#liquidacion_habere_id option:selected').text())*1.5
 		total = Math.round(cantidad_hora*sueldo)
 		$('#liquidacion_horas_extra').val(total)
+
+	$('#liquidacion_cantidad_horas_extra').keyup ->
+		total_extra = parseInt($('#liquidacion_horas_extra').val())
+		haberes = $('#liquidacion_remuneracion').val()		
+		sueldo = parseInt($('#liquidacion_remuneracion').val())
+		asignacion = parseInt($('#liquidacion_asignacion_id option:selected').text())
+		bono = parseInt($('#liquidacion_bonificacion_id option:selected').text())
+		if isNaN(bono) && isNaN(asignacion)
+			$('#liquidacion_total_haberes').val(sueldo)
+		else if isNaN(asignacion)
+			total = sueldo+bono+total_extra
+			$('#liquidacion_total_haberes').val(total)
+		else if isNaN(bono)
+			total = sueldo+asignacion+total_extra
+			$('#liquidacion_total_haberes').val(total)
+		else
+			total = sueldo+asignacion+bono+total_extra
+			$('#liquidacion_total_haberes').val(total)
 #fin del bloque
 
 #calculo de remuneracion liquida
 	$('#coffeeScript').click ->
 		haberes= parseInt($('#liquidacion_total_haberes').val())
-		hextra = parseInt($('#liquidacion_horas_extra').val())
 		desLegal = parseInt($('#liquidacion_desc_legales').val())
 		desVarios = parseInt($('#liquidacion_desc_varios').val())
 		vacacion = parseInt($('#liquidacion_vacaciones').val())
-		total = haberes+hextra+vacacion
+		total = haberes+vacacion
 		total2= desLegal+desVarios
 		final=total-total2
 		$('#liquidacion_liquido_pagar').val(final)

@@ -1,3 +1,6 @@
+Empresa.create!([
+  {nombre_empresa: "Gonzalez S.A", rut_empresa: "12345678", giro: "Servicios Informaticos", domicilio: "Calle falsa 123", email: "falso@gmail.com", website: "", telefono: "424241121"}
+])
 Centrocosto.create!([
   {nombre: "Puerto Montt", codigo: "065", detalle_centro: "Centro destinado a Puerto Montt"}
 ])
@@ -8,17 +11,6 @@ Afp.create!([
   {afp: "Modelo"},
   {afp: "PlanVital"},
   {afp: "Provida"}
-])
-Isapre.create!([
-  {isapre: "Banmédica"},
-  {isapre: "Capradena"},
-  {isapre: "Colmena"},
-  {isapre: "Consalud"},
-  {isapre: "Cruz Blanca"},
-  {isapre: "Ferrosalud"},
-  {isapre: "Fonasa"},
-  {isapre: "Más Vida"},
-  {isapre: "Vida Tres"}
 ])
 Banco.create!([
   {banco: "Banco Bice", tipo_cuenta: "Cuenta Corriente"},
@@ -37,7 +29,19 @@ Banco.create!([
   {banco: "Deutsche Bank (Chile)", tipo_cuenta: "Cuenta Corriente"},
   {banco: "HSBC Bank (Chile)", tipo_cuenta: "Cuenta Corriente"},
   {banco: "Rabobank Chile", tipo_cuenta: "Cuenta Corriente"},
-  {banco: "Scotiabank Chile", tipo_cuenta: "Cuenta Corriente"}
+  {banco: "Scotiabank Chile", tipo_cuenta: "Cuenta Corriente"},
+  {banco: "Banco Estado", tipo_cuenta: "Cuenta Debito"}
+])
+Isapre.create!([
+  {isapre: "Banmédica"},
+  {isapre: "Capradena"},
+  {isapre: "Colmena"},
+  {isapre: "Consalud"},
+  {isapre: "Cruz Blanca"},
+  {isapre: "Ferrosalud"},
+  {isapre: "Fonasa"},
+  {isapre: "Más Vida"},
+  {isapre: "Vida Tres"}
 ])
 Tipocontrato.create!([
   {tipo_contrato: "Contrato a plazo 120 días"},
@@ -46,15 +50,20 @@ Tipocontrato.create!([
   {tipo_contrato: "Contrato por Obras"},
   {tipo_contrato: "Contrato a plazo anual"}
 ])
-Empresa.create!([
-  {nombre_empresa: "Gonzalez S.A", rut_empresa: "12345678", giro: "Servicios Informaticos", domicilio: "Calle falsa 123", email: "falso@gmail.com", website: "", telefono: "424241121"}
+DescuentoAdicional.create!([
+  {descuento_adicional: 10000, detalle: "Prestamos"},
+  {descuento_adicional: nil, detalle: ""}
 ])
+
+
+
 Categorium.create!([
   {categoria: "Secretaria"},
   {categoria: "Funcionario"},
   {categoria: "Profesor"},
   {categoria: "Servicios Adicionales"},
-  {categoria: "Mantencion"}
+  {categoria: "Mantencion"},
+  {categoria: "Ingeniero"}
 ])
 Subcategorium.create!([
   {subcategoria: "Secretaria clase S1", categorium_id: 1},
@@ -68,11 +77,14 @@ Subcategorium.create!([
   {subcategoria: "Profesor clase Pr3", categorium_id: 3},
   {subcategoria: "Adicionales clase A1", categorium_id: 4},
   {subcategoria: "Adicionales clase A2", categorium_id: 4},
-  {subcategoria: "Mantencion equipos", categorium_id: 5}
+  {subcategoria: "Mantencion equipos", categorium_id: 5},
+  {subcategoria: "Informacion y control de gestion", categorium_id: 6}
 ])
 Asignacion.create!([
   {asignacion: 25000, detalle_asignacion: "Movilización", subcategorium_id: 4},
-  {asignacion: nil, detalle_asignacion: "Sin Asignacion", subcategorium_id: 4}
+  {asignacion: 0, detalle_asignacion: "Sin Asignacion", subcategorium_id: 4},
+  {asignacion: 0, detalle_asignacion: "s/n", subcategorium_id: 5},
+  {asignacion: 0, detalle_asignacion: "s/n", subcategorium_id: 13}
 ])
 Bonificacion.create!([
   {bono: 35000, detalle_bono: "Trabajador del mes", subcategorium_id: 1},
@@ -87,23 +99,29 @@ Bonificacion.create!([
   {bono: 35000, detalle_bono: "Trabajador del mes", subcategorium_id: 11},
   {bono: 35000, detalle_bono: "Trabajador del mes", subcategorium_id: 12},
   {bono: 35000, detalle_bono: "Trabajador del mes", subcategorium_id: 6},
-  {bono: nil, detalle_bono: "s/n", subcategorium_id: 4},
-  {bono: nil, detalle_bono: "s/n", subcategorium_id: 5}
+  {bono: 0, detalle_bono: "s/n", subcategorium_id: 4},
+  {bono: 0, detalle_bono: "s/n", subcategorium_id: 5},
+  {bono: 0, detalle_bono: "s/n", subcategorium_id: 13}
 ])
+
+
+
 Habere.create!([
-  {sueldo_base: 400000, horas_pactadas: 130.0, valor_hora: 3076.92, subcategorium_id: 10},
+  {sueldo_base: 400000, horas_pactadas: 130.0, valor_hora: 3077.0, subcategorium_id: 10},
   {sueldo_base: 350000, horas_pactadas: 100.0, valor_hora: 3500.0, subcategorium_id: 11},
   {sueldo_base: 450000, horas_pactadas: 180.0, valor_hora: 2500.0, subcategorium_id: 2},
-  {sueldo_base: 500000, horas_pactadas: 140.0, valor_hora: 3571.43, subcategorium_id: 1},
-  {sueldo_base: 500000, horas_pactadas: 126.0, valor_hora: 3968.25, subcategorium_id: 12},
+  {sueldo_base: 500000, horas_pactadas: 140.0, valor_hora: 3571.0, subcategorium_id: 1},
+  {sueldo_base: 500000, horas_pactadas: 126.0, valor_hora: 3968.0, subcategorium_id: 12},
   {sueldo_base: 12345677, horas_pactadas: 123.0, valor_hora: 100371.0, subcategorium_id: 5},
-  {sueldo_base: 342400, horas_pactadas: 140.0, valor_hora: 2445.71, subcategorium_id: 3},
+  {sueldo_base: 342400, horas_pactadas: 140.0, valor_hora: 2446.0, subcategorium_id: 3},
   {sueldo_base: 870000, horas_pactadas: 145.0, valor_hora: 6000.0, subcategorium_id: 4},
-  {sueldo_base: 543222, horas_pactadas: 122.0, valor_hora: 4452.64, subcategorium_id: 6},
-  {sueldo_base: 600000, horas_pactadas: 130.0, valor_hora: 4615.38, subcategorium_id: 7},
-  {sueldo_base: 659000, horas_pactadas: 120.0, valor_hora: 5491.67, subcategorium_id: 8},
-  {sueldo_base: 700000, horas_pactadas: 140.0, valor_hora: 5000.0, subcategorium_id: 9}
+  {sueldo_base: 543222, horas_pactadas: 122.0, valor_hora: 4453.0, subcategorium_id: 6},
+  {sueldo_base: 600000, horas_pactadas: 130.0, valor_hora: 4615.0, subcategorium_id: 7},
+  {sueldo_base: 659000, horas_pactadas: 120.0, valor_hora: 5492.0, subcategorium_id: 8},
+  {sueldo_base: 700000, horas_pactadas: 140.0, valor_hora: 5000.0, subcategorium_id: 9},
+  {sueldo_base: 1050000, horas_pactadas: 100.0, valor_hora: 10500.0, subcategorium_id: 13}
 ])
+
 Personal.create!([
   {nombre_personal: "Silvino", apellidop_personal: "Grijalva", apellidom_personal: "Marroquín", rut_personal: "13453241-6", isapre_id: 1, banco_id: 5, subcategorium_id: 10, tipocontrato_id: 3, centrocosto_id: 1, afp_id: 5, personal_activo: true, fecha_ingreso: "2016-10-15", numero_cuenta: nil},
   {nombre_personal: "Edesio", apellidop_personal: "Matías", apellidom_personal: "Valdés", rut_personal: "14262196-7", isapre_id: 2, banco_id: 1, subcategorium_id: 1, tipocontrato_id: 3, centrocosto_id: 1, afp_id: 2, personal_activo: true, fecha_ingreso: "2016-10-15", numero_cuenta: nil},
@@ -125,6 +143,7 @@ Personal.create!([
   {nombre_personal: "Amaro", apellidop_personal: "Rosas", apellidom_personal: "Ramírez", rut_personal: "11526897-k", isapre_id: 2, banco_id: 7, subcategorium_id: 12, tipocontrato_id: 1, centrocosto_id: 1, afp_id: 5, personal_activo: true, fecha_ingreso: "2016-10-15", numero_cuenta: nil},
   {nombre_personal: "Diego Nicolas", apellidop_personal: "Gonzalez", apellidom_personal: "Cuevas", rut_personal: "17694123-5", isapre_id: 3, banco_id: 4, subcategorium_id: 12, tipocontrato_id: 1, centrocosto_id: 1, afp_id: 5, personal_activo: true, fecha_ingreso: "2016-10-17", numero_cuenta: 69440002},
   {nombre_personal: "Diego", apellidop_personal: "Parra", apellidom_personal: "Parra", rut_personal: "16239069-4", isapre_id: 7, banco_id: 7, subcategorium_id: 11, tipocontrato_id: 2, centrocosto_id: 1, afp_id: 2, personal_activo: true, fecha_ingreso: "2016-10-17", numero_cuenta: 23456781},
-  {nombre_personal: "Anselmo", apellidop_personal: "Fox", apellidom_personal: "Fox", rut_personal: "20829259-5", isapre_id: 2, banco_id: 14, subcategorium_id: 5, tipocontrato_id: 4, centrocosto_id: 1, afp_id: 5, personal_activo: true, fecha_ingreso: "2016-10-31", numero_cuenta: nil}
+  {nombre_personal: "Anselmo", apellidop_personal: "Fox", apellidom_personal: "Fox", rut_personal: "20829259-5", isapre_id: 2, banco_id: 14, subcategorium_id: 5, tipocontrato_id: 4, centrocosto_id: 1, afp_id: 5, personal_activo: true, fecha_ingreso: "2016-10-31", numero_cuenta: nil},
+  {nombre_personal: "Tamara Soledad", apellidop_personal: "Cardenas", apellidom_personal: "Nitor", rut_personal: "17781008-8", isapre_id: 7, banco_id: 18, subcategorium_id: 13, tipocontrato_id: 3, centrocosto_id: 1, afp_id: 6, personal_activo: true, fecha_ingreso: "2016-11-01", numero_cuenta: 123456789},
+  {nombre_personal: "Diego Hernan", apellidop_personal: "Bustamante", apellidom_personal: "Aguila", rut_personal: "18231773-k", isapre_id: 7, banco_id: 7, subcategorium_id: 13, tipocontrato_id: 3, centrocosto_id: 1, afp_id: 2, personal_activo: true, fecha_ingreso: "2016-11-15", numero_cuenta: nil}
 ])
-

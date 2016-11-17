@@ -26,9 +26,9 @@
         <td><%= liquidacion.fecha_pago.strftime("%d/%m/%Y")  %></td>
         <td><%= liquidacion.horas_trabajadas %></td>
         <td><%= liquidacion.liquido_pagar %></td>
-        <td><%= link_to 'Show', liquidacion %></td>
-        <td><%= link_to 'Edit', edit_liquidacion_path(liquidacion) %></td>
-        <td><%= link_to 'Destroy', liquidacion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', liquidacion %></td>
+        <td><%= link_to 'Editar', edit_liquidacion_path(liquidacion) %></td>
+        <td><%= link_to 'Eliminar', liquidacion, method: :delete, data: { confirm: '¿Esta seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>

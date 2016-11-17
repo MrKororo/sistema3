@@ -10,8 +10,17 @@ class LiquidacionsController < ApplicationController
   # GET /liquidacions/1
   # GET /liquidacions/1.json
   def show
-  end
-
+    @liquidacion = Liquidacion.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+      pdf = LiquidacionPdf.new(@liquidacion)
+      send_data pdf.render, filename: "liquidacion #{@liquidacion.personal.nombre_apellido}.pdf",
+                            type: "application/pdf",
+                            disposition: "inline"
+      end
+    end
+end
   # GET /liquidacions/new
   def new
     @liquidacion = Liquidacion.new
@@ -69,6 +78,6 @@ class LiquidacionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def liquidacion_params
-      params.require(:liquidacion).permit(:asignacion_id, :habere_id, :bonificacion_id, :descuento_adicional_id, :personal_id, :fecha_pago, :descuento_afp, :descuento_isapre, :sindicato, :impuesto, :cotizacion_voluntaria, :horas_trabajadas, :remuneracion, :horas_extra, :vacaciones, :total_haberes, :desc_legales, :desc_varios, :liquido_pagar)
+      params.require(:liquidacion).permit(:asignacion_id, :habere_id, :bonificacion_id, :descuento_adicional_id, :personal_id, :fecha_pago, :porcentaje_afp, :descuento_afp, :descuento_isapre, :sindicato, :impuesto, :cotizacion_voluntaria, :horas_trabajadas, :remuneracion, :cantidad_horas_extra, :horas_extra, :vacaciones, :total_imponible, :total_haberes, :desc_legales, :desc_varios, :liquido_pagar)
     end
 end

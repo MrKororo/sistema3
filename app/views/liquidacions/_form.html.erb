@@ -37,6 +37,16 @@
   </div>
 
   <div class="field">
+    <%= f.label :cantidad_horas_extra %><br>
+    <%= f.text_field :cantidad_horas_extra %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :horas_extra %><br>
+    <%= f.text_field :horas_extra, :value => 0 ,:readonly => true %>
+  </div>
+
+  <div class="field">
     <%= f.label :asignacion_id %><br>
     <%= grouped_collection_select(:liquidacion, :asignacion_id, Subcategorium.order(:subcategoria), :asignacion, :subcategoria, :id, :asignacion, {include_blank: :true}) %>
   </div>
@@ -44,6 +54,11 @@
   <div class="field">
     <%= f.label :bonificacion_id %><br>
     <%= grouped_collection_select(:liquidacion, :bonificacion_id, Subcategorium.order(:subcategoria), :bonificacion, :subcategoria, :id, :bono, include_blank: :true) %>
+  </div>
+   
+  <div class="field">
+    <%= f.label :total_imponible %><br>
+    <%= f.text_field :total_imponible, :readonly => true  %>
   </div>
   
   <div class="field">
@@ -55,10 +70,14 @@
     <%= f.label :descuento_adicional_id %><br>
     <%= collection_select(:liquidacion, :descuento_adicional_id, DescuentoAdicional.all, :id, :descuento_adicional, {include_blank: :true}) %>
   </div>
- 
+  
+  <div class="field">
+    <%= f.label :porcentaje_afp %><br>
+    <%= f.text_field :porcentaje_afp %>
+  </div>
+  
   <div class="field">
     <%= f.label :descuento_afp %><br>
-    <%= text_field_tag 'porcentaje_afp','minimo de 10%'%>
     <%= f.number_field :descuento_afp, :readonly => true %>
   </div>
 
@@ -83,11 +102,7 @@
     <%= f.text_field :cotizacion_voluntaria , :value=> "0"%>
   </div>
 
-  <div class="field">
-    <%= f.label :horas_extra %><br>
-    <%= text_field_tag 'cantidad_horas', '0'%>
-    <%= f.text_field :horas_extra, :readonly => true %>
-  </div>
+
 
   <div class="field">
     <%= f.label :vacaciones %><br>
@@ -119,3 +134,7 @@
     <%= f.submit ( f.object.new_record? ? "Crear" : "Actualizar"), class: "btn" %>
   </div>
 <% end %>
+
+
+
+

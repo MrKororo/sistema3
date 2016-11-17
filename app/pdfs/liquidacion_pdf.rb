@@ -4,12 +4,14 @@ class LiquidacionPdf < Prawn::Document
 			text "Liquidacion de remuneraciones\n #{DateTime.now.to_date.strftime("%d/%m/%Y")}" ,:align => :center
 			@liquidacion = liquidacion
 			empresa_data
-			#text "\nDatos del trabajador \n"
-			#personal_data
-			#text "\n "
-			#tabla_haberes
+			text "\nDatos del trabajador: \n"
+			personal_data
+			text "\n "
+			tabla_haberes
 			tabla_descuentos
-			
+			tabla_resumen
+			forma_pago
+
 	end
 
 	def empresa_data
@@ -18,37 +20,40 @@ class LiquidacionPdf < Prawn::Document
 			  ["Rut :#{@empresa.rut_empresa}","Domicilio: #{@empresa.domicilio}"]], :width => 540
 	end
 
-	# def personal_data
-	# 	table [["Nombre: #{@liquidacion.personal.nombre_apellido}","Fecha ingreso: #{@liquidacion.personal.fecha_contratacion.strftime("%d/%m/%Y")}"],
-	# 		  ["Rut: #{@liquidacion.personal.rut_personal}","Cargo: #{@liquidacion.personal.categorium.categoria}"],
-	# 		  ["Afp: #{@liquidacion.personal.afp_personal}","Isapre: #{@liquidacion.personal.sistema_salud}"]],:width =>540
-	# end
+	def personal_data
+	 	table [["Nombre: #{@liquidacion.personal.nombre_apellido}","Fecha ingreso: #{@liquidacion.personal.fecha_ingreso.strftime("%d/%m/%Y")}"],
+	 		  ["Rut: #{@liquidacion.personal.rut_personal}","Cargo: #{@liquidacion.personal.subcategorium.subcategoria}"],
+	 		  ["Afp: #{@liquidacion.personal.afp.afp}","Isapre: #{@liquidacion.personal.isapre.isapre}"]],:width =>540
+	end
 
+	def tabla_haberes
+		table [["Haberes"],["Item","Detalle"],["Remuneracion #{@liquidacion.horas_trabajadas} horas", "$#{@liquidacion.remuneracion}"],["Asignacion","$#{@liquidacion.
+	 		asignacion.asignacion}"],["Bonificacion","$#{@liquidacion.bonificacion.bono}"],["Horas Extra","$#{@liquidacion.horas_extra}"],
+	 		["Vacaciones","$#{@liquidacion.vacaciones}"]], :width => 250
+	end
+	 
+	 def tabla_descuentos
+	 	bounding_box([290, 485],:width => 250,:height => 600) do
+	 		table [["Descuentos"],["Item","Detalle"],["Afp","$#{@liquidacion.descuento_afp}"],
+	 				["Salud","$#{@liquidacion.descuento_isapre}"],["Sindicato","$#{@liquidacion.sindicato}"],
+	 				["Impuesto","$#{@liquidacion.impuesto}"],["Ap. Voluntario","$#{@liquidacion.cotizacion_voluntaria}"],
+	 				["Descuento: #{@liquidacion.descuento_adicional.detalle}","$#{@liquidacion.descuento_adicional.descuento_adicional}"]], :width =>250
+	 	end
+	 end
 
-	# def tabla_haberes
-	# 	table [["Haberes"],["Item","Detalle"],["Haberes", "$#{@liquidacion.habere.sueldo_base}"],["Asignacion","$#{@liquidacion.
-	# 		asignacion.asignacion}"],["Bonificacion","$#{@liquidacion.bonificacion.bono}"]], :width => 250
-		
-	# end
-	 # def tabla_descuentos
-	 # 	bounding_box([290, 485],:width => 250,:height => 617) do
-	 # 		table [["Descuentos"],["Item","Detalle"],["Afp","$#{@liquidacion.descuento.descuento_afp}"],
-	 # 				["Salud","$#{@liquidacion.descuento.descuento_salud}"],["Sindicato","$#{@liquidacion.descuento.sindicato}"],
-	 # 				["Impuesto","$#{@liquidacion.descuento.impuesto}"],["Ap. Voluntario","$#{@liquidacion.descuento.cotizacion_voluntaria}"]
-	 # 				], :width =>250
-	 # 	end
-	 # end
+	def tabla_resumen
+		bounding_box([0,280],:width => 540,:height => 100)do
+			table [["Total Haberes","Descuento Legal","Imponible","Descuentos Varios","Liquido a pagar"],
+					["$#{@liquidacion.total_haberes}","$#{@liquidacion.desc_legales}","$#{@liquidacion.total_imponible}","$#{@liquidacion.desc_varios}","$#{@liquidacion.liquido_pagar}"]
+					], :width =>540
+		end
+	end
 
-	# def tabla_resumen
-		
-		
-	# end
+	def forma_pago
+		bounding_box([0,80],:width => 540,:height => 100)do
+			table [["Forma de pago: #{@liquidacion.personal.banco.tipo_cuenta}"],["#{@liquidacion.personal.banco.banco}"],["Numero de cuenta: #{@liquidacion.personal.numero_cuenta}"]], :width =>300
 
-	# def cuadro
-	# 	bounding_box([0, 617],:width => 300,:height => 617) do
- #  			stroke_bounds  
-  			
- #  		end	
-	# end
+		end
 
+	end
 end

@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Trabajadpr:</strong>
+  <strong>Trabajador:</strong>
   <%= @liquidacion.personal.nombre_apellido %>
 </p>
 
@@ -31,6 +31,16 @@
 </p>
 
 <p>
+  <strong>Horas extra:</strong>
+  <%= @liquidacion.horas_extra %>
+</p>
+
+<p>
+  <strong>Total imponible:</strong>
+  <%= @liquidacion.total_imponible %>
+</p>
+
+<p>
   <strong>Total haberes:</strong>
   <%= @liquidacion.total_haberes %>
 </p>
@@ -40,6 +50,12 @@
   <%= @liquidacion.descuento_adicional.descuento_adicional %>
 </p>
 
+<p>
+  <strong>Porcentaje afp:</strong>
+  <%= @liquidacion.porcentaje_afp %>
+</p>
+
+<p>
   <strong>Descuento afp:</strong>
   <%= @liquidacion.descuento_afp %>
 </p>
@@ -62,6 +78,11 @@
 <p>
   <strong>Cotizacion voluntaria:</strong>
   <%= @liquidacion.cotizacion_voluntaria %>
+</p>
+
+<p>
+  <strong>Cantidad horas extra:</strong>
+  <%= @liquidacion.cantidad_horas_extra %>
 </p>
 
 <p>
@@ -94,5 +115,12 @@
   <%= @liquidacion.fecha_pago.strftime("%d/%m/%Y") %>
 </p>
 
+<p>
+<%= link_to "Liquidacion en pdf", liquidacion_path(@liquidacion, format: "pdf")%>
+</p>
 <%= link_to 'Editar', edit_liquidacion_path(@liquidacion) %> |
 <%= link_to 'Volver', liquidacions_path %>
+
+
+
+
