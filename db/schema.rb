@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161116174524) do
+ActiveRecord::Schema.define(version: 20161121143957) do
 
   create_table "afps", force: :cascade do |t|
     t.string   "afp",        limit: 255
@@ -59,6 +59,15 @@ ActiveRecord::Schema.define(version: 20161116174524) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
+
+  create_table "certificates", force: :cascade do |t|
+    t.integer  "personal_id", limit: 4
+    t.string   "motivo",      limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "certificates", ["personal_id"], name: "index_certificates_on_personal_id", using: :btree
 
   create_table "descuento_adicionals", force: :cascade do |t|
     t.integer  "descuento_adicional", limit: 4
@@ -171,6 +180,7 @@ ActiveRecord::Schema.define(version: 20161116174524) do
 
   add_foreign_key "asignacions", "subcategoria"
   add_foreign_key "bonificacions", "subcategoria"
+  add_foreign_key "certificates", "personals"
   add_foreign_key "haberes", "subcategoria"
   add_foreign_key "liquidacions", "asignacions"
   add_foreign_key "liquidacions", "bonificacions"

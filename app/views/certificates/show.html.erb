@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Trabajador:</strong>
+  <%= @certificate.personal.nombre_apellido %>
+</p>
+
+<p>
+  <strong>Motivo:</strong>
+  <%= @certificate.motivo %>
+</p>
+<p>
+<%= link_to "Liquidacion en pdf", certificate_path(@certificate, format: "pdf")%>
+</p>
+<%= link_to 'Editar', edit_certificate_path(@certificate) %> |
+<%= link_to 'Volver', certificates_path %>

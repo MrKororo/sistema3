@@ -5,6 +5,7 @@ class Personal < ActiveRecord::Base
   belongs_to :tipocontrato
   belongs_to :centrocosto
   belongs_to :afp
+  belongs_to :certificate
   has_many :liquidacion
 
 validates :rut_personal, rut: true, uniqueness: true

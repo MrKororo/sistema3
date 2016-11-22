@@ -1,0 +1,25 @@
+<%= form_for(@certificate) do |f| %>
+  <% if @certificate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@certificate.errors.count, "error") %> prohibited this certificate from being saved:</h2>
+
+      <ul>
+      <% @certificate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :personal_id %><br>
+    <%= collection_select(:certificate, :personal_id, Personal.all, :id, :nombre_apellido, include_blank: :true) %>
+   </div>
+  <div class="field">
+    <%= f.label :motivo %><br>
+    <%= f.select :motivo, Certificate::MOTIVOS %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

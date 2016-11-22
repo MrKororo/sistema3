@@ -5,7 +5,6 @@ class PersonalsController < ApplicationController
   # GET /personals.json
   def index
     @personals = Personal.order("nombre_personal").page(params[:page]).per_page(10)
-
   end
 
   def trueToAct(boolean)
@@ -30,8 +29,9 @@ class PersonalsController < ApplicationController
   
   # GET /personals/1
   # GET /personals/1.json
-  def show
-  end
+ def show
+ end
+
 
   # GET /personals/new
   def new

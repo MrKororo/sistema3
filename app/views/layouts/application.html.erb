@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<body>
+
 <div id="wrapper">
   <head>
       <javascript_include_tag "vendor/modernizr">
@@ -17,7 +17,11 @@
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-  <h1 class="text-center">asd</h1>
+
+  
+  <!--Cuerpo principal-->
+  <body>
+    <h1 class="text-center">asd</h1>
   <!-- Navigation -->
   <div class="title-bar" data-responsive-toggle="realEstateMenu" data-hide-for="small">
     <button class="menu-icon" type="button" data-toggle></button>
@@ -91,16 +95,15 @@
     </div>
   </div>
   <!-- /Navigation -->  
-  
-  <!--Cuerpo principal-->
   <div class="row" id="content">
-    <div class="medium-8 columns">
-      <div class="blog-post">
-        <body>
+    <div class="small-8 columns">
           <%= yield %>
-        </body>
-      </div>
     </div>
+    <div class="small-4 columns">
+    <h2>asd </h2>
+    asdasdasdasdasdasd
+    </div>
+    </body>
 <!--/Cuerpo principal-->
   
 <!--Barra lateral-->
@@ -122,5 +125,5 @@
     </address> 
   </footer>
 </div>
-</body>
+
 </html>

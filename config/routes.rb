@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
 
-  resources :liquidacions
+
   get 'page/index'
   get '/index' => redirect('page/index')
   root 'page#index'
@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :personals
+  resources :certificates
+  resources :liquidacions  
   resources :haberes
   resources :empresas
   resources :descuento_adicionals
