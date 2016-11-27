@@ -1,4 +1,5 @@
 class LiquidacionsController < ApplicationController
+  before_action :authorize, except: [:index,:show]
   before_action :set_liquidacion, only: [:show, :edit, :update, :destroy]
 
   # GET /liquidacions
@@ -20,7 +21,7 @@ class LiquidacionsController < ApplicationController
                             disposition: "inline"
       end
     end
-end
+  end
   # GET /liquidacions/new
   def new
     @liquidacion = Liquidacion.new

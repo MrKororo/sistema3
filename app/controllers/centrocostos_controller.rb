@@ -1,4 +1,5 @@
 class CentrocostosController < ApplicationController
+  before_action :authorize
   before_action :set_centrocosto, only: [:show, :edit, :update, :destroy]
 
   # GET /centrocostos

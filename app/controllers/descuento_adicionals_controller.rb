@@ -1,4 +1,5 @@
 class DescuentoAdicionalsController < ApplicationController
+  before_action :authorize
   before_action :set_descuento_adicional, only: [:show, :edit, :update, :destroy]
 
   # GET /descuento_adicionals

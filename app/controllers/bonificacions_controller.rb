@@ -1,4 +1,5 @@
 class BonificacionsController < ApplicationController
+  before_action :authorize
   before_action :set_bonificacion, only: [:show, :edit, :update, :destroy]
 
   # GET /bonificacions

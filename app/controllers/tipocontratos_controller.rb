@@ -1,4 +1,5 @@
 class TipocontratosController < ApplicationController
+  before_action :authorize
   before_action :set_tipocontrato, only: [:show, :edit, :update, :destroy]
 
   # GET /tipocontratos

@@ -1,21 +1,24 @@
 class CertificatesController < ApplicationController
+  before_action :authorize, except: [:index,:show,:update,:edit]
   before_action :set_certificate, only: [:show, :edit, :update, :destroy]
 
   # GET /certificates
   # GET /certificates.json
   def index
-    @certificates = Certificate.all
+    if params[:search] and params[:search]!=""
+      @certificates = Certificate.search(params[:search]).order("created_at DESC")
+    end
   end
 
   # GET /certificates/1
   # GET /certificates/1.json
- def show
-    @certificados = Certificate.find(params[:id])
+  def show
+    @certificate = Certificate.find(params[:id])
     respond_to do |format|
       format.html
       format.pdf do
-      pdf = CertificadoAntiguedadPdf.new(@certificados)
-      send_data pdf.render, filename: "certificado #{@certificados.id}.pdf",
+      pdf = CertificadoAntiguedadPdf.new(@certificate)
+      send_data pdf.render, filename: "certificate #{@certificate}.pdf",
                             type: "application/pdf",
                             disposition: "inline"
       end
@@ -31,8 +34,8 @@ class CertificatesController < ApplicationController
   def edit
   end
 
-  # POST /certificates
-  # POST /certificates.json
+  # Certificate /certificates
+  # Certificate /certificates.json
   def create
     @certificate = Certificate.new(certificate_params)
 
@@ -79,6 +82,6 @@ class CertificatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def certificate_params
-      params.require(:certificate).permit(:personal_id, :motivo)
+      params.require(:certificate).permit(:personal_id, :rut_personal, :motivo)
     end
 end

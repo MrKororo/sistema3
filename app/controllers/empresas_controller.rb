@@ -1,4 +1,5 @@
 class EmpresasController < ApplicationController
+  before_action :authorize
   before_action :set_empresa, only: [:show, :edit, :update, :destroy]
 
   # GET /empresas

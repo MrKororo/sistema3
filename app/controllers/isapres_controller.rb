@@ -1,4 +1,5 @@
 class IsapresController < ApplicationController
+  before_action :authorize
   before_action :set_isapre, only: [:show, :edit, :update, :destroy]
 
   # GET /isapres

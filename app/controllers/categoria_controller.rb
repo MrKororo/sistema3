@@ -1,4 +1,5 @@
 class CategoriaController < ApplicationController
+  before_action :authorize
   before_action :set_categorium, only: [:show, :edit, :update, :destroy]
 
   # GET /categoria

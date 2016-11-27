@@ -1,4 +1,5 @@
 class PersonalsController < ApplicationController
+  before_action :authorize
   before_action :set_personal, only: [:show, :edit, :update, :destroy]
 
   # GET /personals

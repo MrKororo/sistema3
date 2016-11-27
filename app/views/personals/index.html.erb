@@ -38,6 +38,7 @@
   </tbody>
 </table>
 
-<br>
-<%= will_paginate @personals, previous_label: h("<"), next_label: h(">")%>
+ <div class="row">
+<%= will_paginate @personals, previous_label: h("<"), next_label: h(">"), renderer: FoundationPagination::Rails%>
+</div>
 <%= link_to 'Nuevo Trabajador', new_personal_path %>

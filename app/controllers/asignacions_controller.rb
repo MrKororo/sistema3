@@ -1,4 +1,5 @@
 class AsignacionsController < ApplicationController
+  before_action :authorize
   before_action :set_asignacion, only: [:show, :edit, :update, :destroy]
 
   # GET /asignacions

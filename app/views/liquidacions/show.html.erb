@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<table>
+<td>
 <p>
   <strong>Trabajador:</strong>
   <%= @liquidacion.personal.nombre_apellido %>
@@ -40,6 +42,7 @@
   <%= @liquidacion.total_imponible %>
 </p>
 
+
 <p>
   <strong>Total haberes:</strong>
   <%= @liquidacion.total_haberes %>
@@ -59,7 +62,8 @@
   <strong>Descuento afp:</strong>
   <%= @liquidacion.descuento_afp %>
 </p>
-
+</td>
+<td>
 <p>
   <strong>Descuento isapre:</strong>
   <%= @liquidacion.descuento_isapre %>
@@ -114,11 +118,14 @@
   <strong>Fecha pago:</strong>
   <%= @liquidacion.fecha_pago.strftime("%d/%m/%Y") %>
 </p>
-
+</td>
+</table>
 <p>
 <%= link_to "Liquidacion en pdf", liquidacion_path(@liquidacion, format: "pdf")%>
 </p>
-<%= link_to 'Editar', edit_liquidacion_path(@liquidacion) %> |
+<%if current_user%>
+<%= link_to 'Editar', edit_liquidacion_path(@liquidacion) %>|
+<%end%>
 <%= link_to 'Volver', liquidacions_path %>
 
 

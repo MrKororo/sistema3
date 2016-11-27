@@ -1,4 +1,5 @@
 class AfpsController < ApplicationController
+  before_action :authorize
   before_action :set_afp, only: [:show, :edit, :update, :destroy]
 
   # GET /afps

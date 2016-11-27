@@ -17,113 +17,120 @@
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-
-  
-  <!--Cuerpo principal-->
-  <body>
-    <h1 class="text-center">asd</h1>
-  <!-- Navigation -->
-  <div class="title-bar" data-responsive-toggle="realEstateMenu" data-hide-for="small">
-    <button class="menu-icon" type="button" data-toggle></button>
-    <div class="title-bar-title">Menu</div>
-  </div>
-
-  <div class="top-bar" id="realEstateMenu">
-    <div class="top-bar-left">
-      <ul class="dropdown menu" data-dropdown-menu>
-        <li class="menu-text"><a href="/index">Remuneraciones</a></li>
-         <li class="has-dropdown">
-                <a href="#">Personal</a>
-                  <ul class="menu">
-                    <li><a href="/personals">Lista de personal</a></li>
-                    <li><a href="/personals/new">Nuevo personal</a></li>
-                  </ul>
-              </li>
-              <li class="has-dropdown">
-                  <a href="#">Categorizacion</a>
-                    <ul class="menu">
-                      <li class="has-dropdown">
-                        <a href="#">Categoria</a>
-                          <ul class="menu">
-                            <li><a href="/categoria">Lista de categorias</a></li>
-                            <li><a href="/categoria/new">Nueva categoria</a></li>
-                          </ul>
-                      </li>
-                      <li class="has-dropdown">
-                        <a href="#">Subcategoria</a>
-                          <ul class="menu">
-                            <li><a href="/subcategoria">Lista de subcategorias</a></li>
-                            <li><a href="/subcategoria/new">Nueva subcategoria</a></li>
-                          </ul>
-                      </li>
-                    </ul>
-              </li>
-              <li class="has-dropdown">
-                  <a href="#">Remuneracion</a>
-                    <ul class="menu">
-                      <li><a href="/haberes">Haberes</a></li>
-                      <li><a href="/bonificacions">Bonificaciones</a></li>
-                      <li><a href="/asignacions">Asignaciones</a></li>
-                      <li class="has-dropdown">
-                        <a href="#">Descuentos</a>
-                          <ul class="menu">
-                            <li><a href="/descuento_adicionals">Descuentos Adicionales</a></li>
-                          </ul>
-                      </li>
-                    </ul>
-              </li>   
-              <li class="has-dropdown">
-                  <a href="#">Parametros</a>
-                    <ul class="menu">
-                      <li><a href="/centrocostos">Centro de costos</a></li>
-                      <li><a href="/empresas">Mi Empresa</a></li>
-                      <li><a href="/afps">Afp</a></li>
-                      <li><a href="/isapres">Isapres</a></li>
-                      <li><a href="/bancos">Bancos</a></li>
-                      <li><a href="/tipocontratos">Contratos</a></li>
-                    </ul>
-              </li>
-            
-            <li><a href="/liquidacions">Liquidaciones</a></li>
-            
-      </ul>
-    </div>
-    <div class="top-bar-right">
-      <ul class="menu">
-        
-      </ul>
-    </div>
-  </div>
-  <!-- /Navigation -->  
-  <div class="row" id="content">
-    <div class="small-8 columns">
-          <%= yield %>
-    </div>
-    <div class="small-4 columns">
-    <h2>asd </h2>
-    asdasdasdasdasdasd
-    </div>
-    </body>
-<!--/Cuerpo principal-->
-  
-<!--Barra lateral-->
-    <div class="medium-3 columns" data-sticky-container>
-      <div class="sticky" data-sticky data-anchor="content">
-        <p id="notice"><%= notice %></p>
-        
+    <div class="callout large primary">
+      <div class="row column text-center">
+        <h1>Sistema de Remuneraciones</h1>
       </div>
     </div>
+  
+  <!--Cuerpo principal-->
+    <!-- Start Top Bar -->
+    <div class="top-bar">
+      <div class="row">
+        <div class="top-bar-left">
+          <ul class="dropdown menu" data-dropdown-menu>
+            <li class="menu-text"><a href="/index">Remuneraciones</a></li>
+            <% if current_user %>
+              <li class="has-submenu">
+                <a href="#">Personal</a>
+                <ul class="submenu menu vertical" data-submenu>
+                 <li><a href="/personals">Lista de personal</a></li>
+                 <li><a href="/personals/new">Nuevo personal</a></li>
+                </ul>
+              </li>
+              <li class="has-submenu">
+                <a href="#">Categorizacion</a>
+                <ul class="submenu menu vertical" data-submenu>
+                 <li><a href="/categoria">Categoria</a></li>
+                 <li><a href="/subcategoria">Subcategoria</a></li>
+                </ul>
+              </li>
+              <li class="has-submenu">
+                <a href="#">Remuneracion</a>
+                <ul class="submenu menu vertical" data-submenu>
+                 <li><a href="/haberes">Haberes</a></li>
+                 <li><a href="/bonificacions">Bonificaciones</a></li>
+                 <li><a href="/asignacions">Asignaciones</a></li>
+                 <li><a href="/descuento_adicionals">Descuentos Adicionales</a></li>
+                </ul>
+              </li>
+              <li class="has-submenu">
+                <a href="#">Parametros</a>
+                <ul class="submenu menu vertical" data-submenu>
+                 <li><a href="/centrocostos">Centro de costos</a></li>
+                 <li><a href="/empresas">Mi Empresa</a></li>
+                 <li><a href="/afps">Afp</a></li>
+                 <li><a href="/isapres">Isapres</a></li>
+                 <li><a href="/bancos">Bancos</a></li>
+                 <li><a href="/tipocontratos">Contratos</a></li>
+                 <li><a href="/users">Usuarios</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/liquidacions">Liquidaciones</a>
+              </li>
+              <li>
+                <a class="button" href="/logout">Salir</a>
+              </li>
+              <%else%>
+              <li>
+                <a class="button" href="/login">Entrar</a>
+              </li>
+           <%end%>
+          </ul>
+        </div>
+        <div class="top-bar-right">
+        <ul class="dropdown menu" data-dropdown-menu>
+           <li>
+             <a href="/certificates">Certificados</a>
+            </li>
+            <% if current_user.nil?%>
+             <li>
+                <a href="/liquidacions">Liquidaciones</a>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+ 
+  
+  <!-- /Navigation -->  
+   <div class="row" id="content">
+      <div class="medium-8 columns">
+        <%= yield %>   
+      </div>
+    <div class="medium-3 columns" data-sticky-container>
+        <div class="sticky" data-sticky data-anchor="content">
+          <div id="user_header">
+          <% if current_user %>
+            <h6>A ingresado como: <%= current_user.email %>.</h6>
+            <h4>Ultimos trabajadores agregados:</h4>
+            <ul>
+              <% lastCreated.each do |personal| %>
+              <li><%=personal.nombre_apellido%></li>
+              <% end %>
+            </ul>
+            <h4>Ultimas Categorias creadas</h4>
+            <ul>
+              <% lastCategories.each do |category| %>
+              <li><%=category.categoria%></li>
+              <% end %>
+            </ul>
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<hr>
+  <div class="row">
+    <div class="medium-6 columns">
+      <h3>Contactenos</h3>
+          <p>En caso de necesitar soporte tecnico o realizar consultas acerca del funcionamiento del programa, <a href="mailto:webmaster@example.com"> contacta</a> con nosotros y te responderemos a la brevedad posible.</p>
+    </div>      
   </div>
- <!--/Barra lateral-->
-
-
-  <footer>
-    <address>
-      Contacta con <a href="mailto:webmaster@example.com">nosotros</a>.<br>
-      Puerto Montt.<br>
-      2016.
-    </address> 
-  </footer>
 </div>
 
 </html>

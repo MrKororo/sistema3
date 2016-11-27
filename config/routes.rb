@@ -1,7 +1,18 @@
 Rails.application.routes.draw do
   
 
+  resources :certificates
+  resources :sessions, only: [:new, :create, :destroy]
+  get 'signup', to: 'users#new', as: 'signup'
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+  get 'sessions/new'
 
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
+  resources :users
   get 'page/index'
   get '/index' => redirect('page/index')
   root 'page#index'
@@ -12,7 +23,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :certificates
   resources :liquidacions  
   resources :haberes
   resources :empresas

@@ -2,8 +2,10 @@
 
 one:
   personal_id: 
+  rut_personal: MyString
   motivo: MyString
 
 two:
   personal_id: 
+  rut_personal: MyString
   motivo: MyString

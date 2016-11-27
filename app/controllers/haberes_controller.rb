@@ -1,4 +1,5 @@
 class HaberesController < ApplicationController
+  before_action :authorize
   before_action :set_habere, only: [:show, :edit, :update, :destroy]
 
   # GET /haberes

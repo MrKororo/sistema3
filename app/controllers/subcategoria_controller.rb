@@ -1,4 +1,5 @@
 class SubcategoriaController < ApplicationController
+  before_action :authorize
   before_action :set_subcategorium, only: [:show, :edit, :update, :destroy]
 
   # GET /subcategoria

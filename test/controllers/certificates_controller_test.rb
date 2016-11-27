@@ -18,7 +18,7 @@ class CertificatesControllerTest < ActionController::TestCase
 
   test "should create certificate" do
     assert_difference('Certificate.count') do
-      post :create, certificate: { motivo: @certificate.motivo, personal_id: @certificate.personal_id }
+      post :create, certificate: { motivo: @certificate.motivo, personal_id: @certificate.personal_id, rut_personal: @certificate.rut_personal }
     end
 
     assert_redirected_to certificate_path(assigns(:certificate))
@@ -35,7 +35,7 @@ class CertificatesControllerTest < ActionController::TestCase
   end
 
   test "should update certificate" do
-    patch :update, id: @certificate, certificate: { motivo: @certificate.motivo, personal_id: @certificate.personal_id }
+    patch :update, id: @certificate, certificate: { motivo: @certificate.motivo, personal_id: @certificate.personal_id, rut_personal: @certificate.rut_personal }
     assert_redirected_to certificate_path(assigns(:certificate))
   end
 
