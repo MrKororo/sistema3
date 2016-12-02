@@ -5,7 +5,7 @@ class Personal < ActiveRecord::Base
   belongs_to :tipocontrato
   belongs_to :centrocosto
   belongs_to :afp
-  belongs_to :certificate
+  belongs_to :sindicato
   has_many :liquidacion
 
 validates :rut_personal, rut: true, uniqueness: true
@@ -20,6 +20,5 @@ end
 def nombre_apellido
 	"#{nombre_personal} #{apellidop_personal} #{apellidom_personal}"
 end
-
 
 end

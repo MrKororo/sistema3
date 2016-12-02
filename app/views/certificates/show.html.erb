@@ -1,14 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Personal:</strong>
-  <%= @certificate.personal.nombre_apellido %>
-</p>
+<table>
+	<p>
+	  <strong>Personal:</strong>
+	  <%= @certificate.personal.nombre_apellido %>
+	</p>
 
-<p>
-  <strong>Motivo:</strong>
-  <%= @certificate.motivo %>
-</p>
+	<p>
+	  <strong>Motivo:</strong>
+	  <%= @certificate.motivo %>
+	</p>
+</table>
+
 <p>
 <%= link_to "Certificado en PDF", certificate_path(@certificate, format: "pdf")%>
 </p>

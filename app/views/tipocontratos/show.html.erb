@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Tipo de contrato:</strong>
-  <%= @tipocontrato.tipo_contrato %>
-</p>
+<table>
+	<p>
+	  <strong>Tipo de contrato:</strong>
+	  <%= @tipocontrato.tipo_contrato %>
+	</p>
+</table>
 
 <%= link_to 'Editar', edit_tipocontrato_path(@tipocontrato) %> |
 <%= link_to 'Volver', tipocontratos_path %>

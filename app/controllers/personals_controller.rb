@@ -1,5 +1,4 @@
 class PersonalsController < ApplicationController
-  before_action :authorize
   before_action :set_personal, only: [:show, :edit, :update, :destroy]
 
   # GET /personals
@@ -28,11 +27,6 @@ class PersonalsController < ApplicationController
     end
   end
   
-  # GET /personals/1
-  # GET /personals/1.json
- def show
- end
-
 
   # GET /personals/new
   def new
@@ -91,6 +85,6 @@ class PersonalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def personal_params
-      params.require(:personal).permit(:nombre_personal, :apellidop_personal, :apellidom_personal, :rut_personal, :isapre_id, :banco_id, :subcategorium_id, :tipocontrato_id, :centrocosto_id, :afp_id, :personal_activo, :fecha_ingreso, :numero_cuenta)
+      params.require(:personal).permit(:nombre_personal, :apellidop_personal, :apellidom_personal, :rut_personal, :isapre_id, :banco_id, :subcategorium_id, :tipocontrato_id, :centrocosto_id, :afp_id, :personal_activo, :fecha_ingreso, :sindicato_id, :numero_cuenta)
     end
 end

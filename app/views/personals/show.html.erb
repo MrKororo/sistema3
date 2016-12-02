@@ -1,59 +1,67 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nombre personal:</strong>
-  <%= @personal.nombre_apellido %>
-</p>
+<table>
+  <p>
+    <strong>Nombre personal:</strong>
+    <%= @personal.nombre_apellido %>
+  </p>
 
-<p>
-  <strong>Rut personal:</strong>
-  <%= @personal.rut_personal %>
-</p>
+  <p>
+    <strong>Rut personal:</strong>
+    <%= @personal.rut_personal %>
+  </p>
 
-<p>
-  <strong>Isapre:</strong>
-  <%= @personal.isapre.isapre %>
-</p>
+  <p>
+    <strong>Isapre:</strong>
+    <%= @personal.isapre.isapre %>
+  </p>
 
-<p>
-  <strong>Banco:</strong>
-  <%= @personal.banco.banco %>
-</p>
+  <p>
+    <strong>Banco:</strong>
+    <%= @personal.banco.banco %>
+  </p>
 
-<p>
-  <strong>Subcategorium:</strong>
-  <%= @personal.subcategorium.subcategoria %>
-</p>
+  <p>
+    <strong>Sub categoria:</strong>
+    <%= @personal.subcategorium.subcategoria %>
+  </p>
 
-<p>
-  <strong>Tipocontrato:</strong>
-  <%= @personal.tipocontrato.tipo_contrato %>
-</p>
+  <p>
+    <strong>Tipocontrato:</strong>
+    <%= @personal.tipocontrato.tipo_contrato %>
+  </p>
 
-<p>
-  <strong>Centrocosto:</strong>
-  <%= @personal.centrocosto.nombre %>
-</p>
+  <p>
+    <strong>Centro de costo:</strong>
+    <%= @personal.centrocosto.nombre %>
+  </p>
 
-<p>
-  <strong>Afp:</strong>
-  <%= @personal.afp.afp %>
-</p>
+  <p>
+    <strong>Afp:</strong>
+    <%= @personal.afp.afp %>
+  </p>
 
-<p>
-  <strong>Personal activo:</strong>
-  <%= trueToAct(@personal.personal_activo) %>
-</p>
+  <p>
+    <strong>Personal activo:</strong>
+    <%= trueToAct(@personal.personal_activo) %>
+  </p>
 
-<p>
-  <strong>Fecha ingreso:</strong>
-  <%= @personal.fecha_ingreso.strftime("%d/%m/%Y") %>
-</p>
+  <p>
+    <strong>Fecha ingreso:</strong>
+    <%= @personal.fecha_ingreso.strftime("%d/%m/%Y") %>
+  </p>
 
-<p>
-  <strong>Numero cuenta:</strong>
-  <%= @personal.numero_cuenta %>
-</p>
+  <p>
+    <strong>Sindicato:</strong>
+    <%= @personal.sindicato.nombre_sindicato %>
+  </p>
+
+  <p>
+    <strong>Numero cuenta:</strong>
+    <%= @personal.numero_cuenta %>
+  </p>
+</table>
 
 <%= link_to 'Editar', edit_personal_path(@personal) %> |
 <%= link_to 'Volver', personals_path %>
+

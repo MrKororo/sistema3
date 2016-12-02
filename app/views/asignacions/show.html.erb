@@ -1,25 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Categoria:</strong>
-  <%= @asignacion.subcategorium.categorium.categoria %>
-</p>
+<table>
+	<p>
+	  <strong>Categoria:</strong>
+	  <%= @asignacion.subcategorium.categorium.categoria %>
+	</p>
 
-<p>
-  <strong>Subcategoria:</strong>
-  <%= @asignacion.subcategorium.subcategoria %>
-</p>
+	<p>
+	  <strong>Subcategoria:</strong>
+	  <%= @asignacion.subcategorium.subcategoria %>
+	</p>
 
-<p>
-  <strong>Asignacion:</strong>
-  <%= @asignacion.asignacion %>
-</p>
+	<p>
+	  <strong>Asignacion:</strong>
+	 $ <%= @asignacion.asignacion %>
+	</p>
 
-<p>
-  <strong>Detalle asignacion:</strong>
-  <%= @asignacion.detalle_asignacion %>
-</p>
-
+	<p>
+	  <strong>Detalle asignacion:</strong>
+	  <%= @asignacion.detalle_asignacion %>
+	</p>
+</table>
 
 
 <%= link_to 'Editar', edit_asignacion_path(@asignacion) %> |

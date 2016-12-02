@@ -13,6 +13,7 @@ class CreatePersonals < ActiveRecord::Migration
       t.references :afp, index: true, foreign_key: true
       t.boolean :personal_activo
       t.date :fecha_ingreso
+      t.references :sindicato, index: true, foreign_key: true
       t.integer :numero_cuenta
 
       t.timestamps null: false

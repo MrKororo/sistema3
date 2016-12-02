@@ -5,7 +5,10 @@ class CertificatesController < ApplicationController
   # GET /certificates
   # GET /certificates.json
   def index
-    if params[:search] and params[:search]!=""
+    if current_user
+      @certificates= Certificate.all
+
+    elsif params[:search] and params[:search]!=""
       @certificates = Certificate.search(params[:search]).order("created_at DESC")
     end
   end

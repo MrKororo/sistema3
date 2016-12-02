@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Sindicatos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre sindicato</th>
+      <th>Cuota sindical</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sindicatos.each do |sindicato| %>
+      <tr>
+        <td><%= sindicato.nombre_sindicato %></td>
+        <td><%= sindicato.cuota_sindical %></td>
+        <td><%= link_to 'Show', sindicato %></td>
+        <td><%= link_to 'Edit', edit_sindicato_path(sindicato) %></td>
+        <td><%= link_to 'Destroy', sindicato, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sindicato', new_sindicato_path %>

@@ -7,7 +7,7 @@ class CreateLiquidacions < ActiveRecord::Migration
       t.references :descuento_adicional, index: true, foreign_key: true
       t.references :personal, index: true, foreign_key: true
       t.date :fecha_pago
-      t.integer :porcentaje_afp
+      t.float :porcentaje_afp
       t.integer :descuento_afp
       t.integer :descuento_isapre
       t.integer :sindicato
@@ -23,6 +23,7 @@ class CreateLiquidacions < ActiveRecord::Migration
       t.integer :desc_legales
       t.integer :desc_varios
       t.integer :liquido_pagar
+      t.string :rut_personal
 
       t.timestamps null: false
     end

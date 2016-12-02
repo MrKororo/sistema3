@@ -11,6 +11,8 @@ class LiquidacionPdf < Prawn::Document
 			tabla_descuentos
 			tabla_resumen
 			forma_pago
+			image "#{Rails.root}/app/assets/images/firma.jpg", :at => [330, 80], :scale => 0.3
+			
 
 	end
 
@@ -27,17 +29,55 @@ class LiquidacionPdf < Prawn::Document
 	end
 
 	def tabla_haberes
-		table [["Haberes"],["Item","Detalle"],["Remuneracion #{@liquidacion.horas_trabajadas} horas", "$#{@liquidacion.remuneracion}"],["Asignacion","$#{@liquidacion.
+		if  @liquidacion.asignacion.asignacion==0 and @liquidacion.bonificacion.bono ==0 and @liquidacion.horas_extra == 0 and @liquidacion.vacaciones == 0.0
+	 		table [["Haberes"],["Item","Detalle"],["Remuneracion #{@liquidacion.horas_trabajadas} horas", "$#{@liquidacion.remuneracion}"]], :width => 250
+	 	elsif @liquidacion.bonificacion.bono ==0 and @liquidacion.horas_extra == 0 and @liquidacion.vacaciones == 0.0
+			table [["Haberes"],["Item","Detalle"],["Remuneracion #{@liquidacion.horas_trabajadas} horas", "$#{@liquidacion.remuneracion}"],["Asignacion","$#{@liquidacion.
+	 		asignacion.asignacion}"]], :width=> 250
+	 	elsif @liquidacion.horas_extra == 0 and @liquidacion.vacaciones == 0.0
+			table [["Haberes"],["Item","Detalle"],["Remuneracion #{@liquidacion.horas_trabajadas} horas", "$#{@liquidacion.remuneracion}"],["Asignacion","$#{@liquidacion.
+	 		asignacion.asignacion}"],["Bonificacion","$#{@liquidacion.bonificacion.bono}"]],:width=>250
+	 	elsif @liquidacion.vacaciones == 0.0
+	 		table [["Haberes"],["Item","Detalle"],["Remuneracion #{@liquidacion.horas_trabajadas} horas", "$#{@liquidacion.remuneracion}"],["Asignacion","$#{@liquidacion.
+	 		asignacion.asignacion}"],["Bonificacion","$#{@liquidacion.bonificacion.bono}"],["Horas Extra","$#{@liquidacion.horas_extra}"]],:width=>250
+	 	else
+			table [["Haberes"],["Item","Detalle"],["Remuneracion #{@liquidacion.horas_trabajadas} horas", "$#{@liquidacion.remuneracion}"],["Asignacion","$#{@liquidacion.
 	 		asignacion.asignacion}"],["Bonificacion","$#{@liquidacion.bonificacion.bono}"],["Horas Extra","$#{@liquidacion.horas_extra}"],
 	 		["Vacaciones","$#{@liquidacion.vacaciones}"]], :width => 250
+	 	end
 	end
 	 
 	 def tabla_descuentos
-	 	bounding_box([290, 485],:width => 250,:height => 600) do
+	 	if @liquidacion.sindicato == 0 and @liquidacion.impuesto ==0 and @liquidacion.cotizacion_voluntaria == 0  and @liquidacion.descuento_adicional==nil
+	 		bounding_box([290, 485],:width => 250,:height => 600) do
+	 		table [["Descuentos"],["Item","Detalle"],["Afp","$#{@liquidacion.descuento_afp}"],
+	 				["Salud","$#{@liquidacion.descuento_isapre}"]], :width =>250
+	 		end
+
+	 	elsif @liquidacion.impuesto ==0 and @liquidacion.cotizacion_voluntaria == 0  and @liquidacion.descuento_adicional==nil
+	 		bounding_box([290, 485],:width => 250,:height => 600) do
+	 		table [["Descuentos"],["Item","Detalle"],["Afp","$#{@liquidacion.descuento_afp}"],
+	 				["Salud","$#{@liquidacion.descuento_isapre}"],["Sindicato","$#{@liquidacion.sindicato}"]], :width =>250
+	 		end
+	 	elsif @liquidacion.cotizacion_voluntaria == 0  and @liquidacion.descuento_adicional==nil
+	 		bounding_box([290, 485],:width => 250,:height => 600) do
+	 		table [["Descuentos"],["Item","Detalle"],["Afp","$#{@liquidacion.descuento_afp}"],
+	 				["Salud","$#{@liquidacion.descuento_isapre}"],["Sindicato","$#{@liquidacion.sindicato}"],
+	 				["Impuesto","$#{@liquidacion.impuesto}"]], :width =>250
+		 	end
+		elsif @liquidacion.descuento_adicional==nil
+			bounding_box([290, 485],:width => 250,:height => 600) do
+	 		table [["Descuentos"],["Item","Detalle"],["Afp","$#{@liquidacion.descuento_afp}"],
+	 				["Salud","$#{@liquidacion.descuento_isapre}"],["Sindicato","$#{@liquidacion.sindicato}"],
+	 				["Impuesto","$#{@liquidacion.impuesto}"],["Ap. Voluntario","$#{@liquidacion.cotizacion_voluntaria}"]], :width=>250
+	 		end
+	 	else
+	 		bounding_box([290, 485],:width => 250,:height => 600) do
 	 		table [["Descuentos"],["Item","Detalle"],["Afp","$#{@liquidacion.descuento_afp}"],
 	 				["Salud","$#{@liquidacion.descuento_isapre}"],["Sindicato","$#{@liquidacion.sindicato}"],
 	 				["Impuesto","$#{@liquidacion.impuesto}"],["Ap. Voluntario","$#{@liquidacion.cotizacion_voluntaria}"],
 	 				["Descuento: #{@liquidacion.descuento_adicional.detalle}","$#{@liquidacion.descuento_adicional.descuento_adicional}"]], :width =>250
+	 		end
 	 	end
 	 end
 

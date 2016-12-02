@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Categoria:</strong>
-  <%= @categorium.categoria %>
-</p>
+<table>
+	<p>
+	  <strong>Categoria:</strong>
+	  <%= @categorium.categoria %>
+	</p>
+</table>
 
 <%= link_to 'Editar', edit_categorium_path(@categorium) %> |
 <%= link_to 'Volver', categoria_path %>

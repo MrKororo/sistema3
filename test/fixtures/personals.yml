@@ -12,7 +12,8 @@ one:
   centrocosto_id: 
   afp_id: 
   personal_activo: false
-  fecha_ingreso: 2016-10-30
+  fecha_ingreso: 2016-11-30
+  sindicato_id: 
   numero_cuenta: 1
 
 two:
@@ -27,5 +28,6 @@ two:
   centrocosto_id: 
   afp_id: 
   personal_activo: false
-  fecha_ingreso: 2016-10-30
+  fecha_ingreso: 2016-11-30
+  sindicato_id: 
   numero_cuenta: 1

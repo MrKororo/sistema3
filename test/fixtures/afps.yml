@@ -2,6 +2,8 @@
 
 one:
   afp: MyString
+  descuento_afp: 1.5
 
 two:
   afp: MyString
+  descuento_afp: 1.5

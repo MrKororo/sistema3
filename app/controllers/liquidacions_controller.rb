@@ -79,6 +79,6 @@ class LiquidacionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def liquidacion_params
-      params.require(:liquidacion).permit(:asignacion_id, :habere_id, :bonificacion_id, :descuento_adicional_id, :personal_id, :fecha_pago, :porcentaje_afp, :descuento_afp, :descuento_isapre, :sindicato, :impuesto, :cotizacion_voluntaria, :horas_trabajadas, :remuneracion, :cantidad_horas_extra, :horas_extra, :vacaciones, :total_imponible, :total_haberes, :desc_legales, :desc_varios, :liquido_pagar)
+      params.require(:liquidacion).permit(:asignacion_id, :habere_id, :bonificacion_id, :descuento_adicional_id, :personal_id, :fecha_pago, :porcentaje_afp, :descuento_afp, :descuento_isapre, :sindicato, :impuesto, :cotizacion_voluntaria, :horas_trabajadas, :remuneracion, :cantidad_horas_extra, :horas_extra, :vacaciones, :total_imponible, :total_haberes, :desc_legales, :desc_varios, :liquido_pagar, :rut_personal)
     end
 end

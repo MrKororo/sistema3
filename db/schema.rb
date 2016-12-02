@@ -14,9 +14,10 @@
 ActiveRecord::Schema.define(version: 20161124012110) do
 
   create_table "afps", force: :cascade do |t|
-    t.string   "afp",        limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "afp",           limit: 255
+    t.float    "descuento_afp", limit: 24
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "asignacions", force: :cascade do |t|
@@ -113,7 +114,7 @@ ActiveRecord::Schema.define(version: 20161124012110) do
     t.integer  "descuento_adicional_id", limit: 4
     t.integer  "personal_id",            limit: 4
     t.date     "fecha_pago"
-    t.integer  "porcentaje_afp",         limit: 4
+    t.float    "porcentaje_afp",         limit: 24
     t.integer  "descuento_afp",          limit: 4
     t.integer  "descuento_isapre",       limit: 4
     t.integer  "sindicato",              limit: 4
@@ -129,8 +130,9 @@ ActiveRecord::Schema.define(version: 20161124012110) do
     t.integer  "desc_legales",           limit: 4
     t.integer  "desc_varios",            limit: 4
     t.integer  "liquido_pagar",          limit: 4
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.string   "rut_personal",           limit: 255
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   add_index "liquidacions", ["asignacion_id"], name: "index_liquidacions_on_asignacion_id", using: :btree
@@ -152,6 +154,7 @@ ActiveRecord::Schema.define(version: 20161124012110) do
     t.integer  "afp_id",             limit: 4
     t.boolean  "personal_activo"
     t.date     "fecha_ingreso"
+    t.integer  "sindicato_id",       limit: 4
     t.integer  "numero_cuenta",      limit: 4
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
@@ -161,8 +164,16 @@ ActiveRecord::Schema.define(version: 20161124012110) do
   add_index "personals", ["banco_id"], name: "index_personals_on_banco_id", using: :btree
   add_index "personals", ["centrocosto_id"], name: "index_personals_on_centrocosto_id", using: :btree
   add_index "personals", ["isapre_id"], name: "index_personals_on_isapre_id", using: :btree
+  add_index "personals", ["sindicato_id"], name: "index_personals_on_sindicato_id", using: :btree
   add_index "personals", ["subcategorium_id"], name: "index_personals_on_subcategorium_id", using: :btree
   add_index "personals", ["tipocontrato_id"], name: "index_personals_on_tipocontrato_id", using: :btree
+
+  create_table "sindicatos", force: :cascade do |t|
+    t.string   "nombre_sindicato", limit: 255
+    t.integer  "cuota_sindical",   limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
 
   create_table "subcategoria", force: :cascade do |t|
     t.string   "subcategoria",  limit: 255
@@ -202,6 +213,7 @@ ActiveRecord::Schema.define(version: 20161124012110) do
   add_foreign_key "personals", "bancos"
   add_foreign_key "personals", "centrocostos"
   add_foreign_key "personals", "isapres"
+  add_foreign_key "personals", "sindicatos"
   add_foreign_key "personals", "subcategoria"
   add_foreign_key "personals", "tipocontratos"
   add_foreign_key "subcategoria", "categoria"

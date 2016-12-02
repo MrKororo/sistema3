@@ -5,5 +5,10 @@
   <%= @afp.afp %>
 </p>
 
-<%= link_to 'Editar', edit_afp_path(@afp) %> |
-<%= link_to 'Volver', afps_path %>
+<p>
+  <strong>Descuento afp:</strong>
+  <%= @afp.descuento_afp %>%
+</p>
+
+<%= link_to 'Edit', edit_afp_path(@afp) %> |
+<%= link_to 'Back', afps_path %>

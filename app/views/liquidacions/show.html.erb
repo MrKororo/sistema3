@@ -1,128 +1,147 @@
 <p id="notice"><%= notice %></p>
 
 <table>
-<td>
-<p>
-  <strong>Trabajador:</strong>
-  <%= @liquidacion.personal.nombre_apellido %>
-</p>
+  <td>
+    <p>
+      <strong>Trabajador:</strong>
+      <%= @liquidacion.personal.nombre_apellido %>
+    </p>
 
-<p>
-  <strong>Sueldo base:</strong>
-  <%= @liquidacion.habere.valor_hora %>
-</p>
+    <p>
+      <strong>Sueldo base:</strong>
+      <%= @liquidacion.habere.valor_hora %>
+    </p>
 
-<p>
-  <strong>Horas trabajadas:</strong>
-  <%= @liquidacion.horas_trabajadas %>
-</p>
+    <p>
+      <strong>Horas trabajadas:</strong>
+      <%= @liquidacion.horas_trabajadas %>
+    </p>
 
-<p>
-  <strong>Remuneracion:</strong>
-  <%= @liquidacion.remuneracion %>
-</p>
+    <p>
+      <strong>Remuneracion:</strong>
+      <%= @liquidacion.remuneracion %>
+    </p>
 
-<p>
-  <strong>Asignacion:</strong>
-  <%= @liquidacion.asignacion.asignacion %>
-</p>
-
-<p>
-  <strong>Bonificacion:</strong>
-  <%= @liquidacion.bonificacion.bono %>
-</p>
-
-<p>
-  <strong>Horas extra:</strong>
-  <%= @liquidacion.horas_extra %>
-</p>
-
-<p>
-  <strong>Total imponible:</strong>
-  <%= @liquidacion.total_imponible %>
-</p>
+    <p>
+    <%if @liquidacion.asignacion.asignacion != nil%>
+      <strong>Asignacion:</strong>
+      <%= @liquidacion.asignacion.asignacion %>
+    <%end%>
+    </p>
 
 
-<p>
-  <strong>Total haberes:</strong>
-  <%= @liquidacion.total_haberes %>
-</p>
+    <p>
+    <%if @liquidacion.bonificacion.bono != nil%>
+      <strong>Bonificacion:</strong>
+      <%= @liquidacion.bonificacion.bono %>
+    <%end%>
+    </p>
+
+
+    <p>
+      <strong>Horas extra:</strong>
+      <%= @liquidacion.horas_extra %>
+    </p>
+
+    <p>
+      <strong>Total imponible:</strong>
+      <%= @liquidacion.total_imponible %>
+    </p>
+
+
+    <p>
+      <strong>Total haberes:</strong>
+      <%= @liquidacion.total_haberes %>
+    </p>
+
+
+    <p>
+    <%if @liquidacion.descuento_adicional !=nil%>
+      <strong>Descuento adicional:</strong>
+      <%= @liquidacion.descuento_adicional.descuento_adicional %>
+    <%end%>
+    </p>
+
+
+    <p>
+      <strong>Porcentaje afp:</strong>
+      <%= @liquidacion.porcentaje_afp %>
+    </p>
+
+    <p>
+      <strong>Descuento afp:</strong>
+      <%= @liquidacion.descuento_afp %>
+    </p>
+  </td>
+
+  <td>
+    <p>
+      <strong>Descuento isapre:</strong>
+      <%= @liquidacion.descuento_isapre %>
+    </p>
+
+    <p>
+      <strong>Sindicato:</strong>
+      <%= @liquidacion.sindicato %>
+    </p>
+
+    <p>
+      <strong>Impuesto:</strong>
+      <%= @liquidacion.impuesto %>
+    </p>
+
+    <p>
+      <strong>Cotizacion voluntaria:</strong>
+      <%= @liquidacion.cotizacion_voluntaria %>
+    </p>
+
+    <p>
+      <strong>Cantidad horas extra:</strong>
+      <%= @liquidacion.cantidad_horas_extra %>
+    </p>
+
+    <p>
+      <strong>Horas extra:</strong>
+      <%= @liquidacion.horas_extra %>
+    </p>
+
+    <p>
+      <strong>Vacaciones:</strong>
+      <%= @liquidacion.vacaciones %>
+    </p>
+
+    <p>
+      <strong>Desc legales:</strong>
+      <%= @liquidacion.desc_legales %>
+    </p>
+
+    <p>
+      <strong>Desc varios:</strong>
+      <%= @liquidacion.desc_varios %>
+    </p>
+
+    <p>
+      <strong>Liquido pagar:</strong>
+      <%= @liquidacion.liquido_pagar %>
+    </p>
+
+    <p>
+      <strong>Fecha pago:</strong>
+      <%= @liquidacion.fecha_pago.strftime("%d/%m/%Y") %>
+    </p>
 
 <p>
-  <strong>Descuento adicional:</strong>
-  <%= @liquidacion.descuento_adicional.descuento_adicional %>
+  <strong>Rut personal:</strong>
+  <%= @liquidacion.rut_personal %>
 </p>
 
-<p>
-  <strong>Porcentaje afp:</strong>
-  <%= @liquidacion.porcentaje_afp %>
-</p>
-
-<p>
-  <strong>Descuento afp:</strong>
-  <%= @liquidacion.descuento_afp %>
-</p>
-</td>
-<td>
-<p>
-  <strong>Descuento isapre:</strong>
-  <%= @liquidacion.descuento_isapre %>
-</p>
-
-<p>
-  <strong>Sindicato:</strong>
-  <%= @liquidacion.sindicato %>
-</p>
-
-<p>
-  <strong>Impuesto:</strong>
-  <%= @liquidacion.impuesto %>
-</p>
-
-<p>
-  <strong>Cotizacion voluntaria:</strong>
-  <%= @liquidacion.cotizacion_voluntaria %>
-</p>
-
-<p>
-  <strong>Cantidad horas extra:</strong>
-  <%= @liquidacion.cantidad_horas_extra %>
-</p>
-
-<p>
-  <strong>Horas extra:</strong>
-  <%= @liquidacion.horas_extra %>
-</p>
-
-<p>
-  <strong>Vacaciones:</strong>
-  <%= @liquidacion.vacaciones %>
-</p>
-
-<p>
-  <strong>Desc legales:</strong>
-  <%= @liquidacion.desc_legales %>
-</p>
-
-<p>
-  <strong>Desc varios:</strong>
-  <%= @liquidacion.desc_varios %>
-</p>
-
-<p>
-  <strong>Liquido pagar:</strong>
-  <%= @liquidacion.liquido_pagar %>
-</p>
-
-<p>
-  <strong>Fecha pago:</strong>
-  <%= @liquidacion.fecha_pago.strftime("%d/%m/%Y") %>
-</p>
-</td>
+  </td>
 </table>
+
 <p>
 <%= link_to "Liquidacion en pdf", liquidacion_path(@liquidacion, format: "pdf")%>
 </p>
+
 <%if current_user%>
 <%= link_to 'Editar', edit_liquidacion_path(@liquidacion) %>|
 <%end%>

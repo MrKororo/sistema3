@@ -1,5 +1,4 @@
 class AfpsController < ApplicationController
-  before_action :authorize
   before_action :set_afp, only: [:show, :edit, :update, :destroy]
 
   # GET /afps
@@ -70,6 +69,6 @@ class AfpsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def afp_params
-      params.require(:afp).permit(:afp)
+      params.require(:afp).permit(:afp, :descuento_afp)
     end
 end

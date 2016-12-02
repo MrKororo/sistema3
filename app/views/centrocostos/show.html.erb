@@ -1,19 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @centrocosto.nombre %>
-</p>
+<table>
+	<p>
+	  <strong>Nombre:</strong>
+	  <%= @centrocosto.nombre %>
+	</p>
 
-<p>
-  <strong>Codigo:</strong>
-  <%= @centrocosto.codigo %>
-</p>
+	<p>
+	  <strong>Codigo:</strong>
+	  <%= @centrocosto.codigo %>
+	</p>
 
-<p>
-  <strong>Detalle centro:</strong>
-  <%= @centrocosto.detalle_centro %>
-</p>
+	<p>
+	  <strong>Detalle centro:</strong>
+	  <%= @centrocosto.detalle_centro %>
+	</p>
+</table>
 
 <%= link_to 'Editar', edit_centrocosto_path(@centrocosto) %> |
 <%= link_to 'Volver', centrocostos_path %>

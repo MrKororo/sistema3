@@ -1,2 +1,2 @@
-json.extract! personal, :id, :nombre_personal, :apellidop_personal, :apellidom_personal, :rut_personal, :isapre_id, :banco_id, :subcategorium_id, :tipocontrato_id, :centrocosto_id, :afp_id, :personal_activo, :fecha_ingreso, :numero_cuenta, :created_at, :updated_at
+json.extract! personal, :id, :nombre_personal, :apellidop_personal, :apellidom_personal, :rut_personal, :isapre_id, :banco_id, :subcategorium_id, :tipocontrato_id, :centrocosto_id, :afp_id, :personal_activo, :fecha_ingreso, :sindicato_id, :numero_cuenta, :created_at, :updated_at
 json.url personal_url(personal, format: :json)

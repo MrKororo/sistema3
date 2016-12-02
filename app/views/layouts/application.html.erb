@@ -63,6 +63,7 @@
                  <li><a href="/isapres">Isapres</a></li>
                  <li><a href="/bancos">Bancos</a></li>
                  <li><a href="/tipocontratos">Contratos</a></li>
+                 <li><a href="/sindicatos">Sindicato</a></li>
                  <li><a href="/users">Usuarios</a></li>
                 </ul>
               </li>
@@ -104,7 +105,7 @@
         <div class="sticky" data-sticky data-anchor="content">
           <div id="user_header">
           <% if current_user %>
-            <h6>A ingresado como: <%= current_user.email %>.</h6>
+            <h6>Ha ingresado como: <%= current_user.email %>.</h6>
             <h4>Ultimos trabajadores agregados:</h4>
             <ul>
               <% lastCreated.each do |personal| %>

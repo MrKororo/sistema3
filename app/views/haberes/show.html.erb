@@ -1,30 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Categoria:</strong>
-  <%= @habere.subcategorium.categorium.categoria %>
-</p>
+<table>
+  <p>
+    <strong>Categoria:</strong>
+    <%= @habere.subcategorium.categorium.categoria %>
+  </p>
 
-<p>
-  <strong>Subcategoria:</strong>
-  <%= @habere.subcategorium.subcategoria %>
-</p>
+  <p>
+    <strong>Subcategoria:</strong>
+    <%= @habere.subcategorium.subcategoria %>
+  </p>
 
-<p>
-  <strong>Sueldo base:</strong>
-  <%= @habere.sueldo_base %>
-</p>
+  <p>
+    <strong>Sueldo base:</strong>
+   $<%= @habere.sueldo_base %>
+  </p>
 
-<p>
-  <strong>Horas pactadas:</strong>
-  <%= @habere.horas_pactadas %>
-</p>
+  <p>
+    <strong>Horas pactadas:</strong>
+    <%= @habere.horas_pactadas %>
+  </p>
 
-<p>
-  <strong>Valor hora:</strong>
-  <%= @habere.valor_hora %>
-</p>
-
+  <p>
+    <strong>Valor hora:</strong>
+   $ <%= @habere.valor_hora %>
+  </p>
+</table>
 
 <%= link_to 'Editar', edit_habere_path(@habere) %> |
 <%= link_to 'Volver', haberes_path %>

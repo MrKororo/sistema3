@@ -38,12 +38,12 @@
 
   <div class="field">
     <%= f.label :banco_id %><br>
-    <%= collection_select(:personal, :banco_id, Banco.all, :id, :banco, {:prompt => 'Seleccione banco'}) %>
+    <%= collection_select(:personal, :banco_id, Banco.all, :id, :bancoCuenta, {:prompt => 'Seleccione banco'}) %>
   </div>
 
   <div class="field">
     <%= f.label :"Subcategoria a la que pertenece" %><br>
-    <%= collection_select(:personal, :subcategorium_id, Subcategorium.all, :id, :subcategoria, {:prompt => 'Seleccione isapre'}) %>
+    <%= collection_select(:personal, :subcategorium_id, Subcategorium.all, :id, :subcategoria, {:prompt => 'Seleccione Subcategoria'}) %>
   </div>
 
   <div class="field">
@@ -69,6 +69,11 @@
   <div class="field">
     <%= f.label :fecha_ingreso %><br>
     <%= f.date_select :fecha_ingreso %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sindicato_id %><br>
+    <%= collection_select(:personal, :sindicato_id, Sindicato.all, :id, :nombre_sindicato, {:prompt => 'Seleccione sindicato'}) %>
   </div>
 
   <div class="field">

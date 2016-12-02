@@ -6,8 +6,8 @@ one:
   bonificacion_id: 
   descuento_adicional_id: 
   personal_id: 
-  fecha_pago: 2016-11-16
-  porcentaje_afp: 1
+  fecha_pago: 2016-11-28
+  porcentaje_afp: 1.5
   descuento_afp: 1
   descuento_isapre: 1
   sindicato: 1
@@ -23,6 +23,7 @@ one:
   desc_legales: 1
   desc_varios: 1
   liquido_pagar: 1
+  rut_personal: MyString
 
 two:
   asignacion_id: 
@@ -30,8 +31,8 @@ two:
   bonificacion_id: 
   descuento_adicional_id: 
   personal_id: 
-  fecha_pago: 2016-11-16
-  porcentaje_afp: 1
+  fecha_pago: 2016-11-28
+  porcentaje_afp: 1.5
   descuento_afp: 1
   descuento_isapre: 1
   sindicato: 1
@@ -47,3 +48,4 @@ two:
   desc_legales: 1
   desc_varios: 1
   liquido_pagar: 1
+  rut_personal: MyString

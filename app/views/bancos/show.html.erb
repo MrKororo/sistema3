@@ -1,14 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Banco:</strong>
-  <%= @banco.banco %>
-</p>
+<table>
+	<p>
+	  <strong>Banco:</strong>
+	  <%= @banco.banco %>
+	</p>
 
-<p>
-  <strong>Tipo cuenta:</strong>
-  <%= @banco.tipo_cuenta %>
-</p>
+	<p>
+	  <strong>Tipo cuenta:</strong>
+	  <%= @banco.tipo_cuenta %>
+	</p>
+</table>
 
 <%= link_to 'Editar', edit_banco_path(@banco) %> |
 <%= link_to 'Volver', bancos_path %>

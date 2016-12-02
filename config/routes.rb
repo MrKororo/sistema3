@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
 
+  resources :personals
+  resources :sindicatos
+  resources :afps
+
   resources :certificates
   resources :sessions, only: [:new, :create, :destroy]
   get 'signup', to: 'users#new', as: 'signup'
@@ -34,7 +38,6 @@ Rails.application.routes.draw do
   resources :tipocontratos
   resources :bancos
   resources :isapres
-  resources :afps
   resources :centrocostos
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

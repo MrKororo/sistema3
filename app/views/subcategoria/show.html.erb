@@ -1,14 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Categoria:</strong>
-  <%= @subcategorium.categorium.categoria %>
-</p>
+<table>
+	<p>
+	  <strong>Categoria:</strong>
+	  <%= @subcategorium.categorium.categoria %>
+	</p>
 
-<p>
-  <strong>Subcategoria:</strong>
-  <%= @subcategorium.subcategoria %>
-</p>
+	<p>
+	  <strong>Subcategoria:</strong>
+	  <%= @subcategorium.subcategoria %>
+	</p>
+</table>
 
 <%= link_to 'Editar', edit_subcategorium_path(@subcategorium) %> |
 <%= link_to 'Volver', subcategoria_path %>

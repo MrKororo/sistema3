@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre sindicato:</strong>
+  <%= @sindicato.nombre_sindicato %>
+</p>
+
+<p>
+  <strong>Cuota sindical:</strong>
+  <%= @sindicato.cuota_sindical %>
+</p>
+
+<%= link_to 'Edit', edit_sindicato_path(@sindicato) %> |
+<%= link_to 'Back', sindicatos_path %>

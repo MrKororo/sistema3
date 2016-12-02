@@ -15,9 +15,11 @@
     <%= f.label :afp %><br>
     <%= f.text_field :afp %>
   </div>
-  <div class="actions">
-    <%= f.submit ( f.object.new_record? ? "Crear" : "Actualizar"), class: "btn" %>
-    <%= f.submit "Limpiar", :type => "reset" %>
+  <div class="field">
+    <%= f.label :descuento_afp %><br>
+    <%= f.text_field :descuento_afp %>
   </div>
-
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>

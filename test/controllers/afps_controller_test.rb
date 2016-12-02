@@ -18,7 +18,7 @@ class AfpsControllerTest < ActionController::TestCase
 
   test "should create afp" do
     assert_difference('Afp.count') do
-      post :create, afp: { afp: @afp.afp }
+      post :create, afp: { afp: @afp.afp, descuento_afp: @afp.descuento_afp }
     end
 
     assert_redirected_to afp_path(assigns(:afp))
@@ -35,7 +35,7 @@ class AfpsControllerTest < ActionController::TestCase
   end
 
   test "should update afp" do
-    patch :update, id: @afp, afp: { afp: @afp.afp }
+    patch :update, id: @afp, afp: { afp: @afp.afp, descuento_afp: @afp.descuento_afp }
     assert_redirected_to afp_path(assigns(:afp))
   end
 

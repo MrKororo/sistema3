@@ -43,7 +43,7 @@
   
   <div class="field">
     <%= f.label :horas_extra %><br>
-    <%= f.text_field :horas_extra, :value => 0 ,:readonly => true %>
+    <%= f.text_field :horas_extra, :readonly => true %>
   </div>
 
   <div class="field">
@@ -64,6 +64,11 @@
   <div class="field">
     <%= f.label :total_haberes %><br>
     <%= f.number_field :total_haberes, :readonly => true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :vacaciones %><br>
+    <%= f.text_field :vacaciones %>
   </div>
 
   <div class="field">
@@ -89,24 +94,17 @@
 
   <div class="field">
     <%= f.label :sindicato %><br>
-    <%= f.text_field :sindicato , :value=> "0"%>
+    <%= f.text_field :sindicato %>
   </div>
 
   <div class="field">
     <%= f.label :impuesto %><br>
-    <%= f.text_field :impuesto , :value=> "0"%>
+    <%= f.text_field :impuesto %>
   </div>
 
   <div class="field">
     <%= f.label :cotizacion_voluntaria %><br>
-    <%= f.text_field :cotizacion_voluntaria , :value=> "0"%>
-  </div>
-
-
-
-  <div class="field">
-    <%= f.label :vacaciones %><br>
-    <%= f.text_field :vacaciones %>
+    <%= f.text_field :cotizacion_voluntaria %>
   </div>
 
   <div class="field">
@@ -130,11 +128,14 @@
     <%= f.date_select :fecha_pago %>
   </div>
   
+  <div class="field">
+    <%= f.label :rut_personal %><br>
+    <%= f.text_field :rut_personal %>
+  </div>
   <div class="actions">
     <%= f.submit ( f.object.new_record? ? "Crear" : "Actualizar"), class: "btn" %>
   </div>
 <% end %>
-
 
 
 

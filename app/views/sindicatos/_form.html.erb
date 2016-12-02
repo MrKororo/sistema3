@@ -1,0 +1,25 @@
+<%= form_for(@sindicato) do |f| %>
+  <% if @sindicato.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sindicato.errors.count, "error") %> prohibited this sindicato from being saved:</h2>
+
+      <ul>
+      <% @sindicato.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre_sindicato %><br>
+    <%= f.text_field :nombre_sindicato %>
+  </div>
+  <div class="field">
+    <%= f.label :cuota_sindical %><br>
+    <%= f.number_field :cuota_sindical %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
