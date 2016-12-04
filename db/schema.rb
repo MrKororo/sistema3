@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161124012110) do
+ActiveRecord::Schema.define(version: 20161202154321) do
 
   create_table "afps", force: :cascade do |t|
     t.string   "afp",           limit: 255
@@ -79,15 +79,19 @@ ActiveRecord::Schema.define(version: 20161124012110) do
   end
 
   create_table "empresas", force: :cascade do |t|
-    t.string   "nombre_empresa", limit: 255
-    t.string   "rut_empresa",    limit: 255
-    t.string   "giro",           limit: 255
-    t.string   "domicilio",      limit: 255
-    t.string   "email",          limit: 255
-    t.string   "website",        limit: 255
-    t.string   "telefono",       limit: 255
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "nombre_empresa",     limit: 255
+    t.string   "rut_empresa",        limit: 255
+    t.string   "giro",               limit: 255
+    t.string   "domicilio",          limit: 255
+    t.string   "email",              limit: 255
+    t.string   "website",            limit: 255
+    t.string   "telefono",           limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
   end
 
   create_table "haberes", force: :cascade do |t|

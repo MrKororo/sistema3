@@ -39,6 +39,9 @@
     <%= f.label :telefono %><br>
     <%= f.text_field :telefono %>
   </div>
+    <div class="form-group">
+    <%= f.file_field :image %>
+  </div>
   <div class="actions">
     <%= f.submit ( f.object.new_record? ? "Crear" : "Actualizar"), class: "btn" %>
     <%= f.submit "Limpiar", :type => "reset" %>

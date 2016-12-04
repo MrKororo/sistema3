@@ -35,6 +35,8 @@
     <strong>Telefono:</strong>
     <%= @empresa.telefono %>
   </p>
+  <td><%= image_tag @empresa.image.url %></td>
+
 </table>
 
 <%= link_to 'Editar', edit_empresa_path(@empresa) %> |

@@ -11,7 +11,7 @@ class LiquidacionPdf < Prawn::Document
 			tabla_descuentos
 			tabla_resumen
 			forma_pago
-			image "#{Rails.root}/app/assets/images/firma.jpg", :at => [330, 80], :scale => 0.3
+			#image "#{@empresa.image.url}", :at => [330, 80], :scale => 0.3
 			
 
 	end

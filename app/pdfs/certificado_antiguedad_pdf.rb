@@ -10,7 +10,7 @@ class CertificadoAntiguedadPdf < Prawn::Document
 		texto1
 		text "\n "
 		texto2
-		image "#{Rails.root}/app/assets/images/firma.jpg", :at => [330, 80], :scale => 0.3
+		image "/home/diego/sistema3/app/assets/images/empresas/logo.jpg", :at => [330, 80], :scale => 0.3
 		
 	    
   end
