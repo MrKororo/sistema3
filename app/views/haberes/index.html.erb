@@ -19,7 +19,7 @@
       <tr>
         <td><%= habere.subcategorium.categorium.categoria %></td>
         <td><%= habere.subcategorium.subcategoria %></td>
-        <td>$ <%= habere.sueldo_base %></td>
+        <td><%=number_to_currency(habere.sueldo_base, unit: "$")%></td>
         <td><%= habere.horas_pactadas %></td>
         <td>$ <%= habere.valor_hora %></td>
         <td><%= link_to 'Ver', habere %></td>

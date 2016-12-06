@@ -1,8 +1,10 @@
 class LiquidacionPdf < Prawn::Document
 	def initialize(liquidacion)
 		super(top_margin: 70)
-			text "Liquidacion de remuneraciones\n #{DateTime.now.to_date.strftime("%d/%m/%Y")}" ,:align => :center
 			@liquidacion = liquidacion
+			mes= Integer("#{@liquidacion.fecha_pago.strftime("%m")}")
+			text "Liquidacion de remuneraciones:\n #{(I18n.t :month_names, :scope =>:date)[mes]}" ,:align => :center
+			
 			empresa_data
 			text "\nDatos del trabajador: \n"
 			personal_data

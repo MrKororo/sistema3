@@ -1,17 +1,19 @@
 source 'https://rubygems.org'
-
+# Permite la instalacion de lenguajes
+gem 'rails-i18n'
+# Permite subir imagenes al servidor de la aplicacion
 gem 'paperclip'
-
+# Arregla la paginacion que por default aparece en vertical
 gem 'will_paginate-foundation'
-
+# Permite paginar una vista de la aplicacion
 gem 'will_paginate', '~> 3.1.0'
-
+# Valida el formato del rut con guion y digito verificador
 gem 'rut_validation'
-#Generador de pdf
+# Generador de pdf
 gem 'prawn'
-#generador de tablas para prawn
+# Generador de tablas para prawn
 gem 'prawn-table'
-#crea seed de la data ya ingresada en el sistema
+# Crea seed de la data ya ingresada en el sistema
 gem 'seed_dump'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
