@@ -1,26 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<table>
-	<p>
-	  <strong>Nombre:</strong>
-	  <%= @user.nombre %>
-	</p>
+<p>
+  <strong>Nombre:</strong>
+  <%= @user.nombre %>
+</p>
 
-	<p>
-	  <strong>Apellido paterno:</strong>
-	  <%= @user.apellido_paterno %>
-	</p>
+<p>
+  <strong>Apellido paterno:</strong>
+  <%= @user.apellido_paterno %>
+</p>
 
-	<p>
-	  <strong>Apellido materno:</strong>
-	  <%= @user.apellido_materno %>
-	</p>
+<p>
+  <strong>Apellido materno:</strong>
+  <%= @user.apellido_materno %>
+</p>
 
-	<p>
-	  <strong>Email:</strong>
-	  <%= @user.email %>
-	</p>
-</table>
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
 
-<%= link_to 'Editar', edit_user_path(@user) %> |
-<%= link_to 'Volver', users_path %>
+<p>
+  <strong>Rut usuario:</strong>
+  <%= @user.rut_usuario %>
+</p>
+
+<p>
+  <strong>Tipo usuario:</strong>
+  <%= @user.tipo_usuario %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

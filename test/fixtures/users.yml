@@ -5,6 +5,8 @@ one:
   apellido_paterno: MyString
   apellido_materno: MyString
   email: MyString
+  rut_usuario: MyString
+  tipo_usuario: MyString
   password_digest: <%= BCrypt::Password.create('secret') %>
 
 two:
@@ -12,4 +14,6 @@ two:
   apellido_paterno: MyString
   apellido_materno: MyString
   email: MyString
+  rut_usuario: MyString
+  tipo_usuario: MyString
   password_digest: <%= BCrypt::Password.create('secret') %>

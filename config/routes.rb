@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
 
+  resources :users
   resources :personals
   resources :sindicatos
   resources :afps
@@ -16,7 +17,6 @@ Rails.application.routes.draw do
 
   get 'sessions/destroy'
 
-  resources :users
   get 'page/index'
   get '/index' => redirect('page/index')
   root 'page#index'

@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'responders'
 # Permite la instalacion de lenguajes
 gem 'rails-i18n'
 # Permite subir imagenes al servidor de la aplicacion

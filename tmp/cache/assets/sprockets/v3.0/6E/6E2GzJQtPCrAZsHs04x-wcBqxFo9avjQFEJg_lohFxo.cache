@@ -1,0 +1,12 @@
+I"ö(function() {
+  jQuery(function() {
+    return $('#personal_afp_id').change(function() {
+      var afp, asd;
+      afp = $('#personal_afp_id :selected').val();
+      asd = this.funcion(afp);
+      return alert(asd);
+    });
+  });
+
+}).call(this);
+:ET

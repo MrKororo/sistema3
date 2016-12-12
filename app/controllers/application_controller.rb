@@ -16,6 +16,7 @@ def default_url_options(options = {})
     User.where(id: session[:user_id]).first
   end
   helper_method :current_user
+  
 
   def lastCreated
  	@persona = Personal.order("created_at DESC").limit(4)
@@ -29,8 +30,7 @@ def default_url_options(options = {})
 
   def authorize
     if current_user.nil?
-      redirect_to login_url, alert: "Not authorized! Please log in."
-
+      redirect_to login_url, alert: "No esta autorizado para ver esto. Por favor ingrese al sistema."
     end
   end
   helper_method :authorize

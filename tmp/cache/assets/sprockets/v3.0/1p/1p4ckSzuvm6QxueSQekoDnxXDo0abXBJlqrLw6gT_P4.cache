@@ -1,0 +1,17 @@
+I"=(function() {
+  $(document).on('change', '#personal_afp_id', function() {
+    $.ajax({
+      url: '/personals/show',
+      type: 'POST',
+      data: {
+        'afp_id': $(this).val()
+      },
+      dataType: 'json',
+      success: function(data) {
+        alert('successfully');
+      }
+    });
+  });
+
+}).call(this);
+:ET

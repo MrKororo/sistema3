@@ -1,5 +1,6 @@
 jQuery ->
 
+
 #busqueda de personal por subcategoria
 	personals = $('#liquidacion_personal_id').html()
 	$('#_subcategorium_id').change ->
@@ -11,7 +12,8 @@ jQuery ->
 		else
 			$('#liquidacion_personal_id').empty()
 #fin del bloque
-		
+
+
 #busqueda del valor por hora en habere
 	haberes = $('#liquidacion_habere_id').html()
 	$('#_subcategorium_id').change ->
@@ -135,6 +137,12 @@ jQuery ->
 #fin del bloque
 
 #porcentajes AFP e Isapre
+	$("#_afp_id").change ->
+		$("#_afp_id option:selected").map ->
+			$("#liquidacion_porcentaje_afp").val($(this).val())
+			
+
+
 	$('#liquidacion_porcentaje_afp').keyup ->
 		totalSueldo = $('#liquidacion_total_imponible').val()
 		porcentaje = $('#liquidacion_porcentaje_afp').val()/100

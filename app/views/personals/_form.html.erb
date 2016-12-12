@@ -80,7 +80,7 @@
     <%= f.label :numero_cuenta %><br>
     <%= f.number_field :numero_cuenta %>
   </div>
-
+  
   <div class="actions">
     <%= f.submit ( f.object.new_record? ? "Crear" : "Actualizar"), class: "btn" %>
     <%= f.submit "Limpiar", :type => "reset" %>

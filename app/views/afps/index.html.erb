@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Afps</h1>
+<h1>Listando Afps</h1>
 
 <table>
   <thead>
@@ -16,9 +16,9 @@
       <tr>
         <td><%= afp.afp %></td>
         <td><%= afp.descuento_afp %>%</td>
-        <td><%= link_to 'Show', afp %></td>
-        <td><%= link_to 'Edit', edit_afp_path(afp) %></td>
-        <td><%= link_to 'Destroy', afp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', afp %></td>
+        <td><%= link_to 'Editar', edit_afp_path(afp) %></td>
+        <td><%= link_to 'Eliminar', afp, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Afp', new_afp_path %>
+<%= link_to 'Nueva Afp', new_afp_path %>

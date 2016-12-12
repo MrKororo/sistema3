@@ -1,0 +1,19 @@
+I"E(function() {
+  jQuery(function() {
+    var personals;
+    personals = $('#personal_porcentajeAfp').html();
+    return $('#personal_afp_id').change(function() {
+      var options, subcategoria;
+      subcategoria = $('#personal_afp_id :selected').text();
+      options = $(personals).filter("optgroup[label='" + subcategoria + "']").html();
+      if (options) {
+        $('#personal_porcentajeAfp').parent().show();
+        return $('#personal_porcentajeAfp').html(options);
+      } else {
+        return $('#personal_porcentajeAfp').empty();
+      }
+    });
+  });
+
+}).call(this);
+:ET

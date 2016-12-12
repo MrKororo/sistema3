@@ -5,7 +5,7 @@ class CertificatesController < ApplicationController
   # GET /certificates
   # GET /certificates.json
   def index
-    if current_user
+    if current_user and current_user.tipo_usuario == "Administrador"
       @certificates= Certificate.all
 
     elsif params[:search] and params[:search]!=""

@@ -15,4 +15,10 @@
  *= require foundation_and_overrides
 
  */
-$(function(){ $(document).foundation(); });
+.sticky{
+    position:fixed;
+    z-index:999;
+}
+.cuisine {
+    margin-top:50px;
+}

@@ -1,0 +1,11 @@
+I"þ(function() {
+  jQuery(function() {
+    return $("#personal_afp_id").change(function() {
+      return ($("#personal_afp_id").val()).map(function() {
+        return $("#personal_porcentajeAfp").val($(this).text());
+      });
+    });
+  });
+
+}).call(this);
+:ET

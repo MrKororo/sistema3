@@ -20,7 +20,13 @@
     <%= f.label :personal_id %><br>
     <%= grouped_collection_select(:liquidacion, :personal_id, Subcategorium.order(:subcategoria), :personal, :subcategoria, :id, :nombre_apellido, include_blank: :true) %>
   </div>
-
+  
+  <div class="field">
+    <%= f.label :rut_personal %><br>
+    <%= grouped_collection_select(:liquidacion, :personal_id, Subcategorium.order(:subcategoria), :personal, :subcategoria, :rut_personal, :nombre_apellido, include_blank: :true) %>
+    <%= f.text_field :rut_personal %>
+  </div>
+  
   <div class="field">
     <%= f.label :"Sueldo base por hora trabajada" %><br>
     <%= grouped_collection_select(:liquidacion, :habere_id, Subcategorium.order(:subcategoria), :habere, :subcategoria, :id, :valor_hora, {include_blank: :true}) %>
@@ -78,6 +84,7 @@
   
   <div class="field">
     <%= f.label :porcentaje_afp %><br>
+    <%= collection_select(nil, :afp_id, Afp.all, :descuento_afp, :afp, {:prompt => 'Seleccione afp'}) %>
     <%= f.text_field :porcentaje_afp %>
   </div>
   
@@ -128,10 +135,7 @@
     <%= f.date_select :fecha_pago %>
   </div>
   
-  <div class="field">
-    <%= f.label :rut_personal %><br>
-    <%= f.text_field :rut_personal %>
-  </div>
+
   <div class="actions">
     <%= f.submit ( f.object.new_record? ? "Crear" : "Actualizar"), class: "btn" %>
   </div>

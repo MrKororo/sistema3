@@ -28,14 +28,22 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :"Contraseña" %><br>
+    <%= f.label :rut_usuario %><br>
+    <%= f.text_field :rut_usuario %>
+  </div>
+  <div class="field">
+    <%= f.label :tipo_usuario %><br>
+    <%= f.text_field :tipo_usuario %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br>
     <%= f.password_field :password %>
   </div>
   <div class="field">
-    <%= f.label :"Repita su Contraseña" %><br>
+    <%= f.label :password_confirmation %><br>
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="actions">
-    <%= f.submit ( f.object.new_record? ? "Crear" : "Actualizar"), class: "btn" %>
+    <%= f.submit %>
   </div>
 <% end %>

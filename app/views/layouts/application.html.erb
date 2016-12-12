@@ -28,68 +28,52 @@
     <div class="top-bar">
       <div class="row">
         <div class="top-bar-left">
-          <ul class="dropdown menu" data-dropdown-menu>
-            <li class="menu-text"><a href="/index">Remuneraciones</a></li>
-            <% if current_user %>
-              <li class="has-submenu">
-                <a href="#">Personal</a>
-                <ul class="submenu menu vertical" data-submenu>
-                 <li><a href="/personals">Lista de personal</a></li>
-                 <li><a href="/personals/new">Nuevo personal</a></li>
-                </ul>
-              </li>
-              <li class="has-submenu">
-                <a href="#">Categorizacion</a>
-                <ul class="submenu menu vertical" data-submenu>
-                 <li><a href="/categoria">Categoria</a></li>
-                 <li><a href="/subcategoria">Subcategoria</a></li>
-                </ul>
-              </li>
-              <li class="has-submenu">
-                <a href="#">Remuneracion</a>
-                <ul class="submenu menu vertical" data-submenu>
-                 <li><a href="/haberes">Haberes</a></li>
-                 <li><a href="/bonificacions">Bonificaciones</a></li>
-                 <li><a href="/asignacions">Asignaciones</a></li>
-                 <li><a href="/descuento_adicionals">Descuentos Adicionales</a></li>
-                </ul>
-              </li>
-              <li class="has-submenu">
-                <a href="#">Parametros</a>
-                <ul class="submenu menu vertical" data-submenu>
-                 <li><a href="/centrocostos">Centro de costos</a></li>
-                 <li><a href="/empresas">Mi Empresa</a></li>
-                 <li><a href="/afps">Afp</a></li>
-                 <li><a href="/isapres">Isapres</a></li>
-                 <li><a href="/bancos">Bancos</a></li>
-                 <li><a href="/tipocontratos">Contratos</a></li>
-                 <li><a href="/sindicatos">Sindicato</a></li>
-                 <li><a href="/users">Usuarios</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="/liquidacions">Liquidaciones</a>
-              </li>
-              <li>
-                <a class="button" href="/logout">Salir</a>
-              </li>
-              <%else%>
-              <li>
-                <a class="button" href="/login">Entrar</a>
-              </li>
-           <%end%>
-          </ul>
-        </div>
-        <div class="top-bar-right">
-        <ul class="dropdown menu" data-dropdown-menu>
-           <li>
-             <a href="/certificates">Certificados</a>
+          <ul class="menu dropdown" data-dropdown-menu>
+            <li><a href="/index">Remuneraciones</a></li>
+              <% if current_user.nil? %>
+                <li><a class="button" href="/login">Entrar</a></li>
+                <%end%>
+              <% if current_user and current_user.tipo_usuario == "Administrador" %>
+            <li><a href="#">Personal</a>
+              <ul class="menu">
+                <li><a href="/personals">Lista de personal</a></li>
+                <li><a href="/personals/new">Nuevo personal</a></li>
+              </ul>
             </li>
-            <% if current_user.nil?%>
-             <li>
-                <a href="/liquidacions">Liquidaciones</a>
+            <li><a href="#">Categorizacion</a>
+              <ul class="menu">
+                <li><a href="/categoria">Categoria</a></li>
+                <li><a href="/subcategoria">Subcategoria</a></li>
+              </ul>
             </li>
-            <% end %>
+            <li><a href="#">Remuneracion</a>
+              <ul class="menu">
+                <li><a href="/haberes">Haberes</a></li>
+                <li><a href="/bonificacions">Bonificaciones</a></li>
+                <li><a href="/asignacions">Asignaciones</a></li>
+                <li><a href="/descuento_adicionals">Descuentos Adicionales</a></li>
+              </ul>
+            </li>
+             <li><a href="#">Parametros</a>
+                <ul class="menu">
+                  <li><a href="/centrocostos">Centro de costos</a></li>
+                  <li><a href="/empresas">Mi Empresa</a></li>
+                  <li><a href="/afps">Afp</a></li>
+                  <li><a href="/isapres">Isapres</a></li>
+                  <li><a href="/bancos">Bancos</a></li>
+                  <li><a href="/tipocontratos">Contratos</a></li>
+                  <li><a href="/sindicatos">Sindicato</a></li>
+                  <li><a href="/users">Usuarios</a></li>
+                </ul>
+              </li>
+              <li><a href="/liquidacions">Liquidaciones</a></li>
+              <li><a href="/certificates">Certificados</a></li>
+              <li><a class="button" href="/logout">Salir</a></li>
+            <%elsif current_user and current_user.tipo_usuario == "Empleado"%>
+              <li><a href="/liquidacions">Liquidaciones</a></li>
+              <li><a href="/certificates">Certificados</a></li>
+              <li><a class="button" href="/logout">Salir</a></li>
+            <%end%>
           </ul>
         </div>
       </div>
@@ -104,7 +88,7 @@
     <div class="medium-3 columns" data-sticky-container>
         <div class="sticky" data-sticky data-anchor="content">
           <div id="user_header">
-          <% if current_user %>
+          <% if current_user and current_user.tipo_usuario == "Administrador" %>
             <h6>Ha ingresado como: <%= current_user.email %>.</h6>
             <h4>Ultimos trabajadores agregados:</h4>
             <ul>
@@ -118,6 +102,9 @@
               <li><%=category.categoria%></li>
               <% end %>
             </ul>
+          <%elsif if current_user and current_user.tipo_usuario == "Empleado"%>
+          <h4>Ha ingresado como:</h4><h5> <%= current_user.nombre%> <%=current_user.apellido_paterno%>.</h5>
+          <%end%>
           <% end %>
           </div>
         </div>

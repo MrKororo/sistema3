@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -27,11 +26,14 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to root_url, notice: 'User was successfully created.'
-    else
-      render :new
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.json { render :show, status: :created, location: @user }
+      else
+        format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -67,6 +69,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:nombre, :apellido_paterno, :apellido_materno, :email, :password, :password_confirmation)
+      params.require(:user).permit(:nombre, :apellido_paterno, :apellido_materno, :email, :rut_usuario, :tipo_usuario, :password, :password_confirmation)
     end
 end

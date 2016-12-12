@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202154321) do
+ActiveRecord::Schema.define(version: 20161206175720) do
 
   create_table "afps", force: :cascade do |t|
     t.string   "afp",           limit: 255
@@ -199,6 +199,8 @@ ActiveRecord::Schema.define(version: 20161202154321) do
     t.string   "apellido_paterno", limit: 255
     t.string   "apellido_materno", limit: 255
     t.string   "email",            limit: 255
+    t.string   "rut_usuario",      limit: 255
+    t.string   "tipo_usuario",     limit: 255
     t.string   "password_digest",  limit: 255
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false

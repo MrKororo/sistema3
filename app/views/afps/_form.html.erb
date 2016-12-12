@@ -16,10 +16,10 @@
     <%= f.text_field :afp %>
   </div>
   <div class="field">
-    <%= f.label :descuento_afp %><br>
+    <%= f.label :"Descuento por afp" %><br>
     <%= f.text_field :descuento_afp %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit ( f.object.new_record? ? "Crear" : "Actualizar"), class: "btn" %>
   </div>
 <% end %>
