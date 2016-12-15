@@ -11,35 +11,62 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :nombre_empresa %><br>
-    <%= f.text_field :nombre_empresa %>
+<div class="row">
+  <div class="row column text-center">
+    <h5>Datos de la empresa</h5>
   </div>
-  <div class="field">
-    <%= f.label :rut_empresa %><br>
-    <%= f.text_field :rut_empresa %>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :nombre_empresa %><br>
+      <%= f.text_field :nombre_empresa %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :giro %><br>
-    <%= f.text_field :giro %>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :rut_empresa %><br>
+      <%= f.text_field :rut_empresa %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :domicilio %><br>
-    <%= f.text_field :domicilio %>
+   <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :giro %><br>
+      <%= f.text_field :giro %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+</div>
+<hr>
+
+<div class="row">
+  <div class="row column text-center">
+    <h5>Contacto</h5>
   </div>
-  <div class="field">
-    <%= f.label :website %><br>
-    <%= f.text_field :website %>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :domicilio %><br>
+      <%= f.text_field :domicilio %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :telefono %><br>
-    <%= f.text_field :telefono %>
+  <div class="large-6 columns">
+      <div class="field">
+      <%= f.label :email %><br>
+      <%= f.text_field :email %>
+    </div>
   </div>
-    <div class="form-group">
+  <div class="large-6 columns">
+     <div class="field">
+      <%= f.label :website %><br>
+      <%= f.text_field :website %>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :telefono %><br>
+      <%= f.text_field :telefono %>
+    </div>
+  </div>
+</div>
+
+  <div class="form-group">
     <%= f.file_field :image %>
   </div>
   <div class="actions">

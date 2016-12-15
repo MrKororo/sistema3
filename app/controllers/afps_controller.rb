@@ -28,7 +28,7 @@ class AfpsController < ApplicationController
 
     respond_to do |format|
       if @afp.save
-        format.html { redirect_to @afp, notice: 'Afp was successfully created.' }
+        format.html { redirect_to @afp, notice: 'Afp creada exitosamente.' }
         format.json { render :show, status: :created, location: @afp }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class AfpsController < ApplicationController
   def update
     respond_to do |format|
       if @afp.update(afp_params)
-        format.html { redirect_to @afp, notice: 'Afp was successfully updated.' }
+        format.html { redirect_to @afp, notice: 'Afp actualizada exitosamente.' }
         format.json { render :show, status: :ok, location: @afp }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class AfpsController < ApplicationController
   def destroy
     @afp.destroy
     respond_to do |format|
-      format.html { redirect_to afps_url, notice: 'Afp was successfully destroyed.' }
+      format.html { redirect_to afps_url, notice: 'Afp eliminada exitosamente.' }
       format.json { head :no_content }
     end
   end

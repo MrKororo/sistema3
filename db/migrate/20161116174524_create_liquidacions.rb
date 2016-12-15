@@ -10,7 +10,6 @@ class CreateLiquidacions < ActiveRecord::Migration
       t.float :porcentaje_afp
       t.integer :descuento_afp
       t.integer :descuento_isapre
-      t.integer :sindicato
       t.integer :impuesto
       t.integer :cotizacion_voluntaria
       t.float :horas_trabajadas
@@ -19,11 +18,11 @@ class CreateLiquidacions < ActiveRecord::Migration
       t.integer :horas_extra
       t.float :vacaciones
       t.integer :total_imponible
+      t.integer :sindicato
       t.integer :total_haberes
       t.integer :desc_legales
       t.integer :desc_varios
       t.integer :liquido_pagar
-      t.string :rut_personal
 
       t.timestamps null: false
     end

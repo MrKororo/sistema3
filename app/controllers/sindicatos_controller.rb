@@ -28,7 +28,7 @@ class SindicatosController < ApplicationController
 
     respond_to do |format|
       if @sindicato.save
-        format.html { redirect_to @sindicato, notice: 'Sindicato was successfully created.' }
+        format.html { redirect_to @sindicato, notice: 'Sindicato fue creado exitosamente.' }
         format.json { render :show, status: :created, location: @sindicato }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class SindicatosController < ApplicationController
   def update
     respond_to do |format|
       if @sindicato.update(sindicato_params)
-        format.html { redirect_to @sindicato, notice: 'Sindicato was successfully updated.' }
+        format.html { redirect_to @sindicato, notice: 'Sindicato fue actualizado exitosamente.' }
         format.json { render :show, status: :ok, location: @sindicato }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class SindicatosController < ApplicationController
   def destroy
     @sindicato.destroy
     respond_to do |format|
-      format.html { redirect_to sindicatos_url, notice: 'Sindicato was successfully destroyed.' }
+      format.html { redirect_to sindicatos_url, notice: 'Sindicato fue eliminado exitosamente.' }
       format.json { head :no_content }
     end
   end

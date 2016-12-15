@@ -11,128 +11,168 @@
     </div>
   <% end %>
 
- <div class="field">
-    <%= f.label :"Subcategoria" %><br>
-    <%= grouped_collection_select(nil, :subcategorium_id, Categorium.order(:categoria), :subcategorium, :categoria, :id, :subcategoria, include_blank: :true) %>
+<div class="row">
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :"Subcategoria" %><br>
+      <%= grouped_collection_select(nil, :subcategorium_id, Categorium.order(:categoria), :subcategorium, :categoria, :id, :subcategoria, include_blank: :true) %>
+    </div>
   </div>
-  
-  <div class="field">
-    <%= f.label :personal_id %><br>
-    <%= grouped_collection_select(:liquidacion, :personal_id, Subcategorium.order(:subcategoria), :personal, :subcategoria, :id, :nombre_apellido, include_blank: :true) %>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :personal_id %><br>
+      <%= grouped_collection_select(:liquidacion, :personal_id, Subcategorium.order(:subcategoria), :personal, :subcategoria, :id, :nombre_apellido, include_blank: :true) %>
+    </div>
   </div>
-  
-  <div class="field">
-    <%= f.label :rut_personal %><br>
-    <%= grouped_collection_select(:liquidacion, :personal_id, Subcategorium.order(:subcategoria), :personal, :subcategoria, :rut_personal, :nombre_apellido, include_blank: :true) %>
-    <%= f.text_field :rut_personal %>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :"Sueldo base por hora trabajada" %><br>
+      <%= grouped_collection_select(:liquidacion, :habere_id, Subcategorium.order(:subcategoria), :habere, :subcategoria, :id, :valor_hora, {include_blank: :true}) %>
+    </div>
   </div>
-  
-  <div class="field">
-    <%= f.label :"Sueldo base por hora trabajada" %><br>
-    <%= grouped_collection_select(:liquidacion, :habere_id, Subcategorium.order(:subcategoria), :habere, :subcategoria, :id, :valor_hora, {include_blank: :true}) %>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :horas_trabajadas %><br>
+      <%= f.text_field :horas_trabajadas %>
+    </div>
   </div>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :remuneracion %><br>
+      <%= f.number_field :remuneracion, :readonly => true %>
+    </div>
+  </div>
+</div>
 
-  <div class="field">
-    <%= f.label :horas_trabajadas %><br>
-    <%= f.text_field :horas_trabajadas %>
+<div class="row">
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :cantidad_horas_extra %><br>
+      <%= f.text_field :cantidad_horas_extra %>
+    </div>
   </div>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :horas_extra %><br>
+      <%= f.text_field :horas_extra, :readonly => true %>
+    </div>
+  </div>
+</div>
+<hr>
 
-  <div class="field">
-    <%= f.label :remuneracion %><br>
-    <%= f.number_field :remuneracion, :readonly => true %>
+<div class="row">
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :asignacion_id %><br>
+      <%= grouped_collection_select(:liquidacion, :asignacion_id, Subcategorium.order(:subcategoria), :asignacion, :subcategoria, :id, :asignacion, {include_blank: :true}) %>
+    </div>
   </div>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :bonificacion_id %><br>
+  <!--     <%= grouped_collection_select(:liquidacion, :bonificacion_id, Subcategorium.order(:subcategoria), :bonificacion, :subcategoria, :id, :bono, {},{:multiple => true ,include_blank: :true}) %> -->
+      <%= grouped_collection_select(:liquidacion, :bonificacion_id, Subcategorium.order(:subcategoria), :bonificacion, :subcategoria, :id, :bono, include_blank: :true) %>
+    </div>
+  </div>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :vacaciones %><br>
+      <%= f.text_field :vacaciones %>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :total_imponible %><br>
+      <%= f.text_field :total_imponible, :readonly => true  %>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :total_haberes %><br>
+      <%= f.number_field :total_haberes, :readonly => true %>
+    </div>
+  </div>
+</div>
+<hr>
 
-  <div class="field">
-    <%= f.label :cantidad_horas_extra %><br>
-    <%= f.text_field :cantidad_horas_extra %>
+<div class="row">
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :porcentaje_afp %><br>
+      <%= collection_select(nil, :afp_id, Afp.all, :descuento_afp, :afp, {:prompt => 'Seleccione afp'}) %>
+      <%= f.hidden_field :porcentaje_afp %>
+    </div>
   </div>
-  
-  <div class="field">
-    <%= f.label :horas_extra %><br>
-    <%= f.text_field :horas_extra, :readonly => true %>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :descuento_afp %><br>
+      <%= f.number_field :descuento_afp, :readonly => true %>
+    </div>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :asignacion_id %><br>
-    <%= grouped_collection_select(:liquidacion, :asignacion_id, Subcategorium.order(:subcategoria), :asignacion, :subcategoria, :id, :asignacion, {include_blank: :true}) %>
+<div class="row">
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :cotizacion_voluntaria %><br>
+      <%= f.text_field :cotizacion_voluntaria %>
+    </div>
   </div>
+  <div class="large-6 columns"> 
+    <div class="field">
+      <%= f.label :descuento_isapre %><br>
+      <%= f.number_field :descuento_isapre %>
+    </div>
+  </div>
+</div>  
+ 
+<div class="row">
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :sindicato %><br>
+      <%= collection_select(:liquidacion, :sindicato, Sindicato.all, :cuota_sindical, :nombre_sindicato, {include_blank: :true}) %>
+    </div>
+  </div>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :impuesto %><br>
+      <%= f.text_field :impuesto %>
+    </div>
+  </div>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :descuento_adicional_id %><br>
+      <%= collection_select(:liquidacion, :descuento_adicional_id, DescuentoAdicional.all, :id, :descuento_adicional, {include_blank: :true}) %>
+    </div>
+  </div>
+</div> 
 
-  <div class="field">
-    <%= f.label :bonificacion_id %><br>
-    <%= grouped_collection_select(:liquidacion, :bonificacion_id, Subcategorium.order(:subcategoria), :bonificacion, :subcategoria, :id, :bono, include_blank: :true) %>
+<div class="row">
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :desc_legales %><br>
+      <%= f.number_field :desc_legales, :readonly => true %>
+    </div>
   </div>
-   
-  <div class="field">
-    <%= f.label :total_imponible %><br>
-    <%= f.text_field :total_imponible, :readonly => true  %>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :desc_varios %><br>
+      <%= f.number_field :desc_varios, :readonly => true %>
+    </div>
   </div>
-  
-  <div class="field">
-    <%= f.label :total_haberes %><br>
-    <%= f.number_field :total_haberes, :readonly => true %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :vacaciones %><br>
-    <%= f.text_field :vacaciones %>
-  </div>
-
-  <div class="field">
-    <%= f.label :descuento_adicional_id %><br>
-    <%= collection_select(:liquidacion, :descuento_adicional_id, DescuentoAdicional.all, :id, :descuento_adicional, {include_blank: :true}) %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :porcentaje_afp %><br>
-    <%= collection_select(nil, :afp_id, Afp.all, :descuento_afp, :afp, {:prompt => 'Seleccione afp'}) %>
-    <%= f.text_field :porcentaje_afp %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :descuento_afp %><br>
-    <%= f.number_field :descuento_afp, :readonly => true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :descuento_isapre %><br>
-    <%= text_field_tag 'porcentaje_isapre','minimo de 7%'%>
-    <%= f.number_field :descuento_isapre, :readonly => true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :sindicato %><br>
-    <%= f.text_field :sindicato %>
-  </div>
-
-  <div class="field">
-    <%= f.label :impuesto %><br>
-    <%= f.text_field :impuesto %>
-  </div>
-
-  <div class="field">
-    <%= f.label :cotizacion_voluntaria %><br>
-    <%= f.text_field :cotizacion_voluntaria %>
-  </div>
-
-  <div class="field">
-    <%= f.label :desc_legales %><br>
-    <%= f.number_field :desc_legales, :readonly => true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :desc_varios %><br>
-    <%= f.number_field :desc_varios, :readonly => true %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :liquido_pagar %><br>
-    <%= f.number_field :liquido_pagar, :readonly => true %>
-    <%= submit_tag "Calcular", type: 'button', id: 'coffeeScript' %> 
-  </div>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :liquido_pagar %><br>
+      <%= f.number_field :liquido_pagar, :readonly => true %>
+      <%= submit_tag "Calcular", type: 'button', id: 'coffeeScript' %> 
+    </div>
+  </div>  
+</div> 
+<hr>
 
   <div class="field">
     <%= f.label :fecha_pago %><br>
-    <%= f.date_select :fecha_pago %>
+    <%= f.date_select :fecha_pago,{ start_year: DateTime.now.year, end_year: DateTime.now.year - 10, order: [:day, :month, :year], include_blank: true},:style => "width: 221px;"%>
   </div>
   
 
@@ -140,6 +180,5 @@
     <%= f.submit ( f.object.new_record? ? "Crear" : "Actualizar"), class: "btn" %>
   </div>
 <% end %>
-
 
 

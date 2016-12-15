@@ -12,8 +12,7 @@ jQuery ->
 		else
 			$('#liquidacion_personal_id').empty()
 #fin del bloque
-
-
+		
 #busqueda del valor por hora en habere
 	haberes = $('#liquidacion_habere_id').html()
 	$('#_subcategorium_id').change ->
@@ -141,38 +140,27 @@ jQuery ->
 		$("#_afp_id option:selected").map ->
 			$("#liquidacion_porcentaje_afp").val($(this).val())
 			
-
-
-	$('#liquidacion_porcentaje_afp').keyup ->
+	$('#_afp_id').change ->
 		totalSueldo = $('#liquidacion_total_imponible').val()
 		porcentaje = $('#liquidacion_porcentaje_afp').val()/100
 		descuento = Math.round(totalSueldo*porcentaje)
 		$('#liquidacion_descuento_afp').val(descuento)
 
-	$('#porcentaje_isapre').keyup ->
-		totalSueldo = $('#liquidacion_total_imponible').val()
-		porcentaje = $('#porcentaje_isapre').val()/100
-		descuento = Math.round(totalSueldo*porcentaje)
-		$('#liquidacion_descuento_isapre').val(descuento)
 
-	$('#liquidacion_porcentaje_afp').keyup ->
+	$('#liquidacion_descuento_isapre').keyup ->
 		afp = parseInt($('#liquidacion_descuento_afp').val())
 		isapre = parseInt($('#liquidacion_descuento_isapre').val())
 		total = Math.round(afp+isapre)
 		$('#liquidacion_desc_legales').val(total)
 
-	$('#porcentaje_isapre').keyup ->
-		afp = parseInt($('#liquidacion_descuento_afp').val())
-		isapre = parseInt($('#liquidacion_descuento_isapre').val())
-		total = Math.round(afp+isapre)
-		$('#liquidacion_desc_legales').val(total)
+
 #fin del bloque
 
 # bloque de control de sindicato, impuesto, cotizacion voluntaria y desc adicional
 	$('#liquidacion_descuento_adicional_id').change ->
 		desAdicional = parseInt($('#liquidacion_descuento_adicional_id option:selected').text())
 		impuesto = parseInt($('#liquidacion_impuesto').val())
-		sindicato = parseInt($('#liquidacion_sindicato').val())
+		sindicato = parseInt($('#liquidacion_sindicato option:selected').val())
 		cotVol = parseInt($('#liquidacion_cotizacion_voluntaria').val())
 		if isNaN(desAdicional)
 			total= Math.round(impuesto+sindicato+cotVol)
@@ -181,10 +169,10 @@ jQuery ->
 			total= Math.round(impuesto+sindicato+cotVol+desAdicional)
 			$('#liquidacion_desc_varios').val(total)
 
-	$('#liquidacion_sindicato').keyup ->
+	$('#liquidacion_sindicato').change ->
 		desAdicional = parseInt($('#liquidacion_descuento_adicional_id option:selected').text())
 		impuesto = parseInt($('#liquidacion_impuesto').val())
-		sindicato = parseInt($('#liquidacion_sindicato').val())
+		sindicato = parseInt($('#liquidacion_sindicato option:selected').val())
 		cotVol = parseInt($('#liquidacion_cotizacion_voluntaria').val())
 		if isNaN(desAdicional)
 			total= Math.round(impuesto+sindicato+cotVol)
@@ -196,7 +184,7 @@ jQuery ->
 	$('#liquidacion_impuesto').keyup ->
 		desAdicional = parseInt($('#liquidacion_descuento_adicional_id option:selected').text())
 		impuesto = parseInt($('#liquidacion_impuesto').val())
-		sindicato = parseInt($('#liquidacion_sindicato').val())
+		sindicato = parseInt($('#liquidacion_sindicato option:selected').val())
 		cotVol = parseInt($('#liquidacion_cotizacion_voluntaria').val())
 		if isNaN(desAdicional)
 			total= Math.round(impuesto+sindicato+cotVol)
@@ -208,7 +196,7 @@ jQuery ->
 	$('#liquidacion_cotizacion_voluntaria').keyup ->
 		desAdicional = parseInt($('#liquidacion_descuento_adicional_id option:selected').text())
 		impuesto = parseInt($('#liquidacion_impuesto').val())
-		sindicato = parseInt($('#liquidacion_sindicato').val())
+		sindicato = parseInt($('#liquidacion_sindicato option:selected').val())
 		cotVol = parseInt($('#liquidacion_cotizacion_voluntaria').val())
 		if isNaN(desAdicional)
 			total= Math.round(impuesto+sindicato+cotVol)
@@ -254,4 +242,6 @@ jQuery ->
 		total2= desLegal+desVarios
 		final=total-total2
 		$('#liquidacion_liquido_pagar').val(final)
-#final del bloque
+#final del bloque# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/

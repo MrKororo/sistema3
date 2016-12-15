@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listando Haberes</h1>
+<h1>Sueldos Bases</h1>
 
 <table>
   <thead>
@@ -19,7 +19,7 @@
       <tr>
         <td><%= habere.subcategorium.categorium.categoria %></td>
         <td><%= habere.subcategorium.subcategoria %></td>
-        <td><%=number_to_currency(habere.sueldo_base, unit: "$")%></td>
+        <td>$ <%=number_to_currency(habere.sueldo_base,strip_insignificant_zeros: true)%></td>
         <td><%= habere.horas_pactadas %></td>
         <td>$ <%= habere.valor_hora %></td>
         <td><%= link_to 'Ver', habere %></td>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'Nuevo Haber', new_habere_path %>
+<%= link_to 'Nuevo Sueldo', new_habere_path %>

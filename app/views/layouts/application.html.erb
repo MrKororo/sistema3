@@ -48,7 +48,7 @@
             </li>
             <li><a href="#">Remuneracion</a>
               <ul class="menu">
-                <li><a href="/haberes">Haberes</a></li>
+                <li><a href="/haberes">Sueldo Base</a></li>
                 <li><a href="/bonificacions">Bonificaciones</a></li>
                 <li><a href="/asignacions">Asignaciones</a></li>
                 <li><a href="/descuento_adicionals">Descuentos Adicionales</a></li>
@@ -89,17 +89,17 @@
         <div class="sticky" data-sticky data-anchor="content">
           <div id="user_header">
           <% if current_user and current_user.tipo_usuario == "Administrador" %>
-            <h6>Ha ingresado como: <%= current_user.email %>.</h6>
+            <h6>Ha ingresado como: <%= current_user.nombre %>.</h6>
             <h4>Ultimos trabajadores agregados:</h4>
             <ul>
               <% lastCreated.each do |personal| %>
-              <li><%=personal.nombre_apellido%></li>
+              <h6><li><%=personal.nombre_apellido%></li></h6>
               <% end %>
             </ul>
             <h4>Ultimas Categorias creadas</h4>
             <ul>
               <% lastCategories.each do |category| %>
-              <li><%=category.categoria%></li>
+              <h6><li><%=category.categoria%></li></h6>
               <% end %>
             </ul>
           <%elsif if current_user and current_user.tipo_usuario == "Empleado"%>

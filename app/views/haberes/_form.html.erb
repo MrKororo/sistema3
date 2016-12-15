@@ -10,26 +10,38 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :"Categoria" %><br>
-    <%= collection_select(nil, :categorium_id, Categorium.order(:categoria), :id, :categoria, include_blank: :true) %>
+
+<div class="row">
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :"Categoria" %><br>
+      <%= collection_select(nil, :categorium_id, Categorium.order(:categoria), :id, :categoria, include_blank: :true) %>
+    </div>  
   </div>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :"Subcategoria" %><br>
+      <%= grouped_collection_select(:habere, :subcategorium_id, Categorium.order(:categoria), :subcategorium, :categoria, :id, :subcategoria, include_blank: :true) %>
+    </div>
+  </div>
+</div>
+
+<hr>
+<div class="row">
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :sueldo_base %><br>
+      <%= f.number_field :sueldo_base %>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :"Horas mensuales"%><br>
+      <%= f.text_field :horas_pactadas %>
+    </div>
+  </div>
+</div>
   
-  <div class="field">
-    <%= f.label :"Subcategoria" %><br>
-    <%= grouped_collection_select(:habere, :subcategorium_id, Categorium.order(:categoria), :subcategorium, :categoria, :id, :subcategoria, include_blank: :true) %>
-  </div>
-
-  <div class="field">
-    <%= f.label :sueldo_base %><br>
-    <%= f.number_field :sueldo_base %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"Horas mensuales"%><br>
-    <%= f.text_field :horas_pactadas %>
-  </div>
-
   <div class="field">
     <%= f.label :valor_hora %><br>
     <%= f.text_field :valor_hora, :readonly => true %>

@@ -10,26 +10,36 @@
       </ul>
     </div>
   <% end %>
+<div class="row">
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :"Categoria" %><br>
+      <%= collection_select(nil, :categorium_id, Categorium.order(:categoria), :id, :categoria, include_blank: :true) %>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :"Subcategoria" %><br>
+      <%= grouped_collection_select(:asignacion, :subcategorium_id, Categorium.order(:categoria), :subcategorium, :categoria, :id, :subcategoria, include_blank: :true) %>
+    </div>
+  </div>
+</div>
+<hr>
 
-  <div class="field">
-    <%= f.label :"Categoria" %><br>
-    <%= collection_select(nil, :categorium_id, Categorium.order(:categoria), :id, :categoria, include_blank: :true) %>
+<div class="row">
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :"Detalles" %><br>
+      <%= f.text_field :detalle_asignacion %>
+    </div>
   </div>
-  
-  <div class="field">
-    <%= f.label :"Subcategoria" %><br>
-    <%= grouped_collection_select(:asignacion, :subcategorium_id, Categorium.order(:categoria), :subcategorium, :categoria, :id, :subcategoria, include_blank: :true) %>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :asignacion %><br>
+      <%= f.number_field :asignacion %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :"Detalles" %><br>
-    <%= f.text_field :detalle_asignacion %>
-  </div>
-
-  <div class="field">
-    <%= f.label :asignacion %><br>
-    <%= f.number_field :asignacion %>
-  </div>
+</div>
 
   <div class="actions">
     <%= f.submit ( f.object.new_record? ? "Crear" : "Actualizar"), class: "btn" %>

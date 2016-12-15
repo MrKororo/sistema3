@@ -29,7 +29,7 @@ class DescuentoAdicionalsController < ApplicationController
 
     respond_to do |format|
       if @descuento_adicional.save
-        format.html { redirect_to @descuento_adicional, notice: 'Descuento adicional was successfully created.' }
+        format.html { redirect_to @descuento_adicional, notice: 'Descuento adicional fue creado exitosamente.' }
         format.json { render :show, status: :created, location: @descuento_adicional }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class DescuentoAdicionalsController < ApplicationController
   def update
     respond_to do |format|
       if @descuento_adicional.update(descuento_adicional_params)
-        format.html { redirect_to @descuento_adicional, notice: 'Descuento adicional was successfully updated.' }
+        format.html { redirect_to @descuento_adicional, notice: 'Descuento adicional fue actualizado exitosamente.' }
         format.json { render :show, status: :ok, location: @descuento_adicional }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class DescuentoAdicionalsController < ApplicationController
   def destroy
     @descuento_adicional.destroy
     respond_to do |format|
-      format.html { redirect_to descuento_adicionals_url, notice: 'Descuento adicional was successfully destroyed.' }
+      format.html { redirect_to descuento_adicionals_url, notice: 'Descuento adicional fue eliminado exitosamente.' }
       format.json { head :no_content }
     end
   end

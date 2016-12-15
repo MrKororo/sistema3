@@ -1,9 +1,12 @@
 
 <%if current_user %>
-<h1>Bienvenido <%=current_user.nombre%>.</h1>
+<h2>Bienvenido <%=current_user.nombre%>.</h2>
 <% else %>
-<h1>Bienvenido</h1>
+<h2>Bienvenido</h2>
 <% end %>
-<p>Este es un sistema de remuneraciones creado como proyecto de tesis</p>
+<h6>Este es un sistema de remuneraciones creado como proyecto de tesis.</h6>
 
-<p>Hoy es: <%=Time.now.strftime("%d/%m/%Y")%> y la hora actual es: <%=Time.now.strftime("%I:%M:%S")%>. </p> 
+
+<h6>Hoy es: <%=Time.now.strftime("%d/%m/%Y")%> y la hora actual es: <%=Time.now.strftime("%I:%M:%S")%>.</h6>
+
+

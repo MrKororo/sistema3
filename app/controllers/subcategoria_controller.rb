@@ -29,7 +29,7 @@ class SubcategoriaController < ApplicationController
 
     respond_to do |format|
       if @subcategorium.save
-        format.html { redirect_to @subcategorium, notice: 'Subcategorium was successfully created.' }
+        format.html { redirect_to @subcategorium, notice: 'Subcategoria fue creada exitosamente.' }
         format.json { render :show, status: :created, location: @subcategorium }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class SubcategoriaController < ApplicationController
   def update
     respond_to do |format|
       if @subcategorium.update(subcategorium_params)
-        format.html { redirect_to @subcategorium, notice: 'Subcategorium was successfully updated.' }
+        format.html { redirect_to @subcategorium, notice: 'Subcategoria fue actualizada exitosamente.' }
         format.json { render :show, status: :ok, location: @subcategorium }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class SubcategoriaController < ApplicationController
   def destroy
     @subcategorium.destroy
     respond_to do |format|
-      format.html { redirect_to subcategoria_url, notice: 'Subcategorium was successfully destroyed.' }
+      format.html { redirect_to subcategoria_url, notice: 'Subcategoria fue eliminada exitosamente.' }
       format.json { head :no_content }
     end
   end

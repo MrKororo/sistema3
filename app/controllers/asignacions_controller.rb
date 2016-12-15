@@ -29,7 +29,7 @@ class AsignacionsController < ApplicationController
 
     respond_to do |format|
       if @asignacion.save
-        format.html { redirect_to @asignacion, notice: 'Asignacion was successfully created.' }
+        format.html { redirect_to @asignacion, notice: 'Asignación fue creada exitosamente.' }
         format.json { render :show, status: :created, location: @asignacion }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class AsignacionsController < ApplicationController
   def update
     respond_to do |format|
       if @asignacion.update(asignacion_params)
-        format.html { redirect_to @asignacion, notice: 'Asignacion was successfully updated.' }
+        format.html { redirect_to @asignacion, notice: 'Asignación fue actualizada exitosamente.' }
         format.json { render :show, status: :ok, location: @asignacion }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class AsignacionsController < ApplicationController
   def destroy
     @asignacion.destroy
     respond_to do |format|
-      format.html { redirect_to asignacions_url, notice: 'Asignacion was successfully destroyed.' }
+      format.html { redirect_to asignacions_url, notice: 'Asignación fue eliminada exitosamente.' }
       format.json { head :no_content }
     end
   end

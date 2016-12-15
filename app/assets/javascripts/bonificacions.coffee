@@ -2,7 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
-	$('#bonificacion_subcategorium_id').parent().hide()
+	$('#bonificacion_detalle_bono').prop("disabled",true)
+	$('#bonificacion_bono').prop("disabled",true)
+	$('#bonificacion_subcategorium_id').prop("disabled",true)
 	subcategorias = $('#bonificacion_subcategorium_id').html()
 	$('#_categorium_id').change ->
 		categoria = $('#_categorium_id :selected').text()
@@ -10,8 +12,12 @@ jQuery ->
 		if options
 			$('#bonificacion_subcategorium_id').parent().show()
 			$('#bonificacion_subcategorium_id').html(options)
-			
+			$('#bonificacion_subcategorium_id').prop("disabled",false)
+			$('#bonificacion_detalle_bono').prop("disabled",false)
+			$('#bonificacion_bono').prop("disabled",false)
 		else
 			$('#bonificacion_subcategorium_id').empty()
-			$('#bonificacion_subcategorium_id').parent().hide()
+			$('#bonificacion_detalle_bono').prop("disabled",true)
+			$('#bonificacion_bono').prop("disabled",true)
+			$('#bonificacion_subcategorium_id').prop("disabled",true)
 	

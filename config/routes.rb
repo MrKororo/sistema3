@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
 
+  resources :liquidacions
   resources :users
   resources :personals
   resources :sindicatos

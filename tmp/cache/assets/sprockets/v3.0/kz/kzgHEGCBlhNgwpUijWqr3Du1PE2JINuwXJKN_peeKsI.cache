@@ -1,0 +1,25 @@
+I"Ñ(function() {
+  jQuery(function() {
+    var subcategorias;
+    $('#bonificacion_detalle_bono').prop("disabled", true);
+    $('#bonificacion_bono').prop("disabled", true);
+    $('#bonificacion_subcategorium_id').prop("disabled", true);
+    subcategorias = $('#bonificacion_subcategorium_id').html();
+    return $('#_categorium_id').change(function() {
+      var categoria, options;
+      categoria = $('#_categorium_id :selected').text();
+      options = $(subcategorias).filter("optgroup[label='" + categoria + "']").html();
+      if (options) {
+        $('#bonificacion_subcategorium_id').parent().show();
+        $('#bonificacion_subcategorium_id').html(options);
+        $('#bonificacion_subcategorium_id').prop("disabled", false);
+        $('#bonificacion_detalle_bono').prop("disabled", false);
+        return $('#bonificacion_bono').prop("disabled", false);
+      } else {
+        return $('#bonificacion_subcategorium_id').empty();
+      }
+    });
+  });
+
+}).call(this);
+:ET

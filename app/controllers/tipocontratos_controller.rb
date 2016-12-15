@@ -29,7 +29,7 @@ class TipocontratosController < ApplicationController
 
     respond_to do |format|
       if @tipocontrato.save
-        format.html { redirect_to @tipocontrato, notice: 'Tipocontrato was successfully created.' }
+        format.html { redirect_to @tipocontrato, notice: 'Tipo de contrato fue creado exitosamente.' }
         format.json { render :show, status: :created, location: @tipocontrato }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class TipocontratosController < ApplicationController
   def update
     respond_to do |format|
       if @tipocontrato.update(tipocontrato_params)
-        format.html { redirect_to @tipocontrato, notice: 'Tipocontrato was successfully updated.' }
+        format.html { redirect_to @tipocontrato, notice: 'Tipo de contrato fue actualizado exitosamente.' }
         format.json { render :show, status: :ok, location: @tipocontrato }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class TipocontratosController < ApplicationController
   def destroy
     @tipocontrato.destroy
     respond_to do |format|
-      format.html { redirect_to tipocontratos_url, notice: 'Tipocontrato was successfully destroyed.' }
+      format.html { redirect_to tipocontratos_url, notice: 'Tipo de contrato fue eliminado exitosamente.' }
       format.json { head :no_content }
     end
   end

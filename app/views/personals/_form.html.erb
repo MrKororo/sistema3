@@ -11,76 +11,121 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :"Nombre" %><br>
-    <%= f.text_field :nombre_personal %>
+<div class="row">
+  <div class="row column text-center">
+    <h5>Datos personales</h5>
   </div>
-
-  <div class="field">
-    <%= f.label :"Apellido Paterno" %><br>
-    <%= f.text_field :apellidop_personal %>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :"Nombre" %><br>
+      <%= f.text_field :nombre_personal %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :"Apellido Materno" %><br>
-    <%= f.text_field :apellidom_personal %>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :"Apellido Paterno" %><br>
+      <%= f.text_field :apellidop_personal %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :rut_personal %><br>
-    <%= f.text_field :rut_personal %>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :"Apellido Materno" %><br>
+      <%= f.text_field :apellidom_personal %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :isapre_id %><br>
-    <%= collection_select(:personal, :isapre_id, Isapre.all, :id, :isapre, {:prompt => 'Seleccione isapre'}) %>
+  <div class="large-12 columns">
+    <div class="field">
+      <%= f.label :rut_personal %><br>
+      <%= f.text_field :rut_personal %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :banco_id %><br>
-    <%= collection_select(:personal, :banco_id, Banco.all, :id, :bancoCuenta, {:prompt => 'Seleccione banco'}) %>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :banco_id %><br>
+      <%= collection_select(:personal, :banco_id, Banco.all, :id, :bancoCuenta, {:prompt => 'Seleccione banco'}) %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :"Subcategoria a la que pertenece" %><br>
-    <%= collection_select(:personal, :subcategorium_id, Subcategorium.all, :id, :subcategoria, {:prompt => 'Seleccione Subcategoria'}) %>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :numero_cuenta %><br>
+      <%= f.number_field :numero_cuenta %>
+    </div>
   </div>
+</div>
+<hr>
 
-  <div class="field">
-    <%= f.label :tipocontrato_id %><br>
-    <%= collection_select(:personal, :tipocontrato_id, Tipocontrato.all, :id, :tipo_contrato, {:prompt => 'Seleccione tipo de contrato'}) %>
+<div class="row">
+  <div class="row column text-center">
+    <h5>Datos obligatorios</h5>
   </div>
-
-  <div class="field">
-    <%= f.label :"Centro de costos" %><br>
-    <%= collection_select(:personal, :centrocosto_id, Centrocosto.all, :id, :nombre, {:prompt => 'Seleccione centro de costo'}) %>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :isapre_id %><br>
+      <%= collection_select(:personal, :isapre_id, Isapre.all, :id, :isapre, {:prompt => 'Seleccione isapre'}) %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :afp_id %><br>
-    <%= collection_select(:personal, :afp_id, Afp.all, :id, :afp, {:prompt => 'Seleccione afp'}) %>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :afp_id %><br>
+      <%= collection_select(:personal, :afp_id, Afp.all, :id, :afp, {:prompt => 'Seleccione afp'}) %>
+    </div>
   </div>
+</div>
+<hr>
 
-  <div class="field">
-    <%= f.label :personal_activo %><br>
-    <%= f.check_box :personal_activo %>
+<div class="row">
+  <div class="row column text-center">
+    <h5>Datos internos</h5>
   </div>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :"Categoria" %><br>
+      <%= collection_select(nil, :categorium_id, Categorium.order(:categoria), :id, :categoria, include_blank: :true) %>
+    </div>  
+  </div>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :"Subcategoria a la que pertenece" %><br>
+      <%= grouped_collection_select(:personal, :subcategorium_id, Categorium.order(:categoria), :subcategorium, :categoria, :id, :subcategoria, include_blank: :true) %>
+    </div>
+  </div>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :tipocontrato_id %><br>
+      <%= collection_select(:personal, :tipocontrato_id, Tipocontrato.all, :id, :tipo_contrato, {:prompt => 'Seleccione tipo de contrato'}) %>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :"Centro de costos" %><br>
+      <%= collection_select(:personal, :centrocosto_id, Centrocosto.all, :id, :nombre, {:prompt => 'Seleccione centro de costo'}) %>
+    </div>  
+  </div>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :personal_activo %><br>
+      <%= f.check_box :personal_activo %>
+    </div>  
+  </div>
+  <div class="large-12 columns">
+    <div class="field">
+      <%= f.label :sindicato_id %><br>
+      <%= collection_select(:personal, :sindicato_id, Sindicato.all, :id, :nombre_sindicato, {:prompt => 'Seleccione sindicato'}) %>
+    </div>
+  </div>
+</div>
+<hr>
 
+<div class="row">
+  <div class="row column text-center">
+    <h5>Fecha de ingreso</h5>
+  </div>
+</div>
   <div class="field">
     <%= f.label :fecha_ingreso %><br>
-    <%= f.date_select :fecha_ingreso %>
+    <%= f.date_select :fecha_ingreso,{ start_year: DateTime.now.year, end_year: DateTime.now.year - 10, order: [:day, :month, :year], include_blank: true},:style => "width: 221px;"%>
   </div>
 
-  <div class="field">
-    <%= f.label :sindicato_id %><br>
-    <%= collection_select(:personal, :sindicato_id, Sindicato.all, :id, :nombre_sindicato, {:prompt => 'Seleccione sindicato'}) %>
-  </div>
-
-  <div class="field">
-    <%= f.label :numero_cuenta %><br>
-    <%= f.number_field :numero_cuenta %>
-  </div>
-  
   <div class="actions">
     <%= f.submit ( f.object.new_record? ? "Crear" : "Actualizar"), class: "btn" %>
     <%= f.submit "Limpiar", :type => "reset" %>

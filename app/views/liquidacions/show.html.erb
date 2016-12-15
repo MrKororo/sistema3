@@ -130,11 +130,6 @@
       <%= @liquidacion.fecha_pago.strftime("%d/%m/%Y") %>
     </p>
 
-<p>
-  <strong>Rut personal:</strong>
-  <%= @liquidacion.rut_personal %>
-</p>
-
   </td>
 </table>
 
@@ -146,7 +141,6 @@
 <%= link_to 'Editar', edit_liquidacion_path(@liquidacion) %>|
 <%end%>
 <%= link_to 'Volver', liquidacions_path %>
-
 
 
 

@@ -121,7 +121,6 @@ ActiveRecord::Schema.define(version: 20161206175720) do
     t.float    "porcentaje_afp",         limit: 24
     t.integer  "descuento_afp",          limit: 4
     t.integer  "descuento_isapre",       limit: 4
-    t.integer  "sindicato",              limit: 4
     t.integer  "impuesto",               limit: 4
     t.integer  "cotizacion_voluntaria",  limit: 4
     t.float    "horas_trabajadas",       limit: 24
@@ -130,13 +129,13 @@ ActiveRecord::Schema.define(version: 20161206175720) do
     t.integer  "horas_extra",            limit: 4
     t.float    "vacaciones",             limit: 24
     t.integer  "total_imponible",        limit: 4
+    t.integer  "sindicato",              limit: 4
     t.integer  "total_haberes",          limit: 4
     t.integer  "desc_legales",           limit: 4
     t.integer  "desc_varios",            limit: 4
     t.integer  "liquido_pagar",          limit: 4
-    t.string   "rut_personal",           limit: 255
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   add_index "liquidacions", ["asignacion_id"], name: "index_liquidacions_on_asignacion_id", using: :btree

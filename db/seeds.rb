@@ -6,20 +6,10 @@ Afp.create!([
   {afp: "PlanVital", descuento_afp: 10.41},
   {afp: "Provida", descuento_afp: 11.54}
 ])
-Empresa.create!([
-  {nombre_empresa: "GonzalezSA", rut_empresa: "1234567890", giro: "Informatica", domicilio: "Calle falsa 123", email: "falso@gmail.com", website: "www.falso.com", telefono: "922901010", image_file_name: "logo.jpg", image_content_type: "image/jpeg", image_file_size: 9145, image_updated_at: "2016-12-04 21:08:35"}
-])
-Sindicato.create!([
-  {nombre_sindicato: "Sindicato trabajadores N°1", cuota_sindical: 10000},
-  {nombre_sindicato: "Sindicato trabajadores N°2", cuota_sindical: 5000},
-  {nombre_sindicato: "Sin sindicato", cuota_sindical: 0}
-])
-Tipocontrato.create!([
-  {tipo_contrato: "Contrato a plazo 120 días"},
-  {tipo_contrato: "Contrato a plazo 90 días"},
-  {tipo_contrato: "Contrato indefinido"},
-  {tipo_contrato: "Contrato por Obras"},
-  {tipo_contrato: "Contrato a plazo anual"}
+Asignacion.create!([
+  {asignacion: 0, detalle_asignacion: "Sin Asignacion", subcategorium_id: 1},
+  {asignacion: 0, detalle_asignacion: "Sin Asignacion", subcategorium_id: 2},
+  {asignacion: 50000, detalle_asignacion: "Almuerzos", subcategorium_id: 2}
 ])
 Banco.create!([
   {banco: "Banco Bice", tipo_cuenta: "Cuenta Corriente"},
@@ -41,6 +31,36 @@ Banco.create!([
   {banco: "Scotiabank Chile", tipo_cuenta: "Cuenta Corriente"},
   {banco: "Banco Estado", tipo_cuenta: "Cuenta Debito"}
 ])
+Bonificacion.create!([
+  {bono: 0, detalle_bono: "Sin Bonificacion", subcategorium_id: 1},
+  {bono: 0, detalle_bono: "Sin Bonificacion", subcategorium_id: 2},
+  {bono: 25000, detalle_bono: "Bono locomocion mensual", subcategorium_id: 1},
+  {bono: 25000, detalle_bono: "Bono locomocion mensual", subcategorium_id: 2},
+  {bono: 50000, detalle_bono: "Bono productividad", subcategorium_id: 1}
+])
+Categorium.create!([
+  {categoria: "Secretaria"},
+  {categoria: "Funcionario"},
+  {categoria: "Profesor"},
+  {categoria: "Servicios Adicionales"},
+  {categoria: "Mantencion"},
+  {categoria: "Ingeniero"}
+])
+Centrocosto.create!([
+  {nombre: "Centro Puerto Montt", codigo: "065", detalle_centro: "Centro destinado a Puerto Montt"}
+])
+Certificate.create!([
+  {personal_id: 1, rut_personal: "17694123-5", motivo: "Trámites de asignación familiar"},
+  {personal_id: 2, rut_personal: "1000007-6", motivo: nil},
+  {personal_id: 3, rut_personal: "18408461-9", motivo: "Trámites Judiciales "}
+])
+Empresa.create!([
+  {nombre_empresa: "GonzalezSA", rut_empresa: "1234567890", giro: "Informatica", domicilio: "Calle falsa 123", email: "falso@gmail.com", website: "www.falso.com", telefono: "922901010", image_file_name: "logo.jpg", image_content_type: "image/jpeg", image_file_size: 9145, image_updated_at: "2016-12-14 14:53:41"}
+])
+Habere.create!([
+  {sueldo_base: 1500000, horas_pactadas: 180.0, valor_hora: 8333.0, subcategorium_id: 1},
+  {sueldo_base: 850000, horas_pactadas: 180.0, valor_hora: 4722.0, subcategorium_id: 2}
+])
 Isapre.create!([
   {isapre: "Banmédica"},
   {isapre: "Capradena"},
@@ -52,42 +72,38 @@ Isapre.create!([
   {isapre: "Más Vida"},
   {isapre: "Vida Tres"}
 ])
-User.create!([
-  {nombre: "Diego", apellido_paterno: "Gonzalez", apellido_materno: "Cuevas", email: "diegongc@ic.uach.cl", password_digest: "$2a$10$3cL5e2qD/3hCHZ.CJT/PYOKvFHTaOGlOV8hmGLJ887mCuR46f8sbm"}
-])
-Centrocosto.create!([
-  {nombre: "Centro Puerto Montt", codigo: "065", detalle_centro: "Centro destinado a Puerto Montt"}
-])
-
-Categorium.create!([
-  {categoria: "Secretaria"},
-  {categoria: "Funcionario"},
-  {categoria: "Profesor"},
-  {categoria: "Servicios Adicionales"},
-  {categoria: "Mantencion"},
-  {categoria: "Ingeniero"}
-])
-Subcategorium.create!([
-  {subcategoria: "Ingeniero(a) en Computacion", categorium_id: 6}
-])
-Habere.create!([
-  {sueldo_base: 1500000, horas_pactadas: 180.0, valor_hora: 8333.0, subcategorium_id: 1}
-])
-Asignacion.create!([
-  {asignacion: 0, detalle_asignacion: "Sin Asignacion", subcategorium_id: 1}
-])
-Bonificacion.create!([
-  {bono: 0, detalle_bono: "Sin Bonificacion", subcategorium_id: 1}
+Liquidacion.create!([
+  {asignacion_id: 1, habere_id: 1, bonificacion_id: 1, descuento_adicional_id: nil, personal_id: 1, fecha_pago: "2016-12-14", porcentaje_afp: 11.54, descuento_afp: 173093, descuento_isapre: 85000, impuesto: 0, cotizacion_voluntaria: 0, horas_trabajadas: 180.0, remuneracion: 1499940, cantidad_horas_extra: 0, horas_extra: 0, vacaciones: 0.0, total_imponible: 1499940, sindicato: 10000, total_haberes: 1499940, desc_legales: 258093, desc_varios: 10000, liquido_pagar: 1231847},
+  {asignacion_id: 1, habere_id: 1, bonificacion_id: 3, descuento_adicional_id: nil, personal_id: 1, fecha_pago: "2016-12-14", porcentaje_afp: 10.41, descuento_afp: 170457, descuento_isapre: 86000, impuesto: 0, cotizacion_voluntaria: 0, horas_trabajadas: 180.0, remuneracion: 1499940, cantidad_horas_extra: 9, horas_extra: 112496, vacaciones: 0.0, total_imponible: 1637436, sindicato: 10000, total_haberes: 1637436, desc_legales: 256457, desc_varios: 10000, liquido_pagar: 1370979},
+  {asignacion_id: 3, habere_id: 2, bonificacion_id: 4, descuento_adicional_id: nil, personal_id: 3, fecha_pago: "2016-12-14", porcentaje_afp: 11.54, descuento_afp: 95521, descuento_isapre: 90000, impuesto: 0, cotizacion_voluntaria: 30000, horas_trabajadas: 170.0, remuneracion: 802740, cantidad_horas_extra: 0, horas_extra: 0, vacaciones: 0.0, total_imponible: 827740, sindicato: 0, total_haberes: 877740, desc_legales: 185521, desc_varios: 30000, liquido_pagar: 662219},
+  {asignacion_id: 3, habere_id: 2, bonificacion_id: 4, descuento_adicional_id: nil, personal_id: 3, fecha_pago: "2016-11-01", porcentaje_afp: 11.44, descuento_afp: 107388, descuento_isapre: 90000, impuesto: 0, cotizacion_voluntaria: 10000, horas_trabajadas: 180.0, remuneracion: 849960, cantidad_horas_extra: 9, horas_extra: 63747, vacaciones: 0.0, total_imponible: 938707, sindicato: 5000, total_haberes: 988707, desc_legales: 197388, desc_varios: 15000, liquido_pagar: 776319},
+  {asignacion_id: 1, habere_id: 1, bonificacion_id: 3, descuento_adicional_id: nil, personal_id: 1, fecha_pago: "2016-12-31", porcentaje_afp: 11.54, descuento_afp: 188960, descuento_isapre: 90000, impuesto: 0, cotizacion_voluntaria: 0, horas_trabajadas: 180.0, remuneracion: 1499940, cantidad_horas_extra: 9, horas_extra: 112496, vacaciones: 0.0, total_imponible: 1637436, sindicato: 10000, total_haberes: 1637436, desc_legales: 278960, desc_varios: 10000, liquido_pagar: 1348476}
 ])
 Personal.create!([
-  {nombre_personal: "Diego Nicolas", apellidop_personal: "Gonzalez", apellidom_personal: "Cuevas", rut_personal: "17694123-5", isapre_id: 7, banco_id: 12, subcategorium_id: 1, tipocontrato_id: 3, centrocosto_id: 1, afp_id: 5, personal_activo: true, fecha_ingreso: "2016-12-01", sindicato_id: 1, numero_cuenta: 69440002}
+  {nombre_personal: "Diego Nicolas", apellidop_personal: "Gonzalez", apellidom_personal: "Cuevas", rut_personal: "17694123-5", isapre_id: 7, banco_id: 12, subcategorium_id: 1, tipocontrato_id: 3, centrocosto_id: 1, afp_id: 5, personal_activo: true, fecha_ingreso: "2016-12-01", sindicato_id: 1, numero_cuenta: 69440002},
+  {nombre_personal: "Leandra", apellidop_personal: "Moreno", apellidom_personal: "Soto", rut_personal: "1000007-6", isapre_id: 3, banco_id: 1, subcategorium_id: 1, tipocontrato_id: 3, centrocosto_id: 1, afp_id: 1, personal_activo: true, fecha_ingreso: "2016-12-12", sindicato_id: 3, numero_cuenta: nil},
+  {nombre_personal: "Tamara Soledad", apellidop_personal: "Cardenas", apellidom_personal: "Nitor", rut_personal: "18408461-9", isapre_id: 9, banco_id: 2, subcategorium_id: 2, tipocontrato_id: 3, centrocosto_id: 1, afp_id: 6, personal_activo: true, fecha_ingreso: "2016-11-13", sindicato_id: 3, numero_cuenta: nil},
+  {nombre_personal: "Diego", apellidop_personal: "Bustamante", apellidom_personal: "Bustamante", rut_personal: "12539047-1", isapre_id: 2, banco_id: 12, subcategorium_id: 1, tipocontrato_id: 3, centrocosto_id: 1, afp_id: 6, personal_activo: true, fecha_ingreso: "2016-12-13", sindicato_id: 3, numero_cuenta: 12345678}
 ])
-
-
-Liquidacion.create!([
-  {asignacion_id: 1, habere_id: 1, bonificacion_id: 1, descuento_adicional_id: nil, personal_id: 1, fecha_pago: "2016-12-05", porcentaje_afp: 11.27, descuento_afp: 169043, descuento_isapre: 121495, sindicato: 0, impuesto: 0, cotizacion_voluntaria: 0, horas_trabajadas: 180.0, remuneracion: 1499940, cantidad_horas_extra: 0, horas_extra: 0, vacaciones: 0.0, total_imponible: 1499940, total_haberes: 1499940, desc_legales: 290538, desc_varios: 0, liquido_pagar: 1209402, rut_personal: "17694123-5"}
+Sindicato.create!([
+  {nombre_sindicato: "Sindicato trabajadores N°1", cuota_sindical: 10000},
+  {nombre_sindicato: "Sindicato trabajadores N°2", cuota_sindical: 5000},
+  {nombre_sindicato: "Sin sindicato", cuota_sindical: 0}
 ])
-
-Certificate.create!([
-  {personal_id: 1, rut_personal: "17694123-5", motivo: "Trámites de asignación familiar"}
+Subcategorium.create!([
+  {subcategoria: "Ingeniero(a) en Computacion", categorium_id: 6},
+  {subcategoria: "Ingeniero(a) en Información y Control de Gestión", categorium_id: 6},
+  {subcategoria: "Secretaria S2", categorium_id: 1}
+])
+Tipocontrato.create!([
+  {tipo_contrato: "Contrato a plazo 120 días"},
+  {tipo_contrato: "Contrato a plazo 90 días"},
+  {tipo_contrato: "Contrato indefinido"},
+  {tipo_contrato: "Contrato por Obras"},
+  {tipo_contrato: "Contrato a plazo anual"}
+])
+User.create!([
+  {nombre: "Diego Nicolas", apellido_paterno: "Gonzalez", apellido_materno: "Cuevas", email: "diegongc@ic.uach.cl", rut_usuario: "17694123-5", tipo_usuario: "Administrador", password_digest: "$2a$10$3cL5e2qD/3hCHZ.CJT/PYOKvFHTaOGlOV8hmGLJ887mCuR46f8sbm"},
+  {nombre: "Leandra", apellido_paterno: "Moreno", apellido_materno: "Soto", email: "leandra@uach.cl", rut_usuario: "1000007-6", tipo_usuario: "Empleado", password_digest: "$2a$10$A2gzRxCHJTaDA17.EcCwnuWdnKXUj9K8ehySAoXsPV6E988g0odwC"},
+  {nombre: "Tamara Soledad", apellido_paterno: "Cardenas", apellido_materno: "Nitor", email: "tamara@uach.cl", rut_usuario: "18408461-9", tipo_usuario: "Empleado", password_digest: "$2a$10$2xygdTe4NtIAvyivkQEgUucTCg6G4tHDVoYMliommYiAZvZFjbedW"}
 ])

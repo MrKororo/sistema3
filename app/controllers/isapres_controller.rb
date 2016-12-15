@@ -29,7 +29,7 @@ class IsapresController < ApplicationController
 
     respond_to do |format|
       if @isapre.save
-        format.html { redirect_to @isapre, notice: 'Isapre was successfully created.' }
+        format.html { redirect_to @isapre, notice: 'Isapre fue creada exitosamente.' }
         format.json { render :show, status: :created, location: @isapre }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class IsapresController < ApplicationController
   def update
     respond_to do |format|
       if @isapre.update(isapre_params)
-        format.html { redirect_to @isapre, notice: 'Isapre was successfully updated.' }
+        format.html { redirect_to @isapre, notice: 'Isapre fue eliminada exitosamente.' }
         format.json { render :show, status: :ok, location: @isapre }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class IsapresController < ApplicationController
   def destroy
     @isapre.destroy
     respond_to do |format|
-      format.html { redirect_to isapres_url, notice: 'Isapre was successfully destroyed.' }
+      format.html { redirect_to isapres_url, notice: 'Isapre fue actualizada exitosamente.' }
       format.json { head :no_content }
     end
   end

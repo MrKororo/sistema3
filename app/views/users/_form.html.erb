@@ -11,38 +11,66 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :nombre %><br>
-    <%= f.text_field :nombre %>
+<div class="row">
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :nombre %><br>
+      <%= f.text_field :nombre %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :apellido_paterno %><br>
-    <%= f.text_field :apellido_paterno %>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :apellido_paterno %><br>
+      <%= f.text_field :apellido_paterno %>
+    </div>  
   </div>
-  <div class="field">
-    <%= f.label :apellido_materno %><br>
-    <%= f.text_field :apellido_materno %>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :apellido_materno %><br>
+      <%= f.text_field :apellido_materno %>
+    </div>  
   </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+</div>
+
+<div class="row">
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :email %><br>
+      <%= f.text_field :email %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :rut_usuario %><br>
-    <%= f.text_field :rut_usuario %>
+    <div class="large-6 columns">
+      <div class="field">
+      <%= f.label :rut_usuario %><br>
+      <%= f.text_field :rut_usuario %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :tipo_usuario %><br>
-    <%= f.text_field :tipo_usuario %>
+  <div class="large-12 columns">
+    <div class="field">
+      <%= f.label :tipo_usuario %><br>
+      <%= f.select :tipo_usuario, User::TIPOUSUARIO %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :password %><br>
+      <%= f.password_field :password %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :password_confirmation %><br>
+      <%= f.password_field :password_confirmation %>
+    </div>
   </div>
+</div>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -44,7 +44,7 @@ class PersonalsController < ApplicationController
 
     respond_to do |format|
       if @personal.save
-        format.html { redirect_to @personal, notice: 'Personal was successfully created.' }
+        format.html { redirect_to @personal, notice: 'Trabajador creado exitosamente.' }
         format.json { render :show, status: :created, location: @personal }
       else
         format.html { render :new }
@@ -58,7 +58,7 @@ class PersonalsController < ApplicationController
   def update
     respond_to do |format|
       if @personal.update(personal_params)
-        format.html { redirect_to @personal, notice: 'Personal was successfully updated.' }
+        format.html { redirect_to @personal, notice: 'Trabajador actualizado exitosamente.' }
         format.json { render :show, status: :ok, location: @personal }
       else
         format.html { render :edit }
@@ -72,7 +72,7 @@ class PersonalsController < ApplicationController
   def destroy
     @personal.destroy
     respond_to do |format|
-      format.html { redirect_to personals_url, notice: 'Personal was successfully destroyed.' }
+      format.html { redirect_to personals_url, notice: 'Trabajador eliminado exitosamente.' }
       format.json { head :no_content }
     end
   end

@@ -29,7 +29,7 @@ class HaberesController < ApplicationController
 
     respond_to do |format|
       if @habere.save
-        format.html { redirect_to @habere, notice: 'Habere was successfully created.' }
+        format.html { redirect_to @habere, notice: 'Sueldo base creado exitosamente.' }
         format.json { render :show, status: :created, location: @habere }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class HaberesController < ApplicationController
   def update
     respond_to do |format|
       if @habere.update(habere_params)
-        format.html { redirect_to @habere, notice: 'Habere was successfully updated.' }
+        format.html { redirect_to @habere, notice: 'Sueldo base actualizado exitosamente.' }
         format.json { render :show, status: :ok, location: @habere }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class HaberesController < ApplicationController
   def destroy
     @habere.destroy
     respond_to do |format|
-      format.html { redirect_to haberes_url, notice: 'Habere was successfully destroyed.' }
+      format.html { redirect_to haberes_url, notice: 'Sueldo base eliminado exitosamente.' }
       format.json { head :no_content }
     end
   end

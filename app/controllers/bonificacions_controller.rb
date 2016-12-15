@@ -29,7 +29,7 @@ class BonificacionsController < ApplicationController
 
     respond_to do |format|
       if @bonificacion.save
-        format.html { redirect_to @bonificacion, notice: 'Bonificacion was successfully created.' }
+        format.html { redirect_to @bonificacion, notice: 'Bonificación fue creado exitosamente.' }
         format.json { render :show, status: :created, location: @bonificacion }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class BonificacionsController < ApplicationController
   def update
     respond_to do |format|
       if @bonificacion.update(bonificacion_params)
-        format.html { redirect_to @bonificacion, notice: 'Bonificacion was successfully updated.' }
+        format.html { redirect_to @bonificacion, notice: 'Bonificación fue actualizado exitosamente.' }
         format.json { render :show, status: :ok, location: @bonificacion }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class BonificacionsController < ApplicationController
   def destroy
     @bonificacion.destroy
     respond_to do |format|
-      format.html { redirect_to bonificacions_url, notice: 'Bonificacion was successfully destroyed.' }
+      format.html { redirect_to bonificacions_url, notice: 'Bonificación fue eliminado exitosamente.' }
       format.json { head :no_content }
     end
   end

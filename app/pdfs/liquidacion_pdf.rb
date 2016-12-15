@@ -13,7 +13,7 @@ class LiquidacionPdf < Prawn::Document
 			tabla_descuentos
 			tabla_resumen
 			forma_pago
-			#image "#{@empresa.image.url}", :at => [330, 80], :scale => 0.3
+			image "/home/diego/sistema3/app/assets/images/empresas/logo", :at => [330, 80], :scale => 0.3
 			
 
 	end
