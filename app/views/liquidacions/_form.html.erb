@@ -12,18 +12,27 @@
   <% end %>
 
 <div class="row">
-  <div class="large-6 columns">
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :"Categoria" %><br>
+      <%= collection_select(nil, :categorium_id, Categorium.order(:categoria), :id, :categoria, include_blank: :true) %>
+    </div> 
+  </div>
+  <div class="large-4 columns">
     <div class="field">
       <%= f.label :"Subcategoria" %><br>
       <%= grouped_collection_select(nil, :subcategorium_id, Categorium.order(:categoria), :subcategorium, :categoria, :id, :subcategoria, include_blank: :true) %>
     </div>
   </div>
-  <div class="large-6 columns">
+  <div class="large-4 columns">
     <div class="field">
       <%= f.label :personal_id %><br>
       <%= grouped_collection_select(:liquidacion, :personal_id, Subcategorium.order(:subcategoria), :personal, :subcategoria, :id, :nombre_apellido, include_blank: :true) %>
     </div>
   </div>
+</div>
+
+<div class="row">
   <div class="large-4 columns">
     <div class="field">
       <%= f.label :"Sueldo base por hora trabajada" %><br>

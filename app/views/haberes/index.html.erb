@@ -19,7 +19,7 @@
       <tr>
         <td><%= habere.subcategorium.categorium.categoria %></td>
         <td><%= habere.subcategorium.subcategoria %></td>
-        <td>$ <%=number_to_currency(habere.sueldo_base,strip_insignificant_zeros: true)%></td>
+        <td>$<%=number_to_currency(habere.sueldo_base,strip_insignificant_zeros: true, :unit => "")%></td>
         <td><%= habere.horas_pactadas %></td>
         <td>$ <%= habere.valor_hora %></td>
         <td><%= link_to 'Ver', habere %></td>

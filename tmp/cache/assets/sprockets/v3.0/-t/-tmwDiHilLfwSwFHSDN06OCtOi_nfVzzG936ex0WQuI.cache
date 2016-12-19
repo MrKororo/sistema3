@@ -1,0 +1,26 @@
+I"ï(function() {
+  jQuery(function() {
+    var subcategorias;
+    $('#personal_subcategorium_id').prop("disabled", true);
+    $('#personal_tipocontrato_id').prop("disabled", true);
+    $('#personal_centrocosto_id').prop("disabled", true);
+    $('#personal_sindicato_id').prop("disabled", true);
+    $('#personal_fecha_ingreso_3i').prop("disabled", true);
+    $('#personal_fecha_ingreso_2i').prop("disabled", true);
+    $('#personal_fecha_ingreso_1i').prop("disabled", true);
+    subcategorias = $('#personal_subcategorium_id').html();
+    return $('#_categorium_id').change(function() {
+      var categoria, options;
+      categoria = $('#_categorium_id :selected').text();
+      options = $(subcategorias).filter("optgroup[label='" + categoria + "']").html();
+      if (options) {
+        $('#personal_subcategorium_id').parent().show();
+        return $('#personal_subcategorium_id').html(options);
+      } else {
+        return $('#personal_subcategorium_id').empty();
+      }
+    });
+  });
+
+}).call(this);
+:ET

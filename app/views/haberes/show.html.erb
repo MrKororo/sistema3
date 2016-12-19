@@ -13,7 +13,7 @@
 
   <p>
     <strong>Sueldo base:</strong>
-   $<%= @habere.sueldo_base %>
+   $<%=number_to_currency(@habere.sueldo_base,strip_insignificant_zeros: true, :unit => "")%>
   </p>
 
   <p>
@@ -23,7 +23,7 @@
 
   <p>
     <strong>Valor hora:</strong>
-   $ <%= @habere.valor_hora %>
+    $<%=number_to_currency(@habere.valor_hora,strip_insignificant_zeros: true, :unit => "")%>
   </p>
 </table>
 

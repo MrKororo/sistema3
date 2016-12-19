@@ -5,7 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>Trabajador</th>
+      <th>Nombre de trabajador</th>
       <th>Asignacion</th>
       <th>Sueldo base</th>
       <th>Bonificacion</th>
@@ -20,12 +20,12 @@
     <% @liquidacions.each do |liquidacion| %>
       <tr>
         <td><%= liquidacion.personal.nombre_apellido %></td>
-        <td><%= liquidacion.asignacion.asignacion %></td>
-        <td><%= liquidacion.habere.valor_hora %></td>
-        <td><%= liquidacion.bonificacion.bono %></td>
+        <td>$<%= number_to_currency(liquidacion.asignacion.asignacion,strip_insignificant_zeros: true, :unit => "") %></td>
+        <td>$<%= number_to_currency(liquidacion.habere.valor_hora,strip_insignificant_zeros: true, :unit => "") %></td>
+        <td>$<%= number_to_currency(liquidacion.bonificacion.bono,strip_insignificant_zeros: true, :unit => "") %></td>
         <td><%= liquidacion.fecha_pago.strftime("%d/%m/%Y")  %></td>
         <td><%= liquidacion.horas_trabajadas %></td>
-        <td><%= liquidacion.liquido_pagar %></td>
+        <td>$<%= number_to_currency(liquidacion.liquido_pagar,strip_insignificant_zeros: true, :unit => "" )%></td>
         <td><%= link_to 'Ver', liquidacion %></td>
         <%if current_user%>
         <td><%= link_to 'Editar', edit_liquidacion_path(liquidacion) %></td>

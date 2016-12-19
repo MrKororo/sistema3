@@ -10,16 +10,16 @@
 	  <strong>Subcategoria:</strong>
 	  <%= @asignacion.subcategorium.subcategoria %>
 	</p>
-
-	<p>
-	  <strong>Asignacion:</strong>
-	 $ <%= @asignacion.asignacion %>
-	</p>
-
 	<p>
 	  <strong>Detalle asignacion:</strong>
 	  <%= @asignacion.detalle_asignacion %>
 	</p>
+	<p>
+	  <strong>Asignacion:</strong>
+	 $<%= number_to_currency(@asignacion.asignacion,strip_insignificant_zeros: true, :unit => "") %>
+	</p>
+
+
 </table>
 
 

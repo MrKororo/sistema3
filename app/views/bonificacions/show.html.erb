@@ -18,7 +18,7 @@
 
 	<p>
 	  <strong>Bono:</strong>
-	  $ <%= @bonificacion.bono %>
+	  $<%=number_to_currency(@bonificacion.bono,strip_insignificant_zeros: true, :unit => "")%>
 	</p>
 </table>
 

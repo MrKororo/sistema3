@@ -18,8 +18,8 @@
       <tr>
         <td><%= asignacion.subcategorium.categorium.categoria %></td>
         <td><%= asignacion.subcategorium.subcategoria %></td>
-        <td>$ <%= asignacion.asignacion %></td>
         <td><%= asignacion.detalle_asignacion %></td>
+        <td>$<%=number_to_currency(asignacion.asignacion,strip_insignificant_zeros: true, :unit => "")%></td>
         <td><%= link_to 'Ver', asignacion %></td>
         <td><%= link_to 'Editar', edit_asignacion_path(asignacion) %></td>
         <td><%= link_to 'Eliminar', asignacion, method: :delete, data: { confirm: '¿Esta seguro?' } %></td>

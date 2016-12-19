@@ -1,5 +1,30 @@
 jQuery ->
-
+	$('#_subcategorium_id').prop("disabled",true)
+	$('#liquidacion_personal_id').prop("disabled",true)
+	$('#liquidacion_habere_id').prop("disabled",true)
+	$('#liquidacion_horas_trabajadas').prop("disabled",true)
+	$('#liquidacion_cantidad_horas_extra').prop("disabled",true)
+	subcategorias = $('#_subcategorium_id').html()
+	$('#_categorium_id').change ->
+		categoria = $('#_categorium_id :selected').text()
+		options = $(subcategorias).filter("optgroup[label='#{categoria}']").html()
+		if options
+			$('#_subcategorium_id').parent().show()
+			$('#_subcategorium_id').html(options)
+			$('#_subcategorium_id').prop("disabled",false)
+			$('#liquidacion_personal_id').prop("disabled",false)
+			$('#liquidacion_habere_id').prop("disabled",false)
+			$('#liquidacion_horas_trabajadas').prop("disabled",false)
+			$('#liquidacion_cantidad_horas_extra').prop("disabled",false)
+		else
+			$('#_subcategorium_id').empty()			
+			$('#liquidacion_personal_id').empty()
+			$('#liquidacion_habere_id').empty()
+			$('#_subcategorium_id').prop("disabled",true)
+			$('#liquidacion_personal_id').prop("disabled",true)
+			$('#liquidacion_habere_id').prop("disabled",true)
+			$('#liquidacion_horas_trabajadas').prop("disabled",true)
+			$('#liquidacion_cantidad_horas_extra').prop("disabled",true)
 
 #busqueda de personal por subcategoria
 	personals = $('#liquidacion_personal_id').html()

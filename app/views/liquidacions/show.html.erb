@@ -9,7 +9,7 @@
 
     <p>
       <strong>Sueldo base:</strong>
-      <%= @liquidacion.habere.valor_hora %>
+      $<%= number_to_currency(@liquidacion.habere.valor_hora,strip_insignificant_zeros: true, :unit => "") %>
     </p>
 
     <p>
@@ -19,82 +19,8 @@
 
     <p>
       <strong>Remuneracion:</strong>
-      <%= @liquidacion.remuneracion %>
+      $<%= number_to_currency(@liquidacion.remuneracion,strip_insignificant_zeros: true, :unit => "") %>
     </p>
-
-    <p>
-    <%if @liquidacion.asignacion.asignacion != nil%>
-      <strong>Asignacion:</strong>
-      <%= @liquidacion.asignacion.asignacion %>
-    <%end%>
-    </p>
-
-
-    <p>
-    <%if @liquidacion.bonificacion.bono != nil%>
-      <strong>Bonificacion:</strong>
-      <%= @liquidacion.bonificacion.bono %>
-    <%end%>
-    </p>
-
-
-    <p>
-      <strong>Horas extra:</strong>
-      <%= @liquidacion.horas_extra %>
-    </p>
-
-    <p>
-      <strong>Total imponible:</strong>
-      <%= @liquidacion.total_imponible %>
-    </p>
-
-
-    <p>
-      <strong>Total haberes:</strong>
-      <%= @liquidacion.total_haberes %>
-    </p>
-
-
-    <p>
-    <%if @liquidacion.descuento_adicional !=nil%>
-      <strong>Descuento adicional:</strong>
-      <%= @liquidacion.descuento_adicional.descuento_adicional %>
-    <%end%>
-    </p>
-
-
-    <p>
-      <strong>Porcentaje afp:</strong>
-      <%= @liquidacion.porcentaje_afp %>
-    </p>
-
-    <p>
-      <strong>Descuento afp:</strong>
-      <%= @liquidacion.descuento_afp %>
-    </p>
-  </td>
-
-  <td>
-    <p>
-      <strong>Descuento isapre:</strong>
-      <%= @liquidacion.descuento_isapre %>
-    </p>
-
-    <p>
-      <strong>Sindicato:</strong>
-      <%= @liquidacion.sindicato %>
-    </p>
-
-    <p>
-      <strong>Impuesto:</strong>
-      <%= @liquidacion.impuesto %>
-    </p>
-
-    <p>
-      <strong>Cotizacion voluntaria:</strong>
-      <%= @liquidacion.cotizacion_voluntaria %>
-    </p>
-
     <p>
       <strong>Cantidad horas extra:</strong>
       <%= @liquidacion.cantidad_horas_extra %>
@@ -102,27 +28,94 @@
 
     <p>
       <strong>Horas extra:</strong>
-      <%= @liquidacion.horas_extra %>
+      $<%= number_to_currency(@liquidacion.horas_extra,strip_insignificant_zeros: true, :unit => "") %>
+    </p>
+
+    <p>
+    <%if @liquidacion.asignacion.asignacion != nil%>
+      <strong>Asignacion:</strong>
+      $<%= number_to_currency(@liquidacion.asignacion.asignacion,strip_insignificant_zeros: true, :unit => "") %>
+    <%end%>
+    </p>
+
+    <p>
+    <%if @liquidacion.bonificacion.bono != nil%>
+      <strong>Bonificacion:</strong>
+      $<%= number_to_currency(@liquidacion.bonificacion.bono,strip_insignificant_zeros: true, :unit => "") %>
+    <%end%>
     </p>
 
     <p>
       <strong>Vacaciones:</strong>
-      <%= @liquidacion.vacaciones %>
+      $<%= number_to_currency(@liquidacion.vacaciones,strip_insignificant_zeros: true, :unit => "") %>
     </p>
 
     <p>
-      <strong>Desc legales:</strong>
-      <%= @liquidacion.desc_legales %>
+      <strong>Total imponible:</strong>
+      $<%= number_to_currency(@liquidacion.total_imponible,strip_insignificant_zeros: true, :unit => "") %>
+    </p>
+
+
+    <p>
+      <strong>Total haberes:</strong>
+      $<%= number_to_currency(@liquidacion.total_haberes,strip_insignificant_zeros: true, :unit => "")%>
+    </p>
+
+
+    <p>
+    <%if @liquidacion.descuento_adicional !=nil%>
+      <strong>Descuento adicional:</strong>
+      $<%= number_to_currency(@liquidacion.descuento_adicional.descuento_adicional,strip_insignificant_zeros: true, :unit => "") %>
+    <%end%>
+    </p>
+
+
+
+  </td>
+
+  <td>
+    <p>
+      <strong>Porcentaje afp:</strong>
+      <%= @liquidacion.porcentaje_afp %>%
     </p>
 
     <p>
-      <strong>Desc varios:</strong>
-      <%= @liquidacion.desc_varios %>
+      <strong>Descuento afp:</strong>
+      $<%= number_to_currency(@liquidacion.descuento_afp,strip_insignificant_zeros: true, :unit => "") %>
+    </p>
+    <p>
+      <strong>Descuento isapre:</strong>
+      $<%= number_to_currency(@liquidacion.descuento_isapre,strip_insignificant_zeros: true, :unit => "") %>
+    </p>
+
+    <p>
+      <strong>Sindicato:</strong>
+      $<%= number_to_currency(@liquidacion.sindicato,strip_insignificant_zeros: true, :unit => "") %>
+    </p>
+
+    <p>
+      <strong>Impuesto:</strong>
+      $<%= number_to_currency(@liquidacion.impuesto,strip_insignificant_zeros: true, :unit => "") %>
+    </p>
+
+    <p>
+      <strong>Cotizacion voluntaria:</strong>
+      $<%= number_to_currency(@liquidacion.cotizacion_voluntaria,strip_insignificant_zeros: true, :unit => "") %>
+    </p>
+
+    <p>
+      <strong>Total desc. legales:</strong>
+      $<%= number_to_currency(@liquidacion.desc_legales,strip_insignificant_zeros: true, :unit => "") %>
+    </p>
+
+    <p>
+      <strong>Total desc. varios:</strong>
+      $<%= number_to_currency(@liquidacion.desc_varios,strip_insignificant_zeros: true, :unit => "") %>
     </p>
 
     <p>
       <strong>Liquido pagar:</strong>
-      <%= @liquidacion.liquido_pagar %>
+      $<%= number_to_currency(@liquidacion.liquido_pagar,strip_insignificant_zeros: true, :unit => "") %>
     </p>
 
     <p>
