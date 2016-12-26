@@ -1,0 +1,2 @@
+module IndicadorEconomicosHelper
+end

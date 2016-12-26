@@ -85,6 +85,6 @@ class PersonalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def personal_params
-      params.require(:personal).permit(:nombre_personal, :apellidop_personal, :apellidom_personal, :rut_personal, :isapre_id, :banco_id, :subcategorium_id, :tipocontrato_id, :centrocosto_id, :afp_id, :personal_activo, :fecha_ingreso, :sindicato_id, :numero_cuenta)
+      params.require(:personal).permit(:nombre_personal, :apellidop_personal, :apellidom_personal, :rut_personal, :isapre_id, :banco_id, :subcategorium_id, :tipocontrato_id, :centrocosto_id, :afp_id, :personal_activo, :fecha_ingreso, :sindicato_id, :numero_cuenta, :cargas_familiar, :cotizacion_voluntaria, :descuento_isapre)
     end
 end

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Sindicatos</h1>
+<h1>Listando Sindicatos</h1>
 
 <table>
   <thead>
@@ -15,10 +15,10 @@
     <% @sindicatos.each do |sindicato| %>
       <tr>
         <td><%= sindicato.nombre_sindicato %></td>
-        <td><%= sindicato.cuota_sindical %></td>
-        <td><%= link_to 'Show', sindicato %></td>
-        <td><%= link_to 'Edit', edit_sindicato_path(sindicato) %></td>
-        <td><%= link_to 'Destroy', sindicato, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>$<%= number_to_currency(sindicato.cuota_sindical,strip_insignificant_zeros: true, :unit => "") %></td>
+        <td><%= link_to 'Ver', sindicato %></td>
+        <td><%= link_to 'Editar', edit_sindicato_path(sindicato) %></td>
+        <td><%= link_to 'Eliminar', sindicato, method: :delete, data: { confirm: '¿Esta seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Sindicato', new_sindicato_path %>
+<%= link_to 'Nuevo Sindicato', new_sindicato_path %>

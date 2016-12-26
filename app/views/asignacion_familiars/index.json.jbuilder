@@ -1,0 +1,1 @@
+json.array! @asignacion_familiars, partial: 'asignacion_familiars/asignacion_familiar', as: :asignacion_familiar

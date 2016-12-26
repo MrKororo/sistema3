@@ -1,0 +1,25 @@
+<%= form_for(@indicador_economico) do |f| %>
+  <% if @indicador_economico.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@indicador_economico.errors.count, "error") %> prohibited this indicador_economico from being saved:</h2>
+
+      <ul>
+      <% @indicador_economico.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :indicador %><br>
+    <%= f.text_field :indicador %>
+  </div>
+  <div class="field">
+    <%= f.label :valor %><br>
+    <%= f.text_field :valor %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

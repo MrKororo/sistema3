@@ -1,0 +1,1 @@
+json.array! @indicador_economicos, partial: 'indicador_economicos/indicador_economico', as: :indicador_economico

@@ -11,6 +11,12 @@ Asignacion.create!([
   {asignacion: 0, detalle_asignacion: "Sin Asignacion", subcategorium_id: 2},
   {asignacion: 50000, detalle_asignacion: "Almuerzos", subcategorium_id: 2}
 ])
+AsignacionFamiliar.create!([
+  {tramo: "A", monto: 10577, requisitoMinimo: 0, requisitoMaximo: 270196},
+  {tramo: "B", monto: 6491, requisitoMinimo: 270196, requisitoMaximo: 394651},
+  {tramo: "C", monto: 2051, requisitoMinimo: 394651, requisitoMaximo: 615521},
+  {tramo: "D", monto: 0, requisitoMinimo: 615521, requisitoMaximo: 9999999}
+])
 Banco.create!([
   {banco: "Banco Bice", tipo_cuenta: "Cuenta Corriente"},
   {banco: "Banco Bilbao Vizcaya Argentaria (BBVA)", tipo_cuenta: "Cuenta Corriente"},
@@ -58,8 +64,21 @@ Empresa.create!([
   {nombre_empresa: "GonzalezSA", rut_empresa: "1234567890", giro: "Informatica", domicilio: "Calle falsa 123", email: "falso@gmail.com", website: "www.falso.com", telefono: "922901010", image_file_name: "logo.jpg", image_content_type: "image/jpeg", image_file_size: 9145, image_updated_at: "2016-12-14 14:53:41"}
 ])
 Habere.create!([
-  {sueldo_base: 1500000, horas_pactadas: 180.0, valor_hora: 8333.0, subcategorium_id: 1},
-  {sueldo_base: 850000, horas_pactadas: 180.0, valor_hora: 4722.0, subcategorium_id: 2}
+  {sueldo_base: 1500000, horas_pactadas: 180, valor_hora: 8333, subcategorium_id: 1},
+  {sueldo_base: 850000, horas_pactadas: 180, valor_hora: 4722, subcategorium_id: 2}
+])
+ImpuestoUnico.create!([
+  {imponibleMinimo: "0.0", imponibleMaximo: "623470.5", factor: "0.0", rebaja: "0.0", impuestoEfectivoMax: "0.0"},
+  {imponibleMinimo: "623470.51", imponibleMaximo: "1385490.0", factor: "0.04", rebaja: "24938.82", impuestoEfectivoMax: "2.2"},
+  {imponibleMinimo: "1385490.01", imponibleMaximo: "2309150.0", factor: "0.08", rebaja: "80358.42", impuestoEfectivoMax: "4.52"},
+  {imponibleMinimo: "2309150.01", imponibleMaximo: "3232810.0", factor: "0.135", rebaja: "207361.67", impuestoEfectivoMax: "7.09"},
+  {imponibleMinimo: "3232810.01", imponibleMaximo: "4156470.0", factor: "0.23", rebaja: "514478.62", impuestoEfectivoMax: "10.62"},
+  {imponibleMinimo: "4156470.01", imponibleMaximo: "5541960.0", factor: "0.304", rebaja: "822057.4", impuestoEfectivoMax: "15.57"},
+  {imponibleMinimo: "5541960.01", imponibleMaximo: "6927450.0", factor: "0.355", rebaja: "1104697.36", impuestoEfectivoMax: "19.55"},
+  {imponibleMinimo: "6927450.01", imponibleMaximo: "100000000.0", factor: "0.4", rebaja: "1416432.61", impuestoEfectivoMax: "19.55"}
+])
+IndicadorEconomico.create!([
+  {indicador: "UF", valor: "26347.98"}
 ])
 Isapre.create!([
   {isapre: "Banmédica"},
@@ -73,17 +92,21 @@ Isapre.create!([
   {isapre: "Vida Tres"}
 ])
 Liquidacion.create!([
-  {asignacion_id: 1, habere_id: 1, bonificacion_id: 1, descuento_adicional_id: nil, personal_id: 1, fecha_pago: "2016-12-14", porcentaje_afp: 11.54, descuento_afp: 173093, descuento_isapre: 85000, impuesto: 0, cotizacion_voluntaria: 0, horas_trabajadas: 180.0, remuneracion: 1499940, cantidad_horas_extra: 0, horas_extra: 0, vacaciones: 0.0, total_imponible: 1499940, sindicato: 10000, total_haberes: 1499940, desc_legales: 258093, desc_varios: 10000, liquido_pagar: 1231847},
-  {asignacion_id: 1, habere_id: 1, bonificacion_id: 3, descuento_adicional_id: nil, personal_id: 1, fecha_pago: "2016-12-14", porcentaje_afp: 10.41, descuento_afp: 170457, descuento_isapre: 86000, impuesto: 0, cotizacion_voluntaria: 0, horas_trabajadas: 180.0, remuneracion: 1499940, cantidad_horas_extra: 9, horas_extra: 112496, vacaciones: 0.0, total_imponible: 1637436, sindicato: 10000, total_haberes: 1637436, desc_legales: 256457, desc_varios: 10000, liquido_pagar: 1370979},
-  {asignacion_id: 3, habere_id: 2, bonificacion_id: 4, descuento_adicional_id: nil, personal_id: 3, fecha_pago: "2016-12-14", porcentaje_afp: 11.54, descuento_afp: 95521, descuento_isapre: 90000, impuesto: 0, cotizacion_voluntaria: 30000, horas_trabajadas: 170.0, remuneracion: 802740, cantidad_horas_extra: 0, horas_extra: 0, vacaciones: 0.0, total_imponible: 827740, sindicato: 0, total_haberes: 877740, desc_legales: 185521, desc_varios: 30000, liquido_pagar: 662219},
-  {asignacion_id: 3, habere_id: 2, bonificacion_id: 4, descuento_adicional_id: nil, personal_id: 3, fecha_pago: "2016-11-01", porcentaje_afp: 11.44, descuento_afp: 107388, descuento_isapre: 90000, impuesto: 0, cotizacion_voluntaria: 10000, horas_trabajadas: 180.0, remuneracion: 849960, cantidad_horas_extra: 9, horas_extra: 63747, vacaciones: 0.0, total_imponible: 938707, sindicato: 5000, total_haberes: 988707, desc_legales: 197388, desc_varios: 15000, liquido_pagar: 776319},
-  {asignacion_id: 1, habere_id: 1, bonificacion_id: 3, descuento_adicional_id: nil, personal_id: 1, fecha_pago: "2016-12-31", porcentaje_afp: 11.54, descuento_afp: 188960, descuento_isapre: 90000, impuesto: 0, cotizacion_voluntaria: 0, horas_trabajadas: 180.0, remuneracion: 1499940, cantidad_horas_extra: 9, horas_extra: 112496, vacaciones: 0.0, total_imponible: 1637436, sindicato: 10000, total_haberes: 1637436, desc_legales: 278960, desc_varios: 10000, liquido_pagar: 1348476}
+  {asignacion_id: 1, habere_id: 1, bonificacion_id: 5, descuento_adicional_id: nil, personal_id: 1, fecha_pago: "2016-12-14", porcentaje_afp: 11.54, descuento_afp: 178863, descuento_isapre: 85000, impuesto: 0, cotizacion_voluntaria: 0, horas_trabajadas: 180.0, remuneracion: 1499940, cantidad_horas_extra: 0, horas_extra: 0, vacaciones: 0.0, total_imponible: 1549940, sindicato: 10000, total_haberes: 1549940, desc_legales: 258093, desc_varios: 10000, liquido_pagar: 1281847, asignacion_familiar: 0},
+  {asignacion_id: 1, habere_id: 1, bonificacion_id: 3, descuento_adicional_id: nil, personal_id: 1, fecha_pago: "2016-12-14", porcentaje_afp: 10.41, descuento_afp: 170457, descuento_isapre: 86000, impuesto: 0, cotizacion_voluntaria: 0, horas_trabajadas: 180.0, remuneracion: 1499940, cantidad_horas_extra: 9, horas_extra: 112496, vacaciones: 0.0, total_imponible: 1637436, sindicato: 10000, total_haberes: 1637436, desc_legales: 256457, desc_varios: 10000, liquido_pagar: 1370979, asignacion_familiar: nil},
+  {asignacion_id: 3, habere_id: 2, bonificacion_id: 4, descuento_adicional_id: nil, personal_id: 3, fecha_pago: "2016-12-14", porcentaje_afp: 11.54, descuento_afp: 95521, descuento_isapre: 90000, impuesto: 0, cotizacion_voluntaria: 30000, horas_trabajadas: 170.0, remuneracion: 802740, cantidad_horas_extra: 0, horas_extra: 0, vacaciones: 0.0, total_imponible: 827740, sindicato: 0, total_haberes: 877740, desc_legales: 185521, desc_varios: 30000, liquido_pagar: 662219, asignacion_familiar: nil},
+  {asignacion_id: 3, habere_id: 2, bonificacion_id: 4, descuento_adicional_id: nil, personal_id: 3, fecha_pago: "2016-11-01", porcentaje_afp: 11.44, descuento_afp: 107388, descuento_isapre: 90000, impuesto: 0, cotizacion_voluntaria: 10000, horas_trabajadas: 180.0, remuneracion: 849960, cantidad_horas_extra: 9, horas_extra: 63747, vacaciones: 0.0, total_imponible: 938707, sindicato: 5000, total_haberes: 988707, desc_legales: 197388, desc_varios: 15000, liquido_pagar: 776319, asignacion_familiar: nil},
+  {asignacion_id: 1, habere_id: 1, bonificacion_id: 3, descuento_adicional_id: nil, personal_id: 1, fecha_pago: "2016-12-31", porcentaje_afp: 11.54, descuento_afp: 188960, descuento_isapre: 90000, impuesto: 0, cotizacion_voluntaria: 0, horas_trabajadas: 180.0, remuneracion: 1499940, cantidad_horas_extra: 9, horas_extra: 112496, vacaciones: 0.0, total_imponible: 1637436, sindicato: 10000, total_haberes: 1637436, desc_legales: 278960, desc_varios: 10000, liquido_pagar: 1348476, asignacion_familiar: nil},
+  {asignacion_id: 1, habere_id: 1, bonificacion_id: 1, descuento_adicional_id: nil, personal_id: 4, fecha_pago: "2016-11-27", porcentaje_afp: 10.77, descuento_afp: 26924, descuento_isapre: 20000, impuesto: 0, cotizacion_voluntaria: 0, horas_trabajadas: 30.0, remuneracion: 249990, cantidad_horas_extra: 0, horas_extra: 0, vacaciones: 0.0, total_imponible: 249990, sindicato: 5000, total_haberes: 249990, desc_legales: 46924, desc_varios: 5000, liquido_pagar: 198066, asignacion_familiar: 21154},
+  {asignacion_id: 3, habere_id: 2, bonificacion_id: 4, descuento_adicional_id: nil, personal_id: 3, fecha_pago: nil, porcentaje_afp: nil, descuento_afp: nil, descuento_isapre: nil, impuesto: nil, cotizacion_voluntaria: nil, horas_trabajadas: 123.0, remuneracion: 580806, cantidad_horas_extra: 43, horas_extra: 304569, vacaciones: nil, total_imponible: nil, sindicato: nil, total_haberes: nil, desc_legales: nil, desc_varios: nil, liquido_pagar: nil, asignacion_familiar: nil},
+  {asignacion_id: nil, habere_id: nil, bonificacion_id: nil, descuento_adicional_id: nil, personal_id: nil, fecha_pago: "2016-01-14", porcentaje_afp: nil, descuento_afp: nil, descuento_isapre: nil, impuesto: nil, cotizacion_voluntaria: nil, horas_trabajadas: nil, remuneracion: nil, cantidad_horas_extra: nil, horas_extra: nil, vacaciones: nil, total_imponible: nil, sindicato: nil, total_haberes: nil, desc_legales: nil, desc_varios: nil, liquido_pagar: nil, asignacion_familiar: nil},
+  {asignacion_id: 1, habere_id: 1, bonificacion_id: 5, descuento_adicional_id: nil, personal_id: 1, fecha_pago: "2017-01-14", porcentaje_afp: 11.48, descuento_afp: 119100, descuento_isapre: 90000, impuesto: 16560, cotizacion_voluntaria: 1000, horas_trabajadas: 120.0, remuneracion: 999960, cantidad_horas_extra: 1, horas_extra: 12500, vacaciones: 0.0, total_imponible: 1037460, sindicato: 10000, total_haberes: 1037460, desc_legales: 209100, desc_varios: 27560, liquido_pagar: 800800, asignacion_familiar: 0}
 ])
 Personal.create!([
-  {nombre_personal: "Diego Nicolas", apellidop_personal: "Gonzalez", apellidom_personal: "Cuevas", rut_personal: "17694123-5", isapre_id: 7, banco_id: 12, subcategorium_id: 1, tipocontrato_id: 3, centrocosto_id: 1, afp_id: 5, personal_activo: true, fecha_ingreso: "2016-12-01", sindicato_id: 1, numero_cuenta: 69440002},
-  {nombre_personal: "Leandra", apellidop_personal: "Moreno", apellidom_personal: "Soto", rut_personal: "1000007-6", isapre_id: 3, banco_id: 1, subcategorium_id: 1, tipocontrato_id: 3, centrocosto_id: 1, afp_id: 1, personal_activo: true, fecha_ingreso: "2016-12-12", sindicato_id: 3, numero_cuenta: nil},
-  {nombre_personal: "Tamara Soledad", apellidop_personal: "Cardenas", apellidom_personal: "Nitor", rut_personal: "18408461-9", isapre_id: 9, banco_id: 2, subcategorium_id: 2, tipocontrato_id: 3, centrocosto_id: 1, afp_id: 6, personal_activo: true, fecha_ingreso: "2016-11-13", sindicato_id: 3, numero_cuenta: nil},
-  {nombre_personal: "Diego", apellidop_personal: "Bustamante", apellidom_personal: "Bustamante", rut_personal: "12539047-1", isapre_id: 2, banco_id: 12, subcategorium_id: 1, tipocontrato_id: 3, centrocosto_id: 1, afp_id: 6, personal_activo: true, fecha_ingreso: "2016-12-13", sindicato_id: 3, numero_cuenta: 12345678}
+  {nombre_personal: "Diego Nicolas", apellidop_personal: "Gonzalez", apellidom_personal: "Cuevas", rut_personal: "17694123-5", isapre_id: 7, banco_id: 12, subcategorium_id: 1, tipocontrato_id: 3, centrocosto_id: 1, afp_id: 5, personal_activo: true, fecha_ingreso: "2016-12-01", sindicato_id: 1, numero_cuenta: 69440002, cargas_familiar: nil, cotizacion_voluntaria: 0, descuento_isapre: 85000},
+  {nombre_personal: "Leandra", apellidop_personal: "Moreno", apellidom_personal: "Soto", rut_personal: "1000007-6", isapre_id: 3, banco_id: 1, subcategorium_id: 1, tipocontrato_id: 3, centrocosto_id: 1, afp_id: 1, personal_activo: true, fecha_ingreso: "2016-12-12", sindicato_id: 3, numero_cuenta: nil, cargas_familiar: nil, cotizacion_voluntaria: 50000, descuento_isapre: 100000},
+  {nombre_personal: "Tamara Soledad", apellidop_personal: "Cardenas", apellidom_personal: "Nitor", rut_personal: "18408461-9", isapre_id: 9, banco_id: 2, subcategorium_id: 2, tipocontrato_id: 3, centrocosto_id: 1, afp_id: 6, personal_activo: true, fecha_ingreso: "2016-11-13", sindicato_id: 3, numero_cuenta: nil, cargas_familiar: nil, cotizacion_voluntaria: 50000, descuento_isapre: 50000},
+  {nombre_personal: "Diego", apellidop_personal: "Bustamante", apellidom_personal: "Bustamante", rut_personal: "12539047-1", isapre_id: 2, banco_id: 12, subcategorium_id: 1, tipocontrato_id: 3, centrocosto_id: 1, afp_id: 6, personal_activo: true, fecha_ingreso: "2016-12-13", sindicato_id: 3, numero_cuenta: 12345678, cargas_familiar: 2, cotizacion_voluntaria: 0, descuento_isapre: 120000}
 ])
 Sindicato.create!([
   {nombre_sindicato: "Sindicato trabajadores N°1", cuota_sindical: 10000},
@@ -101,6 +124,10 @@ Tipocontrato.create!([
   {tipo_contrato: "Contrato indefinido"},
   {tipo_contrato: "Contrato por Obras"},
   {tipo_contrato: "Contrato a plazo anual"}
+])
+TopesLegale.create!([
+  {topeMaximo: 1957655, valor_uf: nil, cantidad_uf: 74.3, detalle: "Renta tope para afiliados a una Afp"},
+  {topeMaximo: 1317399, valor_uf: nil, cantidad_uf: 50.0, detalle: "Tope para APV"}
 ])
 User.create!([
   {nombre: "Diego Nicolas", apellido_paterno: "Gonzalez", apellido_materno: "Cuevas", email: "diegongc@ic.uach.cl", rut_usuario: "17694123-5", tipo_usuario: "Administrador", password_digest: "$2a$10$3cL5e2qD/3hCHZ.CJT/PYOKvFHTaOGlOV8hmGLJ887mCuR46f8sbm"},

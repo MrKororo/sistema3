@@ -1,0 +1,1 @@
+json.partial! "indicador_economicos/indicador_economico", indicador_economico: @indicador_economico

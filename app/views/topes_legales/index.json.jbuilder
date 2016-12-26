@@ -1,0 +1,1 @@
+json.array! @topes_legales, partial: 'topes_legales/topes_legale', as: :topes_legale

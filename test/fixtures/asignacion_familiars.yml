@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tramo: MyString
+  monto: 1
+  requisitoMinimo: 1
+  requisitoMaximo: 1
+
+two:
+  tramo: MyString
+  monto: 1
+  requisitoMinimo: 1
+  requisitoMaximo: 1

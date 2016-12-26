@@ -9,7 +9,9 @@ class LiquidacionsController < ApplicationController
       @liquidacions = Liquidacion.where(personal_id: current_user.id)
     end
   end
-
+def asd
+  @asd=Personal.uniq.pluck(:nombre_personal)
+end
   # GET /liquidacions/1
   # GET /liquidacions/1.json
   def show
@@ -81,6 +83,6 @@ class LiquidacionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def liquidacion_params
-      params.require(:liquidacion).permit(:asignacion_id, :habere_id, :bonificacion_id, :descuento_adicional_id, :personal_id, :fecha_pago, :porcentaje_afp, :descuento_afp, :descuento_isapre, :impuesto, :cotizacion_voluntaria, :horas_trabajadas, :remuneracion, :cantidad_horas_extra, :horas_extra, :vacaciones, :total_imponible, :sindicato, :total_haberes, :desc_legales, :desc_varios, :liquido_pagar)
+      params.require(:liquidacion).permit(:asignacion_id, :habere_id, :bonificacion_id, :descuento_adicional_id, :personal_id, :fecha_pago, :porcentaje_afp, :descuento_afp, :descuento_isapre, :impuesto, :cotizacion_voluntaria, :horas_trabajadas, :remuneracion, :cantidad_horas_extra, :horas_extra, :vacaciones, :total_imponible, :sindicato, :total_haberes, :desc_legales, :desc_varios, :liquido_pagar, :asignacion_familiar)
     end
 end

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  imponibleMinimo: 1.5
+  imponibleMaximo: 1.5
+  factor: 1.5
+  rebaja: 1.5
+  impuestoEfectivoMax: 1.5
+
+two:
+  imponibleMinimo: 1.5
+  imponibleMaximo: 1.5
+  factor: 1.5
+  rebaja: 1.5
+  impuestoEfectivoMax: 1.5

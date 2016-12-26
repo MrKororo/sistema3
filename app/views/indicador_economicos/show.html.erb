@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Indicador:</strong>
+  <%= @indicador_economico.indicador %>
+</p>
+
+<p>
+  <strong>Valor:</strong>
+  $<%= number_to_currency(@indicador_economico.valor,strip_insignificant_zeros: true, :unit => "") %>
+</p>
+
+<%= link_to 'Editar', edit_indicador_economico_path(@indicador_economico) %> |
+<%= link_to 'Volver', indicador_economicos_path %>

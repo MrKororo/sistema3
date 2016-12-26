@@ -39,6 +39,13 @@
     </p>
 
     <p>
+    
+      <strong>Asignacion familiar:</strong>
+      $<%= number_to_currency(@liquidacion.asignacion_familiar,strip_insignificant_zeros: true, :unit => "") %>
+    
+    </p>
+
+    <p>
     <%if @liquidacion.bonificacion.bono != nil%>
       <strong>Bonificacion:</strong>
       $<%= number_to_currency(@liquidacion.bonificacion.bono,strip_insignificant_zeros: true, :unit => "") %>

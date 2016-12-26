@@ -4,7 +4,6 @@ class LiquidacionPdf < Prawn::Document
 			@liquidacion = liquidacion
 			mes= Integer("#{@liquidacion.fecha_pago.strftime("%m")}")
 			text "Liquidacion de remuneraciones:\n #{(I18n.t :month_names, :scope =>:date)[mes]}" ,:align => :center
-			
 			empresa_data
 			text "\nDatos del trabajador: \n"
 			personal_data
@@ -31,22 +30,10 @@ class LiquidacionPdf < Prawn::Document
 	end
 
 	def tabla_haberes
-		if  @liquidacion.asignacion.asignacion==0 and @liquidacion.bonificacion.bono ==0 and @liquidacion.horas_extra == 0 and @liquidacion.vacaciones == 0.0
-	 		table [["Haberes"],["Item","Detalle"],["Remuneracion #{@liquidacion.horas_trabajadas} horas", "$#{@liquidacion.remuneracion}"]], :width => 250
-	 	elsif @liquidacion.bonificacion.bono ==0 and @liquidacion.horas_extra == 0 and @liquidacion.vacaciones == 0.0
-			table [["Haberes"],["Item","Detalle"],["Remuneracion #{@liquidacion.horas_trabajadas} horas", "$#{@liquidacion.remuneracion}"],["Asignacion","$#{@liquidacion.
-	 		asignacion.asignacion}"]], :width=> 250
-	 	elsif @liquidacion.horas_extra == 0 and @liquidacion.vacaciones == 0.0
-			table [["Haberes"],["Item","Detalle"],["Remuneracion #{@liquidacion.horas_trabajadas} horas", "$#{@liquidacion.remuneracion}"],["Asignacion","$#{@liquidacion.
-	 		asignacion.asignacion}"],["Bonificacion","$#{@liquidacion.bonificacion.bono}"]],:width=>250
-	 	elsif @liquidacion.vacaciones == 0.0
-	 		table [["Haberes"],["Item","Detalle"],["Remuneracion #{@liquidacion.horas_trabajadas} horas", "$#{@liquidacion.remuneracion}"],["Asignacion","$#{@liquidacion.
-	 		asignacion.asignacion}"],["Bonificacion","$#{@liquidacion.bonificacion.bono}"],["Horas Extra","$#{@liquidacion.horas_extra}"]],:width=>250
-	 	else
 			table [["Haberes"],["Item","Detalle"],["Remuneracion #{@liquidacion.horas_trabajadas} horas", "$#{@liquidacion.remuneracion}"],["Asignacion","$#{@liquidacion.
 	 		asignacion.asignacion}"],["Bonificacion","$#{@liquidacion.bonificacion.bono}"],["Horas Extra","$#{@liquidacion.horas_extra}"],
 	 		["Vacaciones","$#{@liquidacion.vacaciones}"]], :width => 250
-	 	end
+
 	end
 	 
 	 def tabla_descuentos

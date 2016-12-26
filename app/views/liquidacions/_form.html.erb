@@ -21,7 +21,7 @@
   <div class="large-4 columns">
     <div class="field">
       <%= f.label :"Subcategoria" %><br>
-      <%= grouped_collection_select(nil, :subcategorium_id, Categorium.order(:categoria), :subcategorium, :categoria, :id, :subcategoria, include_blank: :true) %>
+      <%= grouped_collection_select(nil, :subcategorium_id, Categorium.order(:categoria), :subcategorium, :categoria, :id, :subcategoria, {include_blank: :true}) %>
     </div>
   </div>
   <div class="large-4 columns">
@@ -70,25 +70,29 @@
 <hr>
 
 <div class="row">
-  <div class="large-4 columns">
+  <div class="large-6 columns">
     <div class="field">
       <%= f.label :asignacion_id %><br>
       <%= grouped_collection_select(:liquidacion, :asignacion_id, Subcategorium.order(:subcategoria), :asignacion, :subcategoria, :id, :asignacion, {include_blank: :true}) %>
     </div>
   </div>
-  <div class="large-4 columns">
+  <div class="large-6 columns">
     <div class="field">
       <%= f.label :bonificacion_id %><br>
   <!--     <%= grouped_collection_select(:liquidacion, :bonificacion_id, Subcategorium.order(:subcategoria), :bonificacion, :subcategoria, :id, :bono, {},{:multiple => true ,include_blank: :true}) %> -->
       <%= grouped_collection_select(:liquidacion, :bonificacion_id, Subcategorium.order(:subcategoria), :bonificacion, :subcategoria, :id, :bono, include_blank: :true) %>
     </div>
   </div>
-  <div class="large-4 columns">
+</div>
+<div class="row">  
+  <div class="large-6 columns">
     <div class="field">
       <%= f.label :vacaciones %><br>
       <%= f.text_field :vacaciones %>
     </div>
   </div>
+</div>
+<div class="row">  
   <div class="large-6 columns">
     <div class="field">
       <%= f.label :total_imponible %><br>
@@ -100,9 +104,57 @@
       <%= f.label :total_haberes %><br>
       <%= f.number_field :total_haberes, :readonly => true %>
     </div>
+     
+  </div>
+</div>
+<div class="row">  
+  <div class="large-12 columns">
+   <%= submit_tag "Calcular totales de haberes", type: 'button', id: 'calculoHaberes' %> 
   </div>
 </div>
 <hr>
+
+<div class="row">
+  <div class="large-3 columns">
+  <%= hidden_field_tag "monto1", AsignacionFamiliar.where(id: 1).limit(1).pluck(:monto) %>
+  <%= hidden_field_tag "monto2", AsignacionFamiliar.where(id: 2).limit(1).pluck(:monto) %>
+  <%= hidden_field_tag "monto3", AsignacionFamiliar.where(id: 3).limit(1).pluck(:monto) %>
+  <%= hidden_field_tag "monto4", AsignacionFamiliar.where(id: 4).limit(1).pluck(:monto) %>
+  </div>
+  <div class="large-3 columns">
+  <%= hidden_field_tag "asignacion1", AsignacionFamiliar.where(id: 1).limit(1).pluck(:requisitoMaximo) %>
+  <%= hidden_field_tag "asignacion2", AsignacionFamiliar.where(id: 2).limit(1).pluck(:requisitoMaximo) %>
+  <%= hidden_field_tag "asignacion3", AsignacionFamiliar.where(id: 3).limit(1).pluck(:requisitoMaximo) %>
+  <%= hidden_field_tag "topeslegales1", TopesLegale.where(id: 1).limit(1).pluck(:topemaximo) %>
+  </div>
+  <div class="large-3 columns">
+  <%= hidden_field_tag "impuesto1", ImpuestoUnico.where(id: 1).limit(1).pluck(:imponibleMaximo) %>
+  <%= hidden_field_tag "impuesto2", ImpuestoUnico.where(id: 2).limit(1).pluck(:imponibleMaximo) %>
+  <%= hidden_field_tag "impuesto3", ImpuestoUnico.where(id: 3).limit(1).pluck(:imponibleMaximo) %>
+  <%= hidden_field_tag "impuesto4", ImpuestoUnico.where(id: 4).limit(1).pluck(:imponibleMaximo) %>
+  <%= hidden_field_tag "impuesto5", ImpuestoUnico.where(id: 5).limit(1).pluck(:imponibleMaximo) %>
+  <%= hidden_field_tag "impuesto6", ImpuestoUnico.where(id: 6).limit(1).pluck(:imponibleMaximo) %>
+  <%= hidden_field_tag "impuesto7", ImpuestoUnico.where(id: 7).limit(1).pluck(:imponibleMaximo) %>
+  </div>
+  <div class="large-3 columns">
+  <%= hidden_field_tag "factor2", ImpuestoUnico.where(id: 2).limit(1).pluck(:factor) %>
+  <%= hidden_field_tag "factor3", ImpuestoUnico.where(id: 3).limit(1).pluck(:factor) %>
+  <%= hidden_field_tag "factor4", ImpuestoUnico.where(id: 4).limit(1).pluck(:factor) %>
+  <%= hidden_field_tag "factor5", ImpuestoUnico.where(id: 5).limit(1).pluck(:factor) %>
+  <%= hidden_field_tag "factor6", ImpuestoUnico.where(id: 6).limit(1).pluck(:factor) %>
+  <%= hidden_field_tag "factor7", ImpuestoUnico.where(id: 7).limit(1).pluck(:factor) %>
+  <%= hidden_field_tag "factor8", ImpuestoUnico.where(id: 8).limit(1).pluck(:factor) %>
+  </div>
+    <div class="large-3 columns">
+  <%= hidden_field_tag "rebaja2", ImpuestoUnico.where(id: 2).limit(1).pluck(:rebaja) %>
+  <%= hidden_field_tag "rebaja3", ImpuestoUnico.where(id: 3).limit(1).pluck(:rebaja) %>
+  <%= hidden_field_tag "rebaja4", ImpuestoUnico.where(id: 4).limit(1).pluck(:rebaja) %>
+  <%= hidden_field_tag "rebaja5", ImpuestoUnico.where(id: 5).limit(1).pluck(:rebaja) %>
+  <%= hidden_field_tag "rebaja6", ImpuestoUnico.where(id: 6).limit(1).pluck(:rebaja) %>
+  <%= hidden_field_tag "rebaja7", ImpuestoUnico.where(id: 7).limit(1).pluck(:rebaja) %>
+  <%= hidden_field_tag "rebaja8", ImpuestoUnico.where(id: 8).limit(1).pluck(:rebaja) %>
+  </div>
+</div>
 
 <div class="row">
   <div class="large-6 columns">
@@ -134,7 +186,20 @@
     </div>
   </div>
 </div>  
- 
+ <div class="row">
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :"Numero de cargas" %><br>
+      <%= text_field_tag "numeroCargas" %>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :asignacion_familiar %><br>
+      <%= f.text_field :asignacion_familiar, :readonly => true %>
+    </div>
+  </div>
+</div>
 <div class="row">
   <div class="large-4 columns">
     <div class="field">
@@ -146,6 +211,7 @@
     <div class="field">
       <%= f.label :impuesto %><br>
       <%= f.text_field :impuesto %>
+      <%= submit_tag "Calcular Impuesto", type: 'button', id: 'impuesto' %> 
     </div>
   </div>
   <div class="large-4 columns">
@@ -173,15 +239,19 @@
     <div class="field">
       <%= f.label :liquido_pagar %><br>
       <%= f.number_field :liquido_pagar, :readonly => true %>
-      <%= submit_tag "Calcular", type: 'button', id: 'coffeeScript' %> 
     </div>
   </div>  
 </div> 
+<div class="row">  
+  <div class="large-12 columns">
+   <%= submit_tag "Calcular liquido a pagar", type: 'button', id: 'coffeeScript' %> 
+  </div>
+</div>
 <hr>
 
   <div class="field">
     <%= f.label :fecha_pago %><br>
-    <%= f.date_select :fecha_pago,{ start_year: DateTime.now.year, end_year: DateTime.now.year - 10, order: [:day, :month, :year], include_blank: true},:style => "width: 221px;"%>
+    <%= f.date_select :fecha_pago,{ start_year: DateTime.now.year+1, end_year: DateTime.now.year - 10, order: [:day, :month, :year], include_blank: true},:style => "width: 221px;"%>
   </div>
   
 

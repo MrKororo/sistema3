@@ -1,10 +1,11 @@
 class Empresa < ActiveRecord::Base
-	validates_presence_of :nombre_empresa, :rut_empresa, :giro, :email, :telefono
+	validates_presence_of :nombre_empresa, uniqueness: true
+	validates_presence_of :rut_empresa, :giro, :email, :telefono
 
 	has_attached_file :image, :path => "/home/diego/sistema3/app/assets/images/:class/:basename"
 	validates_attachment :image, content_type: { content_type: ["image/jpeg"] }
 
-before_save :basename
+	before_save :basename
 
 
 

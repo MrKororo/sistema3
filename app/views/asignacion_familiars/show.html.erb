@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tramo:</strong>
+  <%= @asignacion_familiar.tramo %>
+</p>
+
+<p>
+  <strong>Monto:</strong>
+  $<%= number_to_currency(@asignacion_familiar.monto,strip_insignificant_zeros: true, :unit => "") %>
+</p>
+
+<p>
+  <strong>Requisito minimo:</strong>
+ $<%= number_to_currency(@asignacion_familiar.requisitoMinimo,strip_insignificant_zeros: true, :unit => "") %>
+</p>
+
+<p>
+  <strong>Requisito maximo:</strong>
+  $<%= number_to_currency(@asignacion_familiar.requisitoMaximo,strip_insignificant_zeros: true, :unit => "") %>
+</p>
+
+<%= link_to 'Editar', edit_asignacion_familiar_path(@asignacion_familiar) %> |
+<%= link_to 'Volver', asignacion_familiars_path %>

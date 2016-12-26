@@ -17,6 +17,20 @@
   </p>
 
   <p>
+    <strong>Descuento Isapre:</strong>
+    $<%= number_to_currency(@personal.descuento_isapre,strip_insignificant_zeros: true, :unit => "") %>
+  </p>  
+
+  <p>
+    <strong>APV:</strong>
+    $<%= number_to_currency(@personal.cotizacion_voluntaria,strip_insignificant_zeros: true, :unit => "")%>
+  </p>  
+
+  <p>
+    <strong>Cargas Familiares:</strong>
+    <%= @personal.cargas_familiar %>
+  </p>
+  <p>
     <strong>Banco:</strong>
     <%= @personal.banco.banco %>
   </p>

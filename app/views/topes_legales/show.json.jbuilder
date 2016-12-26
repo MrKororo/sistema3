@@ -1,0 +1,1 @@
+json.partial! "topes_legales/topes_legale", topes_legale: @topes_legale

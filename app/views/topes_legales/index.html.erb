@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listando Tope Legal</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Detalle</th>
+      <th>Cantidad en UF</th>
+      <th>Tope maximo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @topes_legales.each do |topes_legale| %>
+      <tr>
+        <td><%= topes_legale.detalle%></td>
+        <td><%= topes_legale.cantidad_uf%></td>
+        <td>$<%= number_to_currency(topes_legale.topeMaximo,strip_insignificant_zeros: true, :unit => "") %></td>
+        <td><%= link_to 'Ver', topes_legale %></td>
+        <td><%= link_to 'Editar', edit_topes_legale_path(topes_legale) %></td>
+        <td><%= link_to 'Eliminar', topes_legale, method: :delete, data: { confirm: '¿Esta seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Tope legal', new_topes_legale_path %>

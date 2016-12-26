@@ -11,13 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161216014542) do
+ActiveRecord::Schema.define(version: 20161223162935) do
 
   create_table "afps", force: :cascade do |t|
     t.string   "afp",           limit: 255
     t.float    "descuento_afp", limit: 24
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "asignacion_familiars", force: :cascade do |t|
+    t.string   "tramo",           limit: 255
+    t.integer  "monto",           limit: 4
+    t.integer  "requisitoMinimo", limit: 4
+    t.integer  "requisitoMaximo", limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "asignacions", force: :cascade do |t|
@@ -105,6 +114,23 @@ ActiveRecord::Schema.define(version: 20161216014542) do
 
   add_index "haberes", ["subcategorium_id"], name: "index_haberes_on_subcategorium_id", using: :btree
 
+  create_table "impuesto_unicos", force: :cascade do |t|
+    t.decimal  "imponibleMinimo",     precision: 9,  scale: 2
+    t.decimal  "imponibleMaximo",     precision: 11, scale: 2
+    t.decimal  "factor",              precision: 4,  scale: 3
+    t.decimal  "rebaja",              precision: 9,  scale: 2
+    t.decimal  "impuestoEfectivoMax", precision: 4,  scale: 2
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+  end
+
+  create_table "indicador_economicos", force: :cascade do |t|
+    t.string   "indicador",  limit: 255
+    t.decimal  "valor",                  precision: 7, scale: 2
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+  end
+
   create_table "isapres", force: :cascade do |t|
     t.string   "isapre",     limit: 255
     t.datetime "created_at",             null: false
@@ -136,6 +162,7 @@ ActiveRecord::Schema.define(version: 20161216014542) do
     t.integer  "liquido_pagar",          limit: 4
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
+    t.integer  "asignacion_familiar",    limit: 4
   end
 
   add_index "liquidacions", ["asignacion_id"], name: "index_liquidacions_on_asignacion_id", using: :btree
@@ -145,22 +172,25 @@ ActiveRecord::Schema.define(version: 20161216014542) do
   add_index "liquidacions", ["personal_id"], name: "index_liquidacions_on_personal_id", using: :btree
 
   create_table "personals", force: :cascade do |t|
-    t.string   "nombre_personal",    limit: 255
-    t.string   "apellidop_personal", limit: 255
-    t.string   "apellidom_personal", limit: 255
-    t.string   "rut_personal",       limit: 255
-    t.integer  "isapre_id",          limit: 4
-    t.integer  "banco_id",           limit: 4
-    t.integer  "subcategorium_id",   limit: 4
-    t.integer  "tipocontrato_id",    limit: 4
-    t.integer  "centrocosto_id",     limit: 4
-    t.integer  "afp_id",             limit: 4
+    t.string   "nombre_personal",       limit: 255
+    t.string   "apellidop_personal",    limit: 255
+    t.string   "apellidom_personal",    limit: 255
+    t.string   "rut_personal",          limit: 255
+    t.integer  "isapre_id",             limit: 4
+    t.integer  "banco_id",              limit: 4
+    t.integer  "subcategorium_id",      limit: 4
+    t.integer  "tipocontrato_id",       limit: 4
+    t.integer  "centrocosto_id",        limit: 4
+    t.integer  "afp_id",                limit: 4
     t.boolean  "personal_activo"
     t.date     "fecha_ingreso"
-    t.integer  "sindicato_id",       limit: 4
-    t.integer  "numero_cuenta",      limit: 4
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "sindicato_id",          limit: 4
+    t.integer  "numero_cuenta",         limit: 4
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "cargas_familiar",       limit: 4
+    t.integer  "cotizacion_voluntaria", limit: 4
+    t.integer  "descuento_isapre",      limit: 4
   end
 
   add_index "personals", ["afp_id"], name: "index_personals_on_afp_id", using: :btree
@@ -191,6 +221,15 @@ ActiveRecord::Schema.define(version: 20161216014542) do
     t.string   "tipo_contrato", limit: 255
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "topes_legales", force: :cascade do |t|
+    t.integer  "topeMaximo",  limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "valor_uf",    limit: 4
+    t.float    "cantidad_uf", limit: 24
+    t.string   "detalle",     limit: 255
   end
 
   create_table "users", force: :cascade do |t|

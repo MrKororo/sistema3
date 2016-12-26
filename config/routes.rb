@@ -1,13 +1,6 @@
 Rails.application.routes.draw do
   
-
-  resources :liquidacions
-  resources :users
-  resources :personals
-  resources :sindicatos
-  resources :afps
-
-  resources :certificates
+  resources :impuesto_unicos
   resources :sessions, only: [:new, :create, :destroy]
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
@@ -28,6 +21,15 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :certificates
+  resources :asignacion_familiars
+  resources :topes_legales
+  resources :indicador_economicos
+  resources :liquidacions
+  resources :users
+  resources :personals
+  resources :sindicatos
+  resources :afps
   resources :liquidacions  
   resources :haberes
   resources :empresas

@@ -1,0 +1,2 @@
+module TopesLegalesHelper
+end

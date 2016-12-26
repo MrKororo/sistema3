@@ -1,0 +1,11 @@
+I"S(function() {
+  $('#indicador_economico_valor_uf').change(function() {
+    var cantidadUF, resultado, valorUF;
+    valorUF = $('#indicador_economico_valor_uf').val();
+    cantidadUF = $('#topes_legale_cantidad_uf').val();
+    resultado = valorUF + cantidadUF;
+    return $('#topes_legale_topeMaximo').val(resultado);
+  });
+
+}).call(this);
+:ET

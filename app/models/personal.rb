@@ -10,8 +10,9 @@ class Personal < ActiveRecord::Base
 
 validates :rut_personal, rut: true, uniqueness: true
 
-validates_presence_of :nombre_personal, :apellidop_personal, :apellidom_personal, :rut_personal, :isapre_id, :banco_id, :subcategorium_id,
-						:tipocontrato_id, :centrocosto_id, :afp_id
+validates_presence_of :nombre_personal, :apellidop_personal, :apellidom_personal, :isapre_id, :banco_id, :subcategorium_id,
+						:tipocontrato_id, :centrocosto_id, :afp_id, :fecha_ingreso, :sindicato, :cargas_familiar, :cotizacion_voluntaria,
+            :descuento_isapre
 
 searchable do
 	text :nombre_personal, :apellidop_personal, :apellidom_personal, :rut_personal

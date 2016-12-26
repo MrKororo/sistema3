@@ -1,0 +1,1 @@
+json.array! @impuesto_unicos, partial: 'impuesto_unicos/impuesto_unico', as: :impuesto_unico

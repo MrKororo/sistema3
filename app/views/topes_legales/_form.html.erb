@@ -1,0 +1,33 @@
+<%= form_for(@topes_legale) do |f| %>
+  <% if @topes_legale.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@topes_legale.errors.count, "error") %> prohibited this topes_legale from being saved:</h2>
+
+      <ul>
+      <% @topes_legale.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :detalle %><br>
+    <%= f.text_field :detalle %>
+  </div>
+  <div class="field">
+    <%= f.label :valor_uf %><br>
+    <%= collection_select(:indicador_economico, :valor_uf, IndicadorEconomico.all, :valor, :valor)%>
+  </div>
+  <div class="field">
+    <%= f.label :cantidad_uf %><br>
+    <%= f.text_field :cantidad_uf %>
+  </div>
+  <div class="field">
+    <%= f.label :"Tope maximo" %><br>
+    <%= f.number_field :topeMaximo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

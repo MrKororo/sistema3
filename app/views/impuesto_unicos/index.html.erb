@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listando Impuesto Unico</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Imponible minimo</th>
+      <th>Imponible maximo</th>
+      <th>Factor</th>
+      <th>Rebaja</th>
+      <th>Max. Impuesto Efectiva</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @impuesto_unicos.each do |impuesto_unico| %>
+      <tr>
+        <td>$<%= number_to_currency(impuesto_unico.imponibleMinimo, :unit => "") %></td>
+        <td>$<%= number_to_currency(impuesto_unico.imponibleMaximo,:unit => "") %></td>
+        <td><%= impuesto_unico.factor %></td>
+        <td>$<%= number_to_currency(impuesto_unico.rebaja, :unit => "") %></td>
+        <td><%= impuesto_unico.impuestoEfectivoMax %>%</td>
+        <td><%= link_to 'Ver', impuesto_unico %></td>
+        <td><%= link_to 'Editar', edit_impuesto_unico_path(impuesto_unico) %></td>
+        <td><%= link_to 'Eliminar', impuesto_unico, method: :delete, data: { confirm: '¿Esta seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Impuesto unico', new_impuesto_unico_path %>

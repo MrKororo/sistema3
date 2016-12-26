@@ -1,0 +1,37 @@
+<%= form_for(@impuesto_unico) do |f| %>
+  <% if @impuesto_unico.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@impuesto_unico.errors.count, "error") %> prohibited this impuesto_unico from being saved:</h2>
+
+      <ul>
+      <% @impuesto_unico.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :"Imponible Minimo "%><br>
+    <%= f.text_field :imponibleMinimo %>
+  </div>
+  <div class="field">
+    <%= f.label :"Imponible maximo" %><br>
+    <%= f.text_field :imponibleMaximo %>
+  </div>
+  <div class="field">
+    <%= f.label :factor %><br>
+    <%= f.text_field :factor %>
+  </div>
+  <div class="field">
+    <%= f.label :rebaja %><br>
+    <%= f.text_field :rebaja %>
+  </div>
+  <div class="field">
+    <%= f.label :"Maximo Impuesto Efectiva" %><br>
+    <%= f.text_field :impuestoEfectivoMax %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

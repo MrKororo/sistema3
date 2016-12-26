@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cantidad de UF:</strong>
+  <%= @topes_legale.cantidad_uf%>
+</p>
+
+<p>
+  <strong>Topemaximo:</strong>
+  $<%= number_to_currency(@topes_legale.topeMaximo,strip_insignificant_zeros: true, :unit => "") %>
+</p>
+
+<%= link_to 'Editar', edit_topes_legale_path(@topes_legale) %> |
+<%= link_to 'Volver', topes_legales_path %>

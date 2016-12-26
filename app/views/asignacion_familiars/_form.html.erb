@@ -1,0 +1,46 @@
+<%= form_for(@asignacion_familiar) do |f| %>
+  <% if @asignacion_familiar.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@asignacion_familiar.errors.count, "error") %> prohibited this asignacion_familiar from being saved:</h2>
+
+      <ul>
+      <% @asignacion_familiar.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="row">
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :tramo %><br>
+      <%= f.text_field :tramo %>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :monto %><br>
+      <%= f.number_field :monto %>
+    </div>
+  </div>
+</div>  
+
+<div class="row">
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :"Requisito minimo" %><br>
+      <%= f.number_field :requisitoMinimo %>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :"Requisito maximo" %><br>
+      <%= f.number_field :requisitoMaximo %>
+    </div>
+  </div>
+</div>    
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,1 @@
+json.partial! "asignacion_familiars/asignacion_familiar", asignacion_familiar: @asignacion_familiar

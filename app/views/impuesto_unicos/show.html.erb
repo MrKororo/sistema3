@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Imponible minimo:</strong>
+  <%= @impuesto_unico.imponibleMinimo %>
+</p>
+
+<p>
+  <strong>Imponible maximo:</strong>
+  <%= @impuesto_unico.imponibleMaximo %>
+</p>
+
+<p>
+  <strong>Factor:</strong>
+  <%= @impuesto_unico.factor %>
+</p>
+
+<p>
+  <strong>Rebaja:</strong>
+  <%= @impuesto_unico.rebaja %>
+</p>
+
+<p>
+  <strong>Max. Impuesto Efectiva:</strong>
+  <%= @impuesto_unico.impuestoEfectivoMax %>
+</p>
+
+<%= link_to 'Editar', edit_impuesto_unico_path(@impuesto_unico) %> |
+<%= link_to 'Volver', impuesto_unicos_path %>

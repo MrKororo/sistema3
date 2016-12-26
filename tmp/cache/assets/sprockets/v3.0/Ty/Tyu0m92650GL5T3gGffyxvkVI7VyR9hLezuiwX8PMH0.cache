@@ -1,0 +1,91 @@
+I"Ÿ(function() {
+  jQuery(function() {
+    var asignacions, bonificacions, haberes, personals, subcategorias;
+    $('#_subcategorium_id').prop("disabled", true);
+    $('#liquidacion_personal_id').prop("disabled", true);
+    $('#liquidacion_habere_id').prop("disabled", true);
+    $('#liquidacion_horas_trabajadas').prop("disabled", true);
+    $('#liquidacion_cantidad_horas_extra').prop("disabled", true);
+    subcategorias = $('#_subcategorium_id').html();
+    $('#_categorium_id').change(function() {
+      var categoria, options;
+      categoria = $('#_categorium_id :selected').text();
+      options = $(subcategorias).filter("optgroup[label='" + categoria + "']").html();
+      if (options) {
+        $('#_subcategorium_id').parent().show();
+        $('#_subcategorium_id').html(options);
+        $('#_subcategorium_id').prop("disabled", false);
+        $('#liquidacion_personal_id').prop("disabled", false);
+        $('#liquidacion_habere_id').prop("disabled", false);
+        $('#liquidacion_horas_trabajadas').prop("disabled", false);
+        return $('#liquidacion_cantidad_horas_extra').prop("disabled", false);
+      } else {
+        $('#_subcategorium_id').empty();
+        $('#liquidacion_personal_id').empty();
+        $('#liquidacion_habere_id').empty();
+        $('#_subcategorium_id').prop("disabled", true);
+        $('#liquidacion_personal_id').prop("disabled", true);
+        $('#liquidacion_habere_id').prop("disabled", true);
+        $('#liquidacion_horas_trabajadas').prop("disabled", true);
+        return $('#liquidacion_cantidad_horas_extra').prop("disabled", true);
+      }
+    });
+    personals = $('#liquidacion_personal_id').html();
+    $('#_subcategorium_id').change(function() {
+      var options, subcategoria;
+      subcategoria = $('#_subcategorium_id :selected').text();
+      options = $(personals).filter("optgroup[label='" + subcategoria + "']").html();
+      if (options) {
+        $('#liquidacion_personal_id').parent().show();
+        return $('#liquidacion_personal_id').html(options);
+      } else {
+        return $('#liquidacion_personal_id').empty();
+      }
+    });
+    haberes = $('#liquidacion_habere_id').html();
+    $('#_subcategorium_id').change(function() {
+      var asignacion, options2;
+      asignacion = $('#_subcategorium_id :selected').text();
+      options2 = $(haberes).filter("optgroup[label='" + asignacion + "']").html();
+      if (options2) {
+        $('#liquidacion_habere_id').parent().show();
+        return $('#liquidacion_habere_id').html(options2);
+      } else {
+        return $('#liquidacion_habere_id').empty();
+      }
+    });
+    $('#liquidacion_horas_trabajadas').keyup(function() {
+      var hora, sueldo, total;
+      sueldo = parseInt($('#liquidacion_habere_id option:selected').text());
+      hora = $('#liquidacion_horas_trabajadas').val();
+      total = Math.round(sueldo * hora);
+      return $('#liquidacion_remuneracion').val(total);
+    });
+    asignacions = $('#liquidacion_asignacion_id').html();
+    $('#_subcategorium_id').change(function() {
+      var asignacion, options3;
+      asignacion = $('#_subcategorium_id :selected').text();
+      options3 = $(asignacions).filter("optgroup[label='" + asignacion + "']").html();
+      if (options3) {
+        $('#liquidacion_asignacion_id').parent().show();
+        return $('#liquidacion_asignacion_id').html(options3);
+      } else {
+        return $('#liquidacion_asignacion_id').empty();
+      }
+    });
+    bonificacions = $('#liquidacion_bonificacion_id').html();
+    return $('#_subcategorium_id').change(function() {
+      var asignacion, options4;
+      asignacion = $('#_subcategorium_id :selected').text();
+      options4 = $(bonificacions).filter("optgroup[label='" + asignacion + "']").html();
+      if (options4) {
+        $('#liquidacion_bonificacion_id').parent().show();
+        return $('#liquidacion_bonificacion_id').html(options4);
+      } else {
+        return $('#liquidacion_bonificacion_id').empty();
+      }
+    });
+  });
+
+}).call(this);
+:ET

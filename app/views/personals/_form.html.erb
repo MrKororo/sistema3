@@ -33,12 +33,26 @@
       <%= f.text_field :apellidom_personal %>
     </div>
   </div>
-  <div class="large-12 columns">
+</div>  
+<div class="row">  
+  <div class="large-4 columns">
     <div class="field">
       <%= f.label :rut_personal %><br>
       <%= f.text_field :rut_personal %>
     </div>
   </div>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :cotizacion_voluntaria %><br>
+      <%= f.text_field :cotizacion_voluntaria %>
+    </div>
+  </div>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :descuento_isapre %><br>
+      <%= f.text_field :descuento_isapre %>
+    </div>
+  </div>  
   <div class="large-6 columns">
     <div class="field">
       <%= f.label :banco_id %><br>
@@ -58,18 +72,24 @@
   <div class="row column text-center">
     <h5>Datos obligatorios</h5>
   </div>
-  <div class="large-6 columns">
+  <div class="large-4 columns">
     <div class="field">
       <%= f.label :isapre_id %><br>
       <%= collection_select(:personal, :isapre_id, Isapre.all, :id, :isapre, {:prompt => 'Seleccione isapre'}) %>
     </div>
   </div>
-  <div class="large-6 columns">
+  <div class="large-4 columns">
     <div class="field">
       <%= f.label :afp_id %><br>
       <%= collection_select(:personal, :afp_id, Afp.all, :id, :afp, {:prompt => 'Seleccione afp'}) %>
     </div>
   </div>
+  <div class="large-4 columns">
+    <div class="field">
+      <%= f.label :cargas_familiar %><br>
+      <%= f.number_field :cargas_familiar%>
+    </div>
+  </div>  
 </div>
 <hr>
 
