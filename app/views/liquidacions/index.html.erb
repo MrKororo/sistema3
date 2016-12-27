@@ -27,7 +27,7 @@
         <td><%= liquidacion.horas_trabajadas %></td>
         <td>$<%= number_to_currency(liquidacion.liquido_pagar,strip_insignificant_zeros: true, :unit => "" )%></td>
         <td><%= link_to 'Ver', liquidacion %></td>
-        <%if current_user%>
+        <%if current_user.tipo_usuario=="Administrador"%>
         <td><%= link_to 'Editar', edit_liquidacion_path(liquidacion) %></td>
         <td><%= link_to 'Eliminar', liquidacion, method: :delete, data: { confirm: '¿Esta seguro?' } %></td>
         <% end %>
@@ -37,6 +37,6 @@
 </table>
 
 <br>
-<%if current_user%>
+<%if current_user.tipo_usuario=="Administrador"%>
 <%= link_to 'Nueva Liquidacion', new_liquidacion_path %>
 <%end%>

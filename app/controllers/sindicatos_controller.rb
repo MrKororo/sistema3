@@ -1,4 +1,5 @@
 class SindicatosController < ApplicationController
+  before_action :authorize
   before_action :set_sindicato, only: [:show, :edit, :update, :destroy]
 
   # GET /sindicatos

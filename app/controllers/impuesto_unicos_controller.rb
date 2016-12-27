@@ -1,4 +1,5 @@
 class ImpuestoUnicosController < ApplicationController
+  before_action :authorize
   before_action :set_impuesto_unico, only: [:show, :edit, :update, :destroy]
 
   # GET /impuesto_unicos

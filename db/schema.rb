@@ -105,11 +105,11 @@ ActiveRecord::Schema.define(version: 20161223162935) do
 
   create_table "haberes", force: :cascade do |t|
     t.integer  "sueldo_base",      limit: 4
-    t.integer  "horas_pactadas",   limit: 4
-    t.integer  "valor_hora",       limit: 4
+    t.float    "horas_pactadas",   limit: 24
+    t.float    "valor_hora",       limit: 24
     t.integer  "subcategorium_id", limit: 4
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "haberes", ["subcategorium_id"], name: "index_haberes_on_subcategorium_id", using: :btree
@@ -224,6 +224,7 @@ ActiveRecord::Schema.define(version: 20161223162935) do
   end
 
   create_table "topes_legales", force: :cascade do |t|
+    t.integer  "topeMinimo",  limit: 4
     t.integer  "topeMaximo",  limit: 4
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false

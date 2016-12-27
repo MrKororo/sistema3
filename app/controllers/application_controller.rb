@@ -29,8 +29,8 @@ def default_url_options(options = {})
   helper_method :lastCategories
 
   def authorize
-    if current_user.nil?
-      redirect_to login_url, alert: "No esta autorizado para ver esto. Por favor ingrese al sistema."
+    if current_user.nil? || current_user.tipo_usuario == "Empleado"
+      redirect_to login_url, alert: "No esta autorizado para ver esto. Por favor ingrese al sistema o reingrese como administrador."
     end
   end
   helper_method :authorize

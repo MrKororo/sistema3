@@ -137,7 +137,7 @@
 <%= link_to "Liquidacion en pdf", liquidacion_path(@liquidacion, format: "pdf")%>
 </p>
 
-<%if current_user%>
+<%if current_user.tipo_usuario=="Administrador"%>
 <%= link_to 'Editar', edit_liquidacion_path(@liquidacion) %>|
 <%end%>
 <%= link_to 'Volver', liquidacions_path %>

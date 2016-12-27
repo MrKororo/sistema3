@@ -1,4 +1,5 @@
 class IndicadorEconomicosController < ApplicationController
+  before_action :authorize
   before_action :set_indicador_economico, only: [:show, :edit, :update, :destroy]
 
   # GET /indicador_economicos

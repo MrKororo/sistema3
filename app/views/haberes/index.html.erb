@@ -20,8 +20,8 @@
         <td><%= habere.subcategorium.categorium.categoria %></td>
         <td><%= habere.subcategorium.subcategoria %></td>
         <td>$<%=number_to_currency(habere.sueldo_base,strip_insignificant_zeros: true, :unit => "")%></td>
-        <td><%= habere.horas_pactadas %></td>
-        <td>$ <%= habere.valor_hora %></td>
+        <td><%= number_to_currency(habere.horas_pactadas,strip_insignificant_zeros: true, :unit => "") %></td>
+        <td>$ <%= number_to_currency(habere.valor_hora,strip_insignificant_zeros: true, :unit => "") %></td>
         <td><%= link_to 'Ver', habere %></td>
         <td><%= link_to 'Editar', edit_habere_path(habere) %></td>
         <td><%= link_to 'Eliminar', habere, method: :delete, data: { confirm: '¿Esta seguro?' } %></td>

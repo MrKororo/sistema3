@@ -1,4 +1,5 @@
 class TopesLegalesController < ApplicationController
+  before_action :authorize
   before_action :set_topes_legale, only: [:show, :edit, :update, :destroy]
 
   # GET /topes_legales

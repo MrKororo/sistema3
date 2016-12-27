@@ -118,10 +118,10 @@ jQuery ->
 #fin del bloque	
 
 #cargas familiares
-	$('#numeroCargas').keyup ->
+	$('#_cargas_familiar').change ->
 		imponible = parseInt($('#liquidacion_total_imponible').val())
 		haberes = parseInt($('#liquidacion_total_haberes').val())
-		num =parseInt($('#numeroCargas').val())
+		num =parseInt($('#_cargas_familiar option:selected').val())
 		asig1=parseInt($('#asignacion1').val())
 		asig2= parseInt($('#asignacion2').val())
 		asig3= parseInt($('#asignacion3').val())
@@ -186,8 +186,8 @@ jQuery ->
 
 	$('#coffeeScript').click ->
 		afp= parseInt($('#liquidacion_descuento_afp').val())
-		isapre = parseInt($('#liquidacion_descuento_isapre').val())
-		apv= parseInt($('#liquidacion_cotizacion_voluntaria').val())
+		isapre = parseInt($('#liquidacion_descuento_isapre option:selected').val())
+		apv= parseInt($('#liquidacion_cotizacion_voluntaria option:selected').val())
 		asgFam= parseInt($('#liquidacion_asignacion_familiar').val())
 		sindicato = parseInt($('#liquidacion_sindicato option:selected').val())
 		imp= parseInt($('#liquidacion_impuesto').val())

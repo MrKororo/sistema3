@@ -1,4 +1,5 @@
 class AsignacionFamiliarsController < ApplicationController
+  before_action :authorize
   before_action :set_asignacion_familiar, only: [:show, :edit, :update, :destroy]
 
   # GET /asignacion_familiars
