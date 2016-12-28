@@ -17,6 +17,12 @@ jQuery ->
 			$('#liquidacion_habere_id').prop("disabled",false)
 			$('#liquidacion_horas_trabajadas').prop("disabled",false)
 			$('#liquidacion_cantidad_horas_extra').prop("disabled",false)
+			personals = $('#liquidacion_personal_id').html()
+			$('#_categorium_id').change ->
+				subcategoria = $('#_subcategorium_id :selected').text()
+				options2 = $(personals).filter("optgroup[label='#{subcategoria}']").html()
+				if options2
+					$('#liquidacion_personal_id').html(options2)
 		else
 			$('#_subcategorium_id').empty()			
 			$('#liquidacion_personal_id').empty()
@@ -34,7 +40,6 @@ jQuery ->
 		subcategoria = $('#_subcategorium_id :selected').text()
 		options = $(personals).filter("optgroup[label='#{subcategoria}']").html()
 		if options
-			$('#liquidacion_personal_id').parent().show()
 			$('#liquidacion_personal_id').html(options)
 		else
 			$('#liquidacion_personal_id').empty()
