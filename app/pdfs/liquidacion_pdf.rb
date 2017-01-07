@@ -3,7 +3,7 @@ class LiquidacionPdf < Prawn::Document
 		super(top_margin: 70)
 			@liquidacion = liquidacion
 			mes= Integer("#{@liquidacion.fecha_pago.strftime("%m")}")
-			text "Liquidacion de remuneraciones:\n #{(I18n.t :month_names, :scope =>:date)[mes]}" ,:align => :center
+			text "Liquidacion de remuneraciones:\n #{(I18n.t :month_names, :scope =>:date)[mes]} - #{@liquidacion.fecha_pago.strftime("%Y")}" ,:align => :center
 			empresa_data
 			text "\nDatos del trabajador: \n"
 			personal_data
@@ -13,8 +13,6 @@ class LiquidacionPdf < Prawn::Document
 			tabla_resumen
 			forma_pago
 			image "/home/diego/sistema3/app/assets/images/empresas/logo", :at => [330, 80], :scale => 0.3
-			
-
 	end
 
 	def empresa_data
@@ -24,16 +22,15 @@ class LiquidacionPdf < Prawn::Document
 	end
 
 	def personal_data
-	 	table [["Nombre: #{@liquidacion.personal.nombre_apellido}","Fecha ingreso: #{@liquidacion.personal.fecha_ingreso.strftime("%d/%m/%Y")}"],
+		table [["Nombre: #{@liquidacion.personal.nombre_apellido}","Fecha ingreso: #{@liquidacion.personal.fecha_ingreso.strftime("%d/%m/%Y")}"],
 	 		  ["Rut: #{@liquidacion.personal.rut_personal}","Cargo: #{@liquidacion.personal.subcategorium.subcategoria}"],
 	 		  ["Afp: #{@liquidacion.personal.afp.afp}","Isapre: #{@liquidacion.personal.isapre.isapre}"]],:width =>540
 	end
 
 	def tabla_haberes
 			table [["Haberes"],["Item","Detalle"],["Remuneracion #{@liquidacion.horas_trabajadas} horas", "$#{@liquidacion.remuneracion}"],["Asignacion","$#{@liquidacion.
-	 		asignacion.asignacion}"],["Bonificacion","$#{@liquidacion.bonificacion.bono}"],["Horas Extra","$#{@liquidacion.horas_extra}"],
+	 		asignacion.asignacion}"],["Bonificacion","$#{@liquidacion.bonificacion.bono}"],["Asig. Familiar", "$#{@liquidacion.asignacion_familiar}"],["Horas Extra","$#{@liquidacion.horas_extra}"],
 	 		["Vacaciones","$#{@liquidacion.vacaciones}"]], :width => 250
-
 	end
 	 
 	 def tabla_descuentos

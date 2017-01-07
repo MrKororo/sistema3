@@ -22,3 +22,10 @@
 .cuisine {
     margin-top:50px;
 }
+.footer{
+	position:relative;
+    bottom:0px;	
+    width:100%;
+
+}
+

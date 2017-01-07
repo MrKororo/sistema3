@@ -1,5 +1,5 @@
 class Afp < ActiveRecord::Base
-	has_many :personal
+	has_many :personal, :dependent => :destroy
 
 	validates_presence_of :afp
 	validates_presence_of :descuento_afp

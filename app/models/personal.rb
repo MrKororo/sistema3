@@ -6,7 +6,8 @@ class Personal < ActiveRecord::Base
   belongs_to :centrocosto
   belongs_to :afp
   belongs_to :sindicato
-  has_many :liquidacion
+  belongs_to :certificate
+  has_many :liquidacion, :dependent => :destroy
 
 validates :rut_personal, rut: true, uniqueness: true
 

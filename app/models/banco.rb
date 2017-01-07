@@ -1,4 +1,5 @@
 class Banco < ActiveRecord::Base
+	has_many :personal, :dependent => :destroy	
 	validates_presence_of :banco, :tipo_cuenta
 	
 	before_save do |bancos|

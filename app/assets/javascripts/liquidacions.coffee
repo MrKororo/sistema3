@@ -5,6 +5,9 @@ jQuery ->
 	$('#liquidacion_habere_id').prop("disabled",true)
 	$('#liquidacion_horas_trabajadas').prop("disabled",true)
 	$('#liquidacion_cantidad_horas_extra').prop("disabled",true)
+	$('#liquidacion_asignacion_id').prop("disabled",true)
+	$('#liquidacion_bonificacion_id').prop("disabled",true)
+	$('#liquidacion_vacaciones').prop("disabled",true)
 	subcategorias = $('#_subcategorium_id').html()
 	$('#_categorium_id').change ->
 		categoria = $('#_categorium_id :selected').text()
@@ -17,12 +20,18 @@ jQuery ->
 			$('#liquidacion_habere_id').prop("disabled",false)
 			$('#liquidacion_horas_trabajadas').prop("disabled",false)
 			$('#liquidacion_cantidad_horas_extra').prop("disabled",false)
+			$('#liquidacion_asignacion_id').prop("disabled",false)
+			$('#liquidacion_bonificacion_id').prop("disabled",false)
+			$('#liquidacion_vacaciones').prop("disabled",false)
 			personals = $('#liquidacion_personal_id').html()
+			haberes = $('#liquidacion_habere_id').html()
 			$('#_categorium_id').change ->
 				subcategoria = $('#_subcategorium_id :selected').text()
 				options2 = $(personals).filter("optgroup[label='#{subcategoria}']").html()
+				options3 = $(haberes).filter("optgroup[label='#{subcategoria}']").html()
 				if options2
 					$('#liquidacion_personal_id').html(options2)
+					$('#liquidacion_habere_id').html(options3)
 		else
 			$('#_subcategorium_id').empty()			
 			$('#liquidacion_personal_id').empty()
@@ -75,6 +84,16 @@ jQuery ->
 			$('#liquidacion_asignacion_id').html(options3)
 		else
 			$('#liquidacion_asignacion_id').empty()
+
+
+	$('#_categorium_id').change ->
+		asignacion = $('#_subcategorium_id :selected').text()
+		options3 = $(asignacions).filter("optgroup[label='#{asignacion}']").html()
+		if options3 
+			$('#liquidacion_asignacion_id').parent().show()
+			$('#liquidacion_asignacion_id').html(options3)
+		else
+			$('#liquidacion_asignacion_id').empty()			
 #fin del bloque
 
 #busqueda de bonificaciones por subcategoria
@@ -87,6 +106,15 @@ jQuery ->
 			$('#liquidacion_bonificacion_id').html(options4)
 		else
 			$('#liquidacion_bonificacion_id').empty()
+
+	$('#_categorium_id').change ->
+		asignacion = $('#_subcategorium_id :selected').text()
+		options4 = $(bonificacions).filter("optgroup[label='#{asignacion}']").html()
+		if options4
+			$('#liquidacion_bonificacion_id').parent().show()
+			$('#liquidacion_bonificacion_id').html(options4)
+		else
+			$('#liquidacion_bonificacion_id').empty()			
 #fin del bloque
 
 #bloque para cantidad de horas extra y valor final

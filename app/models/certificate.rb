@@ -1,5 +1,5 @@
 class Certificate < ActiveRecord::Base
-  belongs_to :personal
+  belongs_to :personal, :dependent => :destroy
 
 
 
