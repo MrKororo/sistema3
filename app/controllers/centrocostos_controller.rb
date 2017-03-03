@@ -1,3 +1,20 @@
+# = centrocostos_controller.rb
+#
+# Autor::   Diego Gonzalez Cuevas
+#
+# === Clase centrocostos_controller
+# Clase creada para realizar el control de las acciones para datos de centros de
+# costos y los parametros permitidos en la clase.
+#
+# Definición de la clase centrocostos_controller compuesta por
+# * metodo index
+# * metodo new
+# * metodo create
+# * metodo update
+# * metodo destroy
+# * metodo authorize
+# * set_centrocosto
+# * centrocosto_params
 class CentrocostosController < ApplicationController
   before_action :authorize
   before_action :set_centrocosto, only: [:show, :edit, :update, :destroy]

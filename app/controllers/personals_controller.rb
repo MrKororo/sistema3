@@ -1,13 +1,35 @@
+# = personals_controller.rb
+#
+# Autor::   Diego Gonzalez Cuevas
+#
+# === Clase personals_controller
+# Clase creada para realizar el control de las acciones para datos de las liquidaciones
+# y los parametros permitidos en la clase.
+#
+# Definición de la clase personals_controller compuesta por
+# * metodo index
+# * metodo trueToAct
+# * metodo search
+# * metodo new
+# * metodo edit
+# * metodo create
+# * metodo update
+# * metodo destroy
+# * metodo authorize
+# * set_personal
+# * personal_params
 class PersonalsController < ApplicationController
   before_action :authorize
   before_action :set_personal, only: [:show, :edit, :update, :destroy]
 
-  # GET /personals
-  # GET /personals.json
+  #Lista todos los datos ingresados en la tabla de Personal y se hace
+  #uso de metodos de paginacion para la pagina index.
   def index
     @personals = Personal.order("nombre_personal").page(params[:page]).per_page(10)
   end
 
+  #Traduce los estados para el personal activo y permite su uso en las vistas
+  #@boolean
   def trueToAct(boolean)
     if boolean == true
        return 'Activo'
@@ -17,6 +39,8 @@ class PersonalsController < ApplicationController
   end
   helper_method :trueToAct
 
+  #Permite realizar busquedas en la tabla de personal y muestra los resultados
+  #en la vista Index.
   def search
     @personals = Personal.search do
       keywords params[:query]

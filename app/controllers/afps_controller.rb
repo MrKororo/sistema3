@@ -1,3 +1,19 @@
+# = afps_controller.rb
+#
+# Autor::   Diego Gonzalez Cuevas
+#
+# === Clase afps_controller
+# Clase creada para realizar el control de las acciones para los datos de
+# las afps y los parametros permitidos en la clase.
+#
+# Definición de la clase afps_controller compuesta por
+# * metodo index
+# * metodo new
+# * metodo create
+# * metodo update
+# * metodo destroy
+# * metodo set_afp
+# * metodo afp_params
 class AfpsController < ApplicationController
   before_action :authorize
   before_action :set_afp, only: [:show, :edit, :update, :destroy]

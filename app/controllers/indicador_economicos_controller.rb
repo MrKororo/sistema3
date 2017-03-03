@@ -1,3 +1,20 @@
+# = indicador_economicos_controller.rb
+#
+# Autor::   Diego Gonzalez Cuevas
+#
+# === Clase indicador_economicos_controller
+# Clase creada para realizar el control de las acciones para datos de los indicadores
+# economicos y los parametros permitidos en la clase.
+#
+# Definición de la clase indicador_economicos_controller compuesta por
+# * metodo index
+# * metodo new
+# * metodo create
+# * metodo update
+# * metodo destroy
+# * metodo authorize
+# * set_indicador_economico
+# * indicador_economico_params
 class IndicadorEconomicosController < ApplicationController
   before_action :authorize
   before_action :set_indicador_economico, only: [:show, :edit, :update, :destroy]

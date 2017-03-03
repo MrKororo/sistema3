@@ -1,3 +1,20 @@
+# = haberes_controller.rb
+#
+# Autor::   Diego Gonzalez Cuevas
+#
+# === Clase haberes_controller
+# Clase creada para realizar el control de las acciones para datos de los haberes
+# y los parametros permitidos en la clase.
+#
+# Definición de la clase haberes_controller compuesta por
+# * metodo index
+# * metodo new
+# * metodo create
+# * metodo update
+# * metodo destroy
+# * metodo authorize
+# * set_habere
+# * habere_params
 class HaberesController < ApplicationController
   before_action :authorize
   before_action :set_habere, only: [:show, :edit, :update, :destroy]

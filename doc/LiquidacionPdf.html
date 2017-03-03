@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class LiquidacionPdf - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">Prawn::Document
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-empresa_data">#empresa_data</a>
+    
+    <li ><a href="#method-i-forma_pago">#forma_pago</a>
+    
+    <li ><a href="#method-i-personal_data">#personal_data</a>
+    
+    <li ><a href="#method-i-tabla_descuentos">#tabla_descuentos</a>
+    
+    <li ><a href="#method-i-tabla_haberes">#tabla_haberes</a>
+    
+    <li ><a href="#method-i-tabla_resumen">#tabla_resumen</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-LiquidacionPdf">
+  <h1 id="class-LiquidacionPdf" class="class">
+    class LiquidacionPdf
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(liquidacion)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File app/pdfs/liquidacion_pdf.rb, line 2</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">liquidacion</span>)
+        <span class="ruby-keyword">super</span>(<span class="ruby-identifier">top_margin</span><span class="ruby-operator">:</span> <span class="ruby-value">70</span>)
+                <span class="ruby-ivar">@liquidacion</span> = <span class="ruby-identifier">liquidacion</span>
+                <span class="ruby-identifier">mes</span>= <span class="ruby-constant">Integer</span>(<span class="ruby-node">&quot;#{@liquidacion.fecha_pago.strftime(&quot;%m&quot;)}&quot;</span>)
+                <span class="ruby-identifier">text</span> <span class="ruby-node">&quot;Liquidacion de remuneraciones:\n #{(I18n.t :month_names, :scope =&gt;:date)[mes]} - #{@liquidacion.fecha_pago.strftime(&quot;%Y&quot;)}&quot;</span> ,<span class="ruby-value">:align</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:center</span>
+                <span class="ruby-identifier">empresa_data</span>
+                <span class="ruby-identifier">text</span> <span class="ruby-string">&quot;\nDatos del trabajador: \n&quot;</span>
+                <span class="ruby-identifier">personal_data</span>
+                <span class="ruby-identifier">text</span> <span class="ruby-string">&quot;\n &quot;</span>
+                <span class="ruby-identifier">tabla_haberes</span>
+                <span class="ruby-identifier">tabla_descuentos</span>
+                <span class="ruby-identifier">tabla_resumen</span>
+                <span class="ruby-identifier">forma_pago</span>
+                <span class="ruby-identifier">image</span> <span class="ruby-string">&quot;/home/diego/sistema3/app/assets/images/empresas/logo&quot;</span>, <span class="ruby-value">:at</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-value">330</span>, <span class="ruby-value">80</span>], <span class="ruby-value">:scale</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0.3</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-empresa_data" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">empresa_data</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="empresa_data-source">
+            <pre><span class="ruby-comment"># File app/pdfs/liquidacion_pdf.rb, line 18</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">empresa_data</span>
+        <span class="ruby-ivar">@empresa</span> = <span class="ruby-constant">Empresa</span>.<span class="ruby-identifier">first</span>
+        <span class="ruby-identifier">table</span> [[<span class="ruby-node">&quot;Empleador: #{@empresa.nombre_empresa} &quot;</span>,<span class="ruby-node">&quot;Giro: #{@empresa.giro}&quot;</span>],
+                  [<span class="ruby-node">&quot;Rut :#{@empresa.rut_empresa}&quot;</span>,<span class="ruby-node">&quot;Domicilio: #{@empresa.domicilio}&quot;</span>]], <span class="ruby-value">:width</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">540</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-forma_pago" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">forma_pago</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="forma_pago-source">
+            <pre><span class="ruby-comment"># File app/pdfs/liquidacion_pdf.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">forma_pago</span>
+        <span class="ruby-identifier">bounding_box</span>([<span class="ruby-value">0</span>,<span class="ruby-value">80</span>],<span class="ruby-value">:width</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">540</span>,<span class="ruby-value">:height</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">100</span>)<span class="ruby-keyword">do</span>
+                <span class="ruby-identifier">table</span> [[<span class="ruby-node">&quot;Forma de pago: #{@liquidacion.personal.banco.tipo_cuenta}&quot;</span>],[<span class="ruby-node">&quot;#{@liquidacion.personal.banco.banco}&quot;</span>],[<span class="ruby-node">&quot;Numero de cuenta: #{@liquidacion.personal.numero_cuenta}&quot;</span>]], <span class="ruby-value">:width</span> =<span class="ruby-operator">&gt;</span><span class="ruby-value">300</span>
+
+        <span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-personal_data" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">personal_data</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="personal_data-source">
+            <pre><span class="ruby-comment"># File app/pdfs/liquidacion_pdf.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">personal_data</span>
+        <span class="ruby-identifier">table</span> [[<span class="ruby-node">&quot;Nombre: #{@liquidacion.personal.nombre_apellido}&quot;</span>,<span class="ruby-node">&quot;Fecha ingreso: #{@liquidacion.personal.fecha_ingreso.strftime(&quot;%d/%m/%Y&quot;)}&quot;</span>],
+                 [<span class="ruby-node">&quot;Rut: #{@liquidacion.personal.rut_personal}&quot;</span>,<span class="ruby-node">&quot;Cargo: #{@liquidacion.personal.subcategorium.subcategoria}&quot;</span>],
+                 [<span class="ruby-node">&quot;Afp: #{@liquidacion.personal.afp.afp}&quot;</span>,<span class="ruby-node">&quot;Isapre: #{@liquidacion.personal.isapre.isapre}&quot;</span>]],<span class="ruby-value">:width</span> =<span class="ruby-operator">&gt;</span><span class="ruby-value">540</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-tabla_descuentos" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">tabla_descuentos</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="tabla_descuentos-source">
+            <pre><span class="ruby-comment"># File app/pdfs/liquidacion_pdf.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">tabla_descuentos</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@liquidacion</span>.<span class="ruby-identifier">sindicato!</span>=<span class="ruby-value">0</span>
+              <span class="ruby-identifier">sin1</span>=<span class="ruby-string">&quot;Sindicato&quot;</span>
+              <span class="ruby-identifier">sin2</span>=<span class="ruby-node">&quot;$#{@liquidacion.sindicato}&quot;</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@liquidacion</span>.<span class="ruby-identifier">impuesto!</span>=<span class="ruby-value">0</span>
+              <span class="ruby-identifier">imp1</span>=<span class="ruby-string">&quot;Impuesto&quot;</span>
+              <span class="ruby-identifier">imp2</span>=<span class="ruby-node">&quot;$#{@liquidacion.impuesto}&quot;</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@liquidacion</span>.<span class="ruby-identifier">cotizacion_voluntaria</span> <span class="ruby-operator">!=</span><span class="ruby-value">0</span>
+              <span class="ruby-identifier">vol1</span>=<span class="ruby-string">&quot;Ap. Voluntario&quot;</span>
+              <span class="ruby-identifier">vol2</span>=<span class="ruby-node">&quot;$#{@liquidacion.cotizacion_voluntaria}&quot;</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@liquidacion</span>.<span class="ruby-identifier">descuento_adicional</span>.<span class="ruby-identifier">descuento_adicional!</span>=<span class="ruby-value">0</span>
+              <span class="ruby-identifier">ad1</span>=<span class="ruby-node">&quot;Descuento: #{@liquidacion.descuento_adicional.detalle}&quot;</span>
+              <span class="ruby-identifier">ad2</span>=<span class="ruby-node">&quot;$#{@liquidacion.descuento_adicional.descuento_adicional}&quot;</span>
+      <span class="ruby-keyword">end</span>
+       <span class="ruby-identifier">bounding_box</span>([<span class="ruby-value">290</span>, <span class="ruby-value">485</span>],<span class="ruby-value">:width</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">250</span>,<span class="ruby-value">:height</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">600</span>) <span class="ruby-keyword">do</span>
+              <span class="ruby-identifier">table</span> [[<span class="ruby-string">&quot;Descuentos&quot;</span>],[<span class="ruby-string">&quot;Item&quot;</span>,<span class="ruby-string">&quot;Detalle&quot;</span>],[<span class="ruby-string">&quot;Afp&quot;</span>,<span class="ruby-node">&quot;$#{@liquidacion.descuento_afp}&quot;</span>],
+                              [<span class="ruby-string">&quot;Salud&quot;</span>,<span class="ruby-node">&quot;$#{@liquidacion.descuento_isapre}&quot;</span>],[<span class="ruby-identifier">sin1</span>,<span class="ruby-identifier">sin2</span>],[<span class="ruby-identifier">imp1</span>,<span class="ruby-identifier">imp2</span>],[<span class="ruby-identifier">vol1</span>,<span class="ruby-identifier">vol2</span>],[<span class="ruby-identifier">ad1</span>,<span class="ruby-identifier">ad2</span>]], <span class="ruby-value">:width</span> =<span class="ruby-operator">&gt;</span><span class="ruby-value">250</span>
+       <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-tabla_haberes" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">tabla_haberes</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="tabla_haberes-source">
+            <pre><span class="ruby-comment"># File app/pdfs/liquidacion_pdf.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">tabla_haberes</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@liquidacion</span>.<span class="ruby-identifier">asignacion</span>.<span class="ruby-identifier">asignacion</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+                <span class="ruby-identifier">as1</span>=<span class="ruby-string">&quot;Asignacion&quot;</span>
+                <span class="ruby-identifier">as2</span>=<span class="ruby-node">&quot;$#{@liquidacion.asignacion.asignacion}&quot;</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@liquidacion</span>.<span class="ruby-identifier">bonificacion</span>.<span class="ruby-identifier">bono</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+                <span class="ruby-identifier">bon1</span>=<span class="ruby-string">&quot;Bonificacion&quot;</span>
+                <span class="ruby-identifier">bon2</span>=<span class="ruby-node">&quot;$#{@liquidacion.bonificacion.bono}&quot;</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@liquidacion</span>.<span class="ruby-identifier">asignacion_familiar</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+                <span class="ruby-identifier">fam1</span>=<span class="ruby-string">&quot;Asig. Familiar&quot;</span>
+                <span class="ruby-identifier">fam2</span>=<span class="ruby-node">&quot;$#{@liquidacion.asignacion_familiar}&quot;</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@liquidacion</span>.<span class="ruby-identifier">horas_extra</span> <span class="ruby-operator">!=</span><span class="ruby-value">0</span>
+                <span class="ruby-identifier">ex1</span>=<span class="ruby-string">&quot;Horas Extra&quot;</span>
+                <span class="ruby-identifier">ex2</span>=<span class="ruby-node">&quot;$#{@liquidacion.horas_extra}&quot;</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@liquidacion</span>.<span class="ruby-identifier">vacaciones!</span>=<span class="ruby-value">0</span>
+                <span class="ruby-identifier">vac1</span>=<span class="ruby-string">&quot;Vacaciones&quot;</span>
+                <span class="ruby-identifier">vac2</span>=<span class="ruby-node">&quot;$#{@liquidacion.vacaciones}&quot;</span>
+        <span class="ruby-keyword">end</span>
+                <span class="ruby-identifier">table</span> [[<span class="ruby-string">&quot;Haberes&quot;</span>],[<span class="ruby-string">&quot;Item&quot;</span>,<span class="ruby-string">&quot;Detalle&quot;</span>],[<span class="ruby-node">&quot;Remuneracion #{@liquidacion.horas_trabajadas} horas&quot;</span>, <span class="ruby-node">&quot;$#{@liquidacion.remuneracion}&quot;</span>],[<span class="ruby-identifier">as1</span>,<span class="ruby-identifier">as2</span>],[<span class="ruby-identifier">bon1</span>,<span class="ruby-identifier">bon2</span>],[<span class="ruby-identifier">fam1</span>, <span class="ruby-identifier">fam2</span>],[<span class="ruby-identifier">ex1</span>,<span class="ruby-identifier">ex2</span>],[<span class="ruby-identifier">vac1</span>,<span class="ruby-identifier">vac2</span>]], <span class="ruby-value">:width</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">250</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-tabla_resumen" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">tabla_resumen</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="tabla_resumen-source">
+            <pre><span class="ruby-comment"># File app/pdfs/liquidacion_pdf.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">tabla_resumen</span>
+        <span class="ruby-identifier">bounding_box</span>([<span class="ruby-value">0</span>,<span class="ruby-value">280</span>],<span class="ruby-value">:width</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">540</span>,<span class="ruby-value">:height</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">100</span>)<span class="ruby-keyword">do</span>
+                <span class="ruby-identifier">table</span> [[<span class="ruby-string">&quot;Total Haberes&quot;</span>,<span class="ruby-string">&quot;Descuento Legal&quot;</span>,<span class="ruby-string">&quot;Imponible&quot;</span>,<span class="ruby-string">&quot;Descuentos Varios&quot;</span>,<span class="ruby-string">&quot;Liquido a pagar&quot;</span>],
+                                [<span class="ruby-node">&quot;$#{@liquidacion.total_haberes}&quot;</span>,<span class="ruby-node">&quot;$#{@liquidacion.desc_legales}&quot;</span>,<span class="ruby-node">&quot;$#{@liquidacion.total_imponible}&quot;</span>,<span class="ruby-node">&quot;$#{@liquidacion.desc_varios}&quot;</span>,<span class="ruby-node">&quot;$#{@liquidacion.liquido_pagar}&quot;</span>]
+                                ], <span class="ruby-value">:width</span> =<span class="ruby-operator">&gt;</span><span class="ruby-value">540</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

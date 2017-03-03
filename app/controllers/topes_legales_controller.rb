@@ -1,3 +1,20 @@
+# = topes_legales_controller.rb
+#
+# Autor::   Diego Gonzalez Cuevas
+#
+# === Clase topes_legales_controller
+# Clase creada para realizar el control de las acciones para datos de los topes legales
+# y los parametros permitidos en la clase.
+#
+# Definición de la clase topes_legales_controller compuesta por
+# * metodo index
+# * metodo show
+# * metodo new
+# * metodo create
+# * metodo update
+# * metodo destroy
+# * set_topes_legale
+# * topes_legale_params
 class TopesLegalesController < ApplicationController
   before_action :authorize
   before_action :set_topes_legale, only: [:show, :edit, :update, :destroy]

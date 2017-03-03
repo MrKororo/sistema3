@@ -1,3 +1,20 @@
+# = users_controller.rb
+#
+# Autor::   Diego Gonzalez Cuevas
+#
+# === Clase users_controller
+# Clase creada para realizar el control de las acciones para datos de los usuarios
+# y los parametros permitidos en la clase.
+#
+# Definición de la clase users_controller compuesta por
+# * metodo index
+# * metodo show
+# * metodo new
+# * metodo create
+# * metodo update
+# * metodo destroy
+# * set_user
+# * user_params
 class UsersController < ApplicationController
   before_action :authorize  
   before_action :set_user, only: [:show, :edit, :update, :destroy]

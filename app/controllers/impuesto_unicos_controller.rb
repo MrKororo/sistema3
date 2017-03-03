@@ -1,3 +1,21 @@
+# = impuesto_unicos_controller.rb
+#
+# Autor::   Diego Gonzalez Cuevas
+#
+# === Clase impuesto_unicos_controller
+# Clase creada para realizar el control de las acciones para datos de los impuestos unicos
+# y los parametros permitidos en la clase.
+#
+# Definición de la clase impuesto_unicos_controller compuesta por
+# * metodo index
+# * metodo new
+# * metodo create
+# * metodo update
+# * metodo destroy
+# * metodo authorize
+# * set_impuesto_unico
+# * impuesto_unico_params
+
 class ImpuestoUnicosController < ApplicationController
   before_action :authorize
   before_action :set_impuesto_unico, only: [:show, :edit, :update, :destroy]

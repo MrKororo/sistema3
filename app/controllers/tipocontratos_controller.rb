@@ -1,3 +1,20 @@
+# = tipocontratos_controller.rb
+#
+# Autor::   Diego Gonzalez Cuevas
+#
+# === Clase tipocontratos_controller
+# Clase creada para realizar el control de las acciones para datos de los tipo de contrato
+# y los parametros permitidos en la clase.
+#
+# Definición de la clase tipocontratos_controller compuesta por
+# * metodo index
+# * metodo show
+# * metodo new
+# * metodo create
+# * metodo update
+# * metodo destroy
+# * set_tipocontrato
+# * tipocontrato_params
 class TipocontratosController < ApplicationController
   before_action :authorize
   before_action :set_tipocontrato, only: [:show, :edit, :update, :destroy]

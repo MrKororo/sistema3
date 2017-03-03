@@ -1,3 +1,20 @@
+# = subcategoria_controller.rb
+#
+# Autor::   Diego Gonzalez Cuevas
+#
+# === Clase subcategoria_controller
+# Clase creada para realizar el control de las acciones para datos de las subcategorias
+# y los parametros permitidos en la clase.
+#
+# Definición de la clase subcategoria_controller compuesta por
+# * metodo index
+# * metodo show
+# * metodo new
+# * metodo create
+# * metodo update
+# * metodo destroy
+# * set_subcategorium
+# * subcategorium_params
 class SubcategoriaController < ApplicationController
   before_action :authorize
   before_action :set_subcategorium, only: [:show, :edit, :update, :destroy]

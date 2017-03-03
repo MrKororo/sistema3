@@ -1,3 +1,20 @@
+# = descuento_adicionals_controller.rb
+#
+# Autor::   Diego Gonzalez Cuevas
+#
+# === Clase descuento_adicionals_controller
+# Clase creada para realizar el control de las acciones para datos de descuentos adicionales
+# y los parametros permitidos en la clase.
+#
+# Definición de la clase descuento_adicionals_controller compuesta por
+# * metodo index
+# * metodo new
+# * metodo create
+# * metodo update
+# * metodo destroy
+# * metodo authorize
+# * set_descuento_adicional
+# * descuento_adicional_params
 class DescuentoAdicionalsController < ApplicationController
   before_action :authorize
   before_action :set_descuento_adicional, only: [:show, :edit, :update, :destroy]

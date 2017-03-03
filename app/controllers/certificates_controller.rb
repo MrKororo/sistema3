@@ -1,3 +1,22 @@
+# = certificates_controller.rb
+#
+# Autor::   Diego Gonzalez Cuevas
+#
+# === Clase certificates_controller
+# Clase creada para realizar el control de las acciones para datos de certificados
+# y los parametros permitidos en la clase.
+# Si se ingresa como Empleado al sistema solo se puede hacer ingreso a index, show, update,
+# y edit de certificates.
+#
+# Definición de la clase certificates_controller compuesta por
+# * metodo index
+# * metodo new
+# * metodo create
+# * metodo update
+# * metodo destroy
+# * metodo authorize
+# * set_certificate
+# * certificate_params
 class CertificatesController < ApplicationController
   before_action :authorize, except: [:index,:show,:update,:edit]
   before_action :set_certificate, only: [:show, :edit, :update, :destroy]
@@ -11,9 +30,6 @@ class CertificatesController < ApplicationController
     else
       @certificates=Certificate.where(rut_personal: current_user.rut_usuario)
     end
-    # elsif params[:search] and params[:search]!=""
-    #   @certificates = Certificate.search(params[:search]).order("created_at DESC")
-    # end
   end
 
   # GET /certificates/1

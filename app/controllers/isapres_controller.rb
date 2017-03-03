@@ -1,3 +1,20 @@
+# = isapres_controller.rb
+#
+# Autor::   Diego Gonzalez Cuevas
+#
+# === Clase isapres_controller
+# Clase creada para realizar el control de las acciones para datos de las isapres
+# y los parametros permitidos en la clase.
+#
+# Definición de la clase isapres_controller compuesta por
+# * metodo index
+# * metodo new
+# * metodo create
+# * metodo update
+# * metodo destroy
+# * metodo authorize
+# * set_isapre
+# * isapre_params
 class IsapresController < ApplicationController
   before_action :authorize
   before_action :set_isapre, only: [:show, :edit, :update, :destroy]

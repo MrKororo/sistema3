@@ -83,6 +83,12 @@
       <%= grouped_collection_select(:liquidacion, :bonificacion_id, Subcategorium.order(:subcategoria), :bonificacion, :subcategoria, :id, :bono, include_blank: :true) %>
     </div>
   </div>
+  <!--   <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :"total bonificaciones" %><br>
+      <%= text_field_tag "total_bonificacion"%>
+    </div>
+  </div> -->
 </div>
 <div class="row">  
   <div class="large-6 columns">

@@ -1,3 +1,21 @@
+# = asignacion_familiars_controller.rb
+#
+# Autor::   Diego Gonzalez Cuevas
+#
+# === Clase asignacion_familiars_controller
+# Clase creada para realizar el control de las acciones para datos de asignacion
+# familiar y los parametros permitidos en la clase.
+#
+# Definición de la clase asignacion_familiars_controller compuesta por
+# * metodo index
+# * metodo new
+# * metodo create
+# * metodo update
+# * metodo destroy
+# * metodo authorize
+# * set_asignacion_familiar
+# * asignacion_familiar_params
+
 class AsignacionFamiliarsController < ApplicationController
   before_action :authorize
   before_action :set_asignacion_familiar, only: [:show, :edit, :update, :destroy]

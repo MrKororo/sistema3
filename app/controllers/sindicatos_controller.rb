@@ -1,3 +1,20 @@
+# = sindicatos_controller.rb
+#
+# Autor::   Diego Gonzalez Cuevas
+#
+# === Clase sindicatos_controller
+# Clase creada para realizar el control de las acciones para datos de los sindicatos
+# y los parametros permitidos en la clase.
+#
+# Definición de la clase sindicatos_controller compuesta por
+# * metodo index
+# * metodo show
+# * metodo new
+# * metodo create
+# * metodo update
+# * metodo destroy
+# * set_sindicato
+# * sindicato_params
 class SindicatosController < ApplicationController
   before_action :authorize
   before_action :set_sindicato, only: [:show, :edit, :update, :destroy]

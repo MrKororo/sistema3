@@ -4,7 +4,5 @@ class Certificate < ActiveRecord::Base
 
 
     MOTIVOS = ["Trámitar beneficios", "Trámites Judiciales ", "Trámites de asignación familiar", "Trámites internos", "Fines necesarios"]
-	def self.search(search)
-	  where("rut_personal LIKE ?", "%#{search}%") 
-	end
+
 end

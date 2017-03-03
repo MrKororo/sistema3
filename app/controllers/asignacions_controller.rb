@@ -1,3 +1,20 @@
+# = asignacions_controller.rb
+#
+# Autor::   Diego Gonzalez Cuevas
+#
+# === Clase asignacions_controller
+# Clase creada para realizar el control de las acciones para datos de asignacion
+# y los parametros permitidos en la clase.
+#
+# Definición de la clase asignacions_controller compuesta por
+# * metodo index
+# * metodo new
+# * metodo create
+# * metodo update
+# * metodo destroy
+# * metodo authorize
+# * set_asignacion
+# * asignacion_params
 class AsignacionsController < ApplicationController
   before_action :authorize
   before_action :set_asignacion, only: [:show, :edit, :update, :destroy]

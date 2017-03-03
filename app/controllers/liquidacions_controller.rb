@@ -1,8 +1,30 @@
+# = liquidacions_controller.rb
+#
+# Autor::   Diego Gonzalez Cuevas
+#
+# === Clase liquidacions_controller
+# Clase creada para realizar el control de las acciones para datos de las liquidaciones
+# y los parametros permitidos en la clase.
+# Si se ingresa como Empleado al sistema solo se puede hacer ingreso a index y show de 
+# liquidacion.
+#
+# Definición de la clase liquidacions_controller compuesta por
+# * metodo index
+# * metodo show
+# * metodo new
+# * metodo create
+# * metodo update
+# * metodo destroy
+# * metodo authorize
+# * set_liquidacion
+# * liquidacion_params
 class LiquidacionsController < ApplicationController
   before_action :authorize, except: [:index,:show]
   before_action :set_liquidacion, only: [:show, :edit, :update, :destroy]
-  # GET /liquidacions
-  # GET /liquidacions.json
+  
+  # Lista las liquidaciones pertenecientes solo a la persona que ingreso al sistema
+  # en caso de ser Empleado, si es Administrador lista todas las liquidaciones existentes
+  # en el sistema.
   def index
     if current_user and current_user.tipo_usuario == "Administrador"
       @liquidacions = Liquidacion.all
@@ -10,11 +32,9 @@ class LiquidacionsController < ApplicationController
       @liquidacions = Liquidacion.where(personal_id: current_user.id)
     end
   end
-def asd
-  @asd=Personal.uniq.pluck(:nombre_personal)
-end
-  # GET /liquidacions/1
-  # GET /liquidacions/1.json
+
+  # Muestra la informacion de la liquidacion seleccionada, ademas pasa la misma informacion
+  # a liquidacion.pdf
   def show
     @liquidacion = Liquidacion.find(params[:id])
     respond_to do |format|

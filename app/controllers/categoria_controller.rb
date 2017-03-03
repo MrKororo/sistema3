@@ -1,3 +1,20 @@
+# = categoria_controller.rb
+#
+# Autor::   Diego Gonzalez Cuevas
+#
+# === Clase categoria_controller
+# Clase creada para realizar el control de las acciones para datos de categorias
+# y los parametros permitidos en la clase.
+#
+# Definición de la clase categoria_controller compuesta por
+# * metodo index
+# * metodo new
+# * metodo create
+# * metodo update
+# * metodo destroy
+# * metodo authorize
+# * set_categorium
+# * categorium_params
 class CategoriaController < ApplicationController
   before_action :authorize
   before_action :set_categorium, only: [:show, :edit, :update, :destroy]

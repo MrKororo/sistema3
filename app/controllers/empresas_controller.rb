@@ -1,3 +1,20 @@
+# = empresas_controller.rb
+#
+# Autor::   Diego Gonzalez Cuevas
+#
+# === Clase empresas_controller
+# Clase creada para realizar el control de las acciones para datos de la empresa
+# y los parametros permitidos en la clase.
+#
+# Definición de la clase empresas_controller compuesta por
+# * metodo index
+# * metodo new
+# * metodo create
+# * metodo update
+# * metodo destroy
+# * metodo authorize
+# * set_empresa
+# * empresa_params
 class EmpresasController < ApplicationController
   before_action :authorize
   before_action :set_empresa, only: [:show, :edit, :update, :destroy]

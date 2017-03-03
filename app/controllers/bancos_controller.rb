@@ -1,3 +1,20 @@
+# = bancos_controller.rb
+#
+# Autor::   Diego Gonzalez Cuevas
+#
+# === Clase asignacions_controller
+# Clase creada para realizar el control de las acciones para datos de bancos
+# y los parametros permitidos en la clase.
+#
+# Definición de la clase bancos_controller compuesta por
+# * metodo index
+# * metodo new
+# * metodo create
+# * metodo update
+# * metodo destroy
+# * metodo authorize
+# * set_banco
+# * banco_params
 class BancosController < ApplicationController
   before_action :authorize  
   before_action :set_banco, only: [:show, :edit, :update, :destroy]

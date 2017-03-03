@@ -19,10 +19,10 @@ class Liquidacion < ActiveRecord::Base
   validates :descuento_afp, presence: true
   validates :cotizacion_voluntaria, presence: true
   validates :descuento_isapre, presence: true
-  #validates :asignacion_familiar, presence: true
+  
   validates :sindicato, presence: true
   validates :impuesto, presence: true
-  #validates :descuento_adicional_id, presence: true
+  
   validates :desc_legales, presence: true
   validates :desc_varios, presence: true
   validates :liquido_pagar, presence: true
