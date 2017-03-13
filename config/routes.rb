@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     end
   end
 
+ 
   resources :certificates
   resources :asignacion_familiars
   resources :topes_legales

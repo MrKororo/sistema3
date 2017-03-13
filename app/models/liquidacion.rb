@@ -27,4 +27,14 @@ class Liquidacion < ActiveRecord::Base
   validates :desc_varios, presence: true
   validates :liquido_pagar, presence: true
   validates :fecha_pago, presence: true
+
+  def self.search(start_period, end_period)
+    fecha =start_period.split("/")
+    fecha_cambiada= ("#{fecha[2]}-#{fecha[1]}-#{fecha[0]}")
+    start_period=fecha_cambiada
+    fecha2 =end_period.split("/")
+    fecha2_cambiada= ("#{fecha2[2]}-#{fecha2[1]}-#{fecha2[0]}")
+    end_period=fecha2_cambiada
+    where("fecha_pago between ? and ?", "#{start_period}", "#{end_period}")
+  end
 end

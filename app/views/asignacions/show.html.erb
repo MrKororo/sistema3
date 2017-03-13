@@ -2,20 +2,20 @@
 
 <table>
 	<p>
-	  <strong>Categoria:</strong>
+	  <strong>Categoría:</strong>
 	  <%= @asignacion.subcategorium.categorium.categoria %>
 	</p>
 
 	<p>
-	  <strong>Subcategoria:</strong>
+	  <strong>Subcategoría:</strong>
 	  <%= @asignacion.subcategorium.subcategoria %>
 	</p>
 	<p>
-	  <strong>Detalle asignacion:</strong>
+	  <strong>Detalle asignación:</strong>
 	  <%= @asignacion.detalle_asignacion %>
 	</p>
 	<p>
-	  <strong>Asignacion:</strong>
+	  <strong>Asignación:</strong>
 	 $<%= number_to_currency(@asignacion.asignacion,strip_insignificant_zeros: true, :unit => "") %>
 	</p>
 

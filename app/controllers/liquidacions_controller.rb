@@ -26,12 +26,13 @@ class LiquidacionsController < ApplicationController
   # en caso de ser Empleado, si es Administrador lista todas las liquidaciones existentes
   # en el sistema.
   def index
-    if current_user and current_user.tipo_usuario == "Administrador"
       @liquidacions = Liquidacion.all
-    elsif current_user
-      @liquidacions = Liquidacion.where(personal_id: current_user.id)
-    end
-  end
+      if current_user and current_user.tipo_usuario == "Administrador"and params[:start_period]
+        @liquidacions = Liquidacion.search(params[:start_period], params[:end_period]).order("personal_id DESC")
+      elsif current_user
+        @liquidacions = Liquidacion.where(personal_id: current_user.id)
+      end
+ end
 
   # Muestra la informacion de la liquidacion seleccionada, ademas pasa la misma informacion
   # a liquidacion.pdf
@@ -47,6 +48,8 @@ class LiquidacionsController < ApplicationController
       end
     end
   end
+
+
   # GET /liquidacions/new
   def new
     @liquidacion = Liquidacion.new
@@ -59,6 +62,7 @@ class LiquidacionsController < ApplicationController
   # POST /liquidacions
   # POST /liquidacions.json
   def create
+    
     @liquidacion = Liquidacion.new(liquidacion_params)
 
     respond_to do |format|

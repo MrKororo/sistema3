@@ -21,16 +21,36 @@
   <div class="large-4 columns">
     <div class="field">
       <%= f.label :"Subcategoria" %><br>
-      <%= grouped_collection_select(nil, :subcategorium_id, Categorium.order(:categoria), :subcategorium, :categoria, :id, :subcategoria, {}) %>
+      <%= grouped_collection_select(nil, :subcategorium_id, Categorium.order(:categoria), :subcategorium, :categoria, :id, :subcategoria, {include_blank: :true}) %>
     </div>
   </div>
   <div class="large-4 columns">
     <div class="field">
       <%= f.label :personal_id %><br>
-      <%= grouped_collection_select(:liquidacion, :personal_id, Subcategorium.order(:subcategoria), :personal, :subcategoria, :id, :nombre_apellido, include_blank: :true) %>
+      <%= grouped_collection_select(:liquidacion, :personal_id, Subcategorium.order(:subcategoria), :personal, :subcategoria, :id, :nombre_apellido, {include_blank: :true}) %> 
     </div>
   </div>
 </div>
+
+<script>
+  var option_index = $("#liquidacion_personal_id option:selected").val();
+  $('#liquidacion_descuento_isapre option').eq(option_index).prop('selected', true);
+  $('#liquidacion_cotizacion_voluntaria option').eq(option_index).prop('selected', true);
+  $('#_cargas_familiar option').eq(option_index).prop('selected', true);
+  $('#_afp_id option').eq(option_index).prop('selected', true);
+  $("#_sindicato option").eq(option_index).prop('selected', true);
+
+//Listen for the change
+  $('#liquidacion_personal_id').on('change', function(){
+      option_index = $("#liquidacion_personal_id option:selected").val();
+      $('#liquidacion_descuento_isapre option').eq(option_index).prop('selected', true);
+      $('#liquidacion_cotizacion_voluntaria option').eq(option_index).prop('selected', true);
+      $('#_cargas_familiar option').eq(option_index).prop('selected', true);
+      $('#_afp_id option').eq(option_index).prop('selected', true);
+      $("#_sindicato option").eq(option_index).prop('selected', true);
+  });
+
+</script>
 
 <div class="row">
   <div class="large-4 columns">
@@ -79,16 +99,9 @@
   <div class="large-6 columns">
     <div class="field">
       <%= f.label :bonificacion_id %><br>
-  <!--     <%= grouped_collection_select(:liquidacion, :bonificacion_id, Subcategorium.order(:subcategoria), :bonificacion, :subcategoria, :id, :bono, {},{:multiple => true ,include_blank: :true}) %> -->
       <%= grouped_collection_select(:liquidacion, :bonificacion_id, Subcategorium.order(:subcategoria), :bonificacion, :subcategoria, :id, :bono, include_blank: :true) %>
     </div>
   </div>
-  <!--   <div class="large-6 columns">
-    <div class="field">
-      <%= f.label :"total bonificaciones" %><br>
-      <%= text_field_tag "total_bonificacion"%>
-    </div>
-  </div> -->
 </div>
 <div class="row">  
   <div class="large-6 columns">
@@ -165,30 +178,45 @@
 <div class="row">
   <div class="large-6 columns">
     <div class="field">
-      <%= f.label :porcentaje_afp %><br>
-      <%= collection_select(nil, :afp_id, Afp.all, :descuento_afp, :afp, {:prompt => 'Seleccione afp'}) %>
-      <%= f.hidden_field :porcentaje_afp %>
-    </div>
-  </div>
-  <div class="large-6 columns">
-    <div class="field">
       <%= f.label :descuento_afp %><br>
       <%= f.number_field :descuento_afp, :readonly => true %>
     </div>
   </div>
+  <div class="large-4 columns"style="display: none;">
+    <div class="field">
+      <%= f.label :porcentaje_afp %><br>
+      <%= collection_select(nil, :afp_id, Personal.all, :afp_id, :id, {include_blank: :true}) %>
+    </div>
+  </div>
+  <div class="large-4 columns"style="display: none;">
+    <div class="field">
+      <%= collection_select(:liquidacion, :porcentaje_afp, Afp.all, :descuento_afp, :id, {include_blank: :true}) %>
+    </div>
+  </div>
+
+  <script>
+    var option_index = $("#_afp_id option:selected").val();
+    $('#liquidacion_porcentaje_afp option').eq(option_index).prop('selected', true);
+
+    $('#liquidacion_personal_id').on('change', function(){
+        option_index = $("#_afp_id option:selected").val();
+        $('#liquidacion_porcentaje_afp option').eq(option_index).prop('selected', true);
+    });
+  </script>
+
 </div>
 
 <div class="row">
-  <div class="large-6 columns">
+  <div class="large-6 columns" style="display: none;" >
     <div class="field">
       <%= f.label :cotizacion_voluntaria %><br>
-      <%= collection_select(:liquidacion, :cotizacion_voluntaria, Personal.all, :cotizacion_voluntaria, :nombre_apellido, {include_blank: :true}) %> 
+      <%= collection_select(:liquidacion, :cotizacion_voluntaria, Personal.all, :cotizacion_voluntaria, :id, {include_blank: :true}) %> 
     </div>
   </div>
-  <div class="large-6 columns"> 
+  <div class="large-6 columns" style="display: none;" > 
     <div class="field">
       <%= f.label :descuento_isapre %><br>
-     <%= collection_select(:liquidacion, :descuento_isapre, Personal.all, :descuento_isapre, :nombre_apellido, {include_blank: :true}) %>
+      <%= collection_select(:liquidacion, :descuento_isapre, Personal.all, :descuento_isapre, :id, {include_blank: :true}) %>
     </div>
   </div>
 </div>  
@@ -196,7 +224,7 @@
   <div class="large-6 columns">
     <div class="field">
       <%= f.label :"Numero de cargas" %><br>
-     <%= collection_select(nil, :cargas_familiar, Personal.all, :cargas_familiar, :nombre_apellido, {include_blank: :true}) %>
+     <%= collection_select(nil, :cargas_familiar, Personal.all, :cargas_familiar, :cargas_familiar, {include_blank: :true}) %>
     </div>
   </div>
   <div class="large-6 columns">
@@ -207,20 +235,38 @@
   </div>
 </div>
 <div class="row">
-  <div class="large-4 columns">
+  <div class="large-4 columns" style="display: none;">
     <div class="field">
-      <%= f.label :sindicato %><br>
-      <%= collection_select(:liquidacion, :sindicato, Sindicato.all, :cuota_sindical, :nombre_sindicato, {include_blank: :true}) %>
+      <%= collection_select(nil, :sindicato, Personal.all, :sindicato_id, :id, {include_blank: :true}) %>
     </div>
   </div>
-  <div class="large-4 columns">
+
+  <div class="large-4 columns" style="display: none;">
+    <div class="field">
+      <%= f.label :sindicato %><br>
+      <%= collection_select(:liquidacion, :sindicato, Sindicato.all, :cuota_sindical, :id, {include_blank: :true}) %>
+    </div>
+  </div>
+
+
+  <script>
+    var option_index = $("#_sindicato option:selected").val();
+    $('#liquidacion_sindicato option').eq(option_index).prop('selected', true);
+
+    $('#liquidacion_personal_id').on('change', function(){
+        option_index = $("#_sindicato option:selected").val();
+        $('#liquidacion_sindicato option').eq(option_index).prop('selected', true);
+    });
+  </script>
+
+  <div class="large-6 columns">
     <div class="field">
       <%= f.label :impuesto %><br>
       <%= f.text_field :impuesto, :readonly => true  %>
       <%= submit_tag "Calcular Impuesto", type: 'button', id: 'impuesto' %> 
     </div>
   </div>
-  <div class="large-4 columns">
+  <div class="large-6 columns">
     <div class="field">
       <%= f.label :descuento_adicional_id %><br>
       <%= collection_select(:liquidacion, :descuento_adicional_id, DescuentoAdicional.all, :id, :descuento_adicional, {include_blank: :true}) %>

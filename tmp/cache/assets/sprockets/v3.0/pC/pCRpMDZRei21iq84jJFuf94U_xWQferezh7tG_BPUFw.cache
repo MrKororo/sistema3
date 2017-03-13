@@ -1,0 +1,12 @@
+I"ô(function() {
+  jQuery(function() {
+    var asd;
+    asd = $('#liquidacion_personal_id', '#liquidacion_descuento_isapre');
+    return asd.change(function() {
+      alert(asd);
+      return asd.not(this).val(this);
+    });
+  });
+
+}).call(this);
+:ET

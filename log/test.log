@@ -1,0 +1,2071 @@
+  [1m[36m (99.3ms)[0m  [1mDROP DATABASE IF EXISTS `sistema2_test`[0m
+  [1m[35m (0.5ms)[0m  CREATE DATABASE `sistema2_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`
+  [1m[36m (169.4ms)[0m  [1mCREATE TABLE `afps` (`id` int(11) auto_increment PRIMARY KEY, `afp` varchar(255), `descuento_afp` float(24), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (81.3ms)[0m  CREATE TABLE `asignacion_familiars` (`id` int(11) auto_increment PRIMARY KEY, `tramo` varchar(255), `monto` int(11), `requisitoMinimo` int(11), `requisitoMaximo` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (72.3ms)[0m  [1mCREATE TABLE `asignacions` (`id` int(11) auto_increment PRIMARY KEY, `asignacion` int(11), `detalle_asignacion` varchar(255), `subcategorium_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (172.6ms)[0m  CREATE  INDEX `index_asignacions_on_subcategorium_id` USING btree ON `asignacions` (`subcategorium_id`) 
+  [1m[36m (72.4ms)[0m  [1mCREATE TABLE `bancos` (`id` int(11) auto_increment PRIMARY KEY, `banco` varchar(255), `tipo_cuenta` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (89.1ms)[0m  CREATE TABLE `bonificacions` (`id` int(11) auto_increment PRIMARY KEY, `bono` int(11), `detalle_bono` varchar(255), `subcategorium_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (180.5ms)[0m  [1mCREATE  INDEX `index_bonificacions_on_subcategorium_id` USING btree ON `bonificacions` (`subcategorium_id`) [0m
+  [1m[35m (99.5ms)[0m  CREATE TABLE `categoria` (`id` int(11) auto_increment PRIMARY KEY, `categoria` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (73.3ms)[0m  [1mCREATE TABLE `centrocostos` (`id` int(11) auto_increment PRIMARY KEY, `nombre` varchar(255), `codigo` varchar(255), `detalle_centro` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (97.2ms)[0m  CREATE TABLE `certificates` (`id` int(11) auto_increment PRIMARY KEY, `personal_id` int(11), `rut_personal` varchar(255), `motivo` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (180.6ms)[0m  [1mCREATE  INDEX `index_certificates_on_personal_id` USING btree ON `certificates` (`personal_id`) [0m
+  [1m[35m (72.0ms)[0m  CREATE TABLE `descuento_adicionals` (`id` int(11) auto_increment PRIMARY KEY, `descuento_adicional` int(11), `detalle` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (72.1ms)[0m  [1mCREATE TABLE `empresas` (`id` int(11) auto_increment PRIMARY KEY, `nombre_empresa` varchar(255), `rut_empresa` varchar(255), `giro` varchar(255), `domicilio` varchar(255), `email` varchar(255), `website` varchar(255), `telefono` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `image_file_name` varchar(255), `image_content_type` varchar(255), `image_file_size` int(11), `image_updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35m (64.3ms)[0m  CREATE TABLE `haberes` (`id` int(11) auto_increment PRIMARY KEY, `sueldo_base` int(11), `horas_pactadas` float(24), `valor_hora` float(24), `subcategorium_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (206.0ms)[0m  [1mCREATE  INDEX `index_haberes_on_subcategorium_id` USING btree ON `haberes` (`subcategorium_id`) [0m
+  [1m[35m (88.6ms)[0m  CREATE TABLE `impuesto_unicos` (`id` int(11) auto_increment PRIMARY KEY, `imponibleMinimo` decimal(9,2), `imponibleMaximo` decimal(11,2), `factor` decimal(4,3), `rebaja` decimal(9,2), `impuestoEfectivoMax` decimal(4,2), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (99.0ms)[0m  [1mCREATE TABLE `indicador_economicos` (`id` int(11) auto_increment PRIMARY KEY, `indicador` varchar(255), `valor` decimal(7,2), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (64.6ms)[0m  CREATE TABLE `isapres` (`id` int(11) auto_increment PRIMARY KEY, `isapre` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (88.5ms)[0m  [1mCREATE TABLE `liquidacions` (`id` int(11) auto_increment PRIMARY KEY, `asignacion_id` int(11), `habere_id` int(11), `bonificacion_id` int(11), `descuento_adicional_id` int(11), `personal_id` int(11), `fecha_pago` date, `porcentaje_afp` float(24), `descuento_afp` int(11), `descuento_isapre` int(11), `impuesto` int(11), `cotizacion_voluntaria` int(11), `horas_trabajadas` float(24), `remuneracion` int(11), `cantidad_horas_extra` int(11), `horas_extra` int(11), `vacaciones` float(24), `total_imponible` int(11), `sindicato` int(11), `total_haberes` int(11), `desc_legales` int(11), `desc_varios` int(11), `liquido_pagar` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `asignacion_familiar` int(11)) ENGINE=InnoDB[0m
+  [1m[35m (156.4ms)[0m  CREATE  INDEX `index_liquidacions_on_asignacion_id` USING btree ON `liquidacions` (`asignacion_id`) 
+  [1m[36m (148.2ms)[0m  [1mCREATE  INDEX `index_liquidacions_on_bonificacion_id` USING btree ON `liquidacions` (`bonificacion_id`) [0m
+  [1m[35m (156.0ms)[0m  CREATE  INDEX `index_liquidacions_on_descuento_adicional_id` USING btree ON `liquidacions` (`descuento_adicional_id`) 
+  [1m[36m (206.0ms)[0m  [1mCREATE  INDEX `index_liquidacions_on_habere_id` USING btree ON `liquidacions` (`habere_id`) [0m
+  [1m[35m (157.5ms)[0m  CREATE  INDEX `index_liquidacions_on_personal_id` USING btree ON `liquidacions` (`personal_id`) 
+  [1m[36m (121.7ms)[0m  [1mCREATE TABLE `personals` (`id` int(11) auto_increment PRIMARY KEY, `nombre_personal` varchar(255), `apellidop_personal` varchar(255), `apellidom_personal` varchar(255), `rut_personal` varchar(255), `isapre_id` int(11), `banco_id` int(11), `subcategorium_id` int(11), `tipocontrato_id` int(11), `centrocosto_id` int(11), `afp_id` int(11), `personal_activo` tinyint(1), `fecha_ingreso` date, `sindicato_id` int(11), `numero_cuenta` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `cargas_familiar` int(11), `cotizacion_voluntaria` int(11), `descuento_isapre` int(11)) ENGINE=InnoDB[0m
+  [1m[35m (140.5ms)[0m  CREATE  INDEX `index_personals_on_afp_id` USING btree ON `personals` (`afp_id`) 
+  [1m[36m (148.2ms)[0m  [1mCREATE  INDEX `index_personals_on_banco_id` USING btree ON `personals` (`banco_id`) [0m
+  [1m[35m (147.2ms)[0m  CREATE  INDEX `index_personals_on_centrocosto_id` USING btree ON `personals` (`centrocosto_id`) 
+  [1m[36m (156.1ms)[0m  [1mCREATE  INDEX `index_personals_on_isapre_id` USING btree ON `personals` (`isapre_id`) [0m
+  [1m[35m (157.9ms)[0m  CREATE  INDEX `index_personals_on_sindicato_id` USING btree ON `personals` (`sindicato_id`) 
+  [1m[36m (139.7ms)[0m  [1mCREATE  INDEX `index_personals_on_subcategorium_id` USING btree ON `personals` (`subcategorium_id`) [0m
+  [1m[35m (147.4ms)[0m  CREATE  INDEX `index_personals_on_tipocontrato_id` USING btree ON `personals` (`tipocontrato_id`) 
+  [1m[36m (72.6ms)[0m  [1mCREATE TABLE `sindicatos` (`id` int(11) auto_increment PRIMARY KEY, `nombre_sindicato` varchar(255), `cuota_sindical` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (64.5ms)[0m  CREATE TABLE `subcategoria` (`id` int(11) auto_increment PRIMARY KEY, `subcategoria` varchar(255), `categorium_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (139.7ms)[0m  [1mCREATE  INDEX `index_subcategoria_on_categorium_id` USING btree ON `subcategoria` (`categorium_id`) [0m
+  [1m[35m (64.8ms)[0m  CREATE TABLE `tipocontratos` (`id` int(11) auto_increment PRIMARY KEY, `tipo_contrato` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (89.7ms)[0m  [1mCREATE TABLE `topes_legales` (`id` int(11) auto_increment PRIMARY KEY, `topeMinimo` int(11), `topeMaximo` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `valor_uf` int(11), `cantidad_uf` float(24), `detalle` varchar(255)) ENGINE=InnoDB[0m
+  [1m[35m (82.6ms)[0m  CREATE TABLE `users` (`id` int(11) auto_increment PRIMARY KEY, `nombre` varchar(255), `apellido_paterno` varchar(255), `apellido_materno` varchar(255), `email` varchar(255), `rut_usuario` varchar(255), `tipo_usuario` varchar(255), `password_digest` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (611.2ms)[0m  [1mALTER TABLE `asignacions` ADD CONSTRAINT `fk_rails_d9dcbc9f8d`
+FOREIGN KEY (`subcategorium_id`)
+  REFERENCES `subcategoria` (`id`)
+[0m
+  [1m[35m (240.1ms)[0m  ALTER TABLE `bonificacions` ADD CONSTRAINT `fk_rails_0ff0ef5236`
+FOREIGN KEY (`subcategorium_id`)
+  REFERENCES `subcategoria` (`id`)
+
+  [1m[36m (207.0ms)[0m  [1mALTER TABLE `certificates` ADD CONSTRAINT `fk_rails_c4db01f315`
+FOREIGN KEY (`personal_id`)
+  REFERENCES `personals` (`id`)
+[0m
+  [1m[35m (200.2ms)[0m  ALTER TABLE `haberes` ADD CONSTRAINT `fk_rails_940e8981f3`
+FOREIGN KEY (`subcategorium_id`)
+  REFERENCES `subcategoria` (`id`)
+
+  [1m[36m (232.1ms)[0m  [1mALTER TABLE `liquidacions` ADD CONSTRAINT `fk_rails_7b04bbd66c`
+FOREIGN KEY (`asignacion_id`)
+  REFERENCES `asignacions` (`id`)
+[0m
+  [1m[35m (215.4ms)[0m  ALTER TABLE `liquidacions` ADD CONSTRAINT `fk_rails_a95376a278`
+FOREIGN KEY (`bonificacion_id`)
+  REFERENCES `bonificacions` (`id`)
+
+  [1m[36m (256.5ms)[0m  [1mALTER TABLE `liquidacions` ADD CONSTRAINT `fk_rails_6781aaf292`
+FOREIGN KEY (`descuento_adicional_id`)
+  REFERENCES `descuento_adicionals` (`id`)
+[0m
+  [1m[35m (207.0ms)[0m  ALTER TABLE `liquidacions` ADD CONSTRAINT `fk_rails_6f15136890`
+FOREIGN KEY (`habere_id`)
+  REFERENCES `haberes` (`id`)
+
+  [1m[36m (439.8ms)[0m  [1mALTER TABLE `liquidacions` ADD CONSTRAINT `fk_rails_eabb7642da`
+FOREIGN KEY (`personal_id`)
+  REFERENCES `personals` (`id`)
+[0m
+  [1m[35m (207.1ms)[0m  ALTER TABLE `personals` ADD CONSTRAINT `fk_rails_faa51cd286`
+FOREIGN KEY (`afp_id`)
+  REFERENCES `afps` (`id`)
+
+  [1m[36m (174.3ms)[0m  [1mALTER TABLE `personals` ADD CONSTRAINT `fk_rails_62ddbcca48`
+FOREIGN KEY (`banco_id`)
+  REFERENCES `bancos` (`id`)
+[0m
+  [1m[35m (166.1ms)[0m  ALTER TABLE `personals` ADD CONSTRAINT `fk_rails_23718b4e32`
+FOREIGN KEY (`centrocosto_id`)
+  REFERENCES `centrocostos` (`id`)
+
+  [1m[36m (298.3ms)[0m  [1mALTER TABLE `personals` ADD CONSTRAINT `fk_rails_ed460a00c1`
+FOREIGN KEY (`isapre_id`)
+  REFERENCES `isapres` (`id`)
+[0m
+  [1m[35m (265.3ms)[0m  ALTER TABLE `personals` ADD CONSTRAINT `fk_rails_ed0cc01632`
+FOREIGN KEY (`sindicato_id`)
+  REFERENCES `sindicatos` (`id`)
+
+  [1m[36m (173.8ms)[0m  [1mALTER TABLE `personals` ADD CONSTRAINT `fk_rails_49d8ab7918`
+FOREIGN KEY (`subcategorium_id`)
+  REFERENCES `subcategoria` (`id`)
+[0m
+  [1m[35m (166.0ms)[0m  ALTER TABLE `personals` ADD CONSTRAINT `fk_rails_7e6508b488`
+FOREIGN KEY (`tipocontrato_id`)
+  REFERENCES `tipocontratos` (`id`)
+
+  [1m[36m (183.6ms)[0m  [1mALTER TABLE `subcategoria` ADD CONSTRAINT `fk_rails_4464d35c67`
+FOREIGN KEY (`categorium_id`)
+  REFERENCES `categoria` (`id`)
+[0m
+  [1m[35m (73.5ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (281.2ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) [0m
+  [1m[35m (0.4ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (31.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20161223162935')[0m
+  [1m[35m (32.7ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20161013013002')
+  [1m[36m (32.8ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20161013013140')[0m
+  [1m[35m (32.9ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20161219145403')
+  [1m[36m (32.8ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20161221011057')[0m
+  [1m[35m (33.0ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20161202154321')
+  [1m[36m (32.9ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20161013013823')[0m
+  [1m[35m (33.0ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20161221172701')
+  [1m[36m (32.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20161013013446')[0m
+  [1m[35m (41.2ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20161206175720')
+  [1m[36m (32.8ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20161222033029')[0m
+  [1m[35m (33.0ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20161013013225')
+  [1m[36m (33.1ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20161223150733')[0m
+  [1m[35m (32.7ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20161013020329')
+  [1m[36m (33.0ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20161220150454')[0m
+  [1m[35m (88.9ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20161124012110')
+  [1m[36m (35.2ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20161013013146')[0m
+  [1m[35m (34.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20161219144958')
+  [1m[36m (33.8ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20161222154934')[0m
+  [1m[35m (82.3ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20161219145529')
+  [1m[36m (58.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20161013013132')[0m
+  [1m[35m (82.3ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20161013013702')
+  [1m[36m (33.0ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20161220025722')[0m
+  [1m[35m (66.0ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20161013013208')
+  [1m[36m (57.8ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20161116174524')[0m
+  [1m[35m (49.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20161013013527')
+  [1m[36m (57.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20161013024626')[0m
+  [1m[35m (57.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20161013015247')
+  [1m[36m (32.7ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20161013013735')[0m
+  [1m[35m (49.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20161222160304')
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (19.4ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.3ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (8.8ms)[0m  [1mDELETE FROM `descuento_adicionals`[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `descuento_adicionals` (`descuento_adicional`, `detalle`, `created_at`, `updated_at`, `id`) VALUES (1, 'MyString', '2017-03-09 23:06:38', '2017-03-09 23:06:38', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `descuento_adicionals` (`descuento_adicional`, `detalle`, `created_at`, `updated_at`, `id`) VALUES (1, 'MyString', '2017-03-09 23:06:38', '2017-03-09 23:06:38', 298486374)[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM `centrocostos`
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `centrocostos` (`nombre`, `codigo`, `detalle_centro`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyString', '2017-03-09 23:06:38', '2017-03-09 23:06:38', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO `centrocostos` (`nombre`, `codigo`, `detalle_centro`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyString', '2017-03-09 23:06:38', '2017-03-09 23:06:38', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM `personals`[0m
+  [1m[35mFixture Insert (18.1ms)[0m  INSERT INTO `personals` (`nombre_personal`, `apellidop_personal`, `apellidom_personal`, `rut_personal`, `isapre_id`, `banco_id`, `subcategorium_id`, `tipocontrato_id`, `centrocosto_id`, `afp_id`, `personal_activo`, `fecha_ingreso`, `sindicato_id`, `numero_cuenta`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyString', 'MyString', NULL, NULL, NULL, NULL, NULL, NULL, 0, '2016-11-30', NULL, 1, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 980190962)
+  [1m[36mFixture Insert (0.4ms)[0m  [1mINSERT INTO `personals` (`nombre_personal`, `apellidop_personal`, `apellidom_personal`, `rut_personal`, `isapre_id`, `banco_id`, `subcategorium_id`, `tipocontrato_id`, `centrocosto_id`, `afp_id`, `personal_activo`, `fecha_ingreso`, `sindicato_id`, `numero_cuenta`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyString', 'MyString', NULL, NULL, NULL, NULL, NULL, NULL, 0, '2016-11-30', NULL, 1, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM `afps`
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `afps` (`afp`, `descuento_afp`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 1.5, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO `afps` (`afp`, `descuento_afp`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 1.5, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 298486374)
+  [1m[36mFixture Delete (1.0ms)[0m  [1mDELETE FROM `haberes`[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO `haberes` (`sueldo_base`, `horas_pactadas`, `valor_hora`, `subcategorium_id`, `created_at`, `updated_at`, `id`) VALUES (1, 1.5, 1.5, NULL, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 980190962)
+  [1m[36mFixture Insert (0.4ms)[0m  [1mINSERT INTO `haberes` (`sueldo_base`, `horas_pactadas`, `valor_hora`, `subcategorium_id`, `created_at`, `updated_at`, `id`) VALUES (1, 1.5, 1.5, NULL, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 298486374)[0m
+  [1m[35mFixture Delete (2.6ms)[0m  DELETE FROM `subcategoria`
+  [1m[36mFixture Insert (42.4ms)[0m  [1mINSERT INTO `subcategoria` (`subcategoria`, `categorium_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', NULL, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `subcategoria` (`subcategoria`, `categorium_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', NULL, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM `asignacions`[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO `asignacions` (`asignacion`, `detalle_asignacion`, `subcategorium_id`, `created_at`, `updated_at`, `id`) VALUES (1, 'MyString', NULL, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `asignacions` (`asignacion`, `detalle_asignacion`, `subcategorium_id`, `created_at`, `updated_at`, `id`) VALUES (1, 'MyString', NULL, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 298486374)[0m
+  [1m[35mFixture Delete (1.2ms)[0m  DELETE FROM `tipocontratos`
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `tipocontratos` (`tipo_contrato`, `created_at`, `updated_at`, `id`) VALUES ('MyString', '2017-03-09 23:06:38', '2017-03-09 23:06:38', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `tipocontratos` (`tipo_contrato`, `created_at`, `updated_at`, `id`) VALUES ('MyString', '2017-03-09 23:06:38', '2017-03-09 23:06:38', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM `sindicatos`[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `sindicatos` (`nombre_sindicato`, `cuota_sindical`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 1, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `sindicatos` (`nombre_sindicato`, `cuota_sindical`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 1, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM `liquidacions`
+  [1m[36mFixture Insert (2.3ms)[0m  [1mINSERT INTO `liquidacions` (`asignacion_id`, `habere_id`, `bonificacion_id`, `descuento_adicional_id`, `personal_id`, `fecha_pago`, `porcentaje_afp`, `descuento_afp`, `descuento_isapre`, `impuesto`, `cotizacion_voluntaria`, `horas_trabajadas`, `remuneracion`, `cantidad_horas_extra`, `horas_extra`, `vacaciones`, `total_imponible`, `sindicato`, `total_haberes`, `desc_legales`, `desc_varios`, `liquido_pagar`, `created_at`, `updated_at`, `id`) VALUES (NULL, NULL, NULL, NULL, NULL, '2016-12-13', 1.5, 1, 1, 1, 1, 1.5, 1, 1, 1, 1.5, 1, 1, 1, 1, 1, 1, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 980190962)[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO `liquidacions` (`asignacion_id`, `habere_id`, `bonificacion_id`, `descuento_adicional_id`, `personal_id`, `fecha_pago`, `porcentaje_afp`, `descuento_afp`, `descuento_isapre`, `impuesto`, `cotizacion_voluntaria`, `horas_trabajadas`, `remuneracion`, `cantidad_horas_extra`, `horas_extra`, `vacaciones`, `total_imponible`, `sindicato`, `total_haberes`, `desc_legales`, `desc_varios`, `liquido_pagar`, `created_at`, `updated_at`, `id`) VALUES (NULL, NULL, NULL, NULL, NULL, '2016-12-13', 1.5, 1, 1, 1, 1, 1.5, 1, 1, 1, 1.5, 1, 1, 1, 1, 1, 1, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM `topes_legales`[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `topes_legales` (`topeMinimo`, `topeMaximo`, `created_at`, `updated_at`, `id`) VALUES (1, 1, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 980190962)
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO `topes_legales` (`topeMinimo`, `topeMaximo`, `created_at`, `updated_at`, `id`) VALUES (1, 1, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM `users`
+  [1m[36mFixture Insert (0.4ms)[0m  [1mINSERT INTO `users` (`nombre`, `apellido_paterno`, `apellido_materno`, `email`, `rut_usuario`, `tipo_usuario`, `password_digest`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', '$2a$10$3DsYnLATDDSXgFsxQHrCoeiWAOU8NO/Lpbjrt.rD1noGATDgiu/.S', '2017-03-09 23:06:38', '2017-03-09 23:06:38', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `users` (`nombre`, `apellido_paterno`, `apellido_materno`, `email`, `rut_usuario`, `tipo_usuario`, `password_digest`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', '$2a$10$7xr1ris3J1IGwHizoblLZuP6FJH1UxDP4h6AwDsoMArBhB6Wxhgu6', '2017-03-09 23:06:38', '2017-03-09 23:06:38', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM `impuesto_unicos`[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO `impuesto_unicos` (`imponibleMinimo`, `imponibleMaximo`, `factor`, `rebaja`, `impuestoEfectivoMax`, `created_at`, `updated_at`, `id`) VALUES (1.5, 1.5, 1.5, 1.5, 1.5, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `impuesto_unicos` (`imponibleMinimo`, `imponibleMaximo`, `factor`, `rebaja`, `impuestoEfectivoMax`, `created_at`, `updated_at`, `id`) VALUES (1.5, 1.5, 1.5, 1.5, 1.5, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM `empresas`
+  [1m[36mFixture Insert (0.4ms)[0m  [1mINSERT INTO `empresas` (`nombre_empresa`, `rut_empresa`, `giro`, `domicilio`, `email`, `website`, `telefono`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', '2017-03-09 23:06:38', '2017-03-09 23:06:38', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `empresas` (`nombre_empresa`, `rut_empresa`, `giro`, `domicilio`, `email`, `website`, `telefono`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', 'MyString', '2017-03-09 23:06:38', '2017-03-09 23:06:38', 298486374)
+  [1m[36mFixture Delete (0.5ms)[0m  [1mDELETE FROM `isapres`[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `isapres` (`isapre`, `created_at`, `updated_at`, `id`) VALUES ('MyString', '2017-03-09 23:06:38', '2017-03-09 23:06:38', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `isapres` (`isapre`, `created_at`, `updated_at`, `id`) VALUES ('MyString', '2017-03-09 23:06:38', '2017-03-09 23:06:38', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM `categoria`
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `categoria` (`categoria`, `created_at`, `updated_at`, `id`) VALUES ('MyString', '2017-03-09 23:06:38', '2017-03-09 23:06:38', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `categoria` (`categoria`, `created_at`, `updated_at`, `id`) VALUES ('MyString', '2017-03-09 23:06:38', '2017-03-09 23:06:38', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM `indicador_economicos`[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `indicador_economicos` (`indicador`, `valor`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 1, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `indicador_economicos` (`indicador`, `valor`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 1, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM `certificates`
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `certificates` (`personal_id`, `rut_personal`, `motivo`, `created_at`, `updated_at`, `id`) VALUES (NULL, 'MyString', 'MyString', '2017-03-09 23:06:38', '2017-03-09 23:06:38', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `certificates` (`personal_id`, `rut_personal`, `motivo`, `created_at`, `updated_at`, `id`) VALUES (NULL, 'MyString', 'MyString', '2017-03-09 23:06:38', '2017-03-09 23:06:38', 298486374)
+  [1m[36mFixture Delete (4.7ms)[0m  [1mDELETE FROM `asignacion_familiars`[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `asignacion_familiars` (`tramo`, `monto`, `requisitoMinimo`, `requisitoMaximo`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 1, 1, 1, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `asignacion_familiars` (`tramo`, `monto`, `requisitoMinimo`, `requisitoMaximo`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 1, 1, 1, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 298486374)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM `bonificacions`
+  [1m[36mFixture Insert (7.2ms)[0m  [1mINSERT INTO `bonificacions` (`bono`, `detalle_bono`, `subcategorium_id`, `created_at`, `updated_at`, `id`) VALUES (1, 'MyString', NULL, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 980190962)[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO `bonificacions` (`bono`, `detalle_bono`, `subcategorium_id`, `created_at`, `updated_at`, `id`) VALUES (1, 'MyString', NULL, '2017-03-09 23:06:38', '2017-03-09 23:06:38', 298486374)
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM `bancos`[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `bancos` (`banco`, `tipo_cuenta`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', '2017-03-09 23:06:38', '2017-03-09 23:06:38', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `bancos` (`banco`, `tipo_cuenta`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', '2017-03-09 23:06:38', '2017-03-09 23:06:38', 298486374)[0m
+  [1m[35m (56.4ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+------------------------------------------------
+CentrocostosControllerTest: test_should_get_edit
+------------------------------------------------
+  [1m[36mCentrocosto Load (0.5ms)[0m  [1mSELECT  `centrocostos`.* FROM `centrocostos` WHERE `centrocostos`.`id` = 980190962 LIMIT 1[0m
+Processing by CentrocostosController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------------------
+CentrocostosControllerTest: test_should_show_centrocosto
+--------------------------------------------------------
+  [1m[36mCentrocosto Load (0.2ms)[0m  [1mSELECT  `centrocostos`.* FROM `centrocostos` WHERE `centrocostos`.`id` = 980190962 LIMIT 1[0m
+Processing by CentrocostosController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+-------------------------------------------------
+CentrocostosControllerTest: test_should_get_index
+-------------------------------------------------
+  [1m[36mCentrocosto Load (0.2ms)[0m  [1mSELECT  `centrocostos`.* FROM `centrocostos` WHERE `centrocostos`.`id` = 980190962 LIMIT 1[0m
+Processing by CentrocostosController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-----------------------------------------------------------
+CentrocostosControllerTest: test_should_destroy_centrocosto
+-----------------------------------------------------------
+  [1m[36mCentrocosto Load (0.2ms)[0m  [1mSELECT  `centrocostos`.* FROM `centrocostos` WHERE `centrocostos`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (11.7ms)[0m  SELECT COUNT(*) FROM `centrocostos`
+Processing by CentrocostosController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `centrocostos`
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+-----------------------------------------------
+CentrocostosControllerTest: test_should_get_new
+-----------------------------------------------
+  [1m[36mCentrocosto Load (0.3ms)[0m  [1mSELECT  `centrocostos`.* FROM `centrocostos` WHERE `centrocostos`.`id` = 980190962 LIMIT 1[0m
+Processing by CentrocostosController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+----------------------------------------------------------
+CentrocostosControllerTest: test_should_create_centrocosto
+----------------------------------------------------------
+  [1m[36mCentrocosto Load (0.3ms)[0m  [1mSELECT  `centrocostos`.* FROM `centrocostos` WHERE `centrocostos`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `centrocostos`
+Processing by CentrocostosController#create as HTML
+  Parameters: {"centrocosto"=>{"codigo"=>"MyString", "detalle_centro"=>"MyString", "nombre"=>"MyString"}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `centrocostos`
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+----------------------------------------------------------
+CentrocostosControllerTest: test_should_update_centrocosto
+----------------------------------------------------------
+  [1m[36mCentrocosto Load (0.2ms)[0m  [1mSELECT  `centrocostos`.* FROM `centrocostos` WHERE `centrocostos`.`id` = 980190962 LIMIT 1[0m
+Processing by CentrocostosController#update as HTML
+  Parameters: {"centrocosto"=>{"codigo"=>"MyString", "detalle_centro"=>"MyString", "nombre"=>"MyString"}, "id"=>"980190962"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------------
+SubcategoriaControllerTest: test_should_get_index
+-------------------------------------------------
+  [1m[36mSubcategorium Load (0.6ms)[0m  [1mSELECT  `subcategoria`.* FROM `subcategoria` WHERE `subcategoria`.`id` = 980190962 LIMIT 1[0m
+Processing by SubcategoriaController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+------------------------------------------------
+SubcategoriaControllerTest: test_should_get_edit
+------------------------------------------------
+  [1m[36mSubcategorium Load (0.3ms)[0m  [1mSELECT  `subcategoria`.* FROM `subcategoria` WHERE `subcategoria`.`id` = 980190962 LIMIT 1[0m
+Processing by SubcategoriaController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+-------------------------------------------------------------
+SubcategoriaControllerTest: test_should_destroy_subcategorium
+-------------------------------------------------------------
+  [1m[36mSubcategorium Load (0.3ms)[0m  [1mSELECT  `subcategoria`.* FROM `subcategoria` WHERE `subcategoria`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `subcategoria`
+Processing by SubcategoriaController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `subcategoria`
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+-----------------------------------------------
+SubcategoriaControllerTest: test_should_get_new
+-----------------------------------------------
+  [1m[36mSubcategorium Load (0.2ms)[0m  [1mSELECT  `subcategoria`.* FROM `subcategoria` WHERE `subcategoria`.`id` = 980190962 LIMIT 1[0m
+Processing by SubcategoriaController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+----------------------------------------------------------
+SubcategoriaControllerTest: test_should_show_subcategorium
+----------------------------------------------------------
+  [1m[36mSubcategorium Load (0.2ms)[0m  [1mSELECT  `subcategoria`.* FROM `subcategoria` WHERE `subcategoria`.`id` = 980190962 LIMIT 1[0m
+Processing by SubcategoriaController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------------------
+SubcategoriaControllerTest: test_should_create_subcategorium
+------------------------------------------------------------
+  [1m[36mSubcategorium Load (0.2ms)[0m  [1mSELECT  `subcategoria`.* FROM `subcategoria` WHERE `subcategoria`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `subcategoria`
+Processing by SubcategoriaController#create as HTML
+  Parameters: {"subcategorium"=>{"categorium_id"=>nil, "subcategoria"=>"MyString"}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM `subcategoria`
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------------------
+SubcategoriaControllerTest: test_should_update_subcategorium
+------------------------------------------------------------
+  [1m[36mSubcategorium Load (0.1ms)[0m  [1mSELECT  `subcategoria`.* FROM `subcategoria` WHERE `subcategoria`.`id` = 980190962 LIMIT 1[0m
+Processing by SubcategoriaController#update as HTML
+  Parameters: {"subcategorium"=>{"categorium_id"=>nil, "subcategoria"=>"MyString"}, "id"=>"980190962"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-----------------------------------------------
+TopesLegalesControllerTest: test_should_get_new
+-----------------------------------------------
+  [1m[36mTopesLegale Load (0.5ms)[0m  [1mSELECT  `topes_legales`.* FROM `topes_legales` WHERE `topes_legales`.`id` = 980190962 LIMIT 1[0m
+Processing by TopesLegalesController#new as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------------
+TopesLegalesControllerTest: test_should_show_topes_legale
+---------------------------------------------------------
+  [1m[36mTopesLegale Load (0.3ms)[0m  [1mSELECT  `topes_legales`.* FROM `topes_legales` WHERE `topes_legales`.`id` = 980190962 LIMIT 1[0m
+Processing by TopesLegalesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------
+TopesLegalesControllerTest: test_should_get_edit
+------------------------------------------------
+  [1m[36mTopesLegale Load (0.2ms)[0m  [1mSELECT  `topes_legales`.* FROM `topes_legales` WHERE `topes_legales`.`id` = 980190962 LIMIT 1[0m
+Processing by TopesLegalesController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------------------
+TopesLegalesControllerTest: test_should_destroy_topes_legale
+------------------------------------------------------------
+  [1m[36mTopesLegale Load (0.2ms)[0m  [1mSELECT  `topes_legales`.* FROM `topes_legales` WHERE `topes_legales`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `topes_legales`
+Processing by TopesLegalesController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `topes_legales`
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+-----------------------------------------------------------
+TopesLegalesControllerTest: test_should_create_topes_legale
+-----------------------------------------------------------
+  [1m[36mTopesLegale Load (0.3ms)[0m  [1mSELECT  `topes_legales`.* FROM `topes_legales` WHERE `topes_legales`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM `topes_legales`
+Processing by TopesLegalesController#create as HTML
+  Parameters: {"topes_legale"=>{"topeMaximo"=>"1", "topeMinimo"=>"1"}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM `topes_legales`
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------------
+TopesLegalesControllerTest: test_should_get_index
+-------------------------------------------------
+  [1m[36mTopesLegale Load (0.1ms)[0m  [1mSELECT  `topes_legales`.* FROM `topes_legales` WHERE `topes_legales`.`id` = 980190962 LIMIT 1[0m
+Processing by TopesLegalesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-----------------------------------------------------------
+TopesLegalesControllerTest: test_should_update_topes_legale
+-----------------------------------------------------------
+  [1m[36mTopesLegale Load (0.2ms)[0m  [1mSELECT  `topes_legales`.* FROM `topes_legales` WHERE `topes_legales`.`id` = 980190962 LIMIT 1[0m
+Processing by TopesLegalesController#update as HTML
+  Parameters: {"topes_legale"=>{"topeMaximo"=>"1", "topeMinimo"=>"1"}, "id"=>"980190962"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------------------------------------
+IndicadorEconomicosControllerTest: test_should_update_indicador_economico
+-------------------------------------------------------------------------
+  [1m[36mIndicadorEconomico Load (0.5ms)[0m  [1mSELECT  `indicador_economicos`.* FROM `indicador_economicos` WHERE `indicador_economicos`.`id` = 980190962 LIMIT 1[0m
+Processing by IndicadorEconomicosController#update as HTML
+  Parameters: {"indicador_economico"=>{"indicador"=>"MyString", "valor"=>"1.0"}, "id"=>"980190962"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+--------------------------------------------------------------------------
+IndicadorEconomicosControllerTest: test_should_destroy_indicador_economico
+--------------------------------------------------------------------------
+  [1m[36mIndicadorEconomico Load (0.3ms)[0m  [1mSELECT  `indicador_economicos`.* FROM `indicador_economicos` WHERE `indicador_economicos`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `indicador_economicos`
+Processing by IndicadorEconomicosController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `indicador_economicos`
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+------------------------------------------------------
+IndicadorEconomicosControllerTest: test_should_get_new
+------------------------------------------------------
+  [1m[36mIndicadorEconomico Load (0.3ms)[0m  [1mSELECT  `indicador_economicos`.* FROM `indicador_economicos` WHERE `indicador_economicos`.`id` = 980190962 LIMIT 1[0m
+Processing by IndicadorEconomicosController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+-----------------------------------------------------------------------
+IndicadorEconomicosControllerTest: test_should_show_indicador_economico
+-----------------------------------------------------------------------
+  [1m[36mIndicadorEconomico Load (0.3ms)[0m  [1mSELECT  `indicador_economicos`.* FROM `indicador_economicos` WHERE `indicador_economicos`.`id` = 980190962 LIMIT 1[0m
+Processing by IndicadorEconomicosController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+-------------------------------------------------------------------------
+IndicadorEconomicosControllerTest: test_should_create_indicador_economico
+-------------------------------------------------------------------------
+  [1m[36mIndicadorEconomico Load (0.2ms)[0m  [1mSELECT  `indicador_economicos`.* FROM `indicador_economicos` WHERE `indicador_economicos`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `indicador_economicos`
+Processing by IndicadorEconomicosController#create as HTML
+  Parameters: {"indicador_economico"=>{"indicador"=>"MyString", "valor"=>"1.0"}}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `indicador_economicos`
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------------------
+IndicadorEconomicosControllerTest: test_should_get_edit
+-------------------------------------------------------
+  [1m[36mIndicadorEconomico Load (0.3ms)[0m  [1mSELECT  `indicador_economicos`.* FROM `indicador_economicos` WHERE `indicador_economicos`.`id` = 980190962 LIMIT 1[0m
+Processing by IndicadorEconomicosController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------------------
+IndicadorEconomicosControllerTest: test_should_get_index
+--------------------------------------------------------
+  [1m[36mIndicadorEconomico Load (0.2ms)[0m  [1mSELECT  `indicador_economicos`.* FROM `indicador_economicos` WHERE `indicador_economicos`.`id` = 980190962 LIMIT 1[0m
+Processing by IndicadorEconomicosController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+-------------------------------------------
+AfpsControllerTest: test_should_destroy_afp
+-------------------------------------------
+  [1m[36mAfp Load (0.6ms)[0m  [1mSELECT  `afps`.* FROM `afps` WHERE `afps`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `afps`
+Processing by AfpsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `afps`
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+---------------------------------------
+AfpsControllerTest: test_should_get_new
+---------------------------------------
+  [1m[36mAfp Load (0.3ms)[0m  [1mSELECT  `afps`.* FROM `afps` WHERE `afps`.`id` = 980190962 LIMIT 1[0m
+Processing by AfpsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+----------------------------------------
+AfpsControllerTest: test_should_get_edit
+----------------------------------------
+  [1m[36mAfp Load (0.4ms)[0m  [1mSELECT  `afps`.* FROM `afps` WHERE `afps`.`id` = 980190962 LIMIT 1[0m
+Processing by AfpsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+----------------------------------------
+AfpsControllerTest: test_should_show_afp
+----------------------------------------
+  [1m[36mAfp Load (0.3ms)[0m  [1mSELECT  `afps`.* FROM `afps` WHERE `afps`.`id` = 980190962 LIMIT 1[0m
+Processing by AfpsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-----------------------------------------
+AfpsControllerTest: test_should_get_index
+-----------------------------------------
+  [1m[36mAfp Load (0.2ms)[0m  [1mSELECT  `afps`.* FROM `afps` WHERE `afps`.`id` = 980190962 LIMIT 1[0m
+Processing by AfpsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------
+AfpsControllerTest: test_should_create_afp
+------------------------------------------
+  [1m[36mAfp Load (0.2ms)[0m  [1mSELECT  `afps`.* FROM `afps` WHERE `afps`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM `afps`
+Processing by AfpsController#create as HTML
+  Parameters: {"afp"=>{"afp"=>"MyString", "descuento_afp"=>"1.5"}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM `afps`
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------
+AfpsControllerTest: test_should_update_afp
+------------------------------------------
+  [1m[36mAfp Load (0.2ms)[0m  [1mSELECT  `afps`.* FROM `afps` WHERE `afps`.`id` = 980190962 LIMIT 1[0m
+Processing by AfpsController#update as HTML
+  Parameters: {"afp"=>{"afp"=>"MyString", "descuento_afp"=>"1.5"}, "id"=>"980190962"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------
+SessionsControllerTest: test_should_get_new
+-------------------------------------------
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (3.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 200 OK in 78ms (Views: 75.7ms | ActiveRecord: 1.2ms | Solr: 0.0ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-----------------------------------------------
+SessionsControllerTest: test_should_get_destroy
+-----------------------------------------------
+Processing by SessionsController#destroy as HTML
+Redirected to http://test.host/?locale=es
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------
+SessionsControllerTest: test_should_get_create
+----------------------------------------------
+Processing by SessionsController#create as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`rut_usuario` IS NULL LIMIT 1
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 200 OK in 11ms (Views: 7.1ms | ActiveRecord: 1.4ms | Solr: 0.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+EmpresasControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[35mEmpresa Load (0.5ms)[0m  SELECT  `empresas`.* FROM `empresas` WHERE `empresas`.`id` = 980190962 LIMIT 1
+Processing by EmpresasController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------
+EmpresasControllerTest: test_should_show_empresa
+------------------------------------------------
+  [1m[35mEmpresa Load (0.4ms)[0m  SELECT  `empresas`.* FROM `empresas` WHERE `empresas`.`id` = 980190962 LIMIT 1
+Processing by EmpresasController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+EmpresasControllerTest: test_should_create_empresa
+--------------------------------------------------
+  [1m[35mEmpresa Load (0.3ms)[0m  SELECT  `empresas`.* FROM `empresas` WHERE `empresas`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `empresas`[0m
+Processing by EmpresasController#create as HTML
+  Parameters: {"empresa"=>{"domicilio"=>"MyString", "email"=>"MyString", "giro"=>"MyString", "nombre_empresa"=>"MyString", "rut_empresa"=>"MyString", "telefono"=>"MyString", "website"=>"MyString"}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `empresas`[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+EmpresasControllerTest: test_should_update_empresa
+--------------------------------------------------
+  [1m[35mEmpresa Load (0.3ms)[0m  SELECT  `empresas`.* FROM `empresas` WHERE `empresas`.`id` = 980190962 LIMIT 1
+Processing by EmpresasController#update as HTML
+  Parameters: {"empresa"=>{"domicilio"=>"MyString", "email"=>"MyString", "giro"=>"MyString", "nombre_empresa"=>"MyString", "rut_empresa"=>"MyString", "telefono"=>"MyString", "website"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+EmpresasControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[35mEmpresa Load (0.2ms)[0m  SELECT  `empresas`.* FROM `empresas` WHERE `empresas`.`id` = 980190962 LIMIT 1
+Processing by EmpresasController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------------
+EmpresasControllerTest: test_should_destroy_empresa
+---------------------------------------------------
+  [1m[35mEmpresa Load (0.3ms)[0m  SELECT  `empresas`.* FROM `empresas` WHERE `empresas`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `empresas`[0m
+Processing by EmpresasController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `empresas`[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------
+EmpresasControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[35mEmpresa Load (0.3ms)[0m  SELECT  `empresas`.* FROM `empresas` WHERE `empresas`.`id` = 980190962 LIMIT 1
+Processing by EmpresasController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------
+PageControllerTest: test_should_get_index
+-----------------------------------------
+Processing by PageController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered page/index.html.erb within layouts/application (2.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 200 OK in 22ms (Views: 20.4ms | ActiveRecord: 1.4ms | Solr: 0.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+BonificacionsControllerTest: test_should_get_index
+--------------------------------------------------
+  [1m[35mBonificacion Load (0.6ms)[0m  SELECT  `bonificacions`.* FROM `bonificacions` WHERE `bonificacions`.`id` = 980190962 LIMIT 1
+Processing by BonificacionsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-------------------------------------------------------------
+BonificacionsControllerTest: test_should_destroy_bonificacion
+-------------------------------------------------------------
+  [1m[35mBonificacion Load (0.2ms)[0m  SELECT  `bonificacions`.* FROM `bonificacions` WHERE `bonificacions`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `bonificacions`[0m
+Processing by BonificacionsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `bonificacions`[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------------
+BonificacionsControllerTest: test_should_update_bonificacion
+------------------------------------------------------------
+  [1m[35mBonificacion Load (0.1ms)[0m  SELECT  `bonificacions`.* FROM `bonificacions` WHERE `bonificacions`.`id` = 980190962 LIMIT 1
+Processing by BonificacionsController#update as HTML
+  Parameters: {"bonificacion"=>{"bono"=>"1", "detalle_bono"=>"MyString", "subcategorium_id"=>nil}, "id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------------------
+BonificacionsControllerTest: test_should_show_bonificacion
+----------------------------------------------------------
+  [1m[35mBonificacion Load (0.5ms)[0m  SELECT  `bonificacions`.* FROM `bonificacions` WHERE `bonificacions`.`id` = 980190962 LIMIT 1
+Processing by BonificacionsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+BonificacionsControllerTest: test_should_get_edit
+-------------------------------------------------
+  [1m[35mBonificacion Load (0.2ms)[0m  SELECT  `bonificacions`.* FROM `bonificacions` WHERE `bonificacions`.`id` = 980190962 LIMIT 1
+Processing by BonificacionsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------------
+BonificacionsControllerTest: test_should_create_bonificacion
+------------------------------------------------------------
+  [1m[35mBonificacion Load (0.2ms)[0m  SELECT  `bonificacions`.* FROM `bonificacions` WHERE `bonificacions`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `bonificacions`[0m
+Processing by BonificacionsController#create as HTML
+  Parameters: {"bonificacion"=>{"bono"=>"1", "detalle_bono"=>"MyString", "subcategorium_id"=>nil}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `bonificacions`[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------
+BonificacionsControllerTest: test_should_get_new
+------------------------------------------------
+  [1m[35mBonificacion Load (0.3ms)[0m  SELECT  `bonificacions`.* FROM `bonificacions` WHERE `bonificacions`.`id` = 980190962 LIMIT 1
+Processing by BonificacionsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------
+IsapresControllerTest: test_should_create_isapre
+------------------------------------------------
+  [1m[35mIsapre Load (0.4ms)[0m  SELECT  `isapres`.* FROM `isapres` WHERE `isapres`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `isapres`[0m
+Processing by IsapresController#create as HTML
+  Parameters: {"isapre"=>{"isapre"=>"MyString"}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `isapres`[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------
+IsapresControllerTest: test_should_get_new
+------------------------------------------
+  [1m[35mIsapre Load (0.1ms)[0m  SELECT  `isapres`.* FROM `isapres` WHERE `isapres`.`id` = 980190962 LIMIT 1
+Processing by IsapresController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+IsapresControllerTest: test_should_destroy_isapre
+-------------------------------------------------
+  [1m[35mIsapre Load (0.3ms)[0m  SELECT  `isapres`.* FROM `isapres` WHERE `isapres`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `isapres`[0m
+Processing by IsapresController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `isapres`[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------
+IsapresControllerTest: test_should_update_isapre
+------------------------------------------------
+  [1m[35mIsapre Load (0.2ms)[0m  SELECT  `isapres`.* FROM `isapres` WHERE `isapres`.`id` = 980190962 LIMIT 1
+Processing by IsapresController#update as HTML
+  Parameters: {"isapre"=>{"isapre"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------
+IsapresControllerTest: test_should_get_edit
+-------------------------------------------
+  [1m[35mIsapre Load (0.1ms)[0m  SELECT  `isapres`.* FROM `isapres` WHERE `isapres`.`id` = 980190962 LIMIT 1
+Processing by IsapresController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------
+IsapresControllerTest: test_should_show_isapre
+----------------------------------------------
+  [1m[35mIsapre Load (0.1ms)[0m  SELECT  `isapres`.* FROM `isapres` WHERE `isapres`.`id` = 980190962 LIMIT 1
+Processing by IsapresController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+IsapresControllerTest: test_should_get_index
+--------------------------------------------
+  [1m[35mIsapre Load (0.1ms)[0m  SELECT  `isapres`.* FROM `isapres` WHERE `isapres`.`id` = 980190962 LIMIT 1
+Processing by IsapresController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-------------------------------------------
+HaberesControllerTest: test_should_get_edit
+-------------------------------------------
+  [1m[35mHabere Load (0.4ms)[0m  SELECT  `haberes`.* FROM `haberes` WHERE `haberes`.`id` = 980190962 LIMIT 1
+Processing by HaberesController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------
+HaberesControllerTest: test_should_create_habere
+------------------------------------------------
+  [1m[35mHabere Load (0.2ms)[0m  SELECT  `haberes`.* FROM `haberes` WHERE `haberes`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `haberes`[0m
+Processing by HaberesController#create as HTML
+  Parameters: {"habere"=>{"horas_pactadas"=>"1.5", "subcategorium_id"=>nil, "sueldo_base"=>"1", "valor_hora"=>"1.5"}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `haberes`[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------
+HaberesControllerTest: test_should_update_habere
+------------------------------------------------
+  [1m[35mHabere Load (0.4ms)[0m  SELECT  `haberes`.* FROM `haberes` WHERE `haberes`.`id` = 980190962 LIMIT 1
+Processing by HaberesController#update as HTML
+  Parameters: {"habere"=>{"horas_pactadas"=>"1.5", "subcategorium_id"=>nil, "sueldo_base"=>"1", "valor_hora"=>"1.5"}, "id"=>"980190962"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+HaberesControllerTest: test_should_get_index
+--------------------------------------------
+  [1m[35mHabere Load (0.2ms)[0m  SELECT  `haberes`.* FROM `haberes` WHERE `haberes`.`id` = 980190962 LIMIT 1
+Processing by HaberesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------
+HaberesControllerTest: test_should_get_new
+------------------------------------------
+  [1m[35mHabere Load (0.1ms)[0m  SELECT  `haberes`.* FROM `haberes` WHERE `haberes`.`id` = 980190962 LIMIT 1
+Processing by HaberesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------
+HaberesControllerTest: test_should_show_habere
+----------------------------------------------
+  [1m[35mHabere Load (0.1ms)[0m  SELECT  `haberes`.* FROM `haberes` WHERE `haberes`.`id` = 980190962 LIMIT 1
+Processing by HaberesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+HaberesControllerTest: test_should_destroy_habere
+-------------------------------------------------
+  [1m[35mHabere Load (0.1ms)[0m  SELECT  `haberes`.* FROM `haberes` WHERE `haberes`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `haberes`[0m
+Processing by HaberesController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.9ms)[0m  [1mSELECT COUNT(*) FROM `haberes`[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------
+UsersControllerTest: test_should_get_index
+------------------------------------------
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------
+UsersControllerTest: test_should_show_user
+------------------------------------------
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+UsersControllerTest: test_should_destroy_user
+---------------------------------------------
+  [1m[35mUser Load (0.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------
+UsersControllerTest: test_should_get_new
+----------------------------------------
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+UsersControllerTest: test_should_create_user
+--------------------------------------------
+  [1m[35mUser Load (0.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"apellido_materno"=>"MyString", "apellido_paterno"=>"MyString", "email"=>"MyString", "nombre"=>"MyString", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "rut_usuario"=>"MyString", "tipo_usuario"=>"MyString"}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------
+UsersControllerTest: test_should_get_edit
+-----------------------------------------
+  [1m[35mUser Load (0.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+UsersControllerTest: test_should_update_user
+--------------------------------------------
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"apellido_materno"=>"MyString", "apellido_paterno"=>"MyString", "email"=>"MyString", "nombre"=>"MyString", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "rut_usuario"=>"MyString", "tipo_usuario"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------
+SindicatosControllerTest: test_should_create_sindicato
+------------------------------------------------------
+  [1m[35mSindicato Load (0.4ms)[0m  SELECT  `sindicatos`.* FROM `sindicatos` WHERE `sindicatos`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `sindicatos`[0m
+Processing by SindicatosController#create as HTML
+  Parameters: {"sindicato"=>{"cuota_sindical"=>"1", "nombre_sindicato"=>"MyString"}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `sindicatos`[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------------
+SindicatosControllerTest: test_should_show_sindicato
+----------------------------------------------------
+  [1m[35mSindicato Load (0.2ms)[0m  SELECT  `sindicatos`.* FROM `sindicatos` WHERE `sindicatos`.`id` = 980190962 LIMIT 1
+Processing by SindicatosController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------------
+SindicatosControllerTest: test_should_get_index
+-----------------------------------------------
+  [1m[35mSindicato Load (0.2ms)[0m  SELECT  `sindicatos`.* FROM `sindicatos` WHERE `sindicatos`.`id` = 980190962 LIMIT 1
+Processing by SindicatosController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------
+SindicatosControllerTest: test_should_update_sindicato
+------------------------------------------------------
+  [1m[35mSindicato Load (0.2ms)[0m  SELECT  `sindicatos`.* FROM `sindicatos` WHERE `sindicatos`.`id` = 980190962 LIMIT 1
+Processing by SindicatosController#update as HTML
+  Parameters: {"sindicato"=>{"cuota_sindical"=>"1", "nombre_sindicato"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+SindicatosControllerTest: test_should_get_new
+---------------------------------------------
+  [1m[35mSindicato Load (0.2ms)[0m  SELECT  `sindicatos`.* FROM `sindicatos` WHERE `sindicatos`.`id` = 980190962 LIMIT 1
+Processing by SindicatosController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------------
+SindicatosControllerTest: test_should_destroy_sindicato
+-------------------------------------------------------
+  [1m[35mSindicato Load (0.1ms)[0m  SELECT  `sindicatos`.* FROM `sindicatos` WHERE `sindicatos`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `sindicatos`[0m
+Processing by SindicatosController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `sindicatos`[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------
+SindicatosControllerTest: test_should_get_edit
+----------------------------------------------
+  [1m[35mSindicato Load (0.2ms)[0m  SELECT  `sindicatos`.* FROM `sindicatos` WHERE `sindicatos`.`id` = 980190962 LIMIT 1
+Processing by SindicatosController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------------------------
+DescuentoAdicionalsControllerTest: test_should_show_descuento_adicional
+-----------------------------------------------------------------------
+  [1m[35mDescuentoAdicional Load (0.4ms)[0m  SELECT  `descuento_adicionals`.* FROM `descuento_adicionals` WHERE `descuento_adicionals`.`id` = 980190962 LIMIT 1
+Processing by DescuentoAdicionalsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+--------------------------------------------------------------------------
+DescuentoAdicionalsControllerTest: test_should_destroy_descuento_adicional
+--------------------------------------------------------------------------
+  [1m[35mDescuentoAdicional Load (0.2ms)[0m  SELECT  `descuento_adicionals`.* FROM `descuento_adicionals` WHERE `descuento_adicionals`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `descuento_adicionals`[0m
+Processing by DescuentoAdicionalsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `descuento_adicionals`[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-------------------------------------------------------------------------
+DescuentoAdicionalsControllerTest: test_should_update_descuento_adicional
+-------------------------------------------------------------------------
+  [1m[35mDescuentoAdicional Load (0.3ms)[0m  SELECT  `descuento_adicionals`.* FROM `descuento_adicionals` WHERE `descuento_adicionals`.`id` = 980190962 LIMIT 1
+Processing by DescuentoAdicionalsController#update as HTML
+  Parameters: {"descuento_adicional"=>{"descuento_adicional"=>"1", "detalle"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------------------
+DescuentoAdicionalsControllerTest: test_should_get_index
+--------------------------------------------------------
+  [1m[35mDescuentoAdicional Load (0.3ms)[0m  SELECT  `descuento_adicionals`.* FROM `descuento_adicionals` WHERE `descuento_adicionals`.`id` = 980190962 LIMIT 1
+Processing by DescuentoAdicionalsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------------------------------
+DescuentoAdicionalsControllerTest: test_should_create_descuento_adicional
+-------------------------------------------------------------------------
+  [1m[35mDescuentoAdicional Load (0.4ms)[0m  SELECT  `descuento_adicionals`.* FROM `descuento_adicionals` WHERE `descuento_adicionals`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `descuento_adicionals`[0m
+Processing by DescuentoAdicionalsController#create as HTML
+  Parameters: {"descuento_adicional"=>{"descuento_adicional"=>"1", "detalle"=>"MyString"}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `descuento_adicionals`[0m
+  [1m[35m (0.7ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------------
+DescuentoAdicionalsControllerTest: test_should_get_edit
+-------------------------------------------------------
+  [1m[35mDescuentoAdicional Load (0.2ms)[0m  SELECT  `descuento_adicionals`.* FROM `descuento_adicionals` WHERE `descuento_adicionals`.`id` = 980190962 LIMIT 1
+Processing by DescuentoAdicionalsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------
+DescuentoAdicionalsControllerTest: test_should_get_new
+------------------------------------------------------
+  [1m[35mDescuentoAdicional Load (0.2ms)[0m  SELECT  `descuento_adicionals`.* FROM `descuento_adicionals` WHERE `descuento_adicionals`.`id` = 980190962 LIMIT 1
+Processing by DescuentoAdicionalsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+PersonalsControllerTest: test_should_get_new
+--------------------------------------------
+  [1m[35mPersonal Load (0.7ms)[0m  SELECT  `personals`.* FROM `personals` WHERE `personals`.`id` = 980190962 LIMIT 1
+Processing by PersonalsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+PersonalsControllerTest: test_should_show_personal
+--------------------------------------------------
+  [1m[35mPersonal Load (0.3ms)[0m  SELECT  `personals`.* FROM `personals` WHERE `personals`.`id` = 980190962 LIMIT 1
+Processing by PersonalsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+PersonalsControllerTest: test_should_get_edit
+---------------------------------------------
+  [1m[35mPersonal Load (0.2ms)[0m  SELECT  `personals`.* FROM `personals` WHERE `personals`.`id` = 980190962 LIMIT 1
+Processing by PersonalsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------
+PersonalsControllerTest: test_should_destroy_personal
+-----------------------------------------------------
+  [1m[35mPersonal Load (0.3ms)[0m  SELECT  `personals`.* FROM `personals` WHERE `personals`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `personals`[0m
+Processing by PersonalsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `personals`[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+----------------------------------------------------
+PersonalsControllerTest: test_should_update_personal
+----------------------------------------------------
+  [1m[35mPersonal Load (0.3ms)[0m  SELECT  `personals`.* FROM `personals` WHERE `personals`.`id` = 980190962 LIMIT 1
+Processing by PersonalsController#update as HTML
+  Parameters: {"personal"=>{"afp_id"=>nil, "apellidom_personal"=>"MyString", "apellidop_personal"=>"MyString", "banco_id"=>nil, "centrocosto_id"=>nil, "fecha_ingreso"=>"2016-11-30", "isapre_id"=>nil, "nombre_personal"=>"MyString", "numero_cuenta"=>"1", "personal_activo"=>false, "rut_personal"=>"MyString", "sindicato_id"=>nil, "subcategorium_id"=>nil, "tipocontrato_id"=>nil}, "id"=>"980190962"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+----------------------------------------------------
+PersonalsControllerTest: test_should_create_personal
+----------------------------------------------------
+  [1m[35mPersonal Load (0.3ms)[0m  SELECT  `personals`.* FROM `personals` WHERE `personals`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `personals`[0m
+Processing by PersonalsController#create as HTML
+  Parameters: {"personal"=>{"afp_id"=>nil, "apellidom_personal"=>"MyString", "apellidop_personal"=>"MyString", "banco_id"=>nil, "centrocosto_id"=>nil, "fecha_ingreso"=>"2016-11-30", "isapre_id"=>nil, "nombre_personal"=>"MyString", "numero_cuenta"=>"1", "personal_activo"=>false, "rut_personal"=>"MyString", "sindicato_id"=>nil, "subcategorium_id"=>nil, "tipocontrato_id"=>nil}}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `personals`[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------
+PersonalsControllerTest: test_should_get_index
+----------------------------------------------
+  [1m[35mPersonal Load (0.2ms)[0m  SELECT  `personals`.* FROM `personals` WHERE `personals`.`id` = 980190962 LIMIT 1
+Processing by PersonalsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+---------------------------------------------------------------
+ImpuestoUnicosControllerTest: test_should_create_impuesto_unico
+---------------------------------------------------------------
+  [1m[35mImpuestoUnico Load (0.4ms)[0m  SELECT  `impuesto_unicos`.* FROM `impuesto_unicos` WHERE `impuesto_unicos`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `impuesto_unicos`[0m
+Processing by ImpuestoUnicosController#create as HTML
+  Parameters: {"impuesto_unico"=>{"factor"=>"1.5", "imponibleMaximo"=>"1.5", "imponibleMinimo"=>"1.5", "impuestoEfectivoMax"=>"1.5", "rebaja"=>"1.5"}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `impuesto_unicos`[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+ImpuestoUnicosControllerTest: test_should_get_new
+-------------------------------------------------
+  [1m[35mImpuestoUnico Load (0.2ms)[0m  SELECT  `impuesto_unicos`.* FROM `impuesto_unicos` WHERE `impuesto_unicos`.`id` = 980190962 LIMIT 1
+Processing by ImpuestoUnicosController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ImpuestoUnicosControllerTest: test_should_get_edit
+--------------------------------------------------
+  [1m[35mImpuestoUnico Load (0.2ms)[0m  SELECT  `impuesto_unicos`.* FROM `impuesto_unicos` WHERE `impuesto_unicos`.`id` = 980190962 LIMIT 1
+Processing by ImpuestoUnicosController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------------------------
+ImpuestoUnicosControllerTest: test_should_destroy_impuesto_unico
+----------------------------------------------------------------
+  [1m[35mImpuestoUnico Load (0.2ms)[0m  SELECT  `impuesto_unicos`.* FROM `impuesto_unicos` WHERE `impuesto_unicos`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `impuesto_unicos`[0m
+Processing by ImpuestoUnicosController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `impuesto_unicos`[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------------
+ImpuestoUnicosControllerTest: test_should_get_index
+---------------------------------------------------
+  [1m[35mImpuestoUnico Load (0.2ms)[0m  SELECT  `impuesto_unicos`.* FROM `impuesto_unicos` WHERE `impuesto_unicos`.`id` = 980190962 LIMIT 1
+Processing by ImpuestoUnicosController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------------------
+ImpuestoUnicosControllerTest: test_should_show_impuesto_unico
+-------------------------------------------------------------
+  [1m[35mImpuestoUnico Load (0.2ms)[0m  SELECT  `impuesto_unicos`.* FROM `impuesto_unicos` WHERE `impuesto_unicos`.`id` = 980190962 LIMIT 1
+Processing by ImpuestoUnicosController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------------------------
+ImpuestoUnicosControllerTest: test_should_update_impuesto_unico
+---------------------------------------------------------------
+  [1m[35mImpuestoUnico Load (0.2ms)[0m  SELECT  `impuesto_unicos`.* FROM `impuesto_unicos` WHERE `impuesto_unicos`.`id` = 980190962 LIMIT 1
+Processing by ImpuestoUnicosController#update as HTML
+  Parameters: {"impuesto_unico"=>{"factor"=>"1.5", "imponibleMaximo"=>"1.5", "imponibleMinimo"=>"1.5", "impuestoEfectivoMax"=>"1.5", "rebaja"=>"1.5"}, "id"=>"980190962"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+LiquidacionsControllerTest: test_should_get_index
+-------------------------------------------------
+  [1m[35mLiquidacion Load (0.5ms)[0m  SELECT  `liquidacions`.* FROM `liquidacions` WHERE `liquidacions`.`id` = 980190962 LIMIT 1
+Processing by LiquidacionsController#index as HTML
+  [1m[36mLiquidacion Load (0.6ms)[0m  [1mSELECT `liquidacions`.* FROM `liquidacions`[0m
+  Rendered liquidacions/index.html.erb within layouts/application (38.8ms)
+Completed 500 Internal Server Error in 57ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+--------------------------------------------------------
+LiquidacionsControllerTest: test_should_show_liquidacion
+--------------------------------------------------------
+  [1m[35mLiquidacion Load (0.3ms)[0m  SELECT  `liquidacions`.* FROM `liquidacions` WHERE `liquidacions`.`id` = 980190962 LIMIT 1
+Processing by LiquidacionsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mLiquidacion Load (0.3ms)[0m  [1mSELECT  `liquidacions`.* FROM `liquidacions` WHERE `liquidacions`.`id` = 980190962 LIMIT 1[0m
+  [1m[35mLiquidacion Load (0.1ms)[0m  SELECT  `liquidacions`.* FROM `liquidacions` WHERE `liquidacions`.`id` = 980190962 LIMIT 1
+  Rendered liquidacions/show.html.erb within layouts/application (3.3ms)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+------------------------------------------------
+LiquidacionsControllerTest: test_should_get_edit
+------------------------------------------------
+  [1m[36mLiquidacion Load (0.2ms)[0m  [1mSELECT  `liquidacions`.* FROM `liquidacions` WHERE `liquidacions`.`id` = 980190962 LIMIT 1[0m
+Processing by LiquidacionsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+----------------------------------------------------------
+LiquidacionsControllerTest: test_should_create_liquidacion
+----------------------------------------------------------
+  [1m[36mLiquidacion Load (0.2ms)[0m  [1mSELECT  `liquidacions`.* FROM `liquidacions` WHERE `liquidacions`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `liquidacions`
+Processing by LiquidacionsController#create as HTML
+  Parameters: {"liquidacion"=>{"asignacion_id"=>nil, "bonificacion_id"=>nil, "cantidad_horas_extra"=>"1", "cotizacion_voluntaria"=>"1", "desc_legales"=>"1", "desc_varios"=>"1", "descuento_adicional_id"=>nil, "descuento_afp"=>"1", "descuento_isapre"=>"1", "fecha_pago"=>"2016-12-13", "habere_id"=>nil, "horas_extra"=>"1", "horas_trabajadas"=>"1.5", "impuesto"=>"1", "liquido_pagar"=>"1", "personal_id"=>nil, "porcentaje_afp"=>"1.5", "remuneracion"=>"1", "sindicato"=>"1", "total_haberes"=>"1", "total_imponible"=>"1", "vacaciones"=>"1.5"}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `liquidacions`
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-----------------------------------------------------------
+LiquidacionsControllerTest: test_should_destroy_liquidacion
+-----------------------------------------------------------
+  [1m[36mLiquidacion Load (0.2ms)[0m  [1mSELECT  `liquidacions`.* FROM `liquidacions` WHERE `liquidacions`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM `liquidacions`
+Processing by LiquidacionsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM `liquidacions`
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-----------------------------------------------
+LiquidacionsControllerTest: test_should_get_new
+-----------------------------------------------
+  [1m[36mLiquidacion Load (0.2ms)[0m  [1mSELECT  `liquidacions`.* FROM `liquidacions` WHERE `liquidacions`.`id` = 980190962 LIMIT 1[0m
+Processing by LiquidacionsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+----------------------------------------------------------
+LiquidacionsControllerTest: test_should_update_liquidacion
+----------------------------------------------------------
+  [1m[36mLiquidacion Load (0.3ms)[0m  [1mSELECT  `liquidacions`.* FROM `liquidacions` WHERE `liquidacions`.`id` = 980190962 LIMIT 1[0m
+Processing by LiquidacionsController#update as HTML
+  Parameters: {"liquidacion"=>{"asignacion_id"=>nil, "bonificacion_id"=>nil, "cantidad_horas_extra"=>"1", "cotizacion_voluntaria"=>"1", "desc_legales"=>"1", "desc_varios"=>"1", "descuento_adicional_id"=>nil, "descuento_afp"=>"1", "descuento_isapre"=>"1", "fecha_pago"=>"2016-12-13", "habere_id"=>nil, "horas_extra"=>"1", "horas_trabajadas"=>"1.5", "impuesto"=>"1", "liquido_pagar"=>"1", "personal_id"=>nil, "porcentaje_afp"=>"1.5", "remuneracion"=>"1", "sindicato"=>"1", "total_haberes"=>"1", "total_imponible"=>"1", "vacaciones"=>"1.5"}, "id"=>"980190962"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------
+CertificatesControllerTest: test_should_get_edit
+------------------------------------------------
+  [1m[36mCertificate Load (0.5ms)[0m  [1mSELECT  `certificates`.* FROM `certificates` WHERE `certificates`.`id` = 980190962 LIMIT 1[0m
+Processing by CertificatesController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mCertificate Load (0.3ms)[0m  SELECT  `certificates`.* FROM `certificates` WHERE `certificates`.`id` = 980190962 LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mPersonal Load (0.6ms)[0m  SELECT `personals`.* FROM `personals`
+  Rendered certificates/_form.html.erb (1069.2ms)
+  Rendered certificates/edit.html.erb within layouts/application (1092.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 200 OK in 1167ms (Views: 1162.1ms | ActiveRecord: 2.4ms | Solr: 0.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------------
+CertificatesControllerTest: test_should_destroy_certificate
+-----------------------------------------------------------
+  [1m[35mCertificate Load (0.2ms)[0m  SELECT  `certificates`.* FROM `certificates` WHERE `certificates`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `certificates`[0m
+Processing by CertificatesController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `certificates`[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+----------------------------------------------------------
+CertificatesControllerTest: test_should_update_certificate
+----------------------------------------------------------
+  [1m[35mCertificate Load (0.3ms)[0m  SELECT  `certificates`.* FROM `certificates` WHERE `certificates`.`id` = 980190962 LIMIT 1
+Processing by CertificatesController#update as HTML
+  Parameters: {"certificate"=>{"motivo"=>"MyString", "personal_id"=>nil, "rut_personal"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mCertificate Load (0.2ms)[0m  [1mSELECT  `certificates`.* FROM `certificates` WHERE `certificates`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/certificates/980190962?locale=es
+Completed 302 Found in 5ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+CertificatesControllerTest: test_should_get_index
+-------------------------------------------------
+  [1m[35mCertificate Load (0.2ms)[0m  SELECT  `certificates`.* FROM `certificates` WHERE `certificates`.`id` = 980190962 LIMIT 1
+Processing by CertificatesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-----------------------------------------------
+CertificatesControllerTest: test_should_get_new
+-----------------------------------------------
+  [1m[36mCertificate Load (0.1ms)[0m  [1mSELECT  `certificates`.* FROM `certificates` WHERE `certificates`.`id` = 980190962 LIMIT 1[0m
+Processing by CertificatesController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+----------------------------------------------------------
+CertificatesControllerTest: test_should_create_certificate
+----------------------------------------------------------
+  [1m[36mCertificate Load (0.1ms)[0m  [1mSELECT  `certificates`.* FROM `certificates` WHERE `certificates`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `certificates`
+Processing by CertificatesController#create as HTML
+  Parameters: {"certificate"=>{"motivo"=>"MyString", "personal_id"=>nil, "rut_personal"=>"MyString"}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM `certificates`
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------------------
+CertificatesControllerTest: test_should_show_certificate
+--------------------------------------------------------
+  [1m[36mCertificate Load (0.1ms)[0m  [1mSELECT  `certificates`.* FROM `certificates` WHERE `certificates`.`id` = 980190962 LIMIT 1[0m
+Processing by CertificatesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mCertificate Load (0.1ms)[0m  SELECT  `certificates`.* FROM `certificates` WHERE `certificates`.`id` = 980190962 LIMIT 1
+  [1m[36mCertificate Load (0.1ms)[0m  [1mSELECT  `certificates`.* FROM `certificates` WHERE `certificates`.`id` = 980190962 LIMIT 1[0m
+  Rendered certificates/show.html.erb within layouts/application (3.6ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------
+AsignacionsControllerTest: test_should_show_asignacion
+------------------------------------------------------
+  [1m[35mAsignacion Load (0.6ms)[0m  SELECT  `asignacions`.* FROM `asignacions` WHERE `asignacions`.`id` = 980190962 LIMIT 1
+Processing by AsignacionsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------------------
+AsignacionsControllerTest: test_should_destroy_asignacion
+---------------------------------------------------------
+  [1m[35mAsignacion Load (0.2ms)[0m  SELECT  `asignacions`.* FROM `asignacions` WHERE `asignacions`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `asignacions`[0m
+Processing by AsignacionsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `asignacions`[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------------
+AsignacionsControllerTest: test_should_get_edit
+-----------------------------------------------
+  [1m[35mAsignacion Load (0.2ms)[0m  SELECT  `asignacions`.* FROM `asignacions` WHERE `asignacions`.`id` = 980190962 LIMIT 1
+Processing by AsignacionsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------
+AsignacionsControllerTest: test_should_get_index
+------------------------------------------------
+  [1m[35mAsignacion Load (0.2ms)[0m  SELECT  `asignacions`.* FROM `asignacions` WHERE `asignacions`.`id` = 980190962 LIMIT 1
+Processing by AsignacionsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------------------
+AsignacionsControllerTest: test_should_create_asignacion
+--------------------------------------------------------
+  [1m[35mAsignacion Load (0.2ms)[0m  SELECT  `asignacions`.* FROM `asignacions` WHERE `asignacions`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `asignacions`[0m
+Processing by AsignacionsController#create as HTML
+  Parameters: {"asignacion"=>{"asignacion"=>"1", "detalle_asignacion"=>"MyString", "subcategorium_id"=>nil}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `asignacions`[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------
+AsignacionsControllerTest: test_should_get_new
+----------------------------------------------
+  [1m[35mAsignacion Load (0.2ms)[0m  SELECT  `asignacions`.* FROM `asignacions` WHERE `asignacions`.`id` = 980190962 LIMIT 1
+Processing by AsignacionsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------------------
+AsignacionsControllerTest: test_should_update_asignacion
+--------------------------------------------------------
+  [1m[35mAsignacion Load (0.1ms)[0m  SELECT  `asignacions`.* FROM `asignacions` WHERE `asignacions`.`id` = 980190962 LIMIT 1
+Processing by AsignacionsController#update as HTML
+  Parameters: {"asignacion"=>{"asignacion"=>"1", "detalle_asignacion"=>"MyString", "subcategorium_id"=>nil}, "id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------------------------
+AsignacionFamiliarsControllerTest: test_should_show_asignacion_familiar
+-----------------------------------------------------------------------
+  [1m[35mAsignacionFamiliar Load (0.6ms)[0m  SELECT  `asignacion_familiars`.* FROM `asignacion_familiars` WHERE `asignacion_familiars`.`id` = 980190962 LIMIT 1
+Processing by AsignacionFamiliarsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+--------------------------------------------------------
+AsignacionFamiliarsControllerTest: test_should_get_index
+--------------------------------------------------------
+  [1m[35mAsignacionFamiliar Load (0.3ms)[0m  SELECT  `asignacion_familiars`.* FROM `asignacion_familiars` WHERE `asignacion_familiars`.`id` = 980190962 LIMIT 1
+Processing by AsignacionFamiliarsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------
+AsignacionFamiliarsControllerTest: test_should_get_new
+------------------------------------------------------
+  [1m[35mAsignacionFamiliar Load (0.3ms)[0m  SELECT  `asignacion_familiars`.* FROM `asignacion_familiars` WHERE `asignacion_familiars`.`id` = 980190962 LIMIT 1
+Processing by AsignacionFamiliarsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+-------------------------------------------------------------------------
+AsignacionFamiliarsControllerTest: test_should_create_asignacion_familiar
+-------------------------------------------------------------------------
+  [1m[35mAsignacionFamiliar Load (0.3ms)[0m  SELECT  `asignacion_familiars`.* FROM `asignacion_familiars` WHERE `asignacion_familiars`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `asignacion_familiars`[0m
+Processing by AsignacionFamiliarsController#create as HTML
+  Parameters: {"asignacion_familiar"=>{"monto"=>"1", "requisitoMaximo"=>"1", "requisitoMinimo"=>"1", "tramo"=>"MyString"}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `asignacion_familiars`[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+--------------------------------------------------------------------------
+AsignacionFamiliarsControllerTest: test_should_destroy_asignacion_familiar
+--------------------------------------------------------------------------
+  [1m[35mAsignacionFamiliar Load (0.1ms)[0m  SELECT  `asignacion_familiars`.* FROM `asignacion_familiars` WHERE `asignacion_familiars`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `asignacion_familiars`[0m
+Processing by AsignacionFamiliarsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `asignacion_familiars`[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------------
+AsignacionFamiliarsControllerTest: test_should_get_edit
+-------------------------------------------------------
+  [1m[35mAsignacionFamiliar Load (0.2ms)[0m  SELECT  `asignacion_familiars`.* FROM `asignacion_familiars` WHERE `asignacion_familiars`.`id` = 980190962 LIMIT 1
+Processing by AsignacionFamiliarsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-------------------------------------------------------------------------
+AsignacionFamiliarsControllerTest: test_should_update_asignacion_familiar
+-------------------------------------------------------------------------
+  [1m[35mAsignacionFamiliar Load (0.4ms)[0m  SELECT  `asignacion_familiars`.* FROM `asignacion_familiars` WHERE `asignacion_familiars`.`id` = 980190962 LIMIT 1
+Processing by AsignacionFamiliarsController#update as HTML
+  Parameters: {"asignacion_familiar"=>{"monto"=>"1", "requisitoMaximo"=>"1", "requisitoMinimo"=>"1", "tramo"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------------
+BancosControllerTest: test_should_destroy_banco
+-----------------------------------------------
+  [1m[35mBanco Load (0.6ms)[0m  SELECT  `bancos`.* FROM `bancos` WHERE `bancos`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `bancos`[0m
+Processing by BancosController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `bancos`[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------
+BancosControllerTest: test_should_get_index
+-------------------------------------------
+  [1m[35mBanco Load (0.3ms)[0m  SELECT  `bancos`.* FROM `bancos` WHERE `bancos`.`id` = 980190962 LIMIT 1
+Processing by BancosController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+BancosControllerTest: test_should_show_banco
+--------------------------------------------
+  [1m[35mBanco Load (0.2ms)[0m  SELECT  `bancos`.* FROM `bancos` WHERE `bancos`.`id` = 980190962 LIMIT 1
+Processing by BancosController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------
+BancosControllerTest: test_should_get_new
+-----------------------------------------
+  [1m[35mBanco Load (0.2ms)[0m  SELECT  `bancos`.* FROM `bancos` WHERE `bancos`.`id` = 980190962 LIMIT 1
+Processing by BancosController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------
+BancosControllerTest: test_should_create_banco
+----------------------------------------------
+  [1m[35mBanco Load (0.2ms)[0m  SELECT  `bancos`.* FROM `bancos` WHERE `bancos`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `bancos`[0m
+Processing by BancosController#create as HTML
+  Parameters: {"banco"=>{"banco"=>"MyString", "tipo_cuenta"=>"MyString"}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `bancos`[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------
+BancosControllerTest: test_should_get_edit
+------------------------------------------
+  [1m[35mBanco Load (0.1ms)[0m  SELECT  `bancos`.* FROM `bancos` WHERE `bancos`.`id` = 980190962 LIMIT 1
+Processing by BancosController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------
+BancosControllerTest: test_should_update_banco
+----------------------------------------------
+  [1m[35mBanco Load (0.1ms)[0m  SELECT  `bancos`.* FROM `bancos` WHERE `bancos`.`id` = 980190962 LIMIT 1
+Processing by BancosController#update as HTML
+  Parameters: {"banco"=>{"banco"=>"MyString", "tipo_cuenta"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------
+TipocontratosControllerTest: test_should_get_new
+------------------------------------------------
+  [1m[35mTipocontrato Load (0.4ms)[0m  SELECT  `tipocontratos`.* FROM `tipocontratos` WHERE `tipocontratos`.`id` = 980190962 LIMIT 1
+Processing by TipocontratosController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------------
+TipocontratosControllerTest: test_should_create_tipocontrato
+------------------------------------------------------------
+  [1m[35mTipocontrato Load (0.1ms)[0m  SELECT  `tipocontratos`.* FROM `tipocontratos` WHERE `tipocontratos`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `tipocontratos`[0m
+Processing by TipocontratosController#create as HTML
+  Parameters: {"tipocontrato"=>{"tipo_contrato"=>"MyString"}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `tipocontratos`[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------------------
+TipocontratosControllerTest: test_should_show_tipocontrato
+----------------------------------------------------------
+  [1m[35mTipocontrato Load (0.2ms)[0m  SELECT  `tipocontratos`.* FROM `tipocontratos` WHERE `tipocontratos`.`id` = 980190962 LIMIT 1
+Processing by TipocontratosController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+TipocontratosControllerTest: test_should_get_edit
+-------------------------------------------------
+  [1m[35mTipocontrato Load (0.2ms)[0m  SELECT  `tipocontratos`.* FROM `tipocontratos` WHERE `tipocontratos`.`id` = 980190962 LIMIT 1
+Processing by TipocontratosController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.8ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+TipocontratosControllerTest: test_should_get_index
+--------------------------------------------------
+  [1m[35mTipocontrato Load (0.2ms)[0m  SELECT  `tipocontratos`.* FROM `tipocontratos` WHERE `tipocontratos`.`id` = 980190962 LIMIT 1
+Processing by TipocontratosController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------------------
+TipocontratosControllerTest: test_should_destroy_tipocontrato
+-------------------------------------------------------------
+  [1m[35mTipocontrato Load (0.2ms)[0m  SELECT  `tipocontratos`.* FROM `tipocontratos` WHERE `tipocontratos`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `tipocontratos`[0m
+Processing by TipocontratosController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `tipocontratos`[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------------
+TipocontratosControllerTest: test_should_update_tipocontrato
+------------------------------------------------------------
+  [1m[35mTipocontrato Load (0.1ms)[0m  SELECT  `tipocontratos`.* FROM `tipocontratos` WHERE `tipocontratos`.`id` = 980190962 LIMIT 1
+Processing by TipocontratosController#update as HTML
+  Parameters: {"tipocontrato"=>{"tipo_contrato"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------
+CategoriaControllerTest: test_should_create_categorium
+------------------------------------------------------
+  [1m[35mCategorium Load (0.6ms)[0m  SELECT  `categoria`.* FROM `categoria` WHERE `categoria`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `categoria`[0m
+Processing by CategoriaController#create as HTML
+  Parameters: {"categorium"=>{"categoria"=>"MyString"}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `categoria`[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+------------------------------------------------------
+CategoriaControllerTest: test_should_update_categorium
+------------------------------------------------------
+  [1m[35mCategorium Load (0.3ms)[0m  SELECT  `categoria`.* FROM `categoria` WHERE `categoria`.`id` = 980190962 LIMIT 1
+Processing by CategoriaController#update as HTML
+  Parameters: {"categorium"=>{"categoria"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+CategoriaControllerTest: test_should_get_new
+--------------------------------------------
+  [1m[35mCategorium Load (0.3ms)[0m  SELECT  `categoria`.* FROM `categoria` WHERE `categoria`.`id` = 980190962 LIMIT 1
+Processing by CategoriaController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------------
+CategoriaControllerTest: test_should_destroy_categorium
+-------------------------------------------------------
+  [1m[35mCategorium Load (0.2ms)[0m  SELECT  `categoria`.* FROM `categoria` WHERE `categoria`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `categoria`[0m
+Processing by CategoriaController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `categoria`[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------
+CategoriaControllerTest: test_should_get_index
+----------------------------------------------
+  [1m[35mCategorium Load (0.1ms)[0m  SELECT  `categoria`.* FROM `categoria` WHERE `categoria`.`id` = 980190962 LIMIT 1
+Processing by CategoriaController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+CategoriaControllerTest: test_should_get_edit
+---------------------------------------------
+  [1m[35mCategorium Load (0.1ms)[0m  SELECT  `categoria`.* FROM `categoria` WHERE `categoria`.`id` = 980190962 LIMIT 1
+Processing by CategoriaController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------------
+CategoriaControllerTest: test_should_show_categorium
+----------------------------------------------------
+  [1m[35mCategorium Load (0.2ms)[0m  SELECT  `categoria`.* FROM `categoria` WHERE `categoria`.`id` = 980190962 LIMIT 1
+Processing by CategoriaController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` IS NULL  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://test.host/login?locale=es
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK

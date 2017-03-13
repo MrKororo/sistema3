@@ -18,7 +18,7 @@
     </p>
 
     <p>
-      <strong>Remuneracion:</strong>
+      <strong>Remuneración:</strong>
       $<%= number_to_currency(@liquidacion.remuneracion,strip_insignificant_zeros: true, :unit => "") %>
     </p>
     <p>
@@ -33,21 +33,21 @@
 
     <p>
     <%if @liquidacion.asignacion.asignacion != nil%>
-      <strong>Asignacion:</strong>
+      <strong>Asignación:</strong>
       $<%= number_to_currency(@liquidacion.asignacion.asignacion,strip_insignificant_zeros: true, :unit => "") %>
     <%end%>
     </p>
 
     <p>
     
-      <strong>Asignacion familiar:</strong>
+      <strong>Asignación familiar:</strong>
       $<%= number_to_currency(@liquidacion.asignacion_familiar,strip_insignificant_zeros: true, :unit => "") %>
     
     </p>
 
     <p>
     <%if @liquidacion.bonificacion.bono != nil%>
-      <strong>Bonificacion:</strong>
+      <strong>Bonificación:</strong>
       $<%= number_to_currency(@liquidacion.bonificacion.bono,strip_insignificant_zeros: true, :unit => "") %>
     <%end%>
     </p>
@@ -106,7 +106,7 @@
     </p>
 
     <p>
-      <strong>Cotizacion voluntaria:</strong>
+      <strong>Cotización voluntaria:</strong>
       $<%= number_to_currency(@liquidacion.cotizacion_voluntaria,strip_insignificant_zeros: true, :unit => "") %>
     </p>
 
@@ -121,7 +121,7 @@
     </p>
 
     <p>
-      <strong>Liquido pagar:</strong>
+      <strong>Líquido pagar:</strong>
       $<%= number_to_currency(@liquidacion.liquido_pagar,strip_insignificant_zeros: true, :unit => "") %>
     </p>
 

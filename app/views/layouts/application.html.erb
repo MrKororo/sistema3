@@ -19,7 +19,7 @@
   </head>
     <div class="callout large primary">
       <div class="row column text-center">
-        <h1>Sistema de Remuneraciones</h1>
+        <h3>Sistema de Remuneraciones</h3>
       </div>
     </div>
   
@@ -40,13 +40,13 @@
                 <li><a href="/personals/new">Nuevo personal</a></li>
               </ul>
             </li>
-            <li><a href="#">Categorizacion</a>
+            <li><a href="#">Categorización</a>
               <ul class="menu">
-                <li><a href="/categoria">Categoria</a></li>
-                <li><a href="/subcategoria">Subcategoria</a></li>
+                <li><a href="/categoria">Categoría</a></li>
+                <li><a href="/subcategoria">Subcategoría</a></li>
               </ul>
             </li>
-            <li><a href="#">Remuneracion</a>
+            <li><a href="#">Remuneración</a>
               <ul class="menu">
                 <li><a href="/haberes">Sueldo Base</a></li>
                 <li><a href="/bonificacions">Bonificaciones</a></li>
@@ -66,7 +66,7 @@
                 <li><a href="/users">Usuarios</a></li>
               </ul>
             </li>
-            <li><a href="#">Terminos legales</a>
+            <li><a href="#">Términos legales</a>
               <ul class="menu">
                 <li><a href="/indicador_economicos">UF</a></li>
                 <li><a href="/topes_legales">Topes Legales</a></li>
@@ -77,10 +77,12 @@
             <li><a href="/liquidacions">Liquidaciones</a></li>
             <li><a href="/certificates">Certificados</a></li>
             <li><a class="button" href="/logout">Salir</a></li>
+            <li> &nbsp Ha ingresado como: <br/>&nbsp <%= current_user.nombre %>.</li>
             <%elsif current_user and current_user.tipo_usuario == "Empleado"%>
               <li><a href="/liquidacions">Liquidaciones</a></li>
               <li><a href="/certificates">Certificados</a></li>
               <li><a class="button" href="/logout">Salir</a></li>
+              <li> &nbsp Ha ingresado como: <br/>&nbsp <%= current_user.nombre %>.</li>
             <%end%>
           </ul>
         </div>
@@ -90,21 +92,22 @@
   
   <!-- /Navigation -->  
    <div class="row" id="content">
-      <div class="medium-8 columns">
+      <div class="medium-9 columns">
         <%= yield %>   
       </div>
-    <div class="medium-3 columns" data-sticky-container>
+<!--     <div class="medium-3 columns" data-sticky-container>
         <div class="sticky" data-sticky data-anchor="content">
           <div id="user_header">
           <% if current_user and current_user.tipo_usuario == "Administrador" %>
-            <h6>Ha ingresado como: <%= current_user.nombre %>.</h6>
-            <h4>Ultimos trabajadores agregados:</h4>
+            <h6>Ha ingresado como:</h6>
+             <h6><%= current_user.nombre %>.</h6>
+            <h5>Ultimos trabajadores agregados:</h5>
             <ul>
               <% lastCreated.each do |personal| %>
               <h6><li><%=personal.nombre_apellido%></li></h6>
               <% end %>
             </ul>
-            <h4>Ultimas Categorias creadas</h4>
+            <h5>Ultimas Categorias creadas</h5>
             <ul>
               <% lastCategories.each do |category| %>
               <h6><li><%=category.categoria%></li></h6>
@@ -116,7 +119,7 @@
           <% end %>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
 
