@@ -30,7 +30,7 @@ gem 'seed_dump', '3.2.4'
 gem 'rails', '4.2.5'
 
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.3.13', '< 0.5'
+#gem 'mysql2', '>= 0.3.13', '< 0.5'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
