@@ -63,6 +63,7 @@ gem 'foundation-rails', '6.2.3.0'
 #permite buscar datos por cada pagina
 gem 'sunspot_rails', '2.2.6'	
 
+gem 'pg','0.19.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -83,6 +84,6 @@ group :development do
 end
 
 group :production do
-	gem 'pg'
+	
 	gem 'rails_12factor'
 end
