@@ -27,10 +27,15 @@ class LiquidacionsController < ApplicationController
   # en el sistema.
   def index
       @liquidacions = Liquidacion.all
-      if current_user and current_user.tipo_usuario == "Administrador"and params[:start_period]
-        @liquidacions = Liquidacion.search(params[:start_period], params[:end_period]).order("personal_id DESC")
+      if current_user and current_user.tipo_usuario == "Administrador"
+        if params[:start_period]
+          @liquidacions = Liquidacion.search(params[:start_period], params[:end_period]).order("personal_id DESC")
+        end
       elsif current_user
         @liquidacions = Liquidacion.where(personal_id: current_user.id)
+        if params[:start_period]
+          @liquidacions = Liquidacion.search(params[:start_period], params[:end_period]).order("personal_id DESC")
+        end
       end
  end
 

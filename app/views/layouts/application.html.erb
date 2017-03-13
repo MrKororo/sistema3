@@ -95,32 +95,7 @@
       <div class="medium-9 columns">
         <%= yield %>   
       </div>
-<!--     <div class="medium-3 columns" data-sticky-container>
-        <div class="sticky" data-sticky data-anchor="content">
-          <div id="user_header">
-          <% if current_user and current_user.tipo_usuario == "Administrador" %>
-            <h6>Ha ingresado como:</h6>
-             <h6><%= current_user.nombre %>.</h6>
-            <h5>Ultimos trabajadores agregados:</h5>
-            <ul>
-              <% lastCreated.each do |personal| %>
-              <h6><li><%=personal.nombre_apellido%></li></h6>
-              <% end %>
-            </ul>
-            <h5>Ultimas Categorias creadas</h5>
-            <ul>
-              <% lastCategories.each do |category| %>
-              <h6><li><%=category.categoria%></li></h6>
-              <% end %>
-            </ul>
-          <%elsif if current_user and current_user.tipo_usuario == "Empleado"%>
-          <h4>Ha ingresado como:</h4><h5> <%= current_user.nombre%> <%=current_user.apellido_paterno%>.</h5>
-          <%end%>
-          <% end %>
-          </div>
-        </div>
-      </div> -->
-    </div>
+   </div>
 
 
 <hr>

@@ -37,4 +37,5 @@ class Liquidacion < ActiveRecord::Base
     end_period=fecha2_cambiada
     where("fecha_pago between ? and ?", "#{start_period}", "#{end_period}")
   end
+
 end
