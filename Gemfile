@@ -30,7 +30,7 @@ gem 'seed_dump', '3.2.4'
 gem 'rails', '4.2.5'
 
 # Use mysql as the database for Active Record
-#gem 'mysql2', '>= 0.3.13', '< 0.5'
+gem 'mysql2', '>= 0.3.13', '< 0.5'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -63,7 +63,7 @@ gem 'foundation-rails', '6.2.3.0'
 #permite buscar datos por cada pagina
 gem 'sunspot_rails', '2.2.6'	
 
-gem 'pg','0.19.0'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -84,6 +84,6 @@ group :development do
 end
 
 group :production do
-	
+	gem 'pg','0.19.0'	
 	gem 'rails_12factor'
 end

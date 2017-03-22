@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listando trabajadores</h1>
+<h3>Listando trabajadores</h3>
 <%= form_tag search_personals_path, :method => :get do %>
 <p>
   <%= text_field_tag :query, params[:query] %> <%= submit_tag "Buscar trabajador" %>

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listando Usuarios</h1>
+<h3>Listando Usuarios</h3>
 
 <table>
   <thead>
@@ -31,5 +31,7 @@
 </table>
 
 <br>
-
+<div class="row">
+<%= will_paginate @users, previous_label: h("<"), next_label: h(">"), renderer: FoundationPagination::Rails%>
+</div>
 <%= link_to 'Nuevo Usuario', new_user_path %>
